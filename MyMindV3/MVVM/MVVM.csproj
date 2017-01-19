@@ -35,6 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ViewModel\AllRegisteredUserViewModel.cs" />
+    <Compile Include="ViewModel\MyChatViewModel.cs" />
+    <Compile Include="ViewModel\MyClinicianViewModel.cs" />
+    <Compile Include="ViewModel\MyFileViewModel.cs" />
+    <Compile Include="ViewModel\MyJourneyViewModel.cs" />
+    <Compile Include="ViewModel\MyLimitedMindViewModel.cs" />
+    <Compile Include="ViewModel\MyPatientViewModel.cs" />
+    <Compile Include="ViewModel\MyPlansViewModel.cs" />
+    <Compile Include="ViewModel\MyProfileViewModel.cs" />
+    <Compile Include="ViewModel\MyResourcesViewModel.cs" />
     <Compile Include="Webservices\UsersWebservice.cs" />
     <None Include="Database\SystemUserDB.cs" />
     <Compile Include="Enums\SettingTypes.cs" />
@@ -43,11 +53,9 @@
     <Compile Include="Interfaces\ISqLiteConnectionFactory.cs" />
     <Compile Include="Interfaces\IUserSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\AllUsersViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\LoginPinCodeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="Database\DBHelper.cs" />
     <Compile Include="Helpers\Constants.cs" />
     <Compile Include="ViewModelLocator.cs" />
