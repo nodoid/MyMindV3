@@ -85,7 +85,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DialogService.cs" />
     <Compile Include="Services\NavigationService.cs" />
-    <Compile Include="Views\AboutMeView.xaml.cs" />
     <Compile Include="Views\AllRegisteredUsers.xaml.cs" />
     <Compile Include="Views\CometChatView.cs" />
     <Compile Include="Views\LoginPincodeView.xaml.cs" />
@@ -210,10 +209,6 @@
     <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\AboutMeView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\AllRegisteredUsers.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
