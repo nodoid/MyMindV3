@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyMindV3.Views.SignUpView" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" Title="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_Title}" BackgroundColor="#022330">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<helpers:LanguageConverter x:Key="Language" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<local:CustomImage x:Name="BackgrdImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="bg1.png" Aspect="AspectFill" />
+		<ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+			<Grid Padding="0, 0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="35" />
+					<RowDefinition Height="10" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="10" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="10" />
+				</Grid.ColumnDefinitions>
+				<StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Padding="2, 0">
+					<local:CustomImage ImageSource="NELFTLogo2015.png" Aspect="AspectFit" />
+				</StackLayout>
+				<StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Padding="2,2">
+				</StackLayout>
+				<StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Padding="2,2">
+					<local:CustomImage ImageSource="mymindlogo.png" WidthRequest="150" Aspect="AspectFit" />
+				</StackLayout>
+				<!--Register Screen-->
+				<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Vertical" Padding="0, 0" BackgroundColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="Fill">
+					<Grid Padding="0, 0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="70" />
+							<RowDefinition Height="70" />
+							<RowDefinition Height="70" />
+							<RowDefinition Height="70" />
+							<RowDefinition Height="70" />
+							<RowDefinition Height="70" />
+							<RowDefinition Height="70" />
+							<RowDefinition Height="Auto" />
+							<RowDefinition Height="20" />
+							<RowDefinition Height="50" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="50" />
+						</Grid.ColumnDefinitions>
+						<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_Name}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="RegNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_EnterName}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Name}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconname.png" Aspect="AspectFit" WidthRequest="25" />
+						<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_PrefName}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="RegPreferredNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_EnterPrefName}" PlaceholderColor="#939393" FontSize="15" Text="{Binding PreferredName}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconname.png" Aspect="AspectFit" WidthRequest="25" />
+						<StackLayout Grid.Row="2" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_Email}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="RegEmailInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_EnterEmail}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Email}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="2" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconemail.png" Aspect="AspectFit" WidthRequest="25" />
+						<StackLayout Grid.Row="3" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_DOB}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<DatePicker x:Name="dobInput" Date="{Binding DateOfBirth}" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="3" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconname.png" Aspect="AspectFit" WidthRequest="25" />
+						<StackLayout Grid.Row="4" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_Password}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="RegPasswordInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_EnterPassword}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Password}" IsPassword="True" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="4" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconpassword.png" Aspect="AspectFit" WidthRequest="25" />
+						<StackLayout Grid.Row="5" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_RepPassword}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="RegPasswordRepeatInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_EnterRepPassword}" PlaceholderColor="#939393" FontSize="15" Text="{Binding PasswordRepeated}" IsPassword="True" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="5" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconpassword.png" Aspect="AspectFit" WidthRequest="25" />
+						<StackLayout Grid.Row="6" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_Phone}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="RegPhoneInput" Keyboard="Numeric" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_EnterPhone}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Phone}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="6" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconphone.png" Aspect="AspectFit" WidthRequest="25" />
+						<StackLayout Grid.Row="7" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_Pin}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="RegPincodeInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_EnterPin}" Keyboard="Numeric" PlaceholderColor="#939393" FontSize="15" Text="{Binding PinCode}" IsPassword="True" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="7" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconphone.png" Aspect="AspectFit" WidthRequest="25" />
+						<StackLayout Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Padding="5, 0">
+							<Label Text="{Binding Result}" FontSize="15" FontAttributes="None" TextColor="#ff0000" />
+						</StackLayout>
+						<StackLayout Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
+							<Button Text="Create" FontSize="15" TextColor="White" BackgroundColor="#3bc5ee" HeightRequest="50" Command="{Binding CreateSubmitCommand}" IsEnabled="{Binding HasValidInput}" />
+						</StackLayout>
+					</Grid>
+				</StackLayout>
+				<!--/Register Screen-->
+				<StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Padding="0, 0">
+					<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_HaveAcc}" VerticalOptions="Center" BackgroundColor="Transparent" FontSize="15" TextColor="White" HorizontalOptions="Start" />
+					<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_SignIn}" FontSize="15" TextColor="#3bc5ee" BackgroundColor="Transparent" HorizontalOptions="End" Command="{Binding SignUpCommand}" />
+				</StackLayout>
+			</Grid>
+		</ScrollView>
+	</AbsoluteLayout>
+</ContentPage>

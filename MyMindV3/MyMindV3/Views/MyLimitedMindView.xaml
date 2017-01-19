@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" x:Class="MyMindV3.Views.MyLimitedMindView" BackgroundColor="#022330" Title="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Title}">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<helpers:LanguageConverter x:Key="Language" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<local:CustomImage x:Name="BackgrdImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="bg1.png" Aspect="AspectFill" />
+		<ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+			<StackLayout Orientation="Vertical" VerticalOptions="Fill">
+				<!--Header-->
+				<Grid Padding="0, 0" ColumnSpacing="0" RowSpacing="0" VerticalOptions="Fill">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="186" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" Padding="0,0" Spacing="0">
+						<Grid Padding="0, 0">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="35" />
+								<RowDefinition Height="6" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="10" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="10" />
+							</Grid.ColumnDefinitions>
+							<StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Padding="2, 0">
+								<local:CustomImage ImageSource="NELFTLogo2015.png" Aspect="AspectFit" />
+							</StackLayout>
+							<StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Padding="2,2">
+							</StackLayout>
+							<StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Padding="2,2">
+								<StackLayout Orientation="Vertical" HorizontalOptions="Center">
+									<local:CustomImage ImageSource="mymindlogo.png" WidthRequest="125" Aspect="AspectFit" />
+									<Label Text="Session expires 05.23" FontSize="11" FontAttributes="Italic" HorizontalOptions="Center" TextColor="#ffffff" />
+								</StackLayout>
+							</StackLayout>
+						</Grid>
+					</StackLayout>
+				</Grid>
+				<!--/Header-->
+				<!--Options-->
+				<Grid Padding="0, 0" ColumnSpacing="0" RowSpacing="0" VerticalOptions="FillAndExpand">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="1" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff" HeightRequest="1" Opacity="0.5" />
+					<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Profile}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadMyProfileBtn" />
+					</StackLayout>
+					<BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
+					<StackLayout Grid.Row="1" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-3,-3">
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Resources}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadResourcesBtn" />
+					</StackLayout>
+				</Grid>
+				<!--/Options-->
+			</StackLayout>
+		</ScrollView>
+	</AbsoluteLayout>
+</ContentPage>

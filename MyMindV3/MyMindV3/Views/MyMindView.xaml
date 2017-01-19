@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" x:Class="MyMindV3.Views.MyMindView" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" BackgroundColor="#022330" Title="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Title}">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<helpers:LanguageConverter x:Key="Language" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<local:CustomImage x:Name="BackgrdImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="bg1.png" Aspect="AspectFill" />
+		<ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+			<StackLayout x:Name="StackLayoutCover" Orientation="Vertical" VerticalOptions="Fill">
+				<Grid Padding="0, 0" ColumnSpacing="0" RowSpacing="0" VerticalOptions="Fill">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="186" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<!--Header-->
+					<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" Padding="0,0" Spacing="0">
+						<Grid Padding="0, 0">
+							<Grid.RowDefinitions>
+								<RowDefinition Height="35" />
+								<RowDefinition Height="6" />
+								<RowDefinition Height="*" />
+							</Grid.RowDefinitions>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="10" />
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="10" />
+							</Grid.ColumnDefinitions>
+							<StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Padding="2, 0">
+								<Image Source="NELFTLogo2015.png" Aspect="AspectFit" />
+							</StackLayout>
+							<StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Padding="2,2">
+							</StackLayout>
+							<StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Padding="2,2">
+								<StackLayout Orientation="Vertical" HorizontalOptions="Center">
+									<Image Source="mymindlogo.png" WidthRequest="125" Aspect="AspectFit" />
+									<!--<StackLayout Orientation="Horizontal">
+										<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Session}" FontSize="11" FontAttributes="Italic" HorizontalOptions="Center" TextColor="#ffffff" />
+										<Label Text="{Binding RootVM.SessionExpirationTimeToString}" FontSize="11" FontAttributes="Italic" HorizontalOptions="Center" TextColor="#ffffff" />
+									</StackLayout>-->
+								</StackLayout>
+							</StackLayout>
+						</Grid>
+					</StackLayout>
+					<!--/Header-->
+				</Grid>
+				<!--Options-->
+				<Grid Padding="0, 0" ColumnSpacing="0" RowSpacing="0" VerticalOptions="FillAndExpand">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="1" />
+						<RowDefinition Height="*" />
+						<RowDefinition Height="1" />
+						<RowDefinition Height="*" />
+						<RowDefinition Height="1" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*" />
+						<ColumnDefinition Width="1" />
+						<ColumnDefinition Width="*" />
+					</Grid.ColumnDefinitions>
+					<BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff" HeightRequest="1" Opacity="0.5" />
+					<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
+						<Button x:Name="btnPatient" Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Profile}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadMyProfileBtn" />
+					</StackLayout>
+					<BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
+					<StackLayout Grid.Row="1" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Clinician}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadClinicianBtn" />
+					</StackLayout>
+					<BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff" HeightRequest="1" Opacity="0.5" />
+					<StackLayout Grid.Row="3" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Journey}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadJourneyBtn" />
+					</StackLayout>
+					<BoxView Grid.Row="3" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
+					<StackLayout Grid.Row="3" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Chat}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadChatBtn" />
+					</StackLayout>
+					<BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff" HeightRequest="1" Opacity="0.5" />
+					<StackLayout Grid.Row="5" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Plans}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadPlansBtn" />
+					</StackLayout>
+					<BoxView Grid.Row="5" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
+					<StackLayout Grid.Row="5" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-3,-3">
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Resources}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadResourcesBtn" />
+					</StackLayout>
+				</Grid>
+				<!--/Options-->
+			</StackLayout>
+		</ScrollView>
+	</AbsoluteLayout>
+</ContentPage>

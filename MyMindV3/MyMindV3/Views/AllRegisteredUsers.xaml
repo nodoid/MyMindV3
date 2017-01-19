@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="MyMindV3.Views.AllRegisteredUsers" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" Title="{Binding Converter={StaticResource Language}, ConverterParameter=RegUser_Title}">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<helpers:LanguageConverter x:Key="Language" />
+			<Style x:Key="WhiteLabel20Style" TargetType="Label">
+				<Setter Property="TextColor" Value="White">
+				</Setter>
+				<Setter Property="FontSize" Value="20">
+				</Setter>
+			</Style>
+			<Style x:Key="WhiteLabel15Style" TargetType="Label">
+				<Setter Property="TextColor" Value="White">
+				</Setter>
+				<Setter Property="FontSize" Value="15">
+				</Setter>
+			</Style>
+			<Style x:Key="WhiteLabel15ItalicStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="White">
+				</Setter>
+				<Setter Property="FontSize" Value="15">
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid Padding="0, 0" ColumnSpacing="0" RowSpacing="0" VerticalOptions="FillAndExpand">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="150" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="40" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#022330" Padding="0,0">
+			<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<local:CustomImage x:Name="ChatHeaderImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="chatheader.png" Aspect="AspectFill" />
+				<StackLayout Orientation="Vertical" BackgroundColor="Red" HorizontalOptions="Fill" Padding="0, 0">
+					<!--<Label Text="REGISTERED USERS - ADMIN ONLY" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#ffffff" />-->
+				</StackLayout>
+			</AbsoluteLayout>
+		</StackLayout>
+		<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="0,0">
+			<ListView x:Name="AllRegisteredUsersListView" HasUnevenRows="True" SeparatorVisibility="Default">
+				<ListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout Orientation="Vertical">
+								<Grid HeightRequest="6" />
+								<StackLayout Orientation="Vertical" Padding="20" Spacing="5" BackgroundColor="#27434e">
+									<StackLayout Orientation="Horizontal">
+										<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=RegUser_Name}" Style="{StaticResource WhiteLabel15Style}" />
+										<Label Text="{Binding Name}" Style="{StaticResource WhiteLabel15Style}" />
+									</StackLayout>
+									<StackLayout Orientation="Horizontal">
+										<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=RegUser_Email}" Style="{StaticResource WhiteLabel15Style}" />
+										<Label Text="{Binding Email}" Style="{StaticResource WhiteLabel15Style}" />
+									</StackLayout>
+									<StackLayout Orientation="Horizontal">
+										<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=RegUser_UserID}" Style="{StaticResource WhiteLabel15Style}" />
+										<Label Text="{Binding UserID}" Style="{StaticResource WhiteLabel15Style}" />
+									</StackLayout>
+									<StackLayout Orientation="Horizontal">
+										<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=RegUser_Phone}" Style="{StaticResource WhiteLabel15Style}" />
+										<Label Text="{Binding Phone}" Style="{StaticResource WhiteLabel15Style}" />
+									</StackLayout>
+									<StackLayout Orientation="Horizontal">
+										<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=RegUser_Auth}" Style="{StaticResource WhiteLabel15Style}" />
+										<Label Text="{Binding IsAuthenticated}" Style="{StaticResource WhiteLabel15Style}" />
+									</StackLayout>
+									<StackLayout Orientation="Horizontal">
+										<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=RegUser_Admin}" Style="{StaticResource WhiteLabel15Style}" />
+										<Label Text="{Binding IsAdmin}" Style="{StaticResource WhiteLabel15Style}" />
+									</StackLayout>
+								</StackLayout>
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</ListView.ItemTemplate>
+			</ListView>
+			<StackLayout Orientation="Horizontal">
+				<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=RegUser_TotalReg}" />
+				<Label Text="{Binding AllUsersTotal}" TextColor="Black" />
+			</StackLayout>
+		</StackLayout>
+		<StackLayout Grid.Row="2" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#022330" Padding="0,0">
+			<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<Image x:Name="FooterImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Source="footer.png" Aspect="AspectFill" />
+			</AbsoluteLayout>
+		</StackLayout>
+	</Grid>
+</ContentPage>

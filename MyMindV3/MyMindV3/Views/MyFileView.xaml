@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" x:Class="MyMindV3.MyFileView" Title="{Binding Converter={StaticResource Language}, ConverterParameter=MyPlans_Title}" BackgroundColor="#022330">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<helpers:LanguageConverter x:Key="Language" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<ContentView.Content>
+		<WebView x:Name="webView" VerticalOptions="StartAndExpand" HorizontalOptions="StartAndExpand" />
+	</ContentView.Content>
+</ContentPage>

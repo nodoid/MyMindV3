@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" x:Class="MyMindV3.Views.LoginView" Title="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Title}" BackgroundColor="#022330">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<helpers:WidthSizeConverter x:Key="WidthSize" />
+			<helpers:HeightSizeConverter x:Key="HeightSize" />
+			<helpers:LanguageConverter x:Key="Language" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+		<local:CustomImage x:Name="BackgrdImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="bg1.png" Aspect="AspectFill" />
+		<ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
+			<Grid Padding="0, 0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="35" />
+					<RowDefinition Height="10" />
+					<RowDefinition Height="*" />
+					<RowDefinition Height="Auto" />
+					<RowDefinition Height="Auto" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="10" />
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="10" />
+				</Grid.ColumnDefinitions>
+				<StackLayout Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Padding="2, 0">
+					<Image Source="NELFTLogo2015.png" Aspect="AspectFit" />
+				</StackLayout>
+				<StackLayout Grid.Row="1" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="End" Padding="2,2">
+				</StackLayout>
+				<StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Padding="2,2">
+					<Image Source="mymindlogo.png" WidthRequest="{Binding Converter={StaticResource WidthSize}, ConverterParameter=.5}" HeightRequest="{Binding Converter={StaticResource HeightSize}, ConverterParameter=.2}" />
+				</StackLayout>
+				<!--Login Screen-->
+				<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Vertical" Padding="0, 0" BackgroundColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding DisplayLogin}">
+					<Grid Padding="0, 0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="70" />
+							<RowDefinition Height="70" />
+							<RowDefinition Height="20" />
+							<RowDefinition Height="50" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+							<ColumnDefinition Width="50" />
+						</Grid.ColumnDefinitions>
+						<ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" Color="Black" HorizontalOptions="Center" />
+						<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Name}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="UserNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=Login_EnterName}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Name}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="0" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconname.png" TranslationY="14" Aspect="AspectFit" WidthRequest="25" HeightRequest="25" />
+						<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Password}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="PasswordInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=Login_EnterPassword}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Password}" TextColor="#707070" IsPassword="True" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="1" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconpassword.png" TranslationY="14" Aspect="AspectFit" WidthRequest="25" HeightRequest="25" />
+						<StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Padding="5, 0">
+							<Label Text="{Binding Result}" FontSize="15" FontAttributes="None" TextColor="#ff0000" />
+						</StackLayout>
+						<StackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
+							<StackLayout Orientation="Horizontal">
+								<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_SignIn}" FontSize="15" TextColor="White" BackgroundColor="#3bc5ee" HeightRequest="50" HorizontalOptions="Center" Command="{Binding LoginSubmitCommand}" IsEnabled="{Binding HasValidInput}" />
+								<!--<Button Text="Skip" FontSize="15" TextColor="White" BackgroundColor="#3bc5ee" HeightRequest="50" Command="{Binding SkipCommand}" />-->
+							</StackLayout>
+						</StackLayout>
+					</Grid>
+				</StackLayout>
+				<!--/Login Screen-->
+				<!--Login Confirmation-->
+				<StackLayout Grid.Row="3" Grid.Column="1" Orientation="Vertical" Padding="0, 0" BackgroundColor="#3bc5ee" HorizontalOptions="Fill" VerticalOptions="Fill" IsVisible="{Binding DisplayAcceptance}">
+					<Grid Padding="0, 0">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="140" />
+							<RowDefinition Height="50" />
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*" />
+						</Grid.ColumnDefinitions>
+						<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="4,4">
+							<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_AcceptOne}" FontSize="12" TextColor="#ffffff" LineBreakMode="WordWrap" XAlign="Center" />
+							</StackLayout>
+							<StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+								<Label Text="0300 555 1201" FontSize="25" FontAttributes="Bold" TextColor="#ffffff" />
+							</StackLayout>
+							<StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_AcceptTwo}" TextColor="#ffffff" FontSize="12" />
+								<!--<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_AcceptThree}" TextColor="#ffffff" FontSize="12" FontAttributes="Bold" />
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_AcceptFour}" TextColor="#ffffff" FontSize="12" />-->
+							</StackLayout>
+						</StackLayout>
+						<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
+							<Button x:Name="AcceptCheckBoxBtn" Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_AcceptTerms}" FontSize="15" TextColor="#707070" BackgroundColor="White" HeightRequest="50" Command="{Binding AcceptSubmitCommand}" />
+						</StackLayout>
+					</Grid>
+				</StackLayout>
+				<!--/Login Confirmation-->
+				<StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Padding="0, 0">
+					<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_NoAccount}" VerticalOptions="Center" BackgroundColor="Transparent" FontSize="15" TextColor="White" HorizontalOptions="Start" />
+					<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_SignUp}" FontSize="15" TextColor="#3bc5ee" BackgroundColor="Transparent" HorizontalOptions="End" Command="{Binding SignUpCommand}" />
+				</StackLayout>
+			</Grid>
+		</ScrollView>
+	</AbsoluteLayout>
+</ContentPage>

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" x:Class="MyMindV3.Views.MyResourcesView" Title="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Title}" BackgroundColor="#022330">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<helpers:LanguageConverter x:Key="Language" />
+			<helpers:EnableUrlButton x:Key="UrlButton" />
+			<helpers:CleanAddressConverter x:Key="CleanAddress" />
+			<helpers:WidthSizeConverter x:Key="WidthSize" />
+			<Style x:Key="WhiteLabel20Style" TargetType="Label">
+				<Setter Property="TextColor" Value="White">
+				</Setter>
+				<Setter Property="FontSize" Value="20">
+				</Setter>
+			</Style>
+			<Style x:Key="WhiteLabel15Style" TargetType="Label">
+				<Setter Property="TextColor" Value="White">
+				</Setter>
+				<Setter Property="FontSize" Value="15">
+				</Setter>
+			</Style>
+			<Style x:Key="WhiteLabel15ItalicStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="White">
+				</Setter>
+				<Setter Property="FontSize" Value="15">
+				</Setter>
+			</Style>
+			<Style x:Key="BlackLabel20Style" TargetType="Label">
+				<Setter Property="TextColor" Value="Black">
+				</Setter>
+				<Setter Property="FontSize" Value="20">
+				</Setter>
+			</Style>
+			<Style x:Key="BlackLabel15Style" TargetType="Label">
+				<Setter Property="TextColor" Value="Black">
+				</Setter>
+				<Setter Property="FontSize" Value="15">
+				</Setter>
+			</Style>
+			<Style x:Key="BlackLabel15ItalicStyle" TargetType="Label">
+				<Setter Property="TextColor" Value="Black">
+				</Setter>
+				<Setter Property="FontSize" Value="15">
+				</Setter>
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid Padding="0, 0" ColumnSpacing="0" RowSpacing="0" VerticalOptions="FillAndExpand">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="150" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="40" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#022330" Padding="0,0">
+			<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<local:CustomImage x:Name="ClinicianHeaderImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="journeyheader.png" Aspect="AspectFill" />
+				<StackLayout Orientation="Vertical" BackgroundColor="Red" HorizontalOptions="Fill" Padding="0, 0">
+					<!--<Label Text="MY RESOURCES" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" TextColor="#ffffff" />-->
+				</StackLayout>
+			</AbsoluteLayout>
+		</StackLayout>
+		<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#022330" Padding="0,0">
+			<Grid Padding="0, 0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<StackLayout x:Name="stkMain" Grid.Row="0" Orientation="Vertical" Padding="20" Spacing="5">
+					<!--<StackLayout Orientation="Horizontal">-->
+						<StackLayout x:Name="stkPicker" Orientation="Horizontal" WidthRequest="{Binding Converter={StaticResource WidthSize}, ConverterParameter=1}" HorizontalOptions="CenterAndExpand" BackgroundColor="#ffffff" VerticalOptions="Fill">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_FilterOn}" Style="{StaticResource BlackLabel15Style}" VerticalTextAlignment="Center" WidthRequest="{Binding Converter={StaticResource WidthSize}, ConverterParameter=.4}" TextColor="Black"/>
+							<Picker x:Name="pickFilter" SelectedIndexChanged="Handle_SelectedIndexChanged" HorizontalOptions="FillAndExpand" WidthRequest="{Binding Converter={StaticResource WidthSize}, ConverterParameter=.6}" TextColor="Black" />
+						</StackLayout>
+					<!--</StackLayout>-->
+					<ListView x:Name="ResourcesListView" HasUnevenRows="True" SeparatorVisibility="None">
+						<!--<ListView.ItemTemplate>
+							<DataTemplate>
+								<ViewCell>
+									<StackLayout Orientation="Vertical">
+										<StackLayout Orientation="Vertical" Padding="20" Spacing="5" BackgroundColor="#ffffff">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Category}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
+											<Label Text="{Binding ResourceCategory}" Style="{StaticResource BlackLabel15Style}" />
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Location}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
+											<Label Text="{Binding ResourceLocation}" Style="{StaticResource BlackLabel15Style}" />
+											<StackLayout Orientation="Horizontal">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Address}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
+											<Label Text="{Binding ResourceAddress}" Style="{StaticResource BlackLabel15Style}" />
+											</StackLayout>
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Referral}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
+											<Label Text="{Binding ResourceReferrals}" Style="{StaticResource BlackLabel15Style}" />
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Contact}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
+											<Label Text="{Binding ResourceContactInfo}" Style="{StaticResource BlackLabel15Style}" />
+										</StackLayout>
+									</StackLayout>
+								</ViewCell>
+							</DataTemplate>
+						</ListView.ItemTemplate>-->
+					</ListView>
+				</StackLayout>
+			</Grid>
+		</StackLayout>
+		<StackLayout Grid.Row="2" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#022330" Padding="0,0">
+			<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<local:CustomImage x:Name="FooterImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="footer.png" Aspect="AspectFill" />
+			</AbsoluteLayout>
+		</StackLayout>
+	</Grid>
+</ContentPage>

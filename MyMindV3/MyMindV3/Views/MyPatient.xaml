@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" x:Class="MyMindV3.Views.MyPatient" Title="{Binding Converter={StaticResource Language}, ConverterParameter=MyPatient_Title}" BackgroundColor="#022330">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<helpers:WidthSizeConverter x:Key="WidthSize" />
+			<helpers:HeightSizeConverter x:Key="HeightSize" />
+			<helpers:LanguageConverter x:Key="Language" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid Padding="0, 0" ColumnSpacing="0" RowSpacing="0" VerticalOptions="FillAndExpand">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="100" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="40" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#022330" Padding="0,0">
+			<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<local:CustomImage x:Name="ProfileHeaderImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="profileheader.png" Aspect="AspectFill" />
+				<StackLayout Orientation="Vertical" HorizontalOptions="Fill" Padding="12,12">
+					<controls:CircleImage x:Name="imgUser" Source="male_female.png" Aspect="AspectFill" WidthRequest="74" HeightRequest="74" HorizontalOptions="Start" VerticalOptions="Start" />
+				</StackLayout>
+			</AbsoluteLayout>
+		</StackLayout>
+		<StackLayout x:Name="DisplayProfileDetails" Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="0,0">
+			<Grid Padding="0, 0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff">
+					<StackLayout Orientation="Vertical" VerticalOptions="Center">
+						<StackLayout Orientation="Horizontal" x:Name="stackPatient" WidthRequest="{Binding Converter={StaticResource WidthSize}, ConverterParameter=1}" Padding="12,12">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_PatientName}" WidthRequest="{Binding Converter={StaticResource WidthSize}, ConverterParameter=.3}" />
+							<Picker x:Name="pickPatient" WidthRequest="{Binding Converter={StaticResource WidthSize}, ConverterParameter=.7}" SelectedIndexChanged="Handle_SelectedIndexChanged" />
+						</StackLayout>
+						<StackLayout x:Name="DisplayProfileDetailsInner" Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="0,0">
+							<Grid Padding="0, 0">
+								<Grid.RowDefinitions>
+									<RowDefinition Height="*" />
+								</Grid.RowDefinitions>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="*" />
+								</Grid.ColumnDefinitions>
+								<ScrollView x:Name="ProfileScrollView" Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+									<StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="20,20">
+										<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Name}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+											<Frame Padding="0,0">
+												<Entry x:Name="ProfileNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterName}" PlaceholderColor="#939393" FontSize="15" IsEnabled="False" TextColor="#707070" />
+											</Frame>
+										</StackLayout>
+										<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_PrefName}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+											<Frame Padding="0,0">
+												<Entry x:Name="ProfilePreferredNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPrefName}" PlaceholderColor="#939393" FontSize="15" IsEnabled="False" TextColor="#707070" />
+											</Frame>
+										</StackLayout>
+										<StackLayout Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_DOB}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+											<Frame Padding="0,0">
+												<Entry x:Name="ProfileDoBInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterDOB}" PlaceholderColor="#939393" FontSize="15" IsEnabled="False" TextColor="#707070" />
+											</Frame>
+										</StackLayout>
+										<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Phone}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+											<Frame Padding="0,0">
+												<Entry x:Name="ProfilePhoneInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPhone}" PlaceholderColor="#939393" FontSize="15" IsEnabled="False" TextColor="#707070" />
+											</Frame>
+										</StackLayout>
+										<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_WhyRefer}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+											<Frame Padding="0,0">
+												<Entry x:Name="RegPhoneInput" Keyboard="Numeric" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterReason}" PlaceholderColor="#939393" FontSize="15" IsEnabled="False" TextColor="#707070" />
+											</Frame>
+										</StackLayout>
+										<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Like}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+											<Frame Padding="0,0">
+												<Entry x:Name="ProfileLikesInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterLikes}" PlaceholderColor="#939393" FontSize="15" IsEnabled="False" TextColor="#707070" />
+											</Frame>
+										</StackLayout>
+										<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Dislike}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+											<Frame Padding="0,0">
+												<Entry x:Name="ProfileDislikesInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterDislikes}" PlaceholderColor="#939393" FontSize="15" IsEnabled="False" TextColor="#707070" />
+											</Frame>
+										</StackLayout>
+										<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+											<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_WhatIWant}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+											<Frame Padding="0,0">
+												<Entry x:Name="ProfileGoalsInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterGoals}" PlaceholderColor="#939393" FontSize="15" IsEnabled="False" TextColor="#707070" />
+											</Frame>
+										</StackLayout>
+									</StackLayout>
+								</ScrollView>
+							</Grid>
+						</StackLayout>
+					</StackLayout>
+				</StackLayout>
+			</Grid>
+		</StackLayout>
+		<StackLayout Grid.Row="2" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#022330" Padding="0,0">
+			<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<Image x:Name="FooterImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" Source="footer.png" Aspect="AspectFill" />
+			</AbsoluteLayout>
+		</StackLayout>
+	</Grid>
+</ContentPage>

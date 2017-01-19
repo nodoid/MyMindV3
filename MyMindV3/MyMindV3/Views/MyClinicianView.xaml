@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin.Abstractions" x:Class="MyMindV3.Views.MyClinicianView" Title="{Binding Converter={StaticResource Language}, ConverterParameter=MyClinician_Title}" BackgroundColor="#022330">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<helpers:LanguageConverter x:Key="Language" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<Grid Padding="0, 0" ColumnSpacing="0" RowSpacing="0" VerticalOptions="FillAndExpand">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="150" />
+			<RowDefinition Height="*" />
+			<RowDefinition Height="40" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*" />
+		</Grid.ColumnDefinitions>
+		<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#022330" Padding="0,0">
+			<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<local:CustomImage x:Name="ClinicianHeaderImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="clinicianheader.png" Aspect="AspectFill" />
+				<StackLayout Orientation="Vertical" HorizontalOptions="Fill" Padding="12,12">
+					<controls:CircleImage x:Name="imgClinician" Source="{Binding UserImage}" Aspect="AspectFill" WidthRequest="124" HeightRequest="124" HorizontalOptions="Start" VerticalOptions="Start" />
+				</StackLayout>
+			</AbsoluteLayout>
+		</StackLayout>
+		<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="0,0">
+			<Grid Padding="0, 0">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="*" />
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+				</Grid.ColumnDefinitions>
+				<local:PullToRefreshView x:Name="vwRefresh">
+				<ScrollView Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+					<StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="20,20">
+						<!--<StackLayout Orientation="Horizontal" WidthRequest="100" HorizontalOptions="Start" VerticalOptions="Center">
+							<controls:CircleImage Source="{Binding UserImage}" Aspect="AspectFill" WidthRequest="75" HeightRequest="75" HorizontalOptions="Center" VerticalOptions="Center" />
+							<StackLayout Orientation="Vertical">-->
+						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Name}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="ClinNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyClinician_ClinName}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Name}" IsEnabled="{Binding IsClinician}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyClinician_WhatIDo}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="ClinRoleInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyClinician_ClinRole}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Role}" IsEnabled="{Binding IsClinician}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<!--</StackLayout>
+						</StackLayout>-->
+						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyClinician_FunFact}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="ClinFunFactInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyClinician_Fact}" PlaceholderColor="#939393" FontSize="15" Text="{Binding FunFact}" IsEnabled="{Binding IsClinician}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyClinician_Contact}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="ClinPhoneInput" Keyboard="Numeric" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyClinician_Phone}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Phone}" IsEnabled="{Binding IsClinician}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<StackLayout Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
+							<Button x:Name="btnUpdate" Text="{Binding Converter={StaticResource Language}, ConverterParameter=Gen_Update}" FontSize="15" TextColor="White" BackgroundColor="#3bc5ee" HeightRequest="50" IsEnabled="{Binding HasValidInput}" Clicked="Update_Profile" />
+						</StackLayout>
+					</StackLayout>
+				</ScrollView>
+					</local:PullToRefreshView>
+			</Grid>
+		</StackLayout>
+		<StackLayout Grid.Row="2" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#022330" Padding="0,0">
+			<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+				<local:CustomImage x:Name="FooterImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="footer.png" Aspect="AspectFill" />
+			</AbsoluteLayout>
+		</StackLayout>
+	</Grid>
+</ContentPage>
