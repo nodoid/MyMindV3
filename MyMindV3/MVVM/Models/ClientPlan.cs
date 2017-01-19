@@ -1,6 +1,6 @@
-﻿namespace MyMindV3.ViewModels
+﻿namespace MvvmFramework.Models
 {
-    public class ClientPlanVM
+    public class ClientPlan
     {
         public int FileID { get; set; }
         public string FileName { get; set; }

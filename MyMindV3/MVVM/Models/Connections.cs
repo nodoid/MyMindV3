@@ -1,4 +1,4 @@
-﻿namespace MvvmFramework
+﻿namespace MvvmFramework.Models
 {
     public class Connections
     {

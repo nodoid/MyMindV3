@@ -1,9 +1,8 @@
 ﻿using System;
 using SQLite.Net.Attributes;
 using GalaSoft.MvvmLight;
-using MvvmFramework;
 
-namespace MyMindV3.Models
+namespace MvvmFramework.Models
 {
     public class ClinicianUser
     {
