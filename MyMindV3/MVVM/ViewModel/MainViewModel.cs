@@ -1,6 +1,7 @@
 using GalaSoft.MvvmLight;
+using MvvmFramework.ViewModel;
 
-namespace MvvmFramework
+namespace MvvmFramework.ViewModel
 {
     /// <summary>
     /// This class contains properties that the main View can data bind to.
@@ -14,7 +15,7 @@ namespace MvvmFramework
     /// See http://www.galasoft.ch/mvvm
     /// </para>
     /// </summary>
-    public class MainViewModel : ViewModelBase
+    public class MainViewModel : BaseViewModel
     {
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
