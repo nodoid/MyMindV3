@@ -148,10 +148,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomRenderers\CustomButtonRenderer.cs" />
+    <Compile Include="CustomRenderers\CustomImageRenderer.cs" />
+    <Compile Include="CustomRenderers\CustomWebviewRenderer.cs" />
+    <Compile Include="CustomRenderers\PullToRefreshViewRenderer.cs" />
+    <Compile Include="Injected\ContentDirectory.cs" />
+    <Compile Include="Injected\CSVReader.cs" />
+    <Compile Include="Injected\Encrypt.cs" />
+    <Compile Include="Injected\FileLauncher.cs" />
+    <Compile Include="Injected\LaunchBrowser.cs" />
+    <Compile Include="Injected\LaunchChat.cs" />
+    <Compile Include="Injected\Localisation.cs" />
+    <Compile Include="Injected\NetworkSpinner.cs" />
+    <Compile Include="Injected\Preferences.cs" />
+    <Compile Include="Injected\SQLite_Android.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\JavaLangHelper.cs" />
+    <Compile Include="Utils\Keys.cs" />
+    <Compile Include="Utils\UIUtils.cs" />
+    <Compile Include="Utils\Utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -179,11 +197,7 @@
       <Name>MyMindV3</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomRenderers\" />
-    <Folder Include="Injected\" />
-    <Folder Include="Utils\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

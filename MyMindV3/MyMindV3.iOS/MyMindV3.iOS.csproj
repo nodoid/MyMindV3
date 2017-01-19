@@ -88,15 +88,27 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomRenderers\PullToRefreshViewRenderer.cs" />
+    <Compile Include="Injected\ContentDir.cs" />
+    <Compile Include="Injected\CSVReader.cs" />
+    <Compile Include="Injected\Encrypt.cs" />
+    <Compile Include="Injected\LaunchChat.cs" />
+    <Compile Include="Injected\Localisation.cs" />
+    <Compile Include="Injected\NetworkSpinner.cs" />
+    <Compile Include="Injected\OpenFile.cs" />
+    <Compile Include="Injected\Preferences.cs" />
+    <Compile Include="Injected\SQLite_iOS.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="app.config" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
+    <Compile Include="Preview\PreviewController.cs" />
+    <Compile Include="Preview\PreviewItemBundle.cs" />
+    <Compile Include="Preview\PreviewItemFS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <ITunesArtwork Include="iTunesArtwork" />
-    <ITunesArtwork Include="iTunesArtwork@2x" />
     <None Include="packages.config" />
+    <BundleResource Include="Resources\camhs.csv" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -104,15 +116,8 @@
     <BundleResource Include="Resources\Default-Portrait%402x.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-60%403x.png" />
-    <BundleResource Include="Resources\Icon-76.png" />
-    <BundleResource Include="Resources\Icon-76%402x.png" />
-    <BundleResource Include="Resources\Icon-Small-40.png" />
-    <BundleResource Include="Resources\Icon-Small-40%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40%403x.png" />
-    <BundleResource Include="Resources\Icon-Small.png" />
-    <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
@@ -188,8 +193,165 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Injected\" />
-    <Folder Include="Preview\" />
+    <BundleResource Include="Resources\bg1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\bg12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\chatheader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\clinicianheader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\empty_check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\footer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hamburger.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\hamburgericon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\homescreen_bg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconattach.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconemail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconlogout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconname.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconpassword.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iconphone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\journeyheader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\lock32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\male_female.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mindlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mymindlogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nelft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\NELFTLogo2015.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\plansheader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\profileheader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\resourcesheader.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\120 - iPhone.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\167.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\180 - iPhone 6 Plus.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\29.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\40.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\87.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\Icon-76.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\Icon-76@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\Icon-Small-40@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcons.appiconset\Icon-Small@2x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImages.launchimage\1536x2048.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImages.launchimage\640x1136.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImages.launchimage\640x960.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImages.launchimage\768x1024.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImages.launchimage\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
