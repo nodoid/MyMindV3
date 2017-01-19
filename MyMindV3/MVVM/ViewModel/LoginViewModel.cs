@@ -28,7 +28,7 @@ namespace MvvmFramework.ViewModel
             {
                 return loginCommand ??
                     (
-                    loginCommand = new RelayCommand(() =>
+                    loginCommand = new RelayCommand(async () =>
                     {
                         var Result = string.Empty;
                         if (HasValidInput)
@@ -38,7 +38,7 @@ namespace MvvmFramework.ViewModel
                 }
                 else
                 {
-                    Result = "There was a problem with your username or password - please recheck";
+                    await dialogService.ShowMessage(GetErrorTitle("Gen_Error"), GetErrorMessage("Login_InvalidError"));
                 }
                     })
                 );
