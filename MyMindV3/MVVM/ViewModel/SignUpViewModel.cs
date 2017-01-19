@@ -131,12 +131,12 @@ namespace MvvmFramework.ViewModel
                                 /* if the client is a member only - just show limited version */
                                 if (SystemUser.IsAuthenticated == 1)
                                 {
-                                    navService.NavigateTo(ViewModelLocator.MyLimitedMindView);
+                                    navService.NavigateTo(ViewModelLocator.MyLimitedMindKey);
                                 }
                                 /* else display full app */
                                 else if (SystemUser.IsAuthenticated > 1)
                                 {
-                                    navService.NavigateTo(ViewModelLocator.MyMindView);
+                                    navService.NavigateTo(ViewModelLocator.MyMindKey);
                                 }
                             }
                             else
