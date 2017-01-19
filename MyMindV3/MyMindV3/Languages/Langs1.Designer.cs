@@ -134,6 +134,15 @@ namespace MyMindV3.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please wait.
+        /// </summary>
+        internal static string Gen_PleaseWait {
+            get {
+                return ResourceManager.GetString("Gen_PleaseWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
         internal static string Gen_Update {
@@ -193,6 +202,15 @@ namespace MyMindV3.Languages {
         internal static string Launch_Journey {
             get {
                 return ResourceManager.GetString("Launch_Journey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logging in.
+        /// </summary>
+        internal static string LoggingIn_Title {
+            get {
+                return ResourceManager.GetString("LoggingIn_Title", resourceCulture);
             }
         }
         
@@ -949,6 +967,15 @@ namespace MyMindV3.Languages {
         internal static string PinCode_Title {
             get {
                 return ResourceManager.GetString("PinCode_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An error occurred during the registration process. Please try again..
+        /// </summary>
+        internal static string Registration_ErrorMessage {
+            get {
+                return ResourceManager.GetString("Registration_ErrorMessage", resourceCulture);
             }
         }
         
