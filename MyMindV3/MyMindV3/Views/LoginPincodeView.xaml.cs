@@ -1,28 +1,18 @@
-﻿using MyMindV3.ViewModels;
+﻿using MvvmFramework.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MyMindV3.Views
 {
     public partial class LoginPincodeView : ContentPage
     {
-        private LoginPinCodeViewModel _loginPinCodeVM;
-        private RootViewModel _rootVM;
-        private INavigation _navigation;
+        MyClinicianViewModel ViewModel => App.Locator.MyClinician;
         //int restrictCount = 1;
 
-        public LoginPincodeView(RootViewModel rootVM)
+        public LoginPincodeView()
         {
             //InitializeComponent();
-            RootVM = rootVM;
-            _navigation = this.Navigation;
-
-            _loginPinCodeVM = new LoginPinCodeViewModel(RootVM, _navigation);
-            BindingContext = _loginPinCodeVM;
+            BindingContext = ViewModel;
 
             //Pin1.TextChanged += OnPinOneTextChanged;
             //Pin2.TextChanged += OnPinTwoTextChanged;
@@ -96,22 +86,7 @@ namespace MyMindV3.Views
 
         private async void PinClickSubmit(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyPlansView(RootVM), true);
-        }
-
-
-        // provide access to RootVM
-        public RootViewModel RootVM
-        {
-            get { return _rootVM; }
-            set
-            {
-                if (value != _rootVM)
-                {
-                    _rootVM = value;
-                    OnPropertyChanged("RootVM");
-                }
-            }
+            await Navigation.PushAsync(new MyPlansView(), true);
         }
     }
 }

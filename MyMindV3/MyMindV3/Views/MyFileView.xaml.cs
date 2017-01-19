@@ -1,9 +1,12 @@
-﻿using Xamarin.Forms;
+﻿using MvvmFramework.ViewModel;
+using Xamarin.Forms;
 
 namespace MyMindV3
 {
     public partial class MyFileView : ContentPage
     {
+        MyJourneyViewModel ViewModel => App.Locator.MyJourney;
+
         public MyFileView(string url)
         {
             InitializeComponent();

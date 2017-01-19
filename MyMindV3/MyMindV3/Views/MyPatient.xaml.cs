@@ -1,24 +1,24 @@
 ﻿using Xamarin.Forms;
-using MyMindV3.ViewModels;
 using System;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Linq;
-using MyMindV3.Models;
 using MyMindV3.Languages;
+using MvvmFramework.ViewModel;
+using MvvmFramework.Models;
+using MvvmFramework;
 
 namespace MyMindV3.Views
 {
     public partial class MyPatient : ContentPage
     {
-        RootViewModel _rootVM;
+        MyPatientViewModel ViewModel => App.Locator.MyPatient;
         List<Connections> ConnectionsData = new List<Connections>();
 
-        public MyPatient(RootViewModel rvm)
+        public MyPatient()
         {
-            RootVM = rvm;
             InitializeComponent();
+            BindingContext = ViewModel;
             FillData().ConfigureAwait(true);
         }
 
@@ -28,7 +28,8 @@ namespace MyMindV3.Views
             if (text != 0)
             {
                 var id = ConnectionsData.FirstOrDefault(w => w.Name == ConnectionsData[text - 1].Name);
-                var s = Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", RootVM.ClinicianUser.ClinicianGUID, "AuthToken", RootVM.ClinicianUser.APIToken,
+                var s = Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", 
+                    ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", ViewModel.ClinicianUser.APIToken,
                                                    "ClientGUID", id.ClientGUID).ContinueWith((t) =>
                 {
                     if (t.IsCompleted)
@@ -54,7 +55,8 @@ namespace MyMindV3.Views
 
         async Task FillData()
         {
-            await Send.SendData<List<Connections>>("api/MyMind/GetClinicianConnections", "ClinicianGUID", RootVM.ClinicianUser.ClinicianGUID, "AuthToken", RootVM.SystemUser.APIToken).ContinueWith((t) =>
+            await Send.SendData<List<Connections>>("api/MyMind/GetClinicianConnections", "ClinicianGUID", 
+                ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", RootVM.SystemUser.APIToken).ContinueWith((t) =>
             {
                 if (t.IsCompleted)
                 {
@@ -73,22 +75,9 @@ namespace MyMindV3.Views
             });
         }
 
-        public RootViewModel RootVM
-        {
-            get { return _rootVM; }
-            set
-            {
-                if (value != _rootVM)
-                {
-                    _rootVM = value;
-                    OnPropertyChanged("RootVM");
-                }
-            }
-        }
-
         void UpdateSessionTimeOut()
         {
-            _rootVM.UpdateSessionExpirationTime();
+            ViewModel.UpdateSessionExpirationTime();
         }
     }
 }

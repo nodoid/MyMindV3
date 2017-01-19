@@ -1,26 +1,22 @@
-﻿using MyMindV3.ViewModels;
+﻿using MvvmFramework.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MyMindV3.Views
 {
     public partial class MyLimitedMindView : ContentPage
     {
-        private RootViewModel _rootVM;
+        MyLimitedMindViewModel ViewModel => App.Locator.MyLimitedMind;
 
-        public MyLimitedMindView(RootViewModel rootVM)
+        public MyLimitedMindView()
         {
             InitializeComponent();
-            _rootVM = rootVM;
+            BindingContext = ViewModel;
         }
 
         private async void LoadMyProfileBtn(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MyProfileView(_rootVM), true);
+            await Navigation.PushAsync(new MyProfileView(), true);
         }
 
         private async void LoadResourcesBtn(object sender, EventArgs e)

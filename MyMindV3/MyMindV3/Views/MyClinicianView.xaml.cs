@@ -1,15 +1,15 @@
-﻿using MyMindV3.ViewModels;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Plugin.Media;
 using MyMindV3.Languages;
 using Plugin.Media.Abstractions;
-using MyMindV3.Data;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using MyMindV3.Models;
+using MvvmFramework.ViewModel;
+using MvvmFramework;
+using MvvmFramework.Models;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -18,15 +18,13 @@ namespace MyMindV3.Views
 {
     public partial class MyClinicianView : ContentPage
     {
-        private RootViewModel _rootVM;
-        SystemUserDB _database;
+        MyClinicianViewModel ViewModel => App.Locator.MyClinician;
         MediaFile file;
 
-        public MyClinicianView(RootViewModel rootVM)
+        public MyClinicianView()
         {
             InitializeComponent();
-            RootVM = rootVM;
-            BindingContext = RootVM.ClinicianUser;
+            BindingContext = ViewModel.ClinicianUser;
             GetImage();
             GetDetails().ConfigureAwait(true);
             if (RootVM.SystemUser.IsAuthenticated == 3)
@@ -35,7 +33,7 @@ namespace MyMindV3.Views
             }
             else
                 btnUpdate.IsVisible = false;
-            RootVM.ClinicianUser.IsClinician = RootVM.SystemUser.IsAuthenticated == 3;
+            ViewModel.ClinicianUser.IsClinician = RootVM.SystemUser.IsAuthenticated == 3;
 
             vwRefresh.IsPullToRefreshEnabled = true;
             vwRefresh.RefreshColor = Color.Blue;
@@ -55,14 +53,15 @@ namespace MyMindV3.Views
 
         void GetImage()
         {
-            var f = _rootVM.ClinicianUser.UserImage;
+            var f = ViewModel.ClinicianUser.UserImage;
 
             imgClinician.Source = !string.IsNullOrEmpty(f) ? f : "male_female.png";
         }
 
         async Task GetDetails()
         {
-            await Send.SendData<List<ClinicianProfile>>("api/MyMind/GetClinicianProfile", "ClinicianGUID", RootVM.ClinicianUser.ClinicianGUID, "AuthToken", RootVM.SystemUser.APIToken).ContinueWith((t) =>
+            await Send.SendData<List<ClinicianProfile>>("api/MyMind/GetClinicianProfile", "ClinicianGUID", 
+                ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", ViewModel.SystemUser.APIToken).ContinueWith((t) =>
             {
                 if (t.IsCompleted)
                 {
@@ -80,7 +79,8 @@ namespace MyMindV3.Views
 
         void Update_Profile(object s, EventArgs e)
         {
-            var res = Send.SendData("api/MyMind/UpdateClinicianProfile", "ClinicianGUID", RootVM.ClinicianUser.ClinicianGUID, "AuthToken", RootVM.ClinicianUser.APIToken,
+            var res = Send.SendData("api/MyMind/UpdateClinicianProfile", "ClinicianGUID", ViewModel.ClinicianUser.ClinicianGUID, 
+                "AuthToken", ViewModel.ClinicianUser.APIToken,
                                     "WhatIDo", ClinRoleInput.Text, "FunFact", ClinFunFactInput.Text, "ContactNumber", ClinPhoneInput.Text).ContinueWith((t) =>
             {
                 if (t.IsCompleted)
@@ -111,7 +111,7 @@ namespace MyMindV3.Views
                         file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                         {
                             Directory = "Directory",
-                            Name = string.Format("{0}.jpg", _rootVM.SystemUser.Guid),
+                            Name = string.Format("{0}.jpg", ViewModel.SystemUser.Guid),
                             CompressionQuality = 92,
                             PhotoSize = PhotoSize.Small
                         });
@@ -131,12 +131,12 @@ namespace MyMindV3.Views
 #if DEBUG
                                         Debug.WriteLine(file.Path);
 #endif
-                                        DependencyService.Get<IContent>().StoreFile(_rootVM.SystemUser.Guid, file.GetStream());
+                                        DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
                                         _database = new SystemUserDB();
-                                        _rootVM.SystemUser.UserImage = file.Path;
-                                        _database.UpdateSystemUser(_rootVM.SystemUser);
+                                        ViewModel.SystemUser.UserImage = file.Path;
+                                        _database.UpdateSystemUser(ViewModel.SystemUser);
                                         //Send.HttpPost(file, _rootVM.SystemUser.Guid);
-                                        await Send.UploadPicture(file.Path, _rootVM.SystemUser.Guid);
+                                        await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid);
                                         file.Dispose();
                                     }
                                 }));
@@ -164,22 +164,8 @@ namespace MyMindV3.Views
                     }
                 })
             };
-            if (RootVM.SystemUser.IsAuthenticated == 3)
+            if (ViewModel.SystemUser.IsAuthenticated == 3)
                 imgClinician.GestureRecognizers.Add(imgTap);
-        }
-
-        // provide access to RootVM
-        public RootViewModel RootVM
-        {
-            get { return _rootVM; }
-            set
-            {
-                if (value != _rootVM)
-                {
-                    _rootVM = value;
-                    OnPropertyChanged("RootVM");
-                }
-            }
         }
     }
 }

@@ -1,6 +1,4 @@
-﻿using MyMindV3.Data;
-using MyMindV3.ViewModels;
-using System;
+﻿using System;
 using Xamarin.Forms;
 using Plugin.Media;
 using MyMindV3.Languages;
@@ -8,11 +6,12 @@ using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System.Collections.Generic;
-using MyMindV3.Models;
 using System.Threading.Tasks;
+using MvvmFramework.ViewModel;
+using MvvmFramework;
+using MvvmFramework.Models;
 #if DEBUG
 using System.Diagnostics;
-using System.Windows.Input;
 #endif
 
 
@@ -20,20 +19,18 @@ namespace MyMindV3.Views
 {
     public partial class MyProfileView : ContentPage
     {
-        private RootViewModel _rootVM;
-        private SystemUserDB _database;
+        MyProfileViewModel ViewModel => App.Locator.MyProfile;
         MediaFile file;
 
-        public MyProfileView(RootViewModel incRootVM)
+        public MyProfileView()
         {
             InitializeComponent();
-            RootVM = incRootVM;
-            BindingContext = RootVM.SystemUser;
+            BindingContext = ViewModel.SystemUser;
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
             GetImage();
             GetDetails().ConfigureAwait(true);
-            if (RootVM.SystemUser.IsAuthenticated != 3)
+            if (ViewModel.SystemUser.IsAuthenticated != 3)
                 CreateImageClick();
 
             vwRefresh.IsPullToRefreshEnabled = true;
@@ -54,8 +51,8 @@ namespace MyMindV3.Views
 
         void GetImage()
         {
-            var f = _rootVM.SystemUser.UserImage;
-            if (RootVM.SystemUser.IsAuthenticated == 3)
+            var f = ViewModel.SystemUser.UserImage;
+            if (ViewModel.SystemUser.IsAuthenticated == 3)
                 imgUser.Source = "male_female.png";
             else
                 imgUser.Source = !string.IsNullOrEmpty(f) ? f : "male_female.png";
@@ -63,8 +60,8 @@ namespace MyMindV3.Views
 
         async Task GetDetails()
         {
-            await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", RootVM.ClinicianUser.ClinicianGUID, "AuthToken", RootVM.ClinicianUser.APIToken,
-                                                   "ClientGUID", RootVM.SystemUser.Guid).ContinueWith((t) =>
+            await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", RootVM.ClinicianUser.APIToken,
+                                                   "ClientGUID", ViewModel.SystemUser.Guid).ContinueWith((t) =>
                 {
                     if (t.IsCompleted)
                     {
@@ -105,7 +102,7 @@ namespace MyMindV3.Views
                         file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                         {
                             Directory = "Directory",
-                            Name = string.Format("{0}.jpg", _rootVM.SystemUser.Guid),
+                            Name = string.Format("{0}.jpg", ViewModel.SystemUser.Guid),
                             CompressionQuality = 92,
                             PhotoSize = PhotoSize.Small
                         });
@@ -126,12 +123,11 @@ namespace MyMindV3.Views
 #if DEBUG
                                             Debug.WriteLine(file.Path);
 #endif
-                                            DependencyService.Get<IContent>().StoreFile(_rootVM.SystemUser.Guid, file.GetStream());
-                                            _database = new SystemUserDB();
-                                            _rootVM.SystemUser.UserImage = file.Path;
-                                            _database.UpdateSystemUser(_rootVM.SystemUser);
+                                            DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
+                                            ViewModel.SystemUser.UserImage = file.Path;
+                                            ViewModel.UpdateSystemUser(ViewModel.SystemUser);
                                             //Send.HttpPost(file, _rootVM.SystemUser.Guid);
-                                            await Send.UploadPicture(file.Path, _rootVM.SystemUser.Guid);
+                                            await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid);
                                             file.Dispose();
                                         }
                                     }));
@@ -170,7 +166,7 @@ namespace MyMindV3.Views
 
         void Update_Profile()
         {
-            var res = Send.SendData("api/MyMind/UpdateUserProfile", "UserGUID", RootVM.SystemUser.Guid, "AuthToken", RootVM.SystemUser.APIToken,
+            var res = Send.SendData("api/MyMind/UpdateUserProfile", "UserGUID", ViewModel.SystemUser.Guid, "AuthToken", ViewModel.SystemUser.APIToken,
                                     "PreferredName", EditProfilePreferredNameInput.Text, "DateOfBirth", EditProfileDoB.Date.ToString("g"),
                                     "PhoneNumber", EditProfilePhoneInput.Text, "WhyIThinkIWasReferred", EditRegPhoneInput.Text,
                                     "SomethingILike", EditProfileLikesInput.Text, "SomethingIDislike", EditProfileDislikesInput.Text,
@@ -203,7 +199,7 @@ namespace MyMindV3.Views
             // save data back to internal - eventually send back to server for update
             _database = new SystemUserDB();
 
-            _database.UpdateSystemUser(_rootVM.SystemUser);
+            _database.UpdateSystemUser(ViewModel.SystemUser);
 
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
@@ -221,20 +217,5 @@ namespace MyMindV3.Views
             /* scroll to top */
             ProfileScrollView.ScrollToAsync(ProfileNameInput.Y, 0, true);
         }
-
-        // provide access to RootVM
-        public RootViewModel RootVM
-        {
-            get { return _rootVM; }
-            set
-            {
-                if (value != _rootVM)
-                {
-                    _rootVM = value;
-                    OnPropertyChanged("RootVM");
-                }
-            }
-        }
-
     }
 }

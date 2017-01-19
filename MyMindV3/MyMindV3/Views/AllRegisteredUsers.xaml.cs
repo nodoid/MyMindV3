@@ -1,32 +1,23 @@
-﻿using MyMindV3.Data;
-using MyMindV3.Models;
-using MyMindV3.ViewModels;
-using System;
+﻿using MvvmFramework.Models;
+using MvvmFramework.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace MyMindV3.Views
 {
     public partial class AllRegisteredUsers : ContentPage
     {
-        private SystemUserDB _systemUsersDB;
-        private AllUsersViewModel _allUsersVM;
+        MyClinicianViewModel ViewModel => App.Locator.MyClinician;
 
         public AllRegisteredUsers()
         {
             InitializeComponent();
 
-            _systemUsersDB = new SystemUserDB();
-
             IEnumerable<SystemUser> _users = _systemUsersDB.GetSystemUsers();
 
             AllRegisteredUsersListView.ItemsSource = _users;
-
-            _allUsersVM = new AllUsersViewModel();
-            BindingContext = _allUsersVM;
+            BindingContext = ViewModel;
 
             _allUsersVM.AllUsersTotal = _users.Count();
 

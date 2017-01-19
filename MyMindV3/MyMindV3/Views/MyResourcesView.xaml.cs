@@ -6,9 +6,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using MyMindV3.Models;
 using MyMindV3.Languages;
 using System.Linq;
+using MvvmFramework.Models;
+using MvvmFramework.ViewModel;
 
 namespace MyMindV3.Views
 {
@@ -17,9 +18,13 @@ namespace MyMindV3.Views
         IEnumerable<ResourceModel> resources;
         List<string> Categories = new List<string>();
 
+        MyResourcesViewModel ViewModel => App.Locator.MyResources;
+
         public MyResourcesView()
         {
             InitializeComponent();
+            BindingContext = ViewModel;
+
             if (Device.OS == TargetPlatform.iOS)
             {
                 stkPicker.BackgroundColor = Color.White;

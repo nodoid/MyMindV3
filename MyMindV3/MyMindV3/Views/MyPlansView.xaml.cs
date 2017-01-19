@@ -1,26 +1,23 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Threading.Tasks;
-using MyMindV3.ViewModels;
 using System.Linq;
 using System;
+using MvvmFramework.Models;
+using MvvmFramework.ViewModel;
+using MvvmFramework;
 
 namespace MyMindV3.Views
 {
     public partial class MyPlansView : ContentPage
     {
-        void HandleAction()
-        {
+        IEnumerable<ClientPlan> resources;
+        MyPlansViewModel ViewModel => App.Locator.MyPlans;
 
-        }
-
-        IEnumerable<ClientPlanVM> resources;
-        RootViewModel _rootVM;
-
-        public MyPlansView(RootViewModel rootVM)
+        public MyPlansView()
         {
             InitializeComponent();
-            RootVM = rootVM;
+            BindingContext = ViewModel;
             SetValues();
         }
 
@@ -59,10 +56,10 @@ namespace MyMindV3.Views
             };
         }
 
-        async Task<IEnumerable<ClientPlanVM>> GetClientPlans(string guid)
+        async Task<IEnumerable<ClientPlan>> GetClientPlans(string guid)
         {
             var url = string.Format("/api/MyMind/GetMyPlans/{0}", guid);
-            resources = await GetData.GetListObject<ClientPlanVM>(url);
+            resources = await GetData.GetListObject<ClientPlan>(url);
             return resources;
         }
 
@@ -139,19 +136,6 @@ namespace MyMindV3.Views
                                               DependencyService.Get<IFileAndroid>().launchfile(path, mimetype);
                                           });
                     }
-                }
-            }
-        }
-
-        public RootViewModel RootVM
-        {
-            get { return _rootVM; }
-            set
-            {
-                if (value != _rootVM)
-                {
-                    _rootVM = value;
-                    OnPropertyChanged("RootVM");
                 }
             }
         }

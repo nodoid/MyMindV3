@@ -1,29 +1,29 @@
 ﻿using MyMindV3.Classes;
 using MyMindV3.Interfaces;
-using MyMindV3.ViewModels;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using MyMindV3.Models;
 using MyMindV3.Languages;
+using MvvmFramework.ViewModel;
+using MvvmFramework;
 
 namespace MyMindV3.Views
 {
     public partial class MyJourneyView : ContentPage
     {
-        private RootViewModel _rootVM;
-        IEnumerable<Classes.Appointment> appointments;
+        MyJourneyViewModel ViewModel => App.Locator.MyJourney;
+        IEnumerable<Appointment> appointments;
         readonly string id;
 
-        public MyJourneyView(RootViewModel rootVM)
+        public MyJourneyView()
         {
-            RootVM = rootVM;
             InitializeComponent();
+            BindingContext = ViewModel;
             LoadData().ConfigureAwait(true);
-            id = RootVM.SystemUser.IsAuthenticated == 3 ? RootVM.ClinicianUser.HCPID : RootVM.SystemUser.ICANN;
+            id = RootVM.SystemUser.IsAuthenticated == 3 ? ViewModel.ClinicianUser.HCPID : ViewModel.SystemUser.ICANN;
             btnWebview.IsVisible = !string.IsNullOrEmpty(id);
             btnWebview.Clicked += delegate
             {
@@ -38,7 +38,7 @@ namespace MyMindV3.Views
         async Task Launcher()
         {
             await DisplayAlert(Langs.ICan_Title, string.Format("{0} {1}. {2}",
-                                                               RootVM.SystemUser.IsAuthenticated == 3 ? Langs.ICan_Message1 : Langs.ICan_Message3,
+                                                               ViewModel.SystemUser.IsAuthenticated == 3 ? Langs.ICan_Message1 : Langs.ICan_Message3,
                                                                id, Langs.ICan_Message2), Langs.Gen_OK).ContinueWith((t) =>
             {
                 if (t.IsCompleted)
@@ -48,10 +48,9 @@ namespace MyMindV3.Views
 
         private async Task LoadData()
         {
-            //appointments = await GetPatientAppointments(RootVM.SystemUser.RIOID, DateTime.Now.AddYears(-1), DateTime.Now.AddYears(1));
             appointments = await GetPatientAppointments(RootVM.SystemUser.RIOID, RootVM.ClinicianUser.HCPID);
 
-            List<Classes.Appointment> sortedList = appointments.OrderByDescending(o => o.AppointmentDateTime.CleanDate()).ToList();
+            var sortedList = appointments.OrderByDescending(o => o.AppointmentDateTime.CleanDate()).ToList();
 
             var dayOfYear = DateTime.Now.DayOfYear;
             var lower = dayOfYear - (int)DayOfWeek.Monday;
@@ -111,7 +110,7 @@ namespace MyMindV3.Views
             // do nothing
         }
 
-        private async Task<IEnumerable<Classes.Appointment>> GetPatientAppointments(string clientId, string hcp)
+        private async Task<IEnumerable<Appointment>> GetPatientAppointments(string clientId, string hcp)
         {
             //string url = string.Format("https://apps.nelft.nhs.uk/CareMapApi/api/Appointment/GetAppointmentsByClient?clientId={0}&startDate={1}&endDate={2}", 
             //clientId, startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"));
@@ -128,20 +127,5 @@ namespace MyMindV3.Views
 
             return encMgr.DecryptAppointments(encryptions);
         }
-
-        // provide access to RootVM
-        public RootViewModel RootVM
-        {
-            get { return _rootVM; }
-            set
-            {
-                if (value != _rootVM)
-                {
-                    _rootVM = value;
-                    OnPropertyChanged("RootVM");
-                }
-            }
-        }
-
     }
 }

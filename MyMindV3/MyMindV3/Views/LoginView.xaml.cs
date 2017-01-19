@@ -1,4 +1,5 @@
-﻿using MyMindV3.ViewModels;
+﻿using MvvmFramework.ViewModel;
+using MyMindV3.ViewModels;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -6,21 +7,17 @@ namespace MyMindV3.Views
 {
     public partial class LoginView : ContentPage
     {
-        private LoginViewModel _loginVM;
-        private INavigation _navigation;
+        LoginViewModel ViewModel => App.Locator.Login;
         private int _imgCount = 1;
         const string emailRegex = @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
         @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-\w]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$";
 
 
         // construct
-        public LoginView(RootViewModel rootVM)
+        public LoginView()
         {
             InitializeComponent();
-            _navigation = this.Navigation;
-
-            _loginVM = new LoginViewModel(rootVM, _navigation);
-            BindingContext = _loginVM;
+            BindingContext = ViewModel;
             InitBGTimer().ConfigureAwait(true);
         }
 
