@@ -1,6 +1,4 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using System;
-using System.Windows.Input;
 
 namespace MvvmFramework.ViewModel
 {
