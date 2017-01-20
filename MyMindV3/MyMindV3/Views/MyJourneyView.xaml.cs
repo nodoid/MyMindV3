@@ -1,14 +1,11 @@
-﻿using MyMindV3.Classes;
-using MyMindV3.Interfaces;
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using MyMindV3.Languages;
 using MvvmFramework.ViewModel;
-using MvvmFramework;
+using MvvmFramework.Models;
 
 namespace MyMindV3.Views
 {
@@ -22,8 +19,8 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
-            LoadData().ConfigureAwait(true);
-            id = RootVM.SystemUser.IsAuthenticated == 3 ? ViewModel.ClinicianUser.HCPID : ViewModel.SystemUser.ICANN;
+            LoadData();
+            id = ViewModel.SystemUser.IsAuthenticated == 3 ? ViewModel.ClinicianUser.HCPID : ViewModel.SystemUser.ICANN;
             btnWebview.IsVisible = !string.IsNullOrEmpty(id);
             btnWebview.Clicked += delegate
             {
@@ -46,9 +43,11 @@ namespace MyMindV3.Views
             });
         }
 
-        private async Task LoadData()
+        void LoadData()
         {
-            appointments = await GetPatientAppointments(RootVM.SystemUser.RIOID, RootVM.ClinicianUser.HCPID);
+            ViewModel.ClientID = ViewModel.SystemUser.RIOID;
+            ViewModel.HCP = ViewModel.ClinicianUser.HCPID;
+            appointments = ViewModel.Appointments;
 
             var sortedList = appointments.OrderByDescending(o => o.AppointmentDateTime.CleanDate()).ToList();
 
@@ -77,23 +76,20 @@ namespace MyMindV3.Views
 
             ClientAppointmentsListView.ItemsSource = sortedList;
             ClientAppointmentsListView.IsPullToRefreshEnabled = true;
-            ClientAppointmentsListView.Refreshing += async (object sender, EventArgs e) =>
-            {
-                ClientAppointmentsListView.IsRefreshing = true;
-                await GetPatientAppointments(RootVM.SystemUser.RIOID, RootVM.ClinicianUser.HCPID).ContinueWith((t) =>
-                {
-                    if (t.IsCompleted)
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                            {
-                                ClientAppointmentsListView.ItemsSource = null;
-                                ClientAppointmentsListView.ItemsSource = t.Result;
-                            });
-                        appointments = t.Result;
-                        ClientAppointmentsListView.IsRefreshing = false;
-                    }
-                });
-            };
+            ClientAppointmentsListView.Refreshing += (object sender, EventArgs e) =>
+             {
+                 ClientAppointmentsListView.IsRefreshing = true;
+                 ViewModel.ClientID = ViewModel.SystemUser.RIOID;
+                 ViewModel.HCP = ViewModel.ClinicianUser.HCPID;
+                 appointments = ViewModel.Appointments;
+                 Device.BeginInvokeOnMainThread(() =>
+                     {
+                         ClientAppointmentsListView.ItemsSource = null;
+                         ClientAppointmentsListView.ItemsSource = t.Result;
+                     });
+                 appointments = t.Result;
+                 ClientAppointmentsListView.IsRefreshing = false;
+             };
             ClientAppointmentsListView.ItemSelected += (sender, e) =>
             {
                 if (e.SelectedItem == null) return; // don't do anything if we just de-selected the row
@@ -110,22 +106,6 @@ namespace MyMindV3.Views
             // do nothing
         }
 
-        private async Task<IEnumerable<Appointment>> GetPatientAppointments(string clientId, string hcp)
-        {
-            //string url = string.Format("https://apps.nelft.nhs.uk/CareMapApi/api/Appointment/GetAppointmentsByClient?clientId={0}&startDate={1}&endDate={2}", 
-            //clientId, startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"));
-
-            var url = string.Format("{0}/api/Appointment/GetAppointmentsByClientAndHCP?clientId={1}&hcpCode={2}",
-                                    Constants.BaseTestUrl, clientId, hcp);
-
-            IEncryptionManager encMgr = Factory.Instance.GetEncryptionManager();
-
-            var client = new System.Net.Http.HttpClient();
-            var response = await client.GetAsync(url);
-            var encryptionJson = response.Content.ReadAsStringAsync().Result;
-            var encryptions = JsonConvert.DeserializeObject<IEnumerable<Encryption>>(encryptionJson);
-
-            return encMgr.DecryptAppointments(encryptions);
-        }
+        
     }
 }

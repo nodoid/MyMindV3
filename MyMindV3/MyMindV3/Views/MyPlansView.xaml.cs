@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms;
-using System.Threading.Tasks;
 using System.Linq;
 using System;
 using MvvmFramework.Models;
@@ -21,48 +20,38 @@ namespace MyMindV3.Views
             SetValues();
         }
 
-
-        private async void SetValues()
+        private void SetValues()
         {
             var guidToUse = string.Empty;
-            if (RootVM.SystemUser.IsAuthenticated != 3)
-                guidToUse = RootVM.SystemUser.Guid;
+            if (ViewModel.SystemUser.IsAuthenticated != 3)
+                guidToUse = ViewModel.SystemUser.Guid;
             else
-                guidToUse = RootVM.ClinicianUser.ClinicianGUID;
+                guidToUse = ViewModel.ClinicianUser.ClinicianGUID;
 
-            resources = await GetClientPlans(guidToUse);
+            ViewModel.GuidToUse = guidToUse;
+            resources = ViewModel.MyPlan;
             PlanList.ItemsSource = resources;
             PlanList.ItemSelected += (sender, e) =>
             {
                 if (e.SelectedItem == null) return;
             };
             PlanList.IsPullToRefreshEnabled = true;
-            PlanList.Refreshing += async (object sender, EventArgs e) =>
+            PlanList.Refreshing += (object sender, EventArgs e) =>
             {
                 PlanList.IsRefreshing = true;
-                await GetClientPlans(guidToUse).ContinueWith((r) =>
-                {
-                    if (r.IsCompleted)
-                    {
+                ViewModel.GuidToUse = guidToUse;
+                resources = ViewModel.MyPlan;
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             PlanList.ItemsSource = null;
-                            PlanList.ItemsSource = r.Result;
+                            PlanList.ItemsSource = resources;
                         });
 
                         PlanList.IsRefreshing = false;
-                    }
-                });
             };
         }
 
-        async Task<IEnumerable<ClientPlan>> GetClientPlans(string guid)
-        {
-            var url = string.Format("/api/MyMind/GetMyPlans/{0}", guid);
-            resources = await GetData.GetListObject<ClientPlan>(url);
-            return resources;
-        }
-
+        
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             var fileid = ((Button)sender).ClassId;
@@ -73,7 +62,7 @@ namespace MyMindV3.Views
                 var path = string.Format("{0}/{1}", App.Self.ContentDirectory, file);
                 if (!DependencyService.Get<IContent>().FileExists(path))
                 {
-                    GetData.GetFile(fileid, RootVM.SystemUser.Guid, RootVM.SystemUser.APIToken, file).ContinueWith((t) =>
+                    GetData.GetFile(fileid, ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken, file).ContinueWith((t) =>
                     {
                         if (t.IsCompleted)
                         {

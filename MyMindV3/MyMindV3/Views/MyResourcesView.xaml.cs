@@ -1,10 +1,6 @@
-﻿
-using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using MyMindV3.Languages;
 using System.Linq;
@@ -16,7 +12,7 @@ namespace MyMindV3.Views
     public partial class MyResourcesView : ContentPage
     {
         IEnumerable<ResourceModel> resources;
-        List<string> Categories = new List<string>();
+        List<string> Categories;
 
         MyResourcesViewModel ViewModel => App.Locator.MyResources;
 
@@ -31,13 +27,11 @@ namespace MyMindV3.Views
                 stkPicker.WidthRequest = App.ScreenSize.Width;
             }
             var cats = new List<string>();
-            SetValues().ContinueWith((t) =>
-                {
-                    if (t.IsCompleted)
-                    {
+            resources = ViewModel.Resources;
+            
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            FillCategories();
+                            Categories = ViewModel.FillCategories;
                             ResourcesListView.ItemTemplate = new DataTemplate(typeof(ResourcesView));
                             ResourcesListView.ItemsSource = resources;
                             ResourcesListView.ItemSelected += (sender, e) =>
@@ -53,8 +47,6 @@ namespace MyMindV3.Views
                             foreach (var c in cats)
                                 pickFilter.Items.Add(c);
                         });
-                    }
-                });
         }
 
         void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -67,44 +59,6 @@ namespace MyMindV3.Views
             ResourcesListView.ItemsSource = s.SelectedIndex != 0 ? res : resources;
         }
 
-        void FillCategories()
-        {
-            var catList = new List<string>
-            {
-                "Self-help", "Self-harm", "Depression", "Bullying", "Support", "Anxiety", "Stress", "Parent resources", "Involvement", "Local Services",
-                "Mood","Substance misuse", "Bereavement", "Well-being", "Young carers", "Peer support", "Parents resources", "Video resources", "Safeguarding",
-                "Looked after children", "Apps", "Involvement", "Learning disabilities", "Autism", "Sleep", "ADHD", "General"
-            };
-            catList.Sort();
-
-            var rt = resources.Where(t => !string.IsNullOrEmpty(t.ResourceCategory)).Select(t => t).ToList();
-            resources = rt;
-
-            foreach (var r in resources)
-            {
-                if (!string.IsNullOrEmpty(r.ResourceCategory))
-                {
-                    var splitRes = r.ResourceCategory.Split(',').ToList();
-                    if (splitRes.Count == 1)
-                        Categories.Add(splitRes[0]);
-                    else
-                    {
-                        foreach (var s in splitRes)
-                        {
-                            foreach (var c in catList)
-                                if (c.ToLowerInvariant() == s.ToLowerInvariant())
-                                    Categories.Add(c);
-                        }
-                    }
-                }
-            }
-            Categories = Categories.Distinct().ToList();
-            Categories.Sort();
-
-            if (Categories.Count == 0)
-                Categories.AddRange(resources.Select(t => t.ResourceCategory).ToList());
-        }
-
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             var url = ((Button)sender).ClassId;
@@ -113,32 +67,5 @@ namespace MyMindV3.Views
             var full = fromequal.Substring(0, fromequal.IndexOf("\""));
             Device.BeginInvokeOnMainThread(() => Device.OpenUri(new Uri(full)));
         }
-
-        private async Task SetValues()
-        {
-            resources = await GetResources();
-        }
-
-        async Task<IEnumerable<ResourceModel>> GetResources()
-        {
-            using (var client = new HttpClient())
-            {
-
-                client.BaseAddress = new Uri("https://apps.nelft.nhs.uk/CareMapApi/api/MyMind/GetResources");
-
-                client.DefaultRequestHeaders.Accept.Clear();
-                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = await client.GetAsync("https://apps.nelft.nhs.uk/CareMapApi/api/MyMind/GetResources");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var responseString = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<IEnumerable<ResourceModel>>(responseString);
-                }
-
-                return null;
-            }
-        }
-
     }
 }
