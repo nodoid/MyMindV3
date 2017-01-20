@@ -1,15 +1,29 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MvvmFramework.Helpers;
+using MvvmFramework.Models;
+using System.IO;
 
 namespace MvvmFramework.ViewModel
 {
     public class MyProfileViewModel :BaseViewModel
     {
-        public MyProfileViewModel(INavigationService nav)
-        { }
+        INavigationService navService;
+        IRepository sqlConn;
+
+        public MyProfileViewModel(INavigationService nav, IRepository repo)
+        {
+            navService = nav;
+            sqlConn = repo;
+        }
+
+        public Stream GetProfileImage(string filename)
+        {
+            return new FileIO().LoadFile(filename).Result;
+        }
+
+        public void UpdateSystemUser()
+        {
+            sqlConn.SaveData(SystemUser);
+        }
     }
 }
