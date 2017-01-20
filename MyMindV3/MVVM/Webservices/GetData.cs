@@ -5,6 +5,8 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using MvvmFramework.Helpers;
+using MvvmFramework.Models;
 
 namespace MvvmFramework
 {
@@ -26,7 +28,8 @@ namespace MvvmFramework
                         var str = await response.Content.ReadAsStreamAsync();
                         if (str.Length > 1024)
                         {
-                            DependencyService.Get<IContent>().StoreImageFile(id, str, isUser);
+                            // DependencyService.Get<IContent>().StoreImageFile(id, str, isUser);
+                            await new FileIO().SaveFile(id, str);
                         }
                     }
                 }
@@ -54,7 +57,8 @@ namespace MvvmFramework
                         var str = await response.Content.ReadAsStreamAsync();
                         if (str.Length > 1024)
                         {
-                            DependencyService.Get<IContent>().StoreFile(filename, str);
+                            //DependencyService.Get<IContent>().StoreFile(filename, str);
+                            await new FileIO().SaveFile(filename, str);
                         }
                     }
                 }
@@ -180,7 +184,7 @@ namespace MvvmFramework
                     {
                         var response = client.GetAsync(url).Result;
                         var str = await response.Content.ReadAsStringAsync();
-                        rv = JsonConvert.DeserializeObject<IEnumerable<Classes.Encryption>>(str);
+                        rv = JsonConvert.DeserializeObject<IEnumerable<Encryption>>(str);
                     }
                 }
             }
