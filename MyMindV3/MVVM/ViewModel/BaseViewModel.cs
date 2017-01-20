@@ -19,7 +19,6 @@ namespace MvvmFramework.ViewModel
             Spinner = spinner;
         }
 
-        bool isConnected;
         public bool IsConnected { get; set; }
 
         List<Dictionary<string, string>> errorTitles;
@@ -32,8 +31,8 @@ namespace MvvmFramework.ViewModel
         List<Dictionary<string, string>> errorMessages;
         public List<Dictionary<string, string>> ErrorMessages
         {
-            get { return errorTitles; }
-            set { Set(() => ErrorTitles, ref errorTitles, value); }
+            get { return errorMessages; }
+            set { Set(() => ErrorMessages, ref errorMessages, value); }
         }
 
         List<Dictionary<string, string>> messages;
