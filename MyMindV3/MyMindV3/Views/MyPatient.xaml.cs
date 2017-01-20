@@ -56,7 +56,7 @@ namespace MyMindV3.Views
         async Task FillData()
         {
             await Send.SendData<List<Connections>>("api/MyMind/GetClinicianConnections", "ClinicianGUID", 
-                ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", RootVM.SystemUser.APIToken).ContinueWith((t) =>
+                ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", ViewModel.SystemUser.APIToken).ContinueWith((t) =>
             {
                 if (t.IsCompleted)
                 {
