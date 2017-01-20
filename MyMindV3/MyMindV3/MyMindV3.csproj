@@ -35,9 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="App.xaml.cs" />
     <Compile Include="Classes\Appointment.cs" />
     <Compile Include="Classes\CareMapService.cs" />
     <Compile Include="Classes\EmailValidatorBehavior.cs" />
@@ -53,6 +51,7 @@
     <Compile Include="CustomViews\CustomImage.cs" />
     <Compile Include="CustomViews\CustomWebview.cs" />
     <Compile Include="CustomViews\PullToRefreshView.cs" />
+    <Compile Include="Factory.cs" />
     <Compile Include="Helpers\decrypter.cs" />
     <Compile Include="Helpers\DTSanity.cs" />
     <Compile Include="InitData\DataCategory.cs" />
@@ -73,7 +72,6 @@
     <Compile Include="Interfaces\INetworkSpinner.cs" />
     <Compile Include="Interfaces\ISQLite.cs" />
     <Compile Include="Interfaces\IUserSettings.cs" />
-    <Compile Include="Languages\Langs.Designer.cs" />
     <Compile Include="Languages\Langs1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,14 +104,11 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Languages\Langs.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Langs1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="App.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -213,6 +208,10 @@
     <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AllRegisteredUsers.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
