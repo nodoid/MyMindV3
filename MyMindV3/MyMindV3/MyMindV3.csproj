@@ -36,11 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs" />
-    <Compile Include="Classes\Appointment.cs" />
+    <None Include="Classes\Appointment.cs" />
     <Compile Include="Classes\CareMapService.cs" />
     <Compile Include="Classes\EmailValidatorBehavior.cs" />
-    <Compile Include="Classes\Encryption.cs" />
-    <Compile Include="Classes\EncryptionManager.cs" />
     <Compile Include="Classes\NumberValidatorBehavior.cs" />
     <Compile Include="Converters\CleanAddressConverter.cs" />
     <Compile Include="Converters\EnableUrlButton.cs" />
@@ -51,7 +49,6 @@
     <Compile Include="CustomViews\CustomImage.cs" />
     <Compile Include="CustomViews\CustomWebview.cs" />
     <Compile Include="CustomViews\PullToRefreshView.cs" />
-    <Compile Include="Factory.cs" />
     <Compile Include="Helpers\decrypter.cs" />
     <Compile Include="Helpers\DTSanity.cs" />
     <Compile Include="InitData\DataCategory.cs" />
