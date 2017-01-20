@@ -23,7 +23,7 @@ namespace MyMindV3.Languages {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Langs {
+    public class Langs {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -37,7 +37,7 @@ namespace MyMindV3.Languages {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MyMindV3.Languages.Langs", typeof(Langs).GetTypeInfo().Assembly);
@@ -52,7 +52,7 @@ namespace MyMindV3.Languages {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -64,7 +64,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Camera Permissions.
         /// </summary>
-        internal static string Camera_Permissions {
+        public static string Camera_Permissions {
             get {
                 return ResourceManager.GetString("Camera_Permissions", resourceCulture);
             }
@@ -73,7 +73,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to You have declined permission to use the camera. This will mean you are unable to change your profile image. This can be altered via the settings on your phone..
         /// </summary>
-        internal static string Camera_Permissions_Message {
+        public static string Camera_Permissions_Message {
             get {
                 return ResourceManager.GetString("Camera_Permissions_Message", resourceCulture);
             }
@@ -82,7 +82,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Downloading data.
         /// </summary>
-        internal static string Data_DownloadTitle {
+        public static string Data_DownloadTitle {
             get {
                 return ResourceManager.GetString("Data_DownloadTitle", resourceCulture);
             }
@@ -91,7 +91,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Please wait.....
         /// </summary>
-        internal static string Data_PleaseWait {
+        public static string Data_PleaseWait {
             get {
                 return ResourceManager.GetString("Data_PleaseWait", resourceCulture);
             }
@@ -100,7 +100,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Uploading data.
         /// </summary>
-        internal static string Data_UploadingTitle {
+        public static string Data_UploadingTitle {
             get {
                 return ResourceManager.GetString("Data_UploadingTitle", resourceCulture);
             }
@@ -109,7 +109,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
-        internal static string Gen_Cancel {
+        public static string Gen_Cancel {
             get {
                 return ResourceManager.GetString("Gen_Cancel", resourceCulture);
             }
@@ -118,7 +118,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
-        internal static string Gen_Error {
+        public static string Gen_Error {
             get {
                 return ResourceManager.GetString("Gen_Error", resourceCulture);
             }
@@ -127,7 +127,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to OK.
         /// </summary>
-        internal static string Gen_OK {
+        public static string Gen_OK {
             get {
                 return ResourceManager.GetString("Gen_OK", resourceCulture);
             }
@@ -136,7 +136,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Please wait.
         /// </summary>
-        internal static string Gen_PleaseWait {
+        public static string Gen_PleaseWait {
             get {
                 return ResourceManager.GetString("Gen_PleaseWait", resourceCulture);
             }
@@ -145,7 +145,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Update.
         /// </summary>
-        internal static string Gen_Update {
+        public static string Gen_Update {
             get {
                 return ResourceManager.GetString("Gen_Update", resourceCulture);
             }
@@ -154,7 +154,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Your ICAN number is.
         /// </summary>
-        internal static string ICan_Message1 {
+        public static string ICan_Message1 {
             get {
                 return ResourceManager.GetString("ICan_Message1", resourceCulture);
             }
@@ -163,7 +163,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Please enter this value on the form..
         /// </summary>
-        internal static string ICan_Message2 {
+        public static string ICan_Message2 {
             get {
                 return ResourceManager.GetString("ICan_Message2", resourceCulture);
             }
@@ -172,7 +172,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Your HCP number is.
         /// </summary>
-        internal static string ICan_Message3 {
+        public static string ICan_Message3 {
             get {
                 return ResourceManager.GetString("ICan_Message3", resourceCulture);
             }
@@ -181,7 +181,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to ICAN Details.
         /// </summary>
-        internal static string ICan_Title {
+        public static string ICan_Title {
             get {
                 return ResourceManager.GetString("ICan_Title", resourceCulture);
             }
@@ -190,7 +190,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Go to ICan website.
         /// </summary>
-        internal static string Launch_Ican {
+        public static string Launch_Ican {
             get {
                 return ResourceManager.GetString("Launch_Ican", resourceCulture);
             }
@@ -199,7 +199,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Return to My Journey.
         /// </summary>
-        internal static string Launch_Journey {
+        public static string Launch_Journey {
             get {
                 return ResourceManager.GetString("Launch_Journey", resourceCulture);
             }
@@ -208,7 +208,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Logging in.
         /// </summary>
-        internal static string LoggingIn_Title {
+        public static string LoggingIn_Title {
             get {
                 return ResourceManager.GetString("LoggingIn_Title", resourceCulture);
             }
@@ -217,7 +217,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to out of these hours.
         /// </summary>
-        internal static string Login_AcceptFour {
+        public static string Login_AcceptFour {
             get {
                 return ResourceManager.GetString("Login_AcceptFour", resourceCulture);
             }
@@ -226,7 +226,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to MyMind is a communication app to be used to complete recovery goals, access resources and to contact clinicians for general purposes only. The app is not for contact during a crisis and if I feel at risk I should contact my local CAMHS service directly or the trust 24 hours crisis line on:.
         /// </summary>
-        internal static string Login_AcceptOne {
+        public static string Login_AcceptOne {
             get {
                 return ResourceManager.GetString("Login_AcceptOne", resourceCulture);
             }
@@ -235,7 +235,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to I understand and accept.
         /// </summary>
-        internal static string Login_AcceptTerms {
+        public static string Login_AcceptTerms {
             get {
                 return ResourceManager.GetString("Login_AcceptTerms", resourceCulture);
             }
@@ -244,7 +244,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to A+E.
         /// </summary>
-        internal static string Login_AcceptThree {
+        public static string Login_AcceptThree {
             get {
                 return ResourceManager.GetString("Login_AcceptThree", resourceCulture);
             }
@@ -253,7 +253,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to I can also go directly to my local A+E.
         /// </summary>
-        internal static string Login_AcceptTwo {
+        public static string Login_AcceptTwo {
             get {
                 return ResourceManager.GetString("Login_AcceptTwo", resourceCulture);
             }
@@ -262,7 +262,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter name.
         /// </summary>
-        internal static string Login_EnterName {
+        public static string Login_EnterName {
             get {
                 return ResourceManager.GetString("Login_EnterName", resourceCulture);
             }
@@ -271,7 +271,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter password.
         /// </summary>
-        internal static string Login_EnterPassword {
+        public static string Login_EnterPassword {
             get {
                 return ResourceManager.GetString("Login_EnterPassword", resourceCulture);
             }
@@ -280,7 +280,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Could not login with the details provided.
         /// </summary>
-        internal static string Login_InvalidError {
+        public static string Login_InvalidError {
             get {
                 return ResourceManager.GetString("Login_InvalidError", resourceCulture);
             }
@@ -289,7 +289,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to NAME.
         /// </summary>
-        internal static string Login_Name {
+        public static string Login_Name {
             get {
                 return ResourceManager.GetString("Login_Name", resourceCulture);
             }
@@ -298,7 +298,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to You do not currently have a network connection.
         /// </summary>
-        internal static string Login_NetworkError {
+        public static string Login_NetworkError {
             get {
                 return ResourceManager.GetString("Login_NetworkError", resourceCulture);
             }
@@ -307,7 +307,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to DON&apos;T HAVE AN ACCOUNT?.
         /// </summary>
-        internal static string Login_NoAccount {
+        public static string Login_NoAccount {
             get {
                 return ResourceManager.GetString("Login_NoAccount", resourceCulture);
             }
@@ -316,7 +316,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to PASSWORD.
         /// </summary>
-        internal static string Login_Password {
+        public static string Login_Password {
             get {
                 return ResourceManager.GetString("Login_Password", resourceCulture);
             }
@@ -325,7 +325,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Sign In.
         /// </summary>
-        internal static string Login_SignIn {
+        public static string Login_SignIn {
             get {
                 return ResourceManager.GetString("Login_SignIn", resourceCulture);
             }
@@ -334,7 +334,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to SIGN UP.
         /// </summary>
-        internal static string Login_SignUp {
+        public static string Login_SignUp {
             get {
                 return ResourceManager.GetString("Login_SignUp", resourceCulture);
             }
@@ -343,7 +343,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
-        internal static string Login_Title {
+        public static string Login_Title {
             get {
                 return ResourceManager.GetString("Login_Title", resourceCulture);
             }
@@ -352,7 +352,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Please provide your name and password.
         /// </summary>
-        internal static string Login_UserPassError {
+        public static string Login_UserPassError {
             get {
                 return ResourceManager.GetString("Login_UserPassError", resourceCulture);
             }
@@ -361,16 +361,34 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter your pin code to log back in.
         /// </summary>
-        internal static string LoginPincode_Login {
+        public static string LoginPincode_Login {
             get {
                 return ResourceManager.GetString("LoginPincode_Login", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uploading your picture to our servers. Depending on your connection speed, this may take some time..
+        /// </summary>
+        public static string Message_UploadingMessage {
+            get {
+                return ResourceManager.GetString("Message_UploadingMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uploading.
+        /// </summary>
+        public static string Message_UploadingTitle {
+            get {
+                return ResourceManager.GetString("Message_UploadingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clinicians name.
         /// </summary>
-        internal static string MyClinician_ClinName {
+        public static string MyClinician_ClinName {
             get {
                 return ResourceManager.GetString("MyClinician_ClinName", resourceCulture);
             }
@@ -379,7 +397,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Clinician role.
         /// </summary>
-        internal static string MyClinician_ClinRole {
+        public static string MyClinician_ClinRole {
             get {
                 return ResourceManager.GetString("MyClinician_ClinRole", resourceCulture);
             }
@@ -388,7 +406,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to CONTACT NUMBER.
         /// </summary>
-        internal static string MyClinician_Contact {
+        public static string MyClinician_Contact {
             get {
                 return ResourceManager.GetString("MyClinician_Contact", resourceCulture);
             }
@@ -397,7 +415,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Clinician fun fact.
         /// </summary>
-        internal static string MyClinician_Fact {
+        public static string MyClinician_Fact {
             get {
                 return ResourceManager.GetString("MyClinician_Fact", resourceCulture);
             }
@@ -406,7 +424,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to FUN FACT ABOUT ME.
         /// </summary>
-        internal static string MyClinician_FunFact {
+        public static string MyClinician_FunFact {
             get {
                 return ResourceManager.GetString("MyClinician_FunFact", resourceCulture);
             }
@@ -415,7 +433,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Clinicians number.
         /// </summary>
-        internal static string MyClinician_Phone {
+        public static string MyClinician_Phone {
             get {
                 return ResourceManager.GetString("MyClinician_Phone", resourceCulture);
             }
@@ -424,7 +442,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Clinician.
         /// </summary>
-        internal static string MyClinician_Title {
+        public static string MyClinician_Title {
             get {
                 return ResourceManager.GetString("MyClinician_Title", resourceCulture);
             }
@@ -433,7 +451,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to WHAT I DO.
         /// </summary>
-        internal static string MyClinician_WhatIDo {
+        public static string MyClinician_WhatIDo {
             get {
                 return ResourceManager.GetString("MyClinician_WhatIDo", resourceCulture);
             }
@@ -442,7 +460,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Selected.
         /// </summary>
-        internal static string MyJourney_AlertSelected {
+        public static string MyJourney_AlertSelected {
             get {
                 return ResourceManager.GetString("MyJourney_AlertSelected", resourceCulture);
             }
@@ -451,7 +469,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to You selected.
         /// </summary>
-        internal static string MyJourney_AlertSelectedMsg {
+        public static string MyJourney_AlertSelectedMsg {
             get {
                 return ResourceManager.GetString("MyJourney_AlertSelectedMsg", resourceCulture);
             }
@@ -460,7 +478,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Appts this month:.
         /// </summary>
-        internal static string MyJourney_ApptsMonth {
+        public static string MyJourney_ApptsMonth {
             get {
                 return ResourceManager.GetString("MyJourney_ApptsMonth", resourceCulture);
             }
@@ -469,7 +487,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Appointments Summary.
         /// </summary>
-        internal static string MyJourney_ApptsSummary {
+        public static string MyJourney_ApptsSummary {
             get {
                 return ResourceManager.GetString("MyJourney_ApptsSummary", resourceCulture);
             }
@@ -478,7 +496,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Appts this week:.
         /// </summary>
-        internal static string MyJourney_ApptsWeek {
+        public static string MyJourney_ApptsWeek {
             get {
                 return ResourceManager.GetString("MyJourney_ApptsWeek", resourceCulture);
             }
@@ -487,7 +505,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Date:.
         /// </summary>
-        internal static string MyJourney_Date {
+        public static string MyJourney_Date {
             get {
                 return ResourceManager.GetString("MyJourney_Date", resourceCulture);
             }
@@ -496,7 +514,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Location:.
         /// </summary>
-        internal static string MyJourney_Loc {
+        public static string MyJourney_Loc {
             get {
                 return ResourceManager.GetString("MyJourney_Loc", resourceCulture);
             }
@@ -505,7 +523,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Outcome:.
         /// </summary>
-        internal static string MyJourney_Outcome {
+        public static string MyJourney_Outcome {
             get {
                 return ResourceManager.GetString("MyJourney_Outcome", resourceCulture);
             }
@@ -514,7 +532,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Journey.
         /// </summary>
-        internal static string MyJourney_Title {
+        public static string MyJourney_Title {
             get {
                 return ResourceManager.GetString("MyJourney_Title", resourceCulture);
             }
@@ -523,7 +541,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Chat.
         /// </summary>
-        internal static string MyMind_Chat {
+        public static string MyMind_Chat {
             get {
                 return ResourceManager.GetString("MyMind_Chat", resourceCulture);
             }
@@ -532,7 +550,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Clinician.
         /// </summary>
-        internal static string MyMind_Clinician {
+        public static string MyMind_Clinician {
             get {
                 return ResourceManager.GetString("MyMind_Clinician", resourceCulture);
             }
@@ -541,7 +559,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Journey.
         /// </summary>
-        internal static string MyMind_Journey {
+        public static string MyMind_Journey {
             get {
                 return ResourceManager.GetString("MyMind_Journey", resourceCulture);
             }
@@ -550,7 +568,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Log out.
         /// </summary>
-        internal static string MyMind_Logout {
+        public static string MyMind_Logout {
             get {
                 return ResourceManager.GetString("MyMind_Logout", resourceCulture);
             }
@@ -559,7 +577,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Patient Profile.
         /// </summary>
-        internal static string MyMind_PatientProfile {
+        public static string MyMind_PatientProfile {
             get {
                 return ResourceManager.GetString("MyMind_PatientProfile", resourceCulture);
             }
@@ -568,7 +586,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Plans.
         /// </summary>
-        internal static string MyMind_Plans {
+        public static string MyMind_Plans {
             get {
                 return ResourceManager.GetString("MyMind_Plans", resourceCulture);
             }
@@ -577,7 +595,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to File Name.
         /// </summary>
-        internal static string MyMind_PlansFilename {
+        public static string MyMind_PlansFilename {
             get {
                 return ResourceManager.GetString("MyMind_PlansFilename", resourceCulture);
             }
@@ -586,7 +604,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Type.
         /// </summary>
-        internal static string MyMind_PlansType {
+        public static string MyMind_PlansType {
             get {
                 return ResourceManager.GetString("MyMind_PlansType", resourceCulture);
             }
@@ -595,7 +613,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Upload Date Time.
         /// </summary>
-        internal static string MyMind_PlansUpload {
+        public static string MyMind_PlansUpload {
             get {
                 return ResourceManager.GetString("MyMind_PlansUpload", resourceCulture);
             }
@@ -604,7 +622,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to View.
         /// </summary>
-        internal static string MyMind_PlansView {
+        public static string MyMind_PlansView {
             get {
                 return ResourceManager.GetString("MyMind_PlansView", resourceCulture);
             }
@@ -613,7 +631,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Profile.
         /// </summary>
-        internal static string MyMind_Profile {
+        public static string MyMind_Profile {
             get {
                 return ResourceManager.GetString("MyMind_Profile", resourceCulture);
             }
@@ -622,7 +640,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Resources.
         /// </summary>
-        internal static string MyMind_Resources {
+        public static string MyMind_Resources {
             get {
                 return ResourceManager.GetString("MyMind_Resources", resourceCulture);
             }
@@ -631,7 +649,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Session expires.
         /// </summary>
-        internal static string MyMind_Session {
+        public static string MyMind_Session {
             get {
                 return ResourceManager.GetString("MyMind_Session", resourceCulture);
             }
@@ -640,7 +658,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Mind.
         /// </summary>
-        internal static string MyMind_Title {
+        public static string MyMind_Title {
             get {
                 return ResourceManager.GetString("MyMind_Title", resourceCulture);
             }
@@ -649,7 +667,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Details.
         /// </summary>
-        internal static string MyPatient_Details {
+        public static string MyPatient_Details {
             get {
                 return ResourceManager.GetString("MyPatient_Details", resourceCulture);
             }
@@ -658,7 +676,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Notes.
         /// </summary>
-        internal static string MyPatient_Notes {
+        public static string MyPatient_Notes {
             get {
                 return ResourceManager.GetString("MyPatient_Notes", resourceCulture);
             }
@@ -667,7 +685,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Select the client.
         /// </summary>
-        internal static string MyPatient_Select {
+        public static string MyPatient_Select {
             get {
                 return ResourceManager.GetString("MyPatient_Select", resourceCulture);
             }
@@ -676,7 +694,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Patient Profile.
         /// </summary>
-        internal static string MyPatient_Title {
+        public static string MyPatient_Title {
             get {
                 return ResourceManager.GetString("MyPatient_Title", resourceCulture);
             }
@@ -685,7 +703,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Plans.
         /// </summary>
-        internal static string MyPlans_Title {
+        public static string MyPlans_Title {
             get {
                 return ResourceManager.GetString("MyPlans_Title", resourceCulture);
             }
@@ -694,7 +712,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to SOMETHING I DISLIKE.
         /// </summary>
-        internal static string MyProfile_Dislike {
+        public static string MyProfile_Dislike {
             get {
                 return ResourceManager.GetString("MyProfile_Dislike", resourceCulture);
             }
@@ -703,7 +721,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to DATE OF BIRTH.
         /// </summary>
-        internal static string MyProfile_DOB {
+        public static string MyProfile_DOB {
             get {
                 return ResourceManager.GetString("MyProfile_DOB", resourceCulture);
             }
@@ -712,7 +730,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Edit.
         /// </summary>
-        internal static string MyProfile_Edit {
+        public static string MyProfile_Edit {
             get {
                 return ResourceManager.GetString("MyProfile_Edit", resourceCulture);
             }
@@ -721,7 +739,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter dislikes.
         /// </summary>
-        internal static string MyProfile_EnterDislikes {
+        public static string MyProfile_EnterDislikes {
             get {
                 return ResourceManager.GetString("MyProfile_EnterDislikes", resourceCulture);
             }
@@ -730,7 +748,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter date of birth.
         /// </summary>
-        internal static string MyProfile_EnterDOB {
+        public static string MyProfile_EnterDOB {
             get {
                 return ResourceManager.GetString("MyProfile_EnterDOB", resourceCulture);
             }
@@ -739,7 +757,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter goals.
         /// </summary>
-        internal static string MyProfile_EnterGoals {
+        public static string MyProfile_EnterGoals {
             get {
                 return ResourceManager.GetString("MyProfile_EnterGoals", resourceCulture);
             }
@@ -748,7 +766,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter likes.
         /// </summary>
-        internal static string MyProfile_EnterLikes {
+        public static string MyProfile_EnterLikes {
             get {
                 return ResourceManager.GetString("MyProfile_EnterLikes", resourceCulture);
             }
@@ -757,7 +775,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter name.
         /// </summary>
-        internal static string MyProfile_EnterName {
+        public static string MyProfile_EnterName {
             get {
                 return ResourceManager.GetString("MyProfile_EnterName", resourceCulture);
             }
@@ -766,7 +784,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter phone.
         /// </summary>
-        internal static string MyProfile_EnterPhone {
+        public static string MyProfile_EnterPhone {
             get {
                 return ResourceManager.GetString("MyProfile_EnterPhone", resourceCulture);
             }
@@ -775,7 +793,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter preferred name.
         /// </summary>
-        internal static string MyProfile_EnterPrefName {
+        public static string MyProfile_EnterPrefName {
             get {
                 return ResourceManager.GetString("MyProfile_EnterPrefName", resourceCulture);
             }
@@ -784,7 +802,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter referral reason.
         /// </summary>
-        internal static string MyProfile_EnterReason {
+        public static string MyProfile_EnterReason {
             get {
                 return ResourceManager.GetString("MyProfile_EnterReason", resourceCulture);
             }
@@ -793,7 +811,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to No camera available.
         /// </summary>
-        internal static string MyProfile_ErrorCameraMessage {
+        public static string MyProfile_ErrorCameraMessage {
             get {
                 return ResourceManager.GetString("MyProfile_ErrorCameraMessage", resourceCulture);
             }
@@ -802,7 +820,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Camera Error.
         /// </summary>
-        internal static string MyProfile_ErrorCameraTitle {
+        public static string MyProfile_ErrorCameraTitle {
             get {
                 return ResourceManager.GetString("MyProfile_ErrorCameraTitle", resourceCulture);
             }
@@ -811,7 +829,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to SOMETHING I LIKE.
         /// </summary>
-        internal static string MyProfile_Like {
+        public static string MyProfile_Like {
             get {
                 return ResourceManager.GetString("MyProfile_Like", resourceCulture);
             }
@@ -820,7 +838,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string MyProfile_PatientName {
+        public static string MyProfile_PatientName {
             get {
                 return ResourceManager.GetString("MyProfile_PatientName", resourceCulture);
             }
@@ -829,7 +847,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to PHONE NUMBER.
         /// </summary>
-        internal static string MyProfile_Phone {
+        public static string MyProfile_Phone {
             get {
                 return ResourceManager.GetString("MyProfile_Phone", resourceCulture);
             }
@@ -838,7 +856,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to PREFERRED NAME.
         /// </summary>
-        internal static string MyProfile_PrefName {
+        public static string MyProfile_PrefName {
             get {
                 return ResourceManager.GetString("MyProfile_PrefName", resourceCulture);
             }
@@ -847,7 +865,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Profile.
         /// </summary>
-        internal static string MyProfile_Title {
+        public static string MyProfile_Title {
             get {
                 return ResourceManager.GetString("MyProfile_Title", resourceCulture);
             }
@@ -856,7 +874,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to WHAT I WANT TO GET FROM TREATMENT.
         /// </summary>
-        internal static string MyProfile_WhatIWant {
+        public static string MyProfile_WhatIWant {
             get {
                 return ResourceManager.GetString("MyProfile_WhatIWant", resourceCulture);
             }
@@ -865,7 +883,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to WHY I THINK I WAS REFERRED.
         /// </summary>
-        internal static string MyProfile_WhyRefer {
+        public static string MyProfile_WhyRefer {
             get {
                 return ResourceManager.GetString("MyProfile_WhyRefer", resourceCulture);
             }
@@ -874,7 +892,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Address:.
         /// </summary>
-        internal static string MyResources_Address {
+        public static string MyResources_Address {
             get {
                 return ResourceManager.GetString("MyResources_Address", resourceCulture);
             }
@@ -883,7 +901,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Selected.
         /// </summary>
-        internal static string MyResources_AlertSelected {
+        public static string MyResources_AlertSelected {
             get {
                 return ResourceManager.GetString("MyResources_AlertSelected", resourceCulture);
             }
@@ -892,7 +910,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to You selected.
         /// </summary>
-        internal static string MyResources_AlertSelectedMsg {
+        public static string MyResources_AlertSelectedMsg {
             get {
                 return ResourceManager.GetString("MyResources_AlertSelectedMsg", resourceCulture);
             }
@@ -901,7 +919,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Category:.
         /// </summary>
-        internal static string MyResources_Category {
+        public static string MyResources_Category {
             get {
                 return ResourceManager.GetString("MyResources_Category", resourceCulture);
             }
@@ -910,7 +928,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Contact Information:.
         /// </summary>
-        internal static string MyResources_Contact {
+        public static string MyResources_Contact {
             get {
                 return ResourceManager.GetString("MyResources_Contact", resourceCulture);
             }
@@ -919,7 +937,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to No filter.
         /// </summary>
-        internal static string MyResources_FilterOff {
+        public static string MyResources_FilterOff {
             get {
                 return ResourceManager.GetString("MyResources_FilterOff", resourceCulture);
             }
@@ -928,7 +946,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Select category.
         /// </summary>
-        internal static string MyResources_FilterOn {
+        public static string MyResources_FilterOn {
             get {
                 return ResourceManager.GetString("MyResources_FilterOn", resourceCulture);
             }
@@ -937,7 +955,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Location:.
         /// </summary>
-        internal static string MyResources_Location {
+        public static string MyResources_Location {
             get {
                 return ResourceManager.GetString("MyResources_Location", resourceCulture);
             }
@@ -946,7 +964,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Referrals:.
         /// </summary>
-        internal static string MyResources_Referral {
+        public static string MyResources_Referral {
             get {
                 return ResourceManager.GetString("MyResources_Referral", resourceCulture);
             }
@@ -955,7 +973,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to My Resources.
         /// </summary>
-        internal static string MyResources_Title {
+        public static string MyResources_Title {
             get {
                 return ResourceManager.GetString("MyResources_Title", resourceCulture);
             }
@@ -964,7 +982,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Pin Code Login.
         /// </summary>
-        internal static string PinCode_Title {
+        public static string PinCode_Title {
             get {
                 return ResourceManager.GetString("PinCode_Title", resourceCulture);
             }
@@ -973,7 +991,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to An error occurred during the registration process. Please try again..
         /// </summary>
-        internal static string Registration_ErrorMessage {
+        public static string Registration_ErrorMessage {
             get {
                 return ResourceManager.GetString("Registration_ErrorMessage", resourceCulture);
             }
@@ -982,7 +1000,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Is Admin:.
         /// </summary>
-        internal static string RegUser_Admin {
+        public static string RegUser_Admin {
             get {
                 return ResourceManager.GetString("RegUser_Admin", resourceCulture);
             }
@@ -991,7 +1009,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Is Authenticated:.
         /// </summary>
-        internal static string RegUser_Auth {
+        public static string RegUser_Auth {
             get {
                 return ResourceManager.GetString("RegUser_Auth", resourceCulture);
             }
@@ -1000,7 +1018,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Email:.
         /// </summary>
-        internal static string RegUser_Email {
+        public static string RegUser_Email {
             get {
                 return ResourceManager.GetString("RegUser_Email", resourceCulture);
             }
@@ -1009,7 +1027,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Name:.
         /// </summary>
-        internal static string RegUser_Name {
+        public static string RegUser_Name {
             get {
                 return ResourceManager.GetString("RegUser_Name", resourceCulture);
             }
@@ -1018,7 +1036,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Phone:.
         /// </summary>
-        internal static string RegUser_Phone {
+        public static string RegUser_Phone {
             get {
                 return ResourceManager.GetString("RegUser_Phone", resourceCulture);
             }
@@ -1027,7 +1045,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to REGISTERED USERS - ADMIN ONLY.
         /// </summary>
-        internal static string RegUser_Title {
+        public static string RegUser_Title {
             get {
                 return ResourceManager.GetString("RegUser_Title", resourceCulture);
             }
@@ -1036,7 +1054,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Total Registered Users:.
         /// </summary>
-        internal static string RegUser_TotalReg {
+        public static string RegUser_TotalReg {
             get {
                 return ResourceManager.GetString("RegUser_TotalReg", resourceCulture);
             }
@@ -1045,7 +1063,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to UserID:.
         /// </summary>
-        internal static string RegUser_UserID {
+        public static string RegUser_UserID {
             get {
                 return ResourceManager.GetString("RegUser_UserID", resourceCulture);
             }
@@ -1054,7 +1072,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Please complete all fields.
         /// </summary>
-        internal static string SignUp_AllFieldsError {
+        public static string SignUp_AllFieldsError {
             get {
                 return ResourceManager.GetString("SignUp_AllFieldsError", resourceCulture);
             }
@@ -1063,7 +1081,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to DATE OF BIRTH.
         /// </summary>
-        internal static string SignUp_DOB {
+        public static string SignUp_DOB {
             get {
                 return ResourceManager.GetString("SignUp_DOB", resourceCulture);
             }
@@ -1072,7 +1090,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to EMAIL.
         /// </summary>
-        internal static string SignUp_Email {
+        public static string SignUp_Email {
             get {
                 return ResourceManager.GetString("SignUp_Email", resourceCulture);
             }
@@ -1081,7 +1099,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter email.
         /// </summary>
-        internal static string SignUp_EnterEmail {
+        public static string SignUp_EnterEmail {
             get {
                 return ResourceManager.GetString("SignUp_EnterEmail", resourceCulture);
             }
@@ -1090,7 +1108,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter name.
         /// </summary>
-        internal static string SignUp_EnterName {
+        public static string SignUp_EnterName {
             get {
                 return ResourceManager.GetString("SignUp_EnterName", resourceCulture);
             }
@@ -1099,7 +1117,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter password.
         /// </summary>
-        internal static string SignUp_EnterPassword {
+        public static string SignUp_EnterPassword {
             get {
                 return ResourceManager.GetString("SignUp_EnterPassword", resourceCulture);
             }
@@ -1108,7 +1126,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter phone.
         /// </summary>
-        internal static string SignUp_EnterPhone {
+        public static string SignUp_EnterPhone {
             get {
                 return ResourceManager.GetString("SignUp_EnterPhone", resourceCulture);
             }
@@ -1117,7 +1135,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter a pincode.
         /// </summary>
-        internal static string SignUp_EnterPin {
+        public static string SignUp_EnterPin {
             get {
                 return ResourceManager.GetString("SignUp_EnterPin", resourceCulture);
             }
@@ -1126,7 +1144,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Enter preferred name.
         /// </summary>
-        internal static string SignUp_EnterPrefName {
+        public static string SignUp_EnterPrefName {
             get {
                 return ResourceManager.GetString("SignUp_EnterPrefName", resourceCulture);
             }
@@ -1135,7 +1153,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Repeat password.
         /// </summary>
-        internal static string SignUp_EnterRepPassword {
+        public static string SignUp_EnterRepPassword {
             get {
                 return ResourceManager.GetString("SignUp_EnterRepPassword", resourceCulture);
             }
@@ -1144,7 +1162,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to ALREADY HAVE AN ACCOUNT?.
         /// </summary>
-        internal static string SignUp_HaveAcc {
+        public static string SignUp_HaveAcc {
             get {
                 return ResourceManager.GetString("SignUp_HaveAcc", resourceCulture);
             }
@@ -1153,7 +1171,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to NAME.
         /// </summary>
-        internal static string SignUp_Name {
+        public static string SignUp_Name {
             get {
                 return ResourceManager.GetString("SignUp_Name", resourceCulture);
             }
@@ -1162,7 +1180,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to PASSWORD.
         /// </summary>
-        internal static string SignUp_Password {
+        public static string SignUp_Password {
             get {
                 return ResourceManager.GetString("SignUp_Password", resourceCulture);
             }
@@ -1171,7 +1189,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Phone.
         /// </summary>
-        internal static string SignUp_Phone {
+        public static string SignUp_Phone {
             get {
                 return ResourceManager.GetString("SignUp_Phone", resourceCulture);
             }
@@ -1180,7 +1198,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to PIN CODE.
         /// </summary>
-        internal static string SignUp_Pin {
+        public static string SignUp_Pin {
             get {
                 return ResourceManager.GetString("SignUp_Pin", resourceCulture);
             }
@@ -1189,7 +1207,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Preferred NAME.
         /// </summary>
-        internal static string SignUp_PrefName {
+        public static string SignUp_PrefName {
             get {
                 return ResourceManager.GetString("SignUp_PrefName", resourceCulture);
             }
@@ -1198,7 +1216,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to REPEAT PASSWORD.
         /// </summary>
-        internal static string SignUp_RepPassword {
+        public static string SignUp_RepPassword {
             get {
                 return ResourceManager.GetString("SignUp_RepPassword", resourceCulture);
             }
@@ -1207,7 +1225,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to SIGN IN.
         /// </summary>
-        internal static string SignUp_SignIn {
+        public static string SignUp_SignIn {
             get {
                 return ResourceManager.GetString("SignUp_SignIn", resourceCulture);
             }
@@ -1216,7 +1234,7 @@ namespace MyMindV3.Languages {
         /// <summary>
         ///   Looks up a localized string similar to Sign Up.
         /// </summary>
-        internal static string SignUp_Title {
+        public static string SignUp_Title {
             get {
                 return ResourceManager.GetString("SignUp_Title", resourceCulture);
             }

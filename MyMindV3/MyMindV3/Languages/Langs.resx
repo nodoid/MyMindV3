@@ -504,4 +504,10 @@
   <data name="Registration_ErrorMessage" xml:space="preserve">
     <value>An error occurred during the registration process. Please try again.</value>
   </data>
+  <data name="Message_UploadingMessage" xml:space="preserve">
+    <value>Uploading your picture to our servers. Depending on your connection speed, this may take some time.</value>
+  </data>
+  <data name="Message_UploadingTitle" xml:space="preserve">
+    <value>Uploading</value>
+  </data>
 </root>
