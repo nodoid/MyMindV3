@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using SQLite.Net;
-using System;
+using MvvmFramework.Models;
 
 namespace MvvmFramework
 {
@@ -80,11 +80,7 @@ namespace MvvmFramework
 
         void CreateTables()
         {
-            connection.CreateTable<Images>();
-            connection.CreateTable<LatestWeather>();
-            connection.CreateTable<Sites>();
-            connection.CreateTable<GetData>();
-            connection.CreateTable<TankData>();
+            connection.CreateTable<SystemUser>();
         }
 
         string GetName(string name)
