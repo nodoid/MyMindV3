@@ -50,8 +50,6 @@ namespace MvvmFramework.ViewModel
                     (
                         createSubmitCommand = new RelayCommand(async () =>
                         {
-                            var Result = "";
-
                             if (HasValidInput)
                             {
                                 var systemUser = new SystemUser
@@ -158,9 +156,6 @@ namespace MvvmFramework.ViewModel
                 if ((!String.IsNullOrEmpty(Name)) && (!String.IsNullOrEmpty(Email)) && (!String.IsNullOrEmpty(Password)) && (!String.IsNullOrEmpty(PasswordRepeated))
                      && (!String.IsNullOrEmpty(Phone)) && (!String.IsNullOrEmpty(PinCode)))
                 {
-
-                    var Result = "";
-
                     if ((Name.Length < 4) || (Email.Length < 4) || (Password.Length < 6) || (PasswordRepeated.Length < 4)
                         || (Phone.Length < 4) || (PinCode.Length < 4))
                     {
