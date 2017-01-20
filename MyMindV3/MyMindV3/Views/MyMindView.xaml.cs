@@ -24,10 +24,9 @@ namespace MyMindV3.Views
             };
             StackLayoutCover.GestureRecognizers.Add(tapGestureRecognizer);
 
-            ToolbarItems.Add(new ToolbarItem(Langs.MyMind_Logout, "iconlogout", async () =>
+            ToolbarItems.Add(new ToolbarItem(Langs.MyMind_Logout, "iconlogout", () =>
 {
-
-    await Navigation.PushAsync(new LoginView());
+    ViewModel.LogoutCommand.Execute();
     Navigation.RemovePage(this);
     ViewModel.Logout();
 }));
@@ -37,39 +36,12 @@ namespace MyMindV3.Views
         }
 
 
-        private async void LoadMyProfileBtn(object sender, EventArgs e)
+        void LoadMyProfileBtn(object sender, EventArgs e)
         {
             if (ViewModel.SystemUser.IsAuthenticated != 3)
-                await Navigation.PushAsync(new MyProfileView(), true);
+                ViewModel.ShowMyProfileCommand.Execute(null);
             else
-                await Navigation.PushAsync(new MyPatient(), true);
-        }
-
-        private async void LoadClinicianBtn(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MyClinicianView(), true);
-        }
-
-        private async void LoadJourneyBtn(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MyJourneyView(), true);
-        }
-
-        private async void LoadChatBtn(object sender, EventArgs e)
-        {
-            var guid = RootVM.SystemUser.IsAuthenticated == 3 ? RootVM.ClinicianUser.ClinicianGUID : RootVM.SystemUser.Guid;
-
-            await Navigation.PushAsync(new MyChatView(guid), true);
-        }
-
-        private async void LoadPlansBtn(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MyPlansView(), true);
-        }
-
-        private async void LoadResourcesBtn(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MyResourcesView(), true);
+                ViewModel.ShowMyPatientCommand.Execute(null);
         }
 
         void UpdateSessionTimeOut()
