@@ -150,7 +150,7 @@ namespace MvvmFramework.ViewModel
                         Phone = resu.AssignedClinician.ContactNumber,
                         Role = resu.AssignedClinician.WhatIDo,
                         HCPID = resu.AssignedClinician.HCPID,
-                        UserImage = string.Empty,
+                        UserImage = resu.UserImage,
                         APIToken = resu.APIToken,
                         PictureFilePath = !string.IsNullOrEmpty(resu.PictureFilePath) ? resu.PictureFilePath : string.Empty
                     };
@@ -164,10 +164,10 @@ namespace MvvmFramework.ViewModel
                         Email = resu.Email,
                         FunFact = resu.FunFact,
                         ClinicianGUID = resu.ClinicianGUID,
+                        UserImage = resu.UserImage,
                         Name = resu.Name,
                         Phone = resu.ContactNumber,
                         Role = resu.WhatIDo,
-                        UserImage = string.Empty,
                         APIToken = resu.APIToken,
                         APITokenExpiry = resu.APITokenExpiry,
                     };
