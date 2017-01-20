@@ -1,15 +1,20 @@
 ﻿using GalaSoft.MvvmLight.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MvvmFramework.Helpers;
+using System.IO;
 
 namespace MvvmFramework.ViewModel
 {
     public class MyClinicianViewModel : BaseViewModel
     {
+        INavigationService navService;
         public MyClinicianViewModel(INavigationService nav)
-        { }
+        {
+            navService = nav;
+        }
+
+        public Stream GetClinicianImage(string filename)
+        {
+            return new FileIO().LoadFile(filename).Result; 
+        }
     }
 }
