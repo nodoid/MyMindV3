@@ -6,12 +6,49 @@ using System.Collections.Generic;
 using System.Diagnostics;
 #endif
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace MvvmFramework.Webservices
 {
     class UsersWebservice
     {
+        public async Task<IEnumerable<ResourceModel>> GetResources()
+        {
+            using (var client = new HttpClient())
+            {
+
+                client.BaseAddress = new Uri("https://apps.nelft.nhs.uk/CareMapApi/api/MyMind/GetResources");
+
+                client.DefaultRequestHeaders.Accept.Clear();
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                var response = await client.GetAsync("https://apps.nelft.nhs.uk/CareMapApi/api/MyMind/GetResources");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var responseString = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<IEnumerable<ResourceModel>>(responseString);
+                }
+
+                return null;
+            }
+        }
+
+        public async Task<IEnumerable<Appointment>> GetPatientAppointments(string clientId, string hcp)
+        {
+            var url = string.Format("{0}/api/Appointment/GetAppointmentsByClientAndHCP?clientId={1}&hcpCode={2}",
+                                    Constants.BaseTestUrl, clientId, hcp);
+
+            var encMgr = Factory.Instance.GetEncryptionManager();
+
+            var client = new System.Net.Http.HttpClient();
+            var response = await client.GetAsync(url);
+            var encryptionJson = response.Content.ReadAsStringAsync().Result;
+            var encryptions = JsonConvert.DeserializeObject<IEnumerable<Encryption>>(encryptionJson);
+
+            return encMgr.DecryptAppointments(encryptions);
+        }
+
         public async Task UpdateSystemUser(SystemUser sysUser)
         {
             await Send.SendData("UpdateAppUserProfile", new string[]
