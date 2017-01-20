@@ -27,13 +27,13 @@ namespace MyMindV3.Views
             BindingContext = ViewModel.ClinicianUser;
             GetImage();
             GetDetails().ConfigureAwait(true);
-            if (RootVM.SystemUser.IsAuthenticated == 3)
+            if (ViewModel.SystemUser.IsAuthenticated == 3)
             {
                 CreateImageClick();
             }
             else
                 btnUpdate.IsVisible = false;
-            ViewModel.ClinicianUser.IsClinician = RootVM.SystemUser.IsAuthenticated == 3;
+            ViewModel.ClinicianUser.IsClinician = ViewModel.SystemUser.IsAuthenticated == 3;
 
             vwRefresh.IsPullToRefreshEnabled = true;
             vwRefresh.RefreshColor = Color.Blue;
@@ -55,7 +55,7 @@ namespace MyMindV3.Views
         {
             var f = ViewModel.ClinicianUser.UserImage;
 
-            imgClinician.Source = !string.IsNullOrEmpty(f) ? f : "male_female.png";
+            imgClinician.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(()=>ViewModel.GetClinicianImage(f)): "male_female.png";
         }
 
         async Task GetDetails()
@@ -68,10 +68,10 @@ namespace MyMindV3.Views
                     var res = t.Result[0];
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        RootVM.ClinicianUser.FunFact = res.FunFact;
-                        RootVM.ClinicianUser.Name = res.Name;
-                        RootVM.ClinicianUser.Role = res.WhatIDo;
-                        RootVM.ClinicianUser.Phone = res.ContactNumber;
+                        ViewModel.ClinicianUser.FunFact = res.FunFact;
+                        ViewModel.ClinicianUser.Name = res.Name;
+                        ViewModel.ClinicianUser.Role = res.WhatIDo;
+                        ViewModel.ClinicianUser.Phone = res.ContactNumber;
                     });
                 }
             });
@@ -85,7 +85,7 @@ namespace MyMindV3.Views
             {
                 if (t.IsCompleted)
                 {
-                    var userProfile = _database.RegisterWeb(RootVM.SystemUser);
+                    var userProfile = RegisterWeb(ViewModel.SystemUser);
                     var m = t.Result;
                 }
             });
@@ -123,7 +123,7 @@ namespace MyMindV3.Views
 
 
                         Device.BeginInvokeOnMainThread(async () =>
-                            await DisplayAlert("Uploading", "Your photo is currently being uploaded to our servers. This may take some time depending on your connection speed", "OK").ContinueWith(async (w) =>
+                            await DisplayAlert(Langs.Message_UploadingTitle, Langs.Message_UploadingMessage, Langs.Gen_OK).ContinueWith(async (w) =>
                                 {
                                     if (w.IsCompleted)
                                     {
@@ -132,9 +132,8 @@ namespace MyMindV3.Views
                                         Debug.WriteLine(file.Path);
 #endif
                                         DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
-                                        _database = new SystemUserDB();
                                         ViewModel.SystemUser.UserImage = file.Path;
-                                        _database.UpdateSystemUser(ViewModel.SystemUser);
+                                        ViewModel.UpdateSystemUser(V);
                                         //Send.HttpPost(file, _rootVM.SystemUser.Guid);
                                         await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid);
                                         file.Dispose();

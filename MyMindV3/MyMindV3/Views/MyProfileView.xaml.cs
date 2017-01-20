@@ -55,7 +55,7 @@ namespace MyMindV3.Views
             if (ViewModel.SystemUser.IsAuthenticated == 3)
                 imgUser.Source = "male_female.png";
             else
-                imgUser.Source = !string.IsNullOrEmpty(f) ? f : "male_female.png";
+                imgUser.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(()=>ViewModel.GetProfileImage(f)) : "male_female.png";
         }
 
         async Task GetDetails()
@@ -115,7 +115,7 @@ namespace MyMindV3.Views
                         try
                         {
                             Device.BeginInvokeOnMainThread(async () =>
-                                await DisplayAlert("Uploading", "Your photo is currently being uploaded to our servers. This may take some time depending on your connection speed", "OK").ContinueWith(async (w) =>
+                                await DisplayAlert(Langs.Message_UploadingTitle, Langs.Message_UploadingMessage, Langs.Gen_OK).ContinueWith(async (w) =>
                                     {
                                         if (w.IsCompleted)
                                         {
@@ -125,7 +125,7 @@ namespace MyMindV3.Views
 #endif
                                             DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
                                             ViewModel.SystemUser.UserImage = file.Path;
-                                            ViewModel.UpdateSystemUser(ViewModel.SystemUser);
+                                            ViewModel.UpdateSystemUser();
                                             //Send.HttpPost(file, _rootVM.SystemUser.Guid);
                                             await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid);
                                             file.Dispose();
@@ -174,7 +174,7 @@ namespace MyMindV3.Views
              {
                  if (t.IsCompleted)
                  {
-                     var userProfile = _database.RegisterWeb(RootVM.SystemUser);
+                     var userProfile = new UserWebService().RegisterWeb(ViewModel.SystemUser);
                      var m = t.Result;
                  }
              });
@@ -197,9 +197,7 @@ namespace MyMindV3.Views
         {
             Update_Profile();
             // save data back to internal - eventually send back to server for update
-            _database = new SystemUserDB();
-
-            _database.UpdateSystemUser(ViewModel.SystemUser);
+            ViewModel.UpdateSystemUser();
 
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
