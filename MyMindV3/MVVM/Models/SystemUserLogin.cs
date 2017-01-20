@@ -20,8 +20,8 @@ namespace MvvmFramework.Models
                 if (value != _name)
                 {
                     _name = value;
-                    RaisePropertyChanged("Name");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("Name");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -34,8 +34,8 @@ namespace MvvmFramework.Models
                 if (value != _password)
                 {
                     _password = value;
-                    RaisePropertyChanged("Password");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("Password");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -48,8 +48,8 @@ namespace MvvmFramework.Models
                 if (value != _passwordRepeat)
                 {
                     _passwordRepeat = value;
-                    RaisePropertyChanged("PasswordRepeat");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("PasswordRepeat");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -62,7 +62,7 @@ namespace MvvmFramework.Models
                 if (value != _result)
                 {
                     _result = value;
-                    RaisePropertyChanged("Result");
+                    //RaisePropertyChanged("Result");
                 }
             }
         }
@@ -87,8 +87,8 @@ namespace MvvmFramework.Models
                 if (value != _pincode)
                 {
                     _pincode = value;
-                    RaisePropertyChanged("PinCode");
-                    OnPropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("PinCode");
+                    //OnPropertyChanged("HasValidInput");
                 }
             }
         }
@@ -101,7 +101,7 @@ namespace MvvmFramework.Models
                 if (value != _loginDateTime)
                 {
                     _loginDateTime = value;
-                    RaisePropertyChanged("LoginDateTime");
+                    //RaisePropertyChanged("LoginDateTime");
                 }
             }
         }

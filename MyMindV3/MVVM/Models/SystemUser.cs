@@ -1,6 +1,6 @@
 ﻿using System;
 using SQLite.Net.Attributes;
-using GalaSoft.MvvmLight;
+using System.ComponentModel;
 
 namespace MvvmFramework.Models
 {
@@ -60,7 +60,7 @@ namespace MvvmFramework.Models
             {
                 if (value != _guid)
                 {
-                    Set(() => Guid, ref _guid, value, true);
+                    _guid = value;
                 }
             }
         }
@@ -72,7 +72,8 @@ namespace MvvmFramework.Models
             {
                 if (value != apitoken)
                 {
-                    Set(() => APIToken, ref apitoken, value, true);
+                    apitoken = value;
+                    //Set(() => APIToken, ref apitoken, value, true);
                 }
             }
         }
@@ -85,8 +86,8 @@ namespace MvvmFramework.Models
                 if (value != _name)
                 {
                     _name = value;
-                    RaisePropertyChanged("Name");
-                    RaisePropertyChanged("HasValidInput");
+                    //OnPropertyChanged("Name");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -99,8 +100,8 @@ namespace MvvmFramework.Models
                 if (value != _preferredName)
                 {
                     _preferredName = value;
-                    RaisePropertyChanged("PreferredName");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("PreferredName");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -113,8 +114,8 @@ namespace MvvmFramework.Models
                 if (value != _password)
                 {
                     _password = value;
-                    RaisePropertyChanged("Password");
-                    RaisePropertyChanged("HasValidInput");
+                    //OnPropertyChanged("Password");
+                    //OnPropertyChanged("HasValidInput");
                 }
             }
         }
@@ -127,8 +128,8 @@ namespace MvvmFramework.Models
                 if (value != _passwordRepeated)
                 {
                     _passwordRepeated = value;
-                    RaisePropertyChanged("PasswordRepeated");
-                    RaisePropertyChanged("HasValidInput");
+                    //OnPropertyChanged("PasswordRepeated");
+                    //OnPropertyChanged("HasValidInput");
                 }
             }
         }
@@ -139,8 +140,9 @@ namespace MvvmFramework.Models
             set
             {
                 if (value != _pincode)
-                {
-                    Set(() => PinCode, ref _pincode, value, true));
+                { 
+                    _pincode = value;
+                    //OnPropertyChanged("PinCode");
                 }
             }
         }
@@ -153,8 +155,8 @@ namespace MvvmFramework.Models
                 if (value != _dob)
                 {
                     _dob = value.Split(' ')[0];
-                    RaisePropertyChanged("DateOfBirth");
-                    RaisePropertyChanged("HasValidInput");
+                    //OnPropertyChanged("DateOfBirth");
+                    //OnPropertyChanged("HasValidInput");
                 }
             }
         }
@@ -172,8 +174,8 @@ namespace MvvmFramework.Models
                 if (value != _contactNo)
                 {
                     _contactNo = value;
-                    RaisePropertyChanged("ContactNumber");
-                    RaisePropertyChanged("HasValidInput");
+                    //OnPropertyChanged("ContactNumber");
+                    //OnPropertyChanged("HasValidInput");
                 }
             }
         }
@@ -186,8 +188,8 @@ namespace MvvmFramework.Models
                 if (value != _referralReason)
                 {
                     _referralReason = value;
-                    RaisePropertyChanged("ReferralReason");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("ReferralReason");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -200,8 +202,8 @@ namespace MvvmFramework.Models
                 if (value != _likes)
                 {
                     _likes = value;
-                    RaisePropertyChanged("Likes");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("Likes");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -214,8 +216,8 @@ namespace MvvmFramework.Models
                 if (value != _dislikes)
                 {
                     _dislikes = value;
-                    RaisePropertyChanged("Dislikes");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("Dislikes");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -228,8 +230,8 @@ namespace MvvmFramework.Models
                 if (value != _goals)
                 {
                     _goals = value;
-                    RaisePropertyChanged("Goals");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("Goals");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -241,7 +243,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _result)
                 {
-                    Set(() => Result, ref _result, value, true);
+                    _result = value;
+                    //Set(() => Result, ref _result, value, true);
                 }
             }
         }
@@ -254,8 +257,8 @@ namespace MvvmFramework.Models
                 if (value != _phone)
                 {
                     _phone = value;
-                    RaisePropertyChanged("Phone");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("Phone");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -268,8 +271,8 @@ namespace MvvmFramework.Models
                 if (value != _email)
                 {
                     _email = value;
-                    RaisePropertyChanged("Email");
-                    RaisePropertyChanged("HasValidInput");
+                    //RaisePropertyChanged("Email");
+                    //RaisePropertyChanged("HasValidInput");
                 }
             }
         }
@@ -281,7 +284,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _isAdmin)
                 {
-                    Set(() => IsAdmin, ref _isAdmin, value, true);
+                    _isAdmin = value;
+                    //Set(() => IsAdmin, ref _isAdmin, value, true);
                 }
             }
         }
@@ -293,7 +297,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _isAuthenticated)
                 {
-                    Set(() => IsAuthenticated, ref _isAuthenticated, value, true);
+                    _isAuthenticated = value;
+                    //Set(() => IsAuthenticated, ref _isAuthenticated, value, true);
                 }
             }
         }
@@ -305,7 +310,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _isLogged)
                 {
-                    Set(() => IsLogged, ref _isLogged, value, true);
+                    _isLogged = value;
+                    //Set(() => IsLogged, ref _isLogged, value, true);
                 }
             }
         }
@@ -317,7 +323,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _rioid)
                 {
-                    Set(() => RIOID, ref _rioid, value, true);
+                    _rioid = value;
+                    //Set(() => RIOID, ref _rioid, value, true);
                 }
             }
         }
@@ -329,7 +336,8 @@ namespace MvvmFramework.Models
             {
                 if (value != icann)
                 {
-                    Set(() => ICANN, ref icann, value, true);
+                    icann = value;
+                    //Set(() => ICANN, ref icann, value, true);
                 }
             }
         }
@@ -337,19 +345,19 @@ namespace MvvmFramework.Models
         public string PictureFilePath
         {
             get { return pictureFilePath; }
-            set { Set(() => PictureFilePath, ref pictureFilePath, value, true); }
+            set { pictureFilePath = value; }
         }
 
         public DateTime ProfilePictureUploadTimestamp
         {
             get { return profilePictureUploadDateStamp; }
-            set { Set(() => ProfilePictureUploadTimestamp, ref profilePictureUploadDateStamp, value,true); }
+            set { profilePictureUploadDateStamp = value; }
         }
 
         public DateTime APITokenExpiry
         {
             get { return apiTokenExpiry; }
-            set { Set(() => APITokenExpiry, ref apiTokenExpiry, value, true); }
+            set { apiTokenExpiry = value; }
         }
 
         public string UserImage
@@ -360,7 +368,7 @@ namespace MvvmFramework.Models
             }
             set
             {
-                Set(() => UserImage, ref _userImage, value, true);
+                _userImage = value;
             }
         }
 
@@ -372,7 +380,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _showProfileDetails)
                 {
-                    Set(() => ShowProfileDetails, ref _showProfileDetails, value, true);
+                    _showProfileDetails = value;
+                    //Set(() => ShowProfileDetails, ref _showProfileDetails, value, true);
                 }
             }
         }
@@ -384,7 +393,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _editProfileDetails)
                 {
-                    Set(() => EditProfileDetails, ref _editProfileDetails, value, true);
+                    _editProfileDetails = value;
+                    //Set(() => EditProfileDetails, ref _editProfileDetails, value, true);
                 }
             }
         }

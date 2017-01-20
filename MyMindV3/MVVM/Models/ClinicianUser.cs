@@ -1,6 +1,5 @@
 ﻿using System;
 using SQLite.Net.Attributes;
-using GalaSoft.MvvmLight;
 
 namespace MvvmFramework.Models
 {
@@ -14,7 +13,6 @@ namespace MvvmFramework.Models
         private string _funfact;
         private string _phone;
         private string _hcpID;
-        string _userImage;
         string apitoken;
         DateTime profilePictureUploadDateStamp;
         DateTime apiTokenExpiry;
@@ -42,7 +40,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _guid)
                 {
-                    Set(() => Guid, ref _guid, value, true);
+                    _guid = value;
+                    //Set(() => Guid, ref _guid, value, true);
                 }
             }
         }
@@ -54,7 +53,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _name)
                 {
-                    Set(() => Name, ref _name, value, true);
+                    _name = value;
+                    //Set(() => Name, ref _name, value, true);
                 }
             }
         }
@@ -62,7 +62,7 @@ namespace MvvmFramework.Models
         public string ClinicianGUID
         {
             get { return clinicianGUID; }
-            set { Set(()=>ClinicianGUID, ref clinicianGUID, value, true); }
+            set { clinicianGUID = value; }
         }
 
         public string Email
@@ -72,7 +72,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _email)
                 {
-                    Set(()=>Email, ref _email, value, true);
+                    _email = value;
+                    //Set(()=>Email, ref _email, value, true);
                 }
             }
         }
@@ -84,7 +85,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _role)
                 {
-                    Set(()=>Role, ref _role, value, true);
+                    _role = value;
+                    //Set(()=>Role, ref _role, value, true);
                 }
             }
         }
@@ -96,7 +98,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _funfact)
                 {
-                    Set(() => FunFact, ref _funfact, value, true);
+                    _funfact = value;
+                    //Set(() => FunFact, ref _funfact, value, true);
                 }
             }
         }
@@ -108,7 +111,8 @@ namespace MvvmFramework.Models
             {
                 if (value != _phone)
                 {
-                    Set(() => Phone, ref _phone, value, true);
+                    _phone = value;
+                    //Set(() => Phone, ref _phone, value, true);
                 }
             }
         }
@@ -120,101 +124,47 @@ namespace MvvmFramework.Models
             {
                 if (value != _hcpID)
                 {
-                    Set(() => HCPID, ref _hcpID, value, true);
+                    _hcpID = value;
+                    //Set(() => HCPID, ref _hcpID, value, true);
                 }
             }
         }
 
+        string userImage;
         public string UserImage
         {
-            get
-            {
-                return _userImage;
-
-                if (!string.IsNullOrEmpty(App.Self.UserSettings.LoadSetting<string>("ClinicianImage", SettingType.String)))
-                {
-                    _userImage = App.Self.UserSettings.LoadSetting<string>("ClinicianImage", SettingType.String);
-
-                    if (App.Self.UserSettings.LoadSetting<string>("ClinicianImageDatestamp", SettingType.String).Equals(ProfilePictureUploadTimestamp.ToString("g")))
-                        return _userImage;
-                    else
-                    {
-                        GetData.GetImage(ClinicianGUID, false).ContinueWith((t) =>
-                        {
-                            if (t.IsCompleted)
-                            {
-                                _userImage = string.Format("{0}/{1}.jpg", App.Self.PicturesDirectory, ClinicianGUID);
-                            }
-                        }).ConfigureAwait(false);
-                    }
-                    return _userImage;
-                }
-
-
-                var origPath = DependencyService.Get<IContent>().PicturesDirectory();
-
-                if (image.Contains("jpg"))
-                    image = image.Substring(0, image.LastIndexOf('.'));
-
-                if (string.IsNullOrEmpty(image))
-                {
-                    _userImage = string.Format("{0}/{1}.jpg", App.Self.PicturesDirectory, ClinicianGUID);
-                    if (!DependencyService.Get<IContent>().FileExists(_userImage))
-                    {
-                        var otherDir = App.Self.UserSettings.LoadSetting<string>("ImageDirectory", SettingType.String);
-                        _userImage = string.Format("{0}/{1}.jpg", otherDir, ClinicianGUID);
-                        if (!DependencyService.Get<IContent>().FileExists(_userImage))
-                        {
-                            GetData.GetImage(ClinicianGUID, false).ContinueWith((t) =>
-                    {
-                        if (t.IsCompleted)
-                        {
-                            _userImage = string.Format("{0}/{1}.jpg", App.Self.PicturesDirectory, ClinicianGUID); ;
-                        }
-                    }).ConfigureAwait(false);
-                        }
-                        if (!DependencyService.Get<IContent>().FileExists(_userImage))
-                            _userImage = "male_female.png";
-                    }
-                }
-
-                return _userImage;
-            }
-
-            set
-            {
-                SettingType(() => UserImage, ref _userImage, value, true);
-            }
+            get { return userImage; }
+            set { userImage = value; }
         }
 
         public string APIToken
         {
             get { return apitoken; }
-            set { Set(()=>APIToken, ref apitoken, value, true); }
+            set { apitoken = value;  }
         }
 
         public string PictureFilePath
         {
             get { return pictureFilePath; }
-            set { Set(()=>PictureFilePath, ref pictureFilePath, value, true); }
+            set { pictureFilePath = value; }
         }
 
         public DateTime ProfilePictureUploadTimestamp
         {
             get { return profilePictureUploadDateStamp; }
-            set { Set(()=>ProfilePictureUploadTimeStamp, ref profilePictureUploadDateStamp, value, true); }
+            set { profilePictureUploadDateStamp = value; }
         }
 
         public DateTime APITokenExpiry
         {
             get { return apiTokenExpiry; }
-            set { Set(()=>APITokenExpiry, ref apiTokenExpiry, value, true); }
+            set { apiTokenExpiry = value; }
         }
 
         public bool IsClinician
         {
             get { return isClinician; }
-            set { Set(()=>IsClinician, ref isClinician, value, true); }
+            set { isClinician = value; }
         }
     }
 }
