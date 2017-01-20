@@ -5,7 +5,7 @@ namespace MyMindV3
 {
     public partial class MyFileView : ContentPage
     {
-        MyJourneyViewModel ViewModel => App.Locator.MyJourney;
+        MyFileViewModel ViewModel => App.Locator.MyFile;
 
         public MyFileView(string url)
         {
