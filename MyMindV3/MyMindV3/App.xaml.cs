@@ -13,9 +13,10 @@ namespace MyMindV3
     public partial class App : Application
     {
         public static Size ScreenSize { get; set; }
+        public string ContentDirectory { get; private set; }
+        public string PicturesDirectory { get; private set; } = DependencyService.Get<IContent>().PicturesDirectory();
 
-        // As with a native app, we need a static pointer to the locator
-
+        public IUserSettings UserSettings { get; set; } = DependencyService.Get<IUserSettings>();
         public static ViewModelLocator locator;
         public static ViewModelLocator Locator { get { return locator ?? (locator = new ViewModelLocator()); } }
 
