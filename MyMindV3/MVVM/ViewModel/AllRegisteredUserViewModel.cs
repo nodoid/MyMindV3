@@ -16,7 +16,6 @@ namespace MvvmFramework.ViewModel
             sqlRepo = repo;
         }
 
-        IEnumerable<SystemUser> getSystemUsers;
         public IEnumerable<SystemUser> GetSystemUsers
         {
             get { return sqlRepo.GetList<SystemUser>().AsEnumerable(); }
