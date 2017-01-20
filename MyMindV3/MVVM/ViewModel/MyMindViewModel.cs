@@ -16,7 +16,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return logoutCommand ?? (new RelayCommand(() => navService.NavigateTo(ViewModelLocator.LoginKey)));
+                return logoutCommand ?? (logoutCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.LoginKey)));
             }
         }
 
@@ -25,7 +25,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return showMyProfileCommand ?? (new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyProfileKey)));
+                return showMyProfileCommand ?? (showMyProfileCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyProfileKey)));
             }
         }
 
@@ -34,7 +34,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return showMyPatientCommand ?? (new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyPatientKey)));
+                return showMyPatientCommand ?? (showMyPatientCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyPatientKey)));
             }
         }
 
@@ -43,7 +43,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return showMyClinicianCommand ?? (new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyClinicianKey)));
+                return showMyClinicianCommand ?? (showMyClinicianCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyClinicianKey)));
             }
         }
 
@@ -52,7 +52,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return showMyJourneyCommand ?? (new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyJourneyKey)));
+                return showMyJourneyCommand ?? (showMyJourneyCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyJourneyKey)));
             }
         }
 
@@ -61,7 +61,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return showMyChatCommand ?? (new RelayCommand(() =>
+                return showMyChatCommand ?? (showMyChatCommand = new RelayCommand(() =>
                 {
                     var guid = SystemUser.IsAuthenticated == 3 ? ClinicianUser.ClinicianGUID : SystemUser.Guid;
                     navService.NavigateTo(ViewModelLocator.MyChatKey, guid);
@@ -74,7 +74,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return showMyPlansCommand ?? (new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyPlansKey)));
+                return showMyPlansCommand ?? (showMyPlansCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyPlansKey)));
             }
         }
 
@@ -83,7 +83,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return showMyResourcesCommand ?? (new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyResourcesKey)));
+                return showMyResourcesCommand ?? (showMyResourcesCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyResourcesKey)));
             }
         }
     }

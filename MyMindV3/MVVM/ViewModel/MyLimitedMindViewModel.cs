@@ -16,7 +16,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return showMyProfileCommand ?? (new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyProfileKey)));
+                return showMyProfileCommand ?? (showMyProfileCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyProfileKey)));
             }
         }
 
@@ -25,7 +25,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return showMyResourcesCommand ?? (new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyResourcesKey)));
+                return showMyResourcesCommand ?? (showMyResourcesCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyResourcesKey)));
             }
         }
     }
