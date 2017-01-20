@@ -37,7 +37,7 @@
 							<StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Padding="2,2">
 								<StackLayout Orientation="Vertical" HorizontalOptions="Center">
 									<local:CustomImage ImageSource="mymindlogo.png" WidthRequest="125" Aspect="AspectFit" />
-									<Label Text="Session expires 05.23" FontSize="11" FontAttributes="Italic" HorizontalOptions="Center" TextColor="#ffffff" />
+									<!--<Label Text="Session expires 05.23" FontSize="11" FontAttributes="Italic" HorizontalOptions="Center" TextColor="#ffffff" />-->
 								</StackLayout>
 							</StackLayout>
 						</Grid>
@@ -57,11 +57,11 @@
 					</Grid.ColumnDefinitions>
 					<BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff" HeightRequest="1" Opacity="0.5" />
 					<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
-						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Profile}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadMyProfileBtn" />
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Profile}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="ShowMyProfileCommand" />
 					</StackLayout>
 					<BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
 					<StackLayout Grid.Row="1" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-3,-3">
-						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Resources}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadResourcesBtn" />
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Resources}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="ShowMyResourcesCommand" />
 					</StackLayout>
 				</Grid>
 				<!--/Options-->
