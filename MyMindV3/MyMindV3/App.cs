@@ -7,10 +7,11 @@ using Plugin.Connectivity;
 using System.Globalization;
 
 using Xamarin.Forms;
+using Plugin.Geolocator.Abstractions;
 
 namespace MyMindV3
 {
-    public partial class App : Application
+    public class App : Application
     {
         public static Size ScreenSize { get; set; }
         public string ContentDirectory { get; private set; }
@@ -24,9 +25,25 @@ namespace MyMindV3
 
         public bool IsConnected { get; private set; }
 
+        public Position Location { get; set; }
+
+        int newIconRating;
+        public int NewIconRating
+        {
+            get { return newIconRating; }
+            set
+            {
+                newIconRating = value;
+                OnPropertyChanged("NewIconRating");
+            }
+        }
+
+        public bool PanelShowing { get; set; }
+
+        public int IdInUse { get; set; }
+
         public App()
         {
-            InitializeComponent();
             App.Self = this;
 
             var netLanguage = DependencyService.Get<ILocalize>().GetCurrent();
@@ -64,16 +81,13 @@ namespace MyMindV3
 
             // Register the SQL
             DependencyService.Get<MvvmFramework.ISqLiteConnectionFactory>().GetConnection();
-
+            var dialogService = new DialogService();
+            SimpleIoc.Default.Register<IDialogService>(() => dialogService);
             // we next set the navigation page
             var firstPage = new NavigationPage(new LoginView());
 
             // initialise the navigation service with the page in firstPage
             nav.Initialize(firstPage);
-
-            var dialogService = new DialogService();
-
-            SimpleIoc.Default.Register<IDialogService>(() => dialogService);
 
             dialogService.Initialize(firstPage);
 
