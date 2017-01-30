@@ -14,6 +14,57 @@ namespace MvvmFramework
     {
         static CookieContainer cookieContainer = new CookieContainer();
 
+        public static async Task<string> GetPostcode(double lon, double lat)
+        {
+            var url = string.Format("https://api.postcodes.io/postcodes/lon/{0}/lat/{1}", lon, lat);
+            var postcode = string.Empty;
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var response = client.GetAsync(url).Result;
+                    var res = await response.Content.ReadAsStringAsync();
+                    var obj = JsonConvert.DeserializeObject<Geolocation>(res);
+                    postcode = obj.result[0].postcode;
+                }
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                Debug.WriteLine("Exception in GetData {0}-{1}", ex.Message, ex.InnerException);
+#endif
+            }
+
+            return postcode;
+        }
+
+        static double ToKilometers(string val)
+        {
+            return Convert.ToDouble(val.Split(' ')[0]) / 1.6;
+        }
+
+        public static async Task<List<Postcodes>> GetSurroundingPostcodes(string myPostcode)
+        {
+            var url = string.Format("http://uk-postcodes.com/postcode/nearest?postcode={0}&miles=5&format=json", myPostcode);
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var response = client.GetAsync(url).Result;
+                    var res = await response.Content.ReadAsStringAsync();
+                    var obj = JsonConvert.DeserializeObject<List<Postcodes>>(res);
+                    return obj;
+                }
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                Debug.WriteLine("Exception in GetData {0}-{1}", ex.Message, ex.InnerException);
+#endif
+                return new List<Postcodes>();
+            }
+
+        }
 
         public static async Task GetImage(string id, bool isUser = true)
         {
