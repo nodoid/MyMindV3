@@ -13,7 +13,7 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
-            
+            ViewModel.IsConnected = App.Self.IsConnected;
             var enc = DependencyService.Get<IEncrypt>().EncryptString(guid, Constants.DESKey);
             var iv = DependencyService.Get<IEncrypt>().Iv_To_Pass_To_Encryption;
 

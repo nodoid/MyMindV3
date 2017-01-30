@@ -12,6 +12,7 @@ namespace MyMindV3.Views
             InitializeComponent();
 
             BindingContext = ViewModel;
+            ViewModel.IsConnected = App.Self.IsConnected;
         }
     }
 }
