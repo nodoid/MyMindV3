@@ -22,7 +22,7 @@ namespace MvvmFramework.Webservices
 
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = await client.GetAsync("https://apps.nelft.nhs.uk/CareMapApi/api/MyMind/GetResources");
+                var response = client.GetAsync("https://apps.nelft.nhs.uk/CareMapApi/api/MyMind/GetResources").Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -36,6 +36,9 @@ namespace MvvmFramework.Webservices
 
         public async Task<IEnumerable<Appointment>> GetPatientAppointments(string clientId, string hcp)
         {
+            if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(hcp))
+                return null;
+
             var url = string.Format("{0}/api/Appointment/GetAppointmentsByClientAndHCP?clientId={1}&hcpCode={2}",
                                     Constants.BaseTestUrl, clientId, hcp);
 
