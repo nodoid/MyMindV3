@@ -1,9 +1,8 @@
-﻿using System;
-namespace MyMindV3
+﻿namespace MyMindV3
 {
     public interface INetworkSpinner
     {
-        void NetworkSpinner(bool on, string title, string message);
+        void NetworkSpinner(bool on, string title = "", string message = "");
     }
 }
 
