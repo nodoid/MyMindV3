@@ -26,6 +26,7 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel.SystemUser;
+            ViewModel.IsConnected = App.Self.IsConnected;
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
             GetImage();
@@ -55,12 +56,12 @@ namespace MyMindV3.Views
             if (ViewModel.SystemUser.IsAuthenticated == 3)
                 imgUser.Source = "male_female.png";
             else
-                imgUser.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(()=>ViewModel.GetProfileImage(f)) : "male_female.png";
+                imgUser.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(() => ViewModel.GetProfileImage(f)) : "male_female.png";
         }
 
         async Task GetDetails()
         {
-            await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", RootVM.ClinicianUser.APIToken,
+            await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", ViewModel.ClinicianUser.APIToken,
                                                    "ClientGUID", ViewModel.SystemUser.Guid).ContinueWith((t) =>
                 {
                     if (t.IsCompleted)
@@ -174,7 +175,7 @@ namespace MyMindV3.Views
              {
                  if (t.IsCompleted)
                  {
-                     var userProfile = new UserWebService().RegisterWeb(ViewModel.SystemUser);
+                     ViewModel.UpdateSystemUser();
                      var m = t.Result;
                  }
              });
