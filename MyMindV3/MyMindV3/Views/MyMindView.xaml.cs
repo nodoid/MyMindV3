@@ -1,5 +1,4 @@
-﻿using MyMindV3.ViewModels;
-using System;
+﻿using System;
 using Xamarin.Forms;
 using MyMindV3.Languages;
 using MvvmFramework.ViewModel;
@@ -14,6 +13,7 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
+            ViewModel.IsConnected = App.Self.IsConnected;
             //NavigationPage.SetTitleIcon(this, "iconlogout");
 
             /* add tapgesture recognition to named stacklayout */
@@ -26,7 +26,7 @@ namespace MyMindV3.Views
 
             ToolbarItems.Add(new ToolbarItem(Langs.MyMind_Logout, "iconlogout", () =>
 {
-    ViewModel.LogoutCommand.Execute();
+    ViewModel.LogoutCommand.Execute(null);
     Navigation.RemovePage(this);
     ViewModel.Logout();
 }));
