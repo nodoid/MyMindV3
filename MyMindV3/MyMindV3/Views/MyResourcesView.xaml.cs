@@ -20,7 +20,7 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
-
+            ViewModel.IsConnected = App.Self.IsConnected;
             if (Device.OS == TargetPlatform.iOS)
             {
                 stkPicker.BackgroundColor = Color.White;
@@ -28,25 +28,25 @@ namespace MyMindV3.Views
             }
             var cats = new List<string>();
             resources = ViewModel.Resources;
-            
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            Categories = ViewModel.FillCategories;
-                            ResourcesListView.ItemTemplate = new DataTemplate(typeof(ResourcesView));
-                            ResourcesListView.ItemsSource = resources;
-                            ResourcesListView.ItemSelected += (sender, e) =>
-                            {
-                                if (e.SelectedItem == null) return; // don't do anything if we just de-selected the row
+
+            Device.BeginInvokeOnMainThread(() =>
+            {
+                Categories = ViewModel.FillCategories;
+                ResourcesListView.ItemTemplate = new DataTemplate(typeof(ResourcesView));
+                ResourcesListView.ItemsSource = resources;
+                ResourcesListView.ItemSelected += (sender, e) =>
+                {
+                    if (e.SelectedItem == null) return; // don't do anything if we just de-selected the row
                                 var resource = (ResourceModel)e.SelectedItem;
                                 //await DisplayAlert(Langs.MyResources_AlertSelected, string.Format("{0} {1}", Langs.MyResources_AlertSelectedMsg, resource.ResourceID), Langs.Gen_OK);
                                 ((ListView)sender).SelectedItem = null; // de-select the row
                             };
 
-                            cats.AddRange(Categories);
-                            pickFilter.Items.Add(Langs.MyResources_FilterOff);
-                            foreach (var c in cats)
-                                pickFilter.Items.Add(c);
-                        });
+                cats.AddRange(Categories);
+                pickFilter.Items.Add(Langs.MyResources_FilterOff);
+                foreach (var c in cats)
+                    pickFilter.Items.Add(c);
+            });
         }
 
         void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
