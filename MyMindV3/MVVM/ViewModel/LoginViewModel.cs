@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Views;
 using MvvmFramework.Models;
 using MvvmFramework.Webservices;
+using System;
 
 namespace MvvmFramework.ViewModel
 {
@@ -32,14 +33,14 @@ namespace MvvmFramework.ViewModel
                     {
                         var Result = string.Empty;
                         if (HasValidInput)
-                {
-                    DisplayLogin = false;
-                    DisplayAcceptance = true;
-                }
-                else
-                {
-                    await dialogService.ShowMessage(GetErrorTitle("Gen_Error"), GetErrorMessage("Login_InvalidError"));
-                }
+                        {
+                            DisplayLogin = false;
+                            DisplayAcceptance = true;
+                        }
+                        else
+                        {
+                            await dialogService.ShowMessage(GetErrorTitle("Gen_Error"), GetErrorMessage("Login_InvalidError"));
+                        }
                     })
                 );
             }
@@ -62,6 +63,7 @@ namespace MvvmFramework.ViewModel
                                 if (ProcessLogin())
                                 {
                                     IsBusy = false;
+                                    SpinnerMessage = SpinnerTitle = string.Empty;
                                     if (SystemUser.IsAuthenticated < 1)
                                     {
                                         IsBusy = false;
@@ -106,8 +108,29 @@ namespace MvvmFramework.ViewModel
             }
         }
 
-        public string Name { get; set; }
-        public string Password { get; set; }
+        string name;
+        public string Name
+        {
+            get { return name; }
+            set
+            {
+                name = value;
+                var t = HasValidInput;
+                RaisePropertyChanged("Name");
+            }
+        }
+
+        string password;
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                password = value;
+                var t = HasValidInput;
+                RaisePropertyChanged("Password");
+            }
+        }
 
         public bool ProcessLogin()
         {
@@ -175,7 +198,7 @@ namespace MvvmFramework.ViewModel
 
                 return true;
             }
-            
+
             ResetInputs();
             return false;
         }
@@ -195,7 +218,8 @@ namespace MvvmFramework.ViewModel
             {
                 if ((!string.IsNullOrEmpty(Name)) && (!string.IsNullOrEmpty(Password)))
                 {
-                    return (Name.Length < 4) || (Password.Length < 6) ? false : true;
+                    HasValidInput = (Name.Length < 4) || (Password.Length < 6) ? false : true;
+                    return _hasValidInput;
                 }
 
                 return false;
