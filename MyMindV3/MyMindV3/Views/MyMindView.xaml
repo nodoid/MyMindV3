@@ -68,23 +68,23 @@
 					</StackLayout>
 					<BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
 					<StackLayout Grid.Row="1" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
-						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Clinician}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{ShowMyClinicianCommand}" />
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Clinician}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{Binding ShowMyClinicianCommand}" />
 					</StackLayout>
 					<BoxView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff" HeightRequest="1" Opacity="0.5" />
 					<StackLayout Grid.Row="3" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
-						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Journey}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{ShowMyJounrneyCommand}" />
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Journey}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{Binding ShowMyJourneyCommand}" />
 					</StackLayout>
 					<BoxView Grid.Row="3" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
 					<StackLayout Grid.Row="3" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
-						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Chat}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{ShowMyChatCommand}" />
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Chat}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{Binding ShowMyChatCommand}" />
 					</StackLayout>
 					<BoxView Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff" HeightRequest="1" Opacity="0.5" />
 					<StackLayout Grid.Row="5" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
-						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Plans}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{ShowMyPlansCommand}" />
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Plans}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{Binding ShowMyPlansCommand}" />
 					</StackLayout>
 					<BoxView Grid.Row="5" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
 					<StackLayout Grid.Row="5" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-3,-3">
-						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Resources}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{ShowMyResourcesCommand}" />
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Resources}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{Binding ShowMyResourcesCommand}" />
 					</StackLayout>
 				</Grid>
 				<!--/Options-->

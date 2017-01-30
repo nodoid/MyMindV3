@@ -57,11 +57,11 @@
 					</Grid.ColumnDefinitions>
 					<BoxView Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff" HeightRequest="1" Opacity="0.5" />
 					<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
-						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Profile}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="ShowMyProfileCommand" />
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Profile}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{Binding ShowMyProfileCommand}" />
 					</StackLayout>
 					<BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
 					<StackLayout Grid.Row="1" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-3,-3">
-						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Resources}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="ShowMyResourcesCommand" />
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Resources}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{Binding ShowMyResourcesCommand}" />
 					</StackLayout>
 				</Grid>
 				<!--/Options-->
