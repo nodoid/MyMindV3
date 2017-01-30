@@ -53,7 +53,7 @@ namespace MyMindV3
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogPage.DisplayAlert(title, message, Langs.General_OK);
+                    await _dialogPage.DisplayAlert(title, message, Langs.Gen_OK);
                 });
             });
         }
@@ -104,7 +104,7 @@ namespace MyMindV3
             {
                 Device.BeginInvokeOnMainThread(async () =>
                 {
-                    await _dialogPage.DisplayAlert(title, message, Langs.General_OK);
+                    await _dialogPage.DisplayAlert(title, message, Langs.Gen_OK);
                 });
             });
         }
