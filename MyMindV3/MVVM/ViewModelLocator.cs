@@ -47,7 +47,7 @@ namespace MvvmFramework
         public ViewModelLocator()
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-
+            SimpleIoc.Default.Register<IRepository, SqLiteRepository>();
             SimpleIoc.Default.Register<AllRegisteredUserViewModel>();
             SimpleIoc.Default.Register<LoginPinCodeViewModel>();
             SimpleIoc.Default.Register<LoginViewModel>();
