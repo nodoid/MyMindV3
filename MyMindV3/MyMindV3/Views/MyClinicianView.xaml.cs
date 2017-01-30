@@ -25,6 +25,7 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel.ClinicianUser;
+            ViewModel.IsConnected = App.Self.IsConnected;
             GetImage();
             GetDetails().ConfigureAwait(true);
             if (ViewModel.SystemUser.IsAuthenticated == 3)
@@ -55,12 +56,12 @@ namespace MyMindV3.Views
         {
             var f = ViewModel.ClinicianUser.UserImage;
 
-            imgClinician.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(()=>ViewModel.GetClinicianImage(f)): "male_female.png";
+            imgClinician.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(() => ViewModel.GetClinicianImage(f)) : "male_female.png";
         }
 
         async Task GetDetails()
         {
-            await Send.SendData<List<ClinicianProfile>>("api/MyMind/GetClinicianProfile", "ClinicianGUID", 
+            await Send.SendData<List<ClinicianProfile>>("api/MyMind/GetClinicianProfile", "ClinicianGUID",
                 ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", ViewModel.SystemUser.APIToken).ContinueWith((t) =>
             {
                 if (t.IsCompleted)
@@ -79,13 +80,13 @@ namespace MyMindV3.Views
 
         void Update_Profile(object s, EventArgs e)
         {
-            var res = Send.SendData("api/MyMind/UpdateClinicianProfile", "ClinicianGUID", ViewModel.ClinicianUser.ClinicianGUID, 
+            var res = Send.SendData("api/MyMind/UpdateClinicianProfile", "ClinicianGUID", ViewModel.ClinicianUser.ClinicianGUID,
                 "AuthToken", ViewModel.ClinicianUser.APIToken,
                                     "WhatIDo", ClinRoleInput.Text, "FunFact", ClinFunFactInput.Text, "ContactNumber", ClinPhoneInput.Text).ContinueWith((t) =>
             {
                 if (t.IsCompleted)
                 {
-                    var userProfile = RegisterWeb(ViewModel.SystemUser);
+                    ViewModel.UpdateSystemUser();
                     var m = t.Result;
                 }
             });
@@ -133,7 +134,7 @@ namespace MyMindV3.Views
 #endif
                                         DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
                                         ViewModel.SystemUser.UserImage = file.Path;
-                                        ViewModel.UpdateSystemUser(V);
+                                        ViewModel.UpdateSystemUser();
                                         //Send.HttpPost(file, _rootVM.SystemUser.Guid);
                                         await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid);
                                         file.Dispose();
