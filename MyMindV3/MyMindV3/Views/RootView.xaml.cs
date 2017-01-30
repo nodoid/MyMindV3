@@ -8,7 +8,6 @@ namespace MyMindV3.Views
         public RootView()
         {
             InitializeComponent();
-
             InitRedirectTimer();
         }
 
