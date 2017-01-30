@@ -19,6 +19,7 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
+            ViewModel.IsConnected = App.Self.IsConnected;
             FillData().ConfigureAwait(true);
         }
 
@@ -28,7 +29,7 @@ namespace MyMindV3.Views
             if (text != 0)
             {
                 var id = ConnectionsData.FirstOrDefault(w => w.Name == ConnectionsData[text - 1].Name);
-                var s = Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", 
+                var s = Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID",
                     ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", ViewModel.ClinicianUser.APIToken,
                                                    "ClientGUID", id.ClientGUID).ContinueWith((t) =>
                 {
@@ -55,7 +56,7 @@ namespace MyMindV3.Views
 
         async Task FillData()
         {
-            await Send.SendData<List<Connections>>("api/MyMind/GetClinicianConnections", "ClinicianGUID", 
+            await Send.SendData<List<Connections>>("api/MyMind/GetClinicianConnections", "ClinicianGUID",
                 ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", ViewModel.SystemUser.APIToken).ContinueWith((t) =>
             {
                 if (t.IsCompleted)
