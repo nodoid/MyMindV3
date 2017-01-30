@@ -3,6 +3,8 @@ using MvvmFramework.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ComponentModel;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace MvvmFramework.ViewModel
 {
@@ -21,22 +23,22 @@ namespace MvvmFramework.ViewModel
 
         public bool IsConnected { get; set; }
 
-        List<Dictionary<string, string>> errorTitles;
-    public List<Dictionary<string, string>> ErrorTitles
+        Dictionary<string, string> errorTitles;
+        public Dictionary<string, string> ErrorTitles
         {
             get { return errorTitles; }
-               set { Set(() => ErrorTitles, ref errorTitles, value); }
+            set { Set(() => ErrorTitles, ref errorTitles, value); }
         }
 
-        List<Dictionary<string, string>> errorMessages;
-        public List<Dictionary<string, string>> ErrorMessages
+        Dictionary<string, string> errorMessages;
+        public Dictionary<string, string> ErrorMessages
         {
             get { return errorMessages; }
             set { Set(() => ErrorMessages, ref errorMessages, value); }
         }
 
-        List<Dictionary<string, string>> messages;
-        public List<Dictionary<string, string>> Messages
+        Dictionary<string, string> messages;
+        public Dictionary<string, string> Messages
         {
             get { return messages; }
             set { Set(() => Messages, ref messages, value); }
@@ -48,7 +50,7 @@ namespace MvvmFramework.ViewModel
                 return string.Empty;
 
             var retval = string.Empty;
-            var errorDict = ErrorTitles.FirstOrDefault(t => t.Keys.Contains(key));
+            var errorDict = ErrorTitles;
             if (errorDict != null)
             {
                 errorDict.TryGetValue(key, out retval);
@@ -63,7 +65,7 @@ namespace MvvmFramework.ViewModel
                 return string.Empty;
 
             var retval = string.Empty;
-            var errorDict = Messages.FirstOrDefault(t => t.Keys.Contains(key));
+            var errorDict = ErrorMessages;
             if (errorDict != null)
             {
                 errorDict.TryGetValue(key, out retval);
@@ -78,7 +80,7 @@ namespace MvvmFramework.ViewModel
                 return string.Empty;
 
             var retval = string.Empty;
-            var errorDict = ErrorMessages.FirstOrDefault(t => t.Keys.Contains(key));
+            var errorDict = Messages;
             if (errorDict != null)
             {
                 errorDict.TryGetValue(key, out retval);
@@ -100,7 +102,7 @@ namespace MvvmFramework.ViewModel
             }
         }
 
-SystemUser _systemUser;
+        static SystemUser _systemUser;
         public SystemUser SystemUser
         {
             get { return _systemUser; }
@@ -113,7 +115,7 @@ SystemUser _systemUser;
             }
         }
 
-ClinicianUser _clinicianUser;
+        static ClinicianUser _clinicianUser;
         public ClinicianUser ClinicianUser
         {
             get { return _clinicianUser; }
@@ -126,7 +128,7 @@ ClinicianUser _clinicianUser;
             }
         }
 
-DateTime _sessionExpirationTime;
+        DateTime _sessionExpirationTime;
         public DateTime SessionExpirationTime
         {
             get { return _sessionExpirationTime; }
@@ -180,8 +182,7 @@ DateTime _sessionExpirationTime;
             get { return isBusy; }
             set
             {
-                isBusy = value;
-                Spinner.NetworkSpinner(isBusy, SpinnerTitle, SpinnerMessage);
+                Set(() => IsBusy, ref isBusy, value, true);
             }
         }
     }
