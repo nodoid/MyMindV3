@@ -21,10 +21,11 @@
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
-    <JavaMaximumHeapSize />
+    <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
     <JavaOptions />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <EnableProguard>True</EnableProguard>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>True</DebugSymbols>
@@ -37,14 +38,11 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
-    <AotAssemblies>False</AotAssemblies>
-    <EnableLLVM>False</EnableLLVM>
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-    <EnableProguard>True</EnableProguard>
     <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,13 +54,9 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
-    <AotAssemblies>False</AotAssemblies>
-    <EnableLLVM>False</EnableLLVM>
     <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
-    <EnableProguard>True</EnableProguard>
     <DebugSymbols>False</DebugSymbols>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
@@ -166,6 +160,24 @@
       <HintPath>..\..\packages\Xamarin.Forms.2.3.3.180\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Plugin.Geolocator.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\MonoAndroid10\Plugin.Geolocator.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Geolocator">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\MonoAndroid10\Plugin.Geolocator.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Vector.Drawable">
+      <HintPath>..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable">
+      <HintPath>..\..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.23.3.0\lib\MonoAndroid403\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Android">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRenderers\CustomButtonRenderer.cs" />
@@ -173,15 +185,12 @@
     <Compile Include="CustomRenderers\CustomWebviewRenderer.cs" />
     <Compile Include="CustomRenderers\PullToRefreshViewRenderer.cs" />
     <Compile Include="Injected\ContentDirectory.cs" />
-    <Compile Include="Injected\CSVReader.cs" />
     <Compile Include="Injected\Encrypt.cs" />
     <Compile Include="Injected\FileLauncher.cs" />
     <Compile Include="Injected\LaunchBrowser.cs" />
-    <Compile Include="Injected\LaunchChat.cs" />
     <Compile Include="Injected\Localisation.cs" />
     <Compile Include="Injected\NetworkSpinner.cs" />
     <Compile Include="Injected\Preferences.cs" />
-    <Compile Include="Injected\SQLite_Android.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -189,7 +198,9 @@
     <Compile Include="Utils\JavaLangHelper.cs" />
     <Compile Include="Utils\Keys.cs" />
     <Compile Include="Utils\UIUtils.cs" />
-    <Compile Include="Utils\Utils.cs" />
+    <Compile Include="Injected\ModalView.cs" />
+    <Compile Include="Injected\SQLConnection.cs" />
+    <Compile Include="Splash.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -202,18 +213,60 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable\bluestar.png" />
+    <AndroidResource Include="Resources\drawable\emptystar.png" />
+    <AndroidResource Include="Resources\drawable\gps.png" />
+    <AndroidResource Include="Resources\drawable\greenstar.png" />
+    <AndroidResource Include="Resources\drawable\h.png" />
+    <AndroidResource Include="Resources\drawable\left.png" />
+    <AndroidResource Include="Resources\drawable\orangestar.png" />
+    <AndroidResource Include="Resources\drawable\p.png" />
+    <AndroidResource Include="Resources\drawable\pinkstar.png" />
+    <AndroidResource Include="Resources\drawable\purplestar.png" />
+    <AndroidResource Include="Resources\drawable\right.png" />
+    <AndroidResource Include="Resources\drawable\roundedbutton.xml" />
+    <AndroidResource Include="Resources\drawable\w.png" />
+    <AndroidResource Include="Resources\drawable\yellowstar.png" />
+    <AndroidResource Include="Resources\layout\modalratings.axml" />
+    <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\drawable\anxiety.png" />
+    <AndroidResource Include="Resources\drawable\apps.png" />
+    <AndroidResource Include="Resources\drawable\autism.png" />
+    <AndroidResource Include="Resources\drawable\bereavement.png" />
+    <AndroidResource Include="Resources\drawable\bullying.png" />
+    <AndroidResource Include="Resources\drawable\depression.png" />
+    <AndroidResource Include="Resources\drawable\gen_mental_health.png" />
+    <AndroidResource Include="Resources\drawable\involvement.png" />
+    <AndroidResource Include="Resources\drawable\learning_disabilities.png" />
+    <AndroidResource Include="Resources\drawable\local_services.png" />
+    <AndroidResource Include="Resources\drawable\looked_after_children.png" />
+    <AndroidResource Include="Resources\drawable\mental_health.png" />
+    <AndroidResource Include="Resources\drawable\mood.png" />
+    <AndroidResource Include="Resources\drawable\parent_guide.png" />
+    <AndroidResource Include="Resources\drawable\parent_resources.png" />
+    <AndroidResource Include="Resources\drawable\peer_support.png" />
+    <AndroidResource Include="Resources\drawable\safeguard.jpg" />
+    <AndroidResource Include="Resources\drawable\safeguard.png" />
+    <AndroidResource Include="Resources\drawable\selfharm.png" />
+    <AndroidResource Include="Resources\drawable\selfhelp.png" />
+    <AndroidResource Include="Resources\drawable\sleeping.png" />
+    <AndroidResource Include="Resources\drawable\stress.png" />
+    <AndroidResource Include="Resources\drawable\substance_abuse.png" />
+    <AndroidResource Include="Resources\drawable\video.png" />
+    <AndroidResource Include="Resources\drawable\videocall.png" />
+    <AndroidResource Include="Resources\drawable\well_being.png" />
+    <AndroidResource Include="Resources\drawable\www.png" />
+    <AndroidResource Include="Resources\drawable\youth_support.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Tabbar.axml" />
-    <AndroidResource Include="Resources\layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyMindV3\MyMindV3.csproj">
-      <Project>{debacb2c-b7d5-467d-bb77-1f8abb4b640e}</Project>
+      <Project>{79A1501E-B069-4A8D-BA47-6100DDBC5CE1}</Project>
       <Name>MyMindV3</Name>
     </ProjectReference>
   </ItemGroup>
@@ -400,6 +453,9 @@
   <ItemGroup>
     <AndroidResource Include="Resources\xml\file_paths.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\layout\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
@@ -408,4 +464,5 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets'))" />
   </Target>
+  <Import Project="..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />
 </Project>

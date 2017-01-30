@@ -97,7 +97,6 @@
     <Compile Include="Injected\NetworkSpinner.cs" />
     <Compile Include="Injected\OpenFile.cs" />
     <Compile Include="Injected\Preferences.cs" />
-    <Compile Include="Injected\SQLite_iOS.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="app.config" />
@@ -109,13 +108,50 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
     <BundleResource Include="Resources\camhs.csv" />
+    <BundleResource Include="Resources\bluestar.png" />
+    <BundleResource Include="Resources\emptystar.png" />
+    <BundleResource Include="Resources\gps.png" />
+    <BundleResource Include="Resources\greenstar.png" />
+    <BundleResource Include="Resources\h.png" />
+    <BundleResource Include="Resources\left.png" />
+    <BundleResource Include="Resources\orangestar.png" />
+    <BundleResource Include="Resources\p.png" />
+    <BundleResource Include="Resources\pinkstar.png" />
+    <BundleResource Include="Resources\purplestar.png" />
+    <BundleResource Include="Resources\right.png" />
+    <BundleResource Include="Resources\w.png" />
+    <BundleResource Include="Resources\yellowstar.png" />
+    <Compile Include="Injected\SQLConnectionFactory.cs" />
+    <BundleResource Include="Resources\anxiety.png" />
+    <BundleResource Include="Resources\apps.png" />
+    <BundleResource Include="Resources\autism.png" />
+    <BundleResource Include="Resources\bereavement.png" />
+    <BundleResource Include="Resources\bullying.png" />
+    <BundleResource Include="Resources\depression.png" />
+    <BundleResource Include="Resources\gen_mental_health.png" />
+    <BundleResource Include="Resources\involvement.png" />
+    <BundleResource Include="Resources\learning_disabilities.png" />
+    <BundleResource Include="Resources\local_services.png" />
+    <BundleResource Include="Resources\looked_after_children.png" />
+    <BundleResource Include="Resources\mental_health.png" />
+    <BundleResource Include="Resources\mood.png" />
+    <BundleResource Include="Resources\parent_guide.png" />
+    <BundleResource Include="Resources\parent_resources.png" />
+    <BundleResource Include="Resources\peer_support.png" />
+    <BundleResource Include="Resources\safeguard.jpg" />
+    <BundleResource Include="Resources\safeguard.png" />
+    <BundleResource Include="Resources\selfharm.png" />
+    <BundleResource Include="Resources\selfhelp.png" />
+    <BundleResource Include="Resources\sleeping.png" />
+    <BundleResource Include="Resources\stress.png" />
+    <BundleResource Include="Resources\substance_abuse.png" />
+    <BundleResource Include="Resources\video.png" />
+    <BundleResource Include="Resources\videocall.png" />
+    <BundleResource Include="Resources\well_being.png" />
+    <BundleResource Include="Resources\www.png" />
+    <BundleResource Include="Resources\youth_support.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Icon-60%403x.png" />
     <BundleResource Include="Resources\Icon-Small-40%403x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
@@ -185,10 +221,22 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Plugin.Geolocator.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\Xamarin.iOS10\Plugin.Geolocator.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Geolocator">
+      <HintPath>..\..\packages\Xam.Plugin.Geolocator.3.0.4\lib\Xamarin.iOS10\Plugin.Geolocator.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageCircle.Forms.Plugin.iOS">
+      <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyMindV3\MyMindV3.csproj">
-      <Project>{debacb2c-b7d5-467d-bb77-1f8abb4b640e}</Project>
+      <Project>{79A1501E-B069-4A8D-BA47-6100DDBC5CE1}</Project>
       <Name>MyMindV3</Name>
     </ProjectReference>
   </ItemGroup>
@@ -352,6 +400,29 @@
     <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImages.launchimage\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default%402x.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default-568h%402x.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default-Portrait.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\29.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\40.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\87.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\120 - iPhone.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\180 - iPhone 6 Plus.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-76.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-76%402x.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-Small%402x.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\167.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\640x960.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\640x1136.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\750x1334.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\1242x2208.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\768x1024.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\1536x2048.png" />
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />

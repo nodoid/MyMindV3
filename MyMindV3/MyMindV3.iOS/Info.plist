@@ -9,6 +9,8 @@
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
@@ -27,14 +29,6 @@
 	<string>uk.nhs.nelft.MyMindV3</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
-	<key>CFBundleIconFiles</key>
-	<array>
-		<string>Default.png</string>
-		<string>Default@2x.png</string>
-		<string>Default-568h@2x.png</string>
-		<string>Default-Portrait.png</string>
-		<string>Default-Portrait@2x.png</string>
-	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
@@ -46,8 +40,22 @@
 	<key>NSCameraUsageDescription</key>
 	<string>Video chat between yourself and clinician, taking and uploading your profile image</string>
 	<key>XSAppIconAssets</key>
-	<string>Resources/AppIcons.xcassets/AppIcons.appiconset</string>
+	<string>Resources/AppIcons.xcassets/AppIcon.appiconset</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
+	<key>CFBundleName</key>
+	<string>MyMindV3</string>
+	<key>Custom PropertyNSLocationWhenInUseUsageDescription</key>
+	<string>Accessing the users location while they are interacting with your app</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Accesses the users location in the background</string>
+	<key>Custom Property</key>
+	<string>Monitoring and notification of upcoming clinical appintments</string>
+	<key>Custom Property1</key>
+	<string>Storing and viewing resource images downloaded</string>
+	<key>Custom Property2</key>
+	<string>Video chat between yourself and clinician, taking and uploading your profile image</string>
+	<key>XSLaunchImageAssets</key>
+	<string>Resources/AppIcons.xcassets/LaunchImage.launchimage</string>
 </dict>
 </plist>
