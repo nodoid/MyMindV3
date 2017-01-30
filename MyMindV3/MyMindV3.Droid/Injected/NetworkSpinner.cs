@@ -1,7 +1,6 @@
 ﻿using MyMindV3.Droid;
 using Xamarin.Forms;
 using Android.App;
-using System;
 
 [assembly: Dependency(typeof(NetworkSpin))]
 namespace MyMindV3.Droid
@@ -14,14 +13,14 @@ namespace MyMindV3.Droid
         {
             if (on)
             {
-                MainActivity.Active.RunOnUiThread(delegate
+                MainActivity.Activity.RunOnUiThread(delegate
                 {
                     progress = ProgressDialog.Show(Forms.Context, title, message);
                 });
             }
             else
             {
-                MainActivity.Active.RunOnUiThread(delegate
+                MainActivity.Activity.RunOnUiThread(delegate
                 {
                     progress.Dismiss();
                 });
