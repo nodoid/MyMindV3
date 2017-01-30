@@ -17,6 +17,7 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
+            ViewModel.IsConnected = App.Self.IsConnected;
             SetValues();
         }
 
@@ -41,17 +42,16 @@ namespace MyMindV3.Views
                 PlanList.IsRefreshing = true;
                 ViewModel.GuidToUse = guidToUse;
                 resources = ViewModel.MyPlan;
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            PlanList.ItemsSource = null;
-                            PlanList.ItemsSource = resources;
-                        });
-
-                        PlanList.IsRefreshing = false;
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    PlanList.ItemsSource = null;
+                    PlanList.ItemsSource = resources;
+                    PlanList.IsRefreshing = false;
+                });
             };
         }
 
-        
+
         void Handle_Clicked(object sender, System.EventArgs e)
         {
             var fileid = ((Button)sender).ClassId;
