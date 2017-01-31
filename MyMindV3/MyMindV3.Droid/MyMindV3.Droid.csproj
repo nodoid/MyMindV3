@@ -254,7 +254,9 @@
     <AndroidResource Include="Resources\drawable\video.png" />
     <AndroidResource Include="Resources\drawable\well_being.png" />
     <AndroidResource Include="Resources\drawable\www.png" />
-    <AndroidResource Include="Resources\drawable\youth_support.png" />
+    <AndroidResource Include="Resources\drawable\young_carer.png" />
+    <AndroidResource Include="Resources\drawable\domestic_abuse.png" />
+    <AndroidResource Include="Resources\drawable\spousal_abuse.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

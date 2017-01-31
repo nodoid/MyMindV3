@@ -140,14 +140,16 @@
     <BundleResource Include="Resources\peer_support.png" />
     <BundleResource Include="Resources\safeguard.png" />
     <BundleResource Include="Resources\self_help.png" />
-    <BundleResource Include="Resources\selfharm.png" />
+    <BundleResource Include="Resources\self_harm.png" />
     <BundleResource Include="Resources\sleeping.png" />
-    <BundleResource Include="Resources\substance_abuse.png" />
+    <BundleResource Include="Resources\substance_misuse.png" />
     <BundleResource Include="Resources\video.png" />
     <BundleResource Include="Resources\well_being.png" />
     <BundleResource Include="Resources\www.png" />
-    <BundleResource Include="Resources\youth_support.png" />
+    <BundleResource Include="Resources\young_carer.png" />
     <BundleResource Include="Resources\bluestar.png" />
+    <BundleResource Include="Resources\domestic_abuse.png" />
+    <BundleResource Include="Resources\spousal_abuse.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
