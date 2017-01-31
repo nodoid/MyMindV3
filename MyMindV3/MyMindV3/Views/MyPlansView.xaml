@@ -60,7 +60,7 @@
 				</StackLayout>
 			</AbsoluteLayout>
 		</StackLayout>
-		<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="0,0">
+		<StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Opacity=".5" Padding="0,0">
 			<Grid Padding="0, 0">
 				<Grid.RowDefinitions>
 					<RowDefinition Height="*" />
@@ -69,13 +69,13 @@
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 				<!--<ScrollView Grid.Row="0" Grid.Column="0" Orientation="Vertical">-->
-				<StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="20,20">
+				<StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="20,20">
 					<ListView x:Name="PlanList" HasUnevenRows="True" SeparatorVisibility="None">
 						<ListView.ItemTemplate>
 							<DataTemplate>
 								<ViewCell>
 									<StackLayout Orientation="Vertical">
-										<StackLayout Orientation="Vertical" Padding="20" Spacing="5" BackgroundColor="#ffffff">
+										<StackLayout Orientation="Vertical" Padding="20" Spacing="5">
 											<StackLayout Orientation="Horizontal">
 												<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Name}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
 												<Label Text="{Binding FileName}" Style="{StaticResource BlackLabel15Style}" />
