@@ -48,13 +48,11 @@
     <Compile Include="Helpers\decrypter.cs" />
     <Compile Include="Helpers\DTSanity.cs" />
     <Compile Include="Interfaces\IAndroidMethods.cs" />
-    <Compile Include="Interfaces\ICometChat.cs" />
     <Compile Include="Interfaces\IContent.cs" />
     <Compile Include="Interfaces\IEncrypt.cs" />
     <Compile Include="Interfaces\IFile.cs" />
     <Compile Include="Interfaces\IFileAndroid.cs" />
     <Compile Include="Interfaces\ILaunchBrowser.cs" />
-    <Compile Include="Interfaces\ILaunchCometChat.cs" />
     <Compile Include="Interfaces\ILocalise.cs" />
     <Compile Include="Interfaces\ILoginManager.cs" />
     <Compile Include="Interfaces\INetworkSpinner.cs" />
@@ -248,7 +246,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Views\MyResourcesView.xaml-old.cs" />
-    <None Include="Views\ResourcesView.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Network\" />
