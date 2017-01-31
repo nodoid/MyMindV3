@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+	<!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,455 +59,467 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="Gen_OK" xml:space="preserve">
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Gen_OK" xml:space="preserve">
     <value>OK</value>
   </data>
-  <data name="Gen_Error" xml:space="preserve">
+	<data name="Gen_Error" xml:space="preserve">
     <value>Error</value>
   </data>
-  <data name="Gen_Cancel" xml:space="preserve">
+	<data name="Gen_Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="Gen_Update" xml:space="preserve">
+	<data name="Gen_Update" xml:space="preserve">
     <value>Update</value>
   </data>
-  <data name="Login_EnterName" xml:space="preserve">
-    <value>Enter name</value>
-  </data>
-  <data name="Login_Title" xml:space="preserve">
-    <value>Login</value>
-  </data>
-  <data name="Login_Name" xml:space="preserve">
-    <value>NAME</value>
-  </data>
-  <data name="Login_Password" xml:space="preserve">
-    <value>PASSWORD</value>
-  </data>
-  <data name="Login_EnterPassword" xml:space="preserve">
-    <value>Enter password</value>
-  </data>
-  <data name="Login_SignIn" xml:space="preserve">
-    <value>Sign In</value>
-  </data>
-  <data name="Login_AcceptOne" xml:space="preserve">
-    <value>MyMind is a communication app to be used to complete recovery goals, access resources and to contact clinicians for general purposes only. The app is not for contact during a crisis and if I feel at risk I should contact my local CAMHS service directly or the trust 24 hours crisis line on:</value>
-  </data>
-  <data name="Login_AcceptTwo" xml:space="preserve">
-    <value>I can also go directly to my local A+E</value>
-  </data>
-  <data name="Login_AcceptThree" xml:space="preserve">
-    <value>A+E</value>
-  </data>
-  <data name="Login_AcceptFour" xml:space="preserve">
-    <value>out of these hours</value>
-  </data>
-  <data name="Login_AcceptTerms" xml:space="preserve">
-    <value>I understand and accept</value>
-  </data>
-  <data name="Login_SignUp" xml:space="preserve">
-    <value>SIGN UP</value>
-  </data>
-  <data name="Login_NoAccount" xml:space="preserve">
-    <value>DON'T HAVE AN ACCOUNT?</value>
-  </data>
-  <data name="RegUser_Title" xml:space="preserve">
-    <value>REGISTERED USERS - ADMIN ONLY</value>
-  </data>
-  <data name="RegUser_Name" xml:space="preserve">
-    <value>Name:</value>
-  </data>
-  <data name="RegUser_Email" xml:space="preserve">
-    <value>Email:</value>
-  </data>
-  <data name="RegUser_UserID" xml:space="preserve">
-    <value>UserID:</value>
-  </data>
-  <data name="RegUser_Phone" xml:space="preserve">
-    <value>Phone:</value>
-  </data>
-  <data name="RegUser_Auth" xml:space="preserve">
-    <value>Is Authenticated:</value>
-  </data>
-  <data name="RegUser_Admin" xml:space="preserve">
-    <value>Is Admin:</value>
-  </data>
-  <data name="RegUser_TotalReg" xml:space="preserve">
-    <value>Total Registered Users:</value>
-  </data>
-  <data name="PinCode_Title" xml:space="preserve">
-    <value>Pin Code Login</value>
-  </data>
-  <data name="MyClinician_Title" xml:space="preserve">
-    <value>My Clinician</value>
-  </data>
-  <data name="MyClinician_WhatIDo" xml:space="preserve">
-    <value>WHAT I DO</value>
-  </data>
-  <data name="MyClinician_ClinName" xml:space="preserve">
-    <value>Clinicians name</value>
-  </data>
-  <data name="MyClinician_ClinRole" xml:space="preserve">
-    <value>Clinician role</value>
-  </data>
-  <data name="MyClinician_FunFact" xml:space="preserve">
-    <value>FUN FACT ABOUT ME</value>
-  </data>
-  <data name="MyClinician_Fact" xml:space="preserve">
-    <value>Clinician fun fact</value>
-  </data>
-  <data name="MyClinician_Contact" xml:space="preserve">
-    <value>CONTACT NUMBER</value>
-  </data>
-  <data name="MyClinician_Phone" xml:space="preserve">
-    <value>Clinicians number</value>
-  </data>
-  <data name="MyJourney_Title" xml:space="preserve">
-    <value>My Journey</value>
-  </data>
-  <data name="MyJourney_ApptsSummary" xml:space="preserve">
-    <value>Appointments Summary</value>
-  </data>
-  <data name="MyJourney_ApptsWeek" xml:space="preserve">
-    <value>Appts this week:</value>
-  </data>
-  <data name="MyJourney_ApptsMonth" xml:space="preserve">
-    <value>Appts this month:</value>
-  </data>
-  <data name="MyJourney_Date" xml:space="preserve">
-    <value>Date:</value>
-  </data>
-  <data name="MyJourney_Loc" xml:space="preserve">
-    <value>Location:</value>
-  </data>
-  <data name="MyJourney_Outcome" xml:space="preserve">
-    <value>Outcome:</value>
-  </data>
-  <data name="MyJourney_AlertSelected" xml:space="preserve">
-    <value>Selected</value>
-  </data>
-  <data name="MyJourney_AlertSelectedMsg" xml:space="preserve">
-    <value>You selected</value>
-  </data>
-  <data name="MyMind_Title" xml:space="preserve">
-    <value>My Mind</value>
-  </data>
-  <data name="MyMind_Session" xml:space="preserve">
-    <value>Session expires</value>
-  </data>
-  <data name="MyMind_Profile" xml:space="preserve">
-    <value>My Profile</value>
-  </data>
-  <data name="MyMind_PatientProfile" xml:space="preserve">
-    <value>My Patient Profile</value>
-  </data>
-  <data name="MyMind_Resources" xml:space="preserve">
-    <value>My Resources</value>
-  </data>
-  <data name="MyMind_Clinician" xml:space="preserve">
-    <value>My Clinician</value>
-  </data>
-  <data name="MyMind_Journey" xml:space="preserve">
-    <value>My Journey</value>
-  </data>
-  <data name="MyMind_Chat" xml:space="preserve">
-    <value>My Chat</value>
-  </data>
-  <data name="MyMind_Plans" xml:space="preserve">
-    <value>My Plans</value>
-  </data>
-  <data name="MyMind_PlansFilename" xml:space="preserve">
-    <value>File Name</value>
-  </data>
-  <data name="MyMind_PlansType" xml:space="preserve">
-    <value>Type</value>
-  </data>
-  <data name="MyMind_PlansUpload" xml:space="preserve">
-    <value>Upload Date Time</value>
-  </data>
-  <data name="MyMind_PlansView" xml:space="preserve">
-    <value>View</value>
-  </data>
-  <data name="MyMind_Logout" xml:space="preserve">
-    <value>Log out</value>
-  </data>
-  <data name="MyPlans_Title" xml:space="preserve">
-    <value>My Plans</value>
-  </data>
-  <data name="MyProfile_Title" xml:space="preserve">
-    <value>My Profile</value>
-  </data>
-  <data name="MyProfile_PrefName" xml:space="preserve">
-    <value>PREFERRED NAME</value>
-  </data>
-  <data name="MyProfile_PatientName" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="MyProfile_DOB" xml:space="preserve">
-    <value>DATE OF BIRTH</value>
-  </data>
-  <data name="MyProfile_Phone" xml:space="preserve">
-    <value>PHONE NUMBER</value>
-  </data>
-  <data name="MyProfile_WhyRefer" xml:space="preserve">
-    <value>WHY I THINK I WAS REFERRED</value>
-  </data>
-  <data name="MyProfile_Like" xml:space="preserve">
-    <value>SOMETHING I LIKE</value>
-  </data>
-  <data name="MyProfile_Dislike" xml:space="preserve">
-    <value>SOMETHING I DISLIKE</value>
-  </data>
-  <data name="MyProfile_WhatIWant" xml:space="preserve">
-    <value>WHAT I WANT TO GET FROM TREATMENT</value>
-  </data>
-  <data name="MyProfile_Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="MyProfile_EnterName" xml:space="preserve">
-    <value>Enter name</value>
-  </data>
-  <data name="MyProfile_EnterPrefName" xml:space="preserve">
-    <value>Enter preferred name</value>
-  </data>
-  <data name="MyProfile_EnterDOB" xml:space="preserve">
-    <value>Enter date of birth</value>
-  </data>
-  <data name="MyProfile_EnterPhone" xml:space="preserve">
-    <value>Enter phone</value>
-  </data>
-  <data name="MyProfile_EnterReason" xml:space="preserve">
-    <value>Enter referral reason</value>
-  </data>
-  <data name="MyProfile_EnterLikes" xml:space="preserve">
-    <value>Enter likes</value>
-  </data>
-  <data name="MyProfile_EnterDislikes" xml:space="preserve">
-    <value>Enter dislikes</value>
-  </data>
-  <data name="MyProfile_EnterGoals" xml:space="preserve">
-    <value>Enter goals</value>
-  </data>
-  <data name="MyProfile_ErrorCameraTitle" xml:space="preserve">
-    <value>Camera Error</value>
-  </data>
-  <data name="MyProfile_ErrorCameraMessage" xml:space="preserve">
-    <value>No camera available</value>
-  </data>
-  <data name="MyResources_Title" xml:space="preserve">
-    <value>My Resources</value>
-  </data>
-  <data name="MyResources_Category" xml:space="preserve">
-    <value>Category:</value>
-  </data>
-  <data name="MyResources_Location" xml:space="preserve">
-    <value>Location:</value>
-  </data>
-  <data name="MyResources_Address" xml:space="preserve">
-    <value>Address:</value>
-  </data>
-  <data name="MyResources_Referral" xml:space="preserve">
-    <value>Referrals:</value>
-  </data>
-  <data name="MyResources_Contact" xml:space="preserve">
-    <value>Contact Information:</value>
-  </data>
-  <data name="MyResources_AlertSelected" xml:space="preserve">
-    <value>Selected</value>
-  </data>
-  <data name="MyResources_AlertSelectedMsg" xml:space="preserve">
-    <value>You selected</value>
-  </data>
-  <data name="MyResources_FilterOn" xml:space="preserve">
-    <value>Select category</value>
-  </data>
-  <data name="MyResources_FilterOff" xml:space="preserve">
-    <value>No filter</value>
-  </data>
-  <data name="SignUp_Title" xml:space="preserve">
-    <value>Sign Up</value>
-  </data>
-  <data name="SignUp_Name" xml:space="preserve">
-    <value>NAME</value>
-  </data>
-  <data name="SignUp_PrefName" xml:space="preserve">
-    <value>Preferred NAME</value>
-  </data>
-  <data name="SignUp_Email" xml:space="preserve">
-    <value>EMAIL</value>
-  </data>
-  <data name="SignUp_DOB" xml:space="preserve">
-    <value>DATE OF BIRTH</value>
-  </data>
-  <data name="SignUp_Password" xml:space="preserve">
-    <value>PASSWORD</value>
-  </data>
-  <data name="SignUp_RepPassword" xml:space="preserve">
-    <value>REPEAT PASSWORD</value>
-  </data>
-  <data name="SignUp_Phone" xml:space="preserve">
-    <value>Phone</value>
-  </data>
-  <data name="SignUp_Pin" xml:space="preserve">
-    <value>PIN CODE</value>
-  </data>
-  <data name="SignUp_EnterName" xml:space="preserve">
-    <value>Enter name</value>
-  </data>
-  <data name="SignUp_EnterPrefName" xml:space="preserve">
-    <value>Enter preferred name</value>
-  </data>
-  <data name="SignUp_EnterEmail" xml:space="preserve">
-    <value>Enter email</value>
-  </data>
-  <data name="SignUp_EnterPassword" xml:space="preserve">
-    <value>Enter password</value>
-  </data>
-  <data name="SignUp_EnterRepPassword" xml:space="preserve">
-    <value>Repeat password</value>
-  </data>
-  <data name="SignUp_EnterPhone" xml:space="preserve">
-    <value>Enter phone</value>
-  </data>
-  <data name="SignUp_EnterPin" xml:space="preserve">
-    <value>Enter a pincode</value>
-  </data>
-  <data name="SignUp_HaveAcc" xml:space="preserve">
-    <value>ALREADY HAVE AN ACCOUNT?</value>
-  </data>
-  <data name="SignUp_SignIn" xml:space="preserve">
-    <value>SIGN IN</value>
-  </data>
-  <data name="Launch_Ican" xml:space="preserve">
-    <value>Go to ICan website</value>
-  </data>
-  <data name="Launch_Journey" xml:space="preserve">
-    <value>Return to My Journey</value>
-  </data>
-  <data name="LoginPincode_Login" xml:space="preserve">
-    <value>Enter your pin code to log back in</value>
-  </data>
-  <data name="Login_UserPassError" xml:space="preserve">
-    <value>Please provide your name and password</value>
-  </data>
-  <data name="Login_InvalidError" xml:space="preserve">
-    <value>Could not login with the details provided</value>
-  </data>
-  <data name="Login_NetworkError" xml:space="preserve">
-    <value>You do not currently have a network connection</value>
-  </data>
-  <data name="SignUp_AllFieldsError" xml:space="preserve">
-    <value>Please complete all fields</value>
-  </data>
-  <data name="Data_UploadingTitle" xml:space="preserve">
-    <value>Uploading data</value>
-  </data>
-  <data name="Data_DownloadTitle" xml:space="preserve">
-    <value>Downloading data</value>
-  </data>
-  <data name="Data_PleaseWait" xml:space="preserve">
-    <value>Please wait....</value>
-  </data>
-  <data name="MyPatient_Title" xml:space="preserve">
-    <value>My Patient Profile</value>
-  </data>
-  <data name="MyPatient_Details" xml:space="preserve">
-    <value>Details</value>
-  </data>
-  <data name="MyPatient_Select" xml:space="preserve">
-    <value>Select the client</value>
-  </data>
-  <data name="MyPatient_Notes" xml:space="preserve">
-    <value>Notes</value>
-  </data>
-  <data name="ICan_Title" xml:space="preserve">
-    <value>ICAN Details</value>
-  </data>
-  <data name="ICan_Message1" xml:space="preserve">
-    <value>Your ICAN number is</value>
-  </data>
-  <data name="ICan_Message2" xml:space="preserve">
-    <value>Please enter this value on the form.</value>
-  </data>
-  <data name="ICan_Message3" xml:space="preserve">
-    <value>Your HCP number is</value>
-  </data>
-  <data name="Camera_Permissions" xml:space="preserve">
-    <value>Camera Permissions</value>
-  </data>
-  <data name="Camera_Permissions_Message" xml:space="preserve">
-    <value>You have declined permission to use the camera. This will mean you are unable to change your profile image. This can be altered via the settings on your phone.</value>
-  </data>
-  <data name="Gen_PleaseWait" xml:space="preserve">
+	<data name="Gen_PleaseWait" xml:space="preserve">
     <value>Please wait</value>
   </data>
-  <data name="LoggingIn_Title" xml:space="preserve">
+	<data name="Login_EnterName" xml:space="preserve">
+    <value>Enter name</value>
+  </data>
+	<data name="Login_Title" xml:space="preserve">
+    <value>Login</value>
+  </data>
+	<data name="Login_Name" xml:space="preserve">
+    <value>NAME</value>
+  </data>
+	<data name="Login_Password" xml:space="preserve">
+    <value>PASSWORD</value>
+  </data>
+	<data name="Login_EnterPassword" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+	<data name="Login_SignIn" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+	<data name="Login_AcceptOne" xml:space="preserve">
+    <value>MyMind is a communication app to be used to complete recovery goals, access resources and to contact clinicians for general purposes only. The app is not for contact during a crisis and if I feel at risk I should contact my local CAMHS service directly or the trust 24 hours crisis line on:</value>
+  </data>
+	<data name="Login_AcceptTwo" xml:space="preserve">
+    <value>I can also go directly to my local A+E</value>
+  </data>
+	<data name="Login_AcceptThree" xml:space="preserve">
+    <value>A+E</value>
+  </data>
+	<data name="Login_AcceptFour" xml:space="preserve">
+    <value>out of these hours</value>
+  </data>
+	<data name="Login_AcceptTerms" xml:space="preserve">
+    <value>I understand and accept</value>
+  </data>
+	<data name="Login_SignUp" xml:space="preserve">
+    <value>SIGN UP</value>
+  </data>
+	<data name="Login_NoAccount" xml:space="preserve">
+    <value>DON'T HAVE AN ACCOUNT?</value>
+  </data>
+	<data name="RegUser_Title" xml:space="preserve">
+    <value>REGISTERED USERS - ADMIN ONLY</value>
+  </data>
+	<data name="RegUser_Name" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+	<data name="RegUser_Email" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+	<data name="RegUser_UserID" xml:space="preserve">
+    <value>UserID:</value>
+  </data>
+	<data name="RegUser_Phone" xml:space="preserve">
+    <value>Phone:</value>
+  </data>
+	<data name="RegUser_Auth" xml:space="preserve">
+    <value>Is Authenticated:</value>
+  </data>
+	<data name="RegUser_Admin" xml:space="preserve">
+    <value>Is Admin:</value>
+  </data>
+	<data name="RegUser_TotalReg" xml:space="preserve">
+    <value>Total Registered Users:</value>
+  </data>
+	<data name="PinCode_Title" xml:space="preserve">
+    <value>Pin Code Login</value>
+  </data>
+	<data name="MyClinician_Title" xml:space="preserve">
+    <value>My Clinician</value>
+  </data>
+	<data name="MyClinician_WhatIDo" xml:space="preserve">
+    <value>WHAT I DO</value>
+  </data>
+	<data name="MyClinician_ClinName" xml:space="preserve">
+    <value>Clinicians name</value>
+  </data>
+	<data name="MyClinician_ClinRole" xml:space="preserve">
+    <value>Clinician role</value>
+  </data>
+	<data name="MyClinician_FunFact" xml:space="preserve">
+    <value>FUN FACT ABOUT ME</value>
+  </data>
+	<data name="MyClinician_Fact" xml:space="preserve">
+    <value>Clinician fun fact</value>
+  </data>
+	<data name="MyClinician_Contact" xml:space="preserve">
+    <value>CONTACT NUMBER</value>
+  </data>
+	<data name="MyClinician_Phone" xml:space="preserve">
+    <value>Clinicians number</value>
+  </data>
+	<data name="MyJourney_Title" xml:space="preserve">
+    <value>My Journey</value>
+  </data>
+	<data name="MyJourney_ApptsSummary" xml:space="preserve">
+    <value>Appointments Summary</value>
+  </data>
+	<data name="MyJourney_ApptsWeek" xml:space="preserve">
+    <value>Appts this week:</value>
+  </data>
+	<data name="MyJourney_ApptsMonth" xml:space="preserve">
+    <value>Appts this month:</value>
+  </data>
+	<data name="MyJourney_Date" xml:space="preserve">
+    <value>Date:</value>
+  </data>
+	<data name="MyJourney_Loc" xml:space="preserve">
+    <value>Location:</value>
+  </data>
+	<data name="MyJourney_Outcome" xml:space="preserve">
+    <value>Outcome:</value>
+  </data>
+	<data name="MyJourney_AlertSelected" xml:space="preserve">
+    <value>Selected</value>
+  </data>
+	<data name="MyJourney_AlertSelectedMsg" xml:space="preserve">
+    <value>You selected</value>
+  </data>
+	<data name="MyMind_Title" xml:space="preserve">
+    <value>My Mind</value>
+  </data>
+	<data name="MyMind_Session" xml:space="preserve">
+    <value>Session expires</value>
+  </data>
+	<data name="MyMind_Profile" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+	<data name="MyMind_PatientProfile" xml:space="preserve">
+    <value>My Patient Profile</value>
+  </data>
+	<data name="MyMind_Resources" xml:space="preserve">
+    <value>My Resources</value>
+  </data>
+	<data name="MyMind_Clinician" xml:space="preserve">
+    <value>My Clinician</value>
+  </data>
+	<data name="MyMind_Journey" xml:space="preserve">
+    <value>My Journey</value>
+  </data>
+	<data name="MyMind_Chat" xml:space="preserve">
+    <value>My Chat</value>
+  </data>
+	<data name="MyMind_Plans" xml:space="preserve">
+    <value>My Plans</value>
+  </data>
+	<data name="MyMind_PlansFilename" xml:space="preserve">
+    <value>File Name</value>
+  </data>
+	<data name="MyMind_PlansType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+	<data name="MyMind_PlansUpload" xml:space="preserve">
+    <value>Upload Date Time</value>
+  </data>
+	<data name="MyMind_PlansView" xml:space="preserve">
+    <value>View</value>
+  </data>
+	<data name="MyMind_Logout" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+	<data name="MyPlans_Title" xml:space="preserve">
+    <value>My Plans</value>
+  </data>
+	<data name="MyProfile_Title" xml:space="preserve">
+    <value>My Profile</value>
+  </data>
+	<data name="MyProfile_PrefName" xml:space="preserve">
+    <value>PREFERRED NAME</value>
+  </data>
+	<data name="MyProfile_PatientName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+	<data name="MyProfile_DOB" xml:space="preserve">
+    <value>DATE OF BIRTH</value>
+  </data>
+	<data name="MyProfile_Phone" xml:space="preserve">
+    <value>PHONE NUMBER</value>
+  </data>
+	<data name="MyProfile_WhyRefer" xml:space="preserve">
+    <value>WHY I THINK I WAS REFERRED</value>
+  </data>
+	<data name="MyProfile_Like" xml:space="preserve">
+    <value>SOMETHING I LIKE</value>
+  </data>
+	<data name="MyProfile_Dislike" xml:space="preserve">
+    <value>SOMETHING I DISLIKE</value>
+  </data>
+	<data name="MyProfile_WhatIWant" xml:space="preserve">
+    <value>WHAT I WANT TO GET FROM TREATMENT</value>
+  </data>
+	<data name="MyProfile_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+	<data name="MyProfile_EnterName" xml:space="preserve">
+    <value>Enter name</value>
+  </data>
+	<data name="MyProfile_EnterPrefName" xml:space="preserve">
+    <value>Enter preferred name</value>
+  </data>
+	<data name="MyProfile_EnterDOB" xml:space="preserve">
+    <value>Enter date of birth</value>
+  </data>
+	<data name="MyProfile_EnterPhone" xml:space="preserve">
+    <value>Enter phone</value>
+  </data>
+	<data name="MyProfile_EnterReason" xml:space="preserve">
+    <value>Enter referral reason</value>
+  </data>
+	<data name="MyProfile_EnterLikes" xml:space="preserve">
+    <value>Enter likes</value>
+  </data>
+	<data name="MyProfile_EnterDislikes" xml:space="preserve">
+    <value>Enter dislikes</value>
+  </data>
+	<data name="MyProfile_EnterGoals" xml:space="preserve">
+    <value>Enter goals</value>
+  </data>
+	<data name="MyProfile_ErrorCameraTitle" xml:space="preserve">
+    <value>Camera Error</value>
+  </data>
+	<data name="MyProfile_ErrorCameraMessage" xml:space="preserve">
+    <value>No camera available</value>
+  </data>
+	<data name="MyResources_Title" xml:space="preserve">
+    <value>My Resources</value>
+  </data>
+	<data name="MyResources_Postcode" xml:space="preserve">
+    <value>Enter your postcode</value>
+  </data>
+	<data name="MyResources_GettingResources" xml:space="preserve">
+    <value>Downloading resources</value>
+  </data>
+	<data name="MyResources_Location" xml:space="preserve">
+    <value>Location:</value>
+  </data>
+	<data name="MyResources_Address" xml:space="preserve">
+    <value>Address:</value>
+  </data>
+	<data name="MyResources_Referral" xml:space="preserve">
+    <value>Referrals:</value>
+  </data>
+	<data name="MyResources_Contact" xml:space="preserve">
+    <value>Contact Information:</value>
+  </data>
+	<data name="MyResources_AlertSelected" xml:space="preserve">
+    <value>Selected</value>
+  </data>
+	<data name="MyResources_AlertSelectedMsg" xml:space="preserve">
+    <value>You selected</value>
+  </data>
+	<data name="MyResources_FilterOn" xml:space="preserve">
+    <value>Select category</value>
+  </data>
+	<data name="MyResources_FilterOff" xml:space="preserve">
+    <value>No filter</value>
+  </data>
+	<data name="SignUp_Title" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+	<data name="SignUp_Name" xml:space="preserve">
+    <value>NAME</value>
+  </data>
+	<data name="SignUp_PrefName" xml:space="preserve">
+    <value>Preferred NAME</value>
+  </data>
+	<data name="SignUp_Email" xml:space="preserve">
+    <value>EMAIL</value>
+  </data>
+	<data name="SignUp_DOB" xml:space="preserve">
+    <value>DATE OF BIRTH</value>
+  </data>
+	<data name="SignUp_Password" xml:space="preserve">
+    <value>PASSWORD</value>
+  </data>
+	<data name="SignUp_RepPassword" xml:space="preserve">
+    <value>REPEAT PASSWORD</value>
+  </data>
+	<data name="SignUp_Phone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+	<data name="SignUp_Pin" xml:space="preserve">
+    <value>PIN CODE</value>
+  </data>
+	<data name="SignUp_EnterName" xml:space="preserve">
+    <value>Enter name</value>
+  </data>
+	<data name="SignUp_EnterPrefName" xml:space="preserve">
+    <value>Enter preferred name</value>
+  </data>
+	<data name="SignUp_EnterEmail" xml:space="preserve">
+    <value>Enter email</value>
+  </data>
+	<data name="SignUp_EnterPassword" xml:space="preserve">
+    <value>Enter password</value>
+  </data>
+	<data name="SignUp_EnterRepPassword" xml:space="preserve">
+    <value>Repeat password</value>
+  </data>
+	<data name="SignUp_EnterPhone" xml:space="preserve">
+    <value>Enter phone</value>
+  </data>
+	<data name="SignUp_EnterPin" xml:space="preserve">
+    <value>Enter a pincode</value>
+  </data>
+	<data name="SignUp_HaveAcc" xml:space="preserve">
+    <value>ALREADY HAVE AN ACCOUNT?</value>
+  </data>
+	<data name="SignUp_SignIn" xml:space="preserve">
+    <value>SIGN IN</value>
+  </data>
+	<data name="Launch_Ican" xml:space="preserve">
+    <value>Go to ICan website</value>
+  </data>
+	<data name="Launch_Journey" xml:space="preserve">
+    <value>Return to My Journey</value>
+  </data>
+	<data name="LoginPincode_Login" xml:space="preserve">
+    <value>Enter your pin code to log back in</value>
+  </data>
+	<data name="Login_UserPassError" xml:space="preserve">
+    <value>Please provide your name and password</value>
+  </data>
+	<data name="Login_InvalidError" xml:space="preserve">
+    <value>Could not login with the details provided</value>
+  </data>
+	<data name="Login_NetworkError" xml:space="preserve">
+    <value>You do not currently have a network connection</value>
+  </data>
+	<data name="SignUp_AllFieldsError" xml:space="preserve">
+    <value>Please complete all fields</value>
+  </data>
+	<data name="Data_UploadingTitle" xml:space="preserve">
+    <value>Uploading data</value>
+  </data>
+	<data name="Data_DownloadTitle" xml:space="preserve">
+    <value>Downloading data</value>
+  </data>
+	<data name="Data_PleaseWait" xml:space="preserve">
+    <value>Please wait....</value>
+  </data>
+	<data name="MyPatient_Title" xml:space="preserve">
+    <value>My Patient Profile</value>
+  </data>
+	<data name="MyPatient_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+	<data name="MyPatient_Select" xml:space="preserve">
+    <value>Select the client</value>
+  </data>
+	<data name="MyPatient_Notes" xml:space="preserve">
+    <value>Notes</value>
+  </data>
+	<data name="ICan_Title" xml:space="preserve">
+    <value>ICAN Details</value>
+  </data>
+	<data name="ICan_Message1" xml:space="preserve">
+    <value>Your ICAN number is</value>
+  </data>
+	<data name="ICan_Message2" xml:space="preserve">
+    <value>Please enter this value on the form.</value>
+  </data>
+	<data name="ICan_Message3" xml:space="preserve">
+    <value>Your HCP number is</value>
+  </data>
+	<data name="Camera_Permissions" xml:space="preserve">
+    <value>Camera Permissions</value>
+  </data>
+	<data name="Camera_Permissions_Message" xml:space="preserve">
+    <value>You have declined permission to use the camera. This will mean you are unable to change your profile image. This can be altered via the settings on your phone.</value>
+  </data>
+	<data name="Error_NetworkTitle" xml:space="preserve">
+    <value>Network Error</value>
+  </data>
+	<data name="Error_PostcodeMessage" xml:space="preserve">
+    <value>An error has occured while obtaining postcodes</value>
+  </data>
+	<data name="Error_GeolocationMessage" xml:space="preserve">
+    <value>A postcode could not be found for your postion</value>
+  </data>
+	<data name="LoggingIn_Title" xml:space="preserve">
     <value>Logging in</value>
   </data>
-  <data name="Registration_ErrorMessage" xml:space="preserve">
+	<data name="Registration_ErrorMessage" xml:space="preserve">
     <value>An error occurred during the registration process. Please try again.</value>
   </data>
-  <data name="Message_UploadingMessage" xml:space="preserve">
+	<data name="Message_UploadingMessage" xml:space="preserve">
     <value>Uploading your picture to our servers. Depending on your connection speed, this may take some time.</value>
   </data>
-  <data name="Message_UploadingTitle" xml:space="preserve">
+	<data name="Message_UploadingTitle" xml:space="preserve">
     <value>Uploading</value>
   </data>
 </root>
