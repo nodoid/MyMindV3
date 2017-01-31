@@ -1,6 +1,8 @@
 ﻿using Xamarin.Forms;
 using System.Diagnostics;
 using MvvmFramework.Models;
+using MyMindV3.Languages;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace MyMindV3.Views
 {
@@ -12,7 +14,7 @@ namespace MyMindV3.Views
             {
                 FontAttributes = FontAttributes.Bold,
                 FontSize = 14,
-                TextColor = Color.Blue,
+                TextColor = Color.Yellow,
             };
             lblTitle.SetBinding(Label.TextProperty, new Binding("Title"));
 
@@ -172,23 +174,23 @@ namespace MyMindV3.Views
                                 Orientation = StackOrientation.Horizontal,
                                 Children =
                                 {
-                                    new Label{Text = "Rated",FontSize = 12},
+                                    new Label{Text = Langs.MyResources_Rated,FontSize = 12, TextColor = Color.White},
                                     starStack
                                 }
                             },
                             new StackLayout
                             {
                                 Orientation = StackOrientation.Horizontal,
-                                Children = {new Label{Text="Category:", FontSize = 12, TextColor = Color.Green}, lblCategory}
+                                Children = {new Label{Text=Langs.MyResources_Category, FontSize = 12, TextColor = Color.Green}, lblCategory}
                             },
                             new StackLayout
                             {
                                 Orientation = StackOrientation.Horizontal,
                                 Children =
                                 {
-                                    new Label {Text="Distance ", FontSize = 12, TextColor = Color.Green},
+                                            new Label {Text=Langs.MyResources_Distance, FontSize = 12, TextColor = Color.Green},
                                     lblDistance,
-                                    new Label {Text=" miles", FontSize = 12, TextColor = Color.Green},
+                                            new Label {Text=Langs.MyResources_Miles, FontSize = 12, TextColor = Color.Green},
                                 }
                             }
                         }
@@ -203,9 +205,10 @@ namespace MyMindV3.Views
                             new StackLayout
                             {
                                 Orientation = StackOrientation.Vertical,
+                                HorizontalOptions = LayoutOptions.Center,
                                 Children =
                                 {
-                                    new Label {Text = "Resource format", FontSize = 13},
+                                    new Label {Text = "Resource format", FontSize = 13, TextColor = Color.White},
                                     resourceStack
                                 }
                             }
