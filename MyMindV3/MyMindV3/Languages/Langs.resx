@@ -366,6 +366,18 @@
 	<data name="MyResources_Location" xml:space="preserve">
     <value>Location:</value>
   </data>
+	<data name="MyResources_Rated" xml:space="preserve">
+    <value>Rated</value>
+  </data>
+	<data name="MyResources_Category" xml:space="preserve">
+    <value>Category:</value>
+  </data>
+	<data name="MyResources_Distance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+	<data name="MyResources_Miles" xml:space="preserve">
+    <value>miles</value>
+  </data>
 	<data name="MyResources_Address" xml:space="preserve">
     <value>Address:</value>
   </data>

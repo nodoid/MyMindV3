@@ -545,6 +545,30 @@ namespace MyMindV3.Languages {
             }
         }
         
+        public static string MyResources_Rated {
+            get {
+                return ResourceManager.GetString("MyResources_Rated", resourceCulture);
+            }
+        }
+        
+        public static string MyResources_Category {
+            get {
+                return ResourceManager.GetString("MyResources_Category", resourceCulture);
+            }
+        }
+        
+        public static string MyResources_Distance {
+            get {
+                return ResourceManager.GetString("MyResources_Distance", resourceCulture);
+            }
+        }
+        
+        public static string MyResources_Miles {
+            get {
+                return ResourceManager.GetString("MyResources_Miles", resourceCulture);
+            }
+        }
+        
         public static string MyResources_Address {
             get {
                 return ResourceManager.GetString("MyResources_Address", resourceCulture);
