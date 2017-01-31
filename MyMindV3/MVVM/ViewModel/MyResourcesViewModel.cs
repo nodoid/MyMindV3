@@ -87,7 +87,7 @@ namespace MvvmFramework.ViewModel
 
             var filenames = new List<string>{"anxiety","depression","apps","autism","bereavement","bullying","general","involvement", "learning_disabilities",
                 "local_services", "looked_after_children","mental_health","safeguarding","mood", "parent_resources", "peer_support", "self_harm", "self_help", "www", "stress", "substance_abuse",
-                "video", "well_being", "youth_support", "sleeping","adhd"};
+                "video", "well_being", "youth_support", "sleeping","adhd","young_carer", "domestic_abuse", "spousal_abuse"};
 
             var cats = categories.Distinct().ToList();
             var cat = cats.Select(t => t.Replace('-', '_')).Select(t => t.Replace(' ', '_')).ToList();
@@ -117,7 +117,7 @@ namespace MvvmFramework.ViewModel
             {
                 "Self-help", "Self-harm", "Depression", "Bullying", "Support", "Anxiety", "Stress", "Parent resources", "Involvement", "Local Services",
                 "Mood","Substance misuse", "Bereavement", "Well-being", "Young carers", "Peer support", "Video resources", "Safeguarding",
-                "Looked after children", "Apps", "Involvement", "Learning disabilities", "Autism", "Sleep", "ADHD", "General"
+                "Looked after children", "Apps", "Involvement", "Learning disabilities", "Autism", "Sleep", "ADHD", "General", "Spousal Abuse", "Domestic Abuse"
             };
                 catList.Sort();
 
@@ -189,7 +189,7 @@ namespace MvvmFramework.ViewModel
             };
             var icons = new List<string>{"anxiety","depression","apps","autism","bereavement","bullying","general","involvement", "learning_disabilities",
                 "local_services", "looked_after_children","mental_health","safeguarding","mood", "parent_resources", "peer_support", "self_harm", "self_help", "www", "stress", "substance_abuse",
-                "video", "well_being", "youth_support", "sleeping","adhd"};
+                "video", "well_being", "young_carer", "sleeping","adhd","domestic_abuse","spousal_abuse"};
             var cats = new List<string> { "Anxiety", "Depression", "Self-harm", "Solvent abuse", "Young carer", "Domestic abuse", "Well being", "Spousal abuse", "Autism", "ADHD" };
             var rnd = new Random();
             try
