@@ -134,16 +134,7 @@ namespace MyMindV3.Droid
 
         public async static Task<Bitmap> rotateImage(string fileName, bool left = false)
         {
-            //var oldMode = GCSettings.LatencyMode;
-
-            // Make sure we can always go to the catch block, 
-            // so we can set the latency mode back to `oldMode`
-            //RuntimeHelpers.PrepareConstrainedRegions();
-
             Bitmap toReturn = null;
-            /*try
-            {*/
-            //GCSettings.LatencyMode = GCLatencyMode.LowLatency;
             using (var bmp = await BitmapFactory.DecodeFileAsync(fileName))
             {
                 if (bmp != null)
@@ -160,11 +151,6 @@ namespace MyMindV3.Droid
                         }
                     }
             }
-            /*}
-            finally
-            {
-                GCSettings.LatencyMode = oldMode;
-            }*/
             return toReturn;
         }
 
