@@ -107,8 +107,6 @@
     <Compile Include="Preview\PreviewItemFS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
-    <BundleResource Include="Resources\camhs.csv" />
-    <BundleResource Include="Resources\bluestar.png" />
     <BundleResource Include="Resources\emptystar.png" />
     <BundleResource Include="Resources\gps.png" />
     <BundleResource Include="Resources\greenstar.png" />
@@ -122,13 +120,15 @@
     <BundleResource Include="Resources\w.png" />
     <BundleResource Include="Resources\yellowstar.png" />
     <Compile Include="Injected\SQLConnectionFactory.cs" />
+    <BundleResource Include="Resources\stress.png" />
+    <BundleResource Include="Resources\adhd.png" />
     <BundleResource Include="Resources\anxiety.png" />
     <BundleResource Include="Resources\apps.png" />
     <BundleResource Include="Resources\autism.png" />
     <BundleResource Include="Resources\bereavement.png" />
     <BundleResource Include="Resources\bullying.png" />
     <BundleResource Include="Resources\depression.png" />
-    <BundleResource Include="Resources\gen_mental_health.png" />
+    <BundleResource Include="Resources\general.png" />
     <BundleResource Include="Resources\involvement.png" />
     <BundleResource Include="Resources\learning_disabilities.png" />
     <BundleResource Include="Resources\local_services.png" />
@@ -138,18 +138,16 @@
     <BundleResource Include="Resources\parent_guide.png" />
     <BundleResource Include="Resources\parent_resources.png" />
     <BundleResource Include="Resources\peer_support.png" />
-    <BundleResource Include="Resources\safeguard.jpg" />
     <BundleResource Include="Resources\safeguard.png" />
+    <BundleResource Include="Resources\self_help.png" />
     <BundleResource Include="Resources\selfharm.png" />
-    <BundleResource Include="Resources\selfhelp.png" />
     <BundleResource Include="Resources\sleeping.png" />
-    <BundleResource Include="Resources\stress.png" />
     <BundleResource Include="Resources\substance_abuse.png" />
     <BundleResource Include="Resources\video.png" />
-    <BundleResource Include="Resources\videocall.png" />
     <BundleResource Include="Resources\well_being.png" />
     <BundleResource Include="Resources\www.png" />
     <BundleResource Include="Resources\youth_support.png" />
+    <BundleResource Include="Resources\bluestar.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />

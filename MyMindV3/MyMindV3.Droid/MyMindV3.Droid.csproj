@@ -38,7 +38,6 @@
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
     <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
@@ -54,12 +53,12 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <AndroidCreatePackagePerAbi>True</AndroidCreatePackagePerAbi>
     <Debugger>Xamarin</Debugger>
     <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
     <DebugSymbols>False</DebugSymbols>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
+    <EnableProguard>false</EnableProguard>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -229,31 +228,30 @@
     <AndroidResource Include="Resources\drawable\yellowstar.png" />
     <AndroidResource Include="Resources\layout\modalratings.axml" />
     <AndroidResource Include="Resources\values\Colors.xml" />
+    <AndroidResource Include="Resources\drawable\local_services.png" />
+    <AndroidResource Include="Resources\drawable\looked_after_children.png" />
+    <AndroidResource Include="Resources\drawable\adhd.png" />
     <AndroidResource Include="Resources\drawable\anxiety.png" />
     <AndroidResource Include="Resources\drawable\apps.png" />
     <AndroidResource Include="Resources\drawable\autism.png" />
     <AndroidResource Include="Resources\drawable\bereavement.png" />
     <AndroidResource Include="Resources\drawable\bullying.png" />
     <AndroidResource Include="Resources\drawable\depression.png" />
-    <AndroidResource Include="Resources\drawable\gen_mental_health.png" />
+    <AndroidResource Include="Resources\drawable\general.png" />
     <AndroidResource Include="Resources\drawable\involvement.png" />
     <AndroidResource Include="Resources\drawable\learning_disabilities.png" />
-    <AndroidResource Include="Resources\drawable\local_services.png" />
-    <AndroidResource Include="Resources\drawable\looked_after_children.png" />
     <AndroidResource Include="Resources\drawable\mental_health.png" />
     <AndroidResource Include="Resources\drawable\mood.png" />
     <AndroidResource Include="Resources\drawable\parent_guide.png" />
     <AndroidResource Include="Resources\drawable\parent_resources.png" />
     <AndroidResource Include="Resources\drawable\peer_support.png" />
-    <AndroidResource Include="Resources\drawable\safeguard.jpg" />
     <AndroidResource Include="Resources\drawable\safeguard.png" />
-    <AndroidResource Include="Resources\drawable\selfharm.png" />
-    <AndroidResource Include="Resources\drawable\selfhelp.png" />
+    <AndroidResource Include="Resources\drawable\self_help.png" />
+    <AndroidResource Include="Resources\drawable\self_harm.png" />
     <AndroidResource Include="Resources\drawable\sleeping.png" />
     <AndroidResource Include="Resources\drawable\stress.png" />
-    <AndroidResource Include="Resources\drawable\substance_abuse.png" />
+    <AndroidResource Include="Resources\drawable\substance_misuse.png" />
     <AndroidResource Include="Resources\drawable\video.png" />
-    <AndroidResource Include="Resources\drawable\videocall.png" />
     <AndroidResource Include="Resources\drawable\well_being.png" />
     <AndroidResource Include="Resources\drawable\www.png" />
     <AndroidResource Include="Resources\drawable\youth_support.png" />
