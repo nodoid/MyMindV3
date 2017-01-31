@@ -37,7 +37,7 @@ namespace MyMindV3.iOS
             Retina = UIScreen.MainScreen.RespondsToSelector(new ObjCRuntime.Selector("scale")) ? true : false;
 
             ScreenX = UIScreen.MainScreen.Bounds.Width;
-            ScreenY = UIScreen.MainScreen.Bounds.Height
+            ScreenY = UIScreen.MainScreen.Bounds.Height;
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
