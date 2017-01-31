@@ -32,7 +32,6 @@ namespace MyMindV3.Droid
         public bool FileExists(string filename)
         {
             var fi = new FileInfo(filename);
-            var rv = File.Exists(filename) && fi.Length > 0;
             return File.Exists(filename) && fi.Length > 0;
         }
 
