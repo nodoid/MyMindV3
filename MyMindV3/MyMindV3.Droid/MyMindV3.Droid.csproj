@@ -186,7 +186,6 @@
     <Compile Include="Injected\ContentDirectory.cs" />
     <Compile Include="Injected\Encrypt.cs" />
     <Compile Include="Injected\FileLauncher.cs" />
-    <Compile Include="Injected\LaunchBrowser.cs" />
     <Compile Include="Injected\Localisation.cs" />
     <Compile Include="Injected\NetworkSpinner.cs" />
     <Compile Include="Injected\Preferences.cs" />
@@ -257,6 +256,9 @@
     <AndroidResource Include="Resources\drawable\young_carer.png" />
     <AndroidResource Include="Resources\drawable\domestic_abuse.png" />
     <AndroidResource Include="Resources\drawable\spousal_abuse.png" />
+    <AndroidResource Include="Resources\drawable\solvent_abuse.png" />
+    <AndroidResource Include="Resources\drawable\png.png" />
+    <AndroidResource Include="Resources\drawable\jpg.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

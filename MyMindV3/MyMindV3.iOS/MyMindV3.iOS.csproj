@@ -90,9 +90,7 @@
   <ItemGroup>
     <Compile Include="CustomRenderers\PullToRefreshViewRenderer.cs" />
     <Compile Include="Injected\ContentDir.cs" />
-    <Compile Include="Injected\CSVReader.cs" />
     <Compile Include="Injected\Encrypt.cs" />
-    <Compile Include="Injected\LaunchChat.cs" />
     <Compile Include="Injected\Localisation.cs" />
     <Compile Include="Injected\NetworkSpinner.cs" />
     <Compile Include="Injected\OpenFile.cs" />
@@ -150,6 +148,10 @@
     <BundleResource Include="Resources\bluestar.png" />
     <BundleResource Include="Resources\domestic_abuse.png" />
     <BundleResource Include="Resources\spousal_abuse.png" />
+    <BundleResource Include="Resources\solvent_abuse.png" />
+    <BundleResource Include="Resources\launch.png" />
+    <BundleResource Include="Resources\png.png" />
+    <BundleResource Include="Resources\jpg.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
@@ -233,6 +235,7 @@
     <Reference Include="ImageCircle.Forms.Plugin.iOS">
       <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\Xamarin.iOS10\ImageCircle.Forms.Plugin.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MyMindV3\MyMindV3.csproj">
