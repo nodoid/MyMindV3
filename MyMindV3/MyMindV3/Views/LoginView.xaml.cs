@@ -15,7 +15,7 @@ namespace MyMindV3.Views
         {
             base.OnAppearing();
 
-            this.PropertyChanged += (sender, e) =>
+            ViewModel.PropertyChanged += (sender, e) =>
             {
                 if (e.PropertyName == "IsBusy")
                 {
