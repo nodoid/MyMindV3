@@ -42,7 +42,8 @@
                         android:layout_height="wrap_content"
                         android:id="@+id/textView1"
                         android:gravity="center"
-                        android:layout_marginBottom="16dp" />
+                        android:layout_marginBottom="16dp"
+                        android:textColor="#ffffffff" />
                     <LinearLayout
                         android:orientation="vertical"
                         android:minWidth="25px"
@@ -113,20 +114,20 @@
                     android:gravity="center">
                     <Button
                         android:text="Clear"
-                        android:layout_width="wrap_content"
+                        android:layout_width="72dp"
                         android:layout_height="42dp"
                         android:id="@+id/btnClear"
                         android:background="@drawable/roundedbutton" />
                     <Button
                         android:text="Cancel"
-                        android:layout_width="wrap_content"
+                        android:layout_width="72dp"
                         android:layout_height="42dp"
                         android:id="@+id/btnCancel"
                         android:background="@drawable/roundedbutton"
                         android:layout_marginLeft="2dp" />
                     <Button
                         android:text="Done"
-                        android:layout_width="wrap_content"
+                        android:layout_width="72dp"
                         android:layout_height="42dp"
                         android:id="@+id/btnDone"
                         android:background="@drawable/roundedbutton"
