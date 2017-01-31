@@ -22,7 +22,8 @@ namespace MyMindV3.Droid
             {
                 MainActivity.Activity.RunOnUiThread(delegate
                 {
-                    progress.Dismiss();
+                    if (progress != null)
+                        progress.Dismiss();
                 });
             }
         }
