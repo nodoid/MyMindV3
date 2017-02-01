@@ -15,9 +15,20 @@ namespace MvvmFramework.ViewModel
             sqlConn = repo;
         }
 
-        public Stream GetClinicianImage(string filename)
+        string filename;
+        public string ImageFilename
         {
-            return new FileIO().LoadFile(filename).Result; 
+            get { return filename; }
+            set { Set(() => ImageFilename, ref filename, value); }
+        }
+
+        public Stream GetProfileImage
+        {
+            get
+            {
+                GetData.GetImage(ImageFilename, IsUser).ConfigureAwait(true);
+                return new FileIO().LoadFile(ImageFilename).Result;
+            }
         }
 
         public void UpdateSystemUser()
