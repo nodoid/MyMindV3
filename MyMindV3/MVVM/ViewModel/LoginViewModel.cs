@@ -154,7 +154,7 @@ namespace MvvmFramework.ViewModel
                     PreferredName = resu.Name,
                     ReferralReason = resu.ReferralReason,
                     RIOID = resu.RIOID,
-                    UserImage = string.Empty,
+                    UserImage = resu.UserImage,
                     ICANN = resu.RIOID,
                     APIToken = resu.APIToken,
                     PictureFilePath = resu.PictureFilePath,
