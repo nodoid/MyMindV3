@@ -3,6 +3,7 @@
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<helpers:LanguageConverter x:Key="Language" />
+			<helpers:ImageTypeConverter x:Key="ImageType" />
 			<helpers:IntToStringConverter x:Key="IntToString" />
 			<helpers:WidthSizeConverter x:Key="WidthSize" />
 			<Style x:Key="WhiteLabel20Style" TargetType="Label">
@@ -71,32 +72,41 @@
 				<!--<ScrollView Grid.Row="0" Grid.Column="0" Orientation="Vertical">-->
 				<StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="20,20">
 					<ListView x:Name="PlanList" HasUnevenRows="True" SeparatorVisibility="None">
-						<ListView.ItemTemplate>
+						<!--<ListView.ItemTemplate>
 							<DataTemplate>
 								<ViewCell>
-									<StackLayout Orientation="Vertical">
-										<StackLayout Orientation="Vertical" Padding="20" Spacing="5">
-											<StackLayout Orientation="Horizontal">
-												<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Name}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
-												<Label Text="{Binding FileName}" Style="{StaticResource BlackLabel15Style}" />
+									<Grid Padding="4,4">
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="{Binding Converter={StaticResource WidthSize}, ConverterParameter=.2}" />
+											<ColumnDefinition Width="{Binding Converter={StaticResource WidthSize}, ConverterParameter=.8}" />
+										</Grid.ColumnDefinitions>
+										<StackLayout Orientation="Vertical">
+											<StackLayout Orientation="Vertical" Padding="20" Spacing="5" Grid.Column="0" HorizontalOptions="Center" VerticalOptions="Center">
+												<Image Source="{Binding Converter={StaticResource ImageType}, ConverterParameter=MyMind_PlansType}" WidthRequest="32" HeightRequest="32" />
 											</StackLayout>
-											<StackLayout Orientation="Horizontal">
+											<StackLayout Orientation="Vertical" Grid.Column="1">
+												<StackLayout Orientation="Horizontal">
+													<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Name}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
+													<Label Text="{Binding FileName}" Style="{StaticResource BlackLabel15Style}" />
+												</StackLayout>
+												<StackLayout Orientation="Horizontal">
 												<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_PlansType}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
 												<Label Text="{Binding FileType}" Style="{StaticResource BlackLabel15Style}" />
-											</StackLayout>
-											<StackLayout Orientation="Horizontal">
-												<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_PlansUpload}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
-												<Label Text="{Binding FileUploadDateTime}" Style="{StaticResource BlackLabel15Style}" />
-											</StackLayout>
-											<StackLayout Orientation="Horizontal">
-												<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_PlansView}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
-												<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_PlansView}" ClassId="{Binding FileID}" Clicked="Handle_Clicked" />
+											</StackLayout>-
+												<StackLayout Orientation="Horizontal">
+													<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_PlansUpload}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
+													<Label Text="{Binding FileUploadDateTime}" Style="{StaticResource BlackLabel15Style}" />
+												</StackLayout>
+												<StackLayout Orientation="Horizontal">
+													<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_PlansView}" Style="{StaticResource BlackLabel15Style}" FontAttributes="Bold" />
+													<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_PlansView}" ClassId="{Binding FileID}" Clicked="Handle_Clicked" />
+												</StackLayout>
 											</StackLayout>
 										</StackLayout>
-									</StackLayout>
+									</Grid>
 								</ViewCell>
 							</DataTemplate>
-						</ListView.ItemTemplate>
+						</ListView.ItemTemplate>-->
 					</ListView>
 				</StackLayout>
 				<!--</ScrollView>-->
