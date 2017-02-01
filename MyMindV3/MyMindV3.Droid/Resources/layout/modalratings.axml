@@ -97,9 +97,10 @@
                                 android:layout_marginRight="2dp" />
                             <ImageView
                                 android:src="@drawable/emptystar"
-                                android:layout_width="44dp"
-                                android:layout_height="44dp"
-                                android:id="@+id/imageButton6" />
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:id="@+id/imageButton6"
+                                android:layout_marginLeft="0.0dp" />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
