@@ -177,6 +177,18 @@
     <Reference Include="ImageCircle.Forms.Plugin.Android">
       <HintPath>..\..\packages\Xam.Plugins.Forms.ImageCircle.1.8.1\lib\MonoAndroid10\ImageCircle.Forms.Plugin.Android.dll</HintPath>
     </Reference>
+    <Reference Include="PCLStorage.Abstractions">
+      <HintPath>..\..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="PCLStorage">
+      <HintPath>..\..\packages\PCLStorage.1.0.2\lib\monoandroid\PCLStorage.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\MonoAndroid10\Plugin.Media.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Media">
+      <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\MonoAndroid10\Plugin.Media.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRenderers\CustomButtonRenderer.cs" />
@@ -199,6 +211,7 @@
     <Compile Include="Injected\ModalView.cs" />
     <Compile Include="Injected\SQLConnection.cs" />
     <Compile Include="Splash.cs" />
+    <Compile Include="Resources\MyProfileView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -259,6 +272,8 @@
     <AndroidResource Include="Resources\drawable\solvent_abuse.png" />
     <AndroidResource Include="Resources\drawable\png.png" />
     <AndroidResource Include="Resources\drawable\jpg.png" />
+    <AndroidResource Include="Resources\drawable\pdf.png" />
+    <AndroidResource Include="Resources\drawable\word.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

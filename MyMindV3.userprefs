@@ -1,18 +1,41 @@
 ﻿<Properties StartupConfiguration="{B7EC01B5-1C8D-49E7-BF43-C989BDCD90FF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3/Views/MyPlansView.xaml">
+  <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="MyMindV3/MyMindV3.Droid/Injected/Preferences.cs" Line="1" Column="1" />
       <File FileName="MyMindV3/MyMindV3.Droid/Injected/SQLConnection.cs" Line="1" Column="1" />
       <File FileName="MyMindV3/MyMindV3.Droid/Injected/NetworkSpinner.cs" Line="15" Column="4" />
       <File FileName="MyMindV3/MyMindV3.Droid/Injected/Localisation.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3.Droid/Injected/FileLauncher.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyPlansView.xaml" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3.Droid/Injected/FileLauncher.cs" Line="79" Column="53" />
+      <File FileName="MyMindV3/MyMindV3/Views/LoginView.xaml" Line="32" Column="52" />
+      <File FileName="MyMindV3/MyMindV3/Converters/Language.cs" Line="14" Column="58" />
+      <File FileName="MyMindV3/MyMindV3/Converters/ImageTypeConverter.cs" Line="21" Column="35" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyPlansView.xaml.cs" Line="60" Column="87" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyPlansView.xaml" Line="102" Column="93" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyPlansListCell.cs" Line="65" Column="49" />
+      <File FileName="MyMindV3/MyMindV3/Views/ListViewCell.cs" Line="239" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Languages/Langs.resx" Line="291" Column="50" />
+      <File FileName="MyMindV3/MVVM/Webservices/GetData.cs" Line="102" Column="1" />
+      <File FileName="MyMindV3/MVVM/Helpers/FileIO.cs" Line="69" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyPlansViewModel.cs" Line="31" Column="10" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="96" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/BaseViewModel.cs" Line="199" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/LoginViewModel.cs" Line="164" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyProfileViewModel.cs" Line="32" Column="10" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyMindView.xaml.cs" Line="42" Column="1" />
+      <File FileName="MyMindV3/MVVM/Models/SystemUser.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/Models/ClinicianUser.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" Line="30" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" Line="29" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/LoginView.xaml.cs" Line="61" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.66.101:5555" AndroidDesignerPreferredTheme="MyTheme" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Converters/ImageTypeConverter.cs" line="22" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" line="29" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.ItemProperties.MyMindV3.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.733E2AF2-40BF-4F3A-8402-FC4A872F40E9" />
