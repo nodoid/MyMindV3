@@ -14,7 +14,6 @@ using MvvmFramework.Models;
 using System.Diagnostics;
 #endif
 
-
 namespace MyMindV3.Views
 {
     public partial class MyProfileView : ContentPage
@@ -52,11 +51,18 @@ namespace MyMindV3.Views
 
         void GetImage()
         {
-            var f = ViewModel.SystemUser.UserImage;
+            var f = ViewModel.GetUserImage;
             if (ViewModel.SystemUser.IsAuthenticated == 3)
                 imgUser.Source = "male_female.png";
             else
-                imgUser.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(() => ViewModel.GetProfileImage(f)) : "male_female.png";
+            {
+                ViewModel.ImageFilename = ViewModel.Filename = ViewModel.GetUserImage;
+                ViewModel.IsUser = ViewModel.SystemUser.IsAuthenticated == 2 ? true : false;
+                if (ViewModel.FileExists)
+                    imgUser.Source = ImageSource.FromFile(string.Format("{0}/{1}", ViewModel.GetCurrentFolder, ViewModel.GetUserImage));
+                else
+                    imgUser.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(() => ViewModel.GetProfileImage) : "male_female.png";
+            }
         }
 
         async Task GetDetails()
@@ -111,7 +117,7 @@ namespace MyMindV3.Views
                         if (file == null)
                             return;
 
-                        App.Self.UserSettings.SaveSetting("ImageDirectory", file.Path.Substring(0, file.Path.LastIndexOf('/')), SettingType.String);
+                        App.Self.UserSettings.SaveSetting(ViewModel.GetCurrentFolder, file.Path.Substring(0, file.Path.LastIndexOf('/')), SettingType.String);
 
                         try
                         {
