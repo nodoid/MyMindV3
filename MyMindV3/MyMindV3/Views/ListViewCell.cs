@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using MvvmFramework.Models;
 using MyMindV3.Languages;
-using Xamarin.Forms.PlatformConfiguration;
 
 namespace MyMindV3.Views
 {
