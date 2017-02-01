@@ -1,6 +1,8 @@
 ﻿using PCLStorage;
 using System.IO;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using System;
 
 namespace MvvmFramework.Helpers
 {
@@ -26,22 +28,31 @@ namespace MvvmFramework.Helpers
 
         public async Task SaveFile(string filename, Stream data)
         {
-            await Current.LocalStorage.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting).ContinueWith(async (t) =>
+            try
             {
-                if (t.IsCompleted)
+                var fs = FileSystem.Current;
+                await fs.LocalStorage.CreateFileAsync(filename, CreationCollisionOption.ReplaceExisting).ContinueWith(async (t) =>
                 {
-                    var bytes = ReadFully(data);
-                    using (var stream = await File.OpenAsync(FileAccess.ReadAndWrite))
+                    if (t.IsCompleted)
                     {
-                        stream.Write(bytes, 0, bytes.Length);
+                        var bytes = ReadFully(data);
+                        var file = t.Result;
+                        using (var stream = await file.OpenAsync(FileAccess.ReadAndWrite))
+                        {
+                            stream.Write(bytes, 0, bytes.Length);
+                        }
                     }
-                }
-            });
+                });
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0}--{1}", ex.Message, ex.InnerException);
+            }
         }
 
         public async Task<Stream> LoadFile(string filename)
         {
-            var file = await CurrentFolder.GetFileAsync(filename);
+            var file = await FileSystem.Current.LocalStorage.GetFileAsync(filename);
             //load stream to buffer  
             using (var stream = await file.OpenAsync(FileAccess.ReadAndWrite))
             {
@@ -50,6 +61,12 @@ namespace MvvmFramework.Helpers
                 stream.Read(streamBuffer, 0, (int)length);
                 return new MemoryStream(streamBuffer);
             }
+        }
+
+        public bool FileExists(string filename)
+        {
+            var res = FileSystem.Current.LocalStorage.CheckExistsAsync(filename).Result;
+            return res == ExistenceCheckResult.FileExists;
         }
     }
 }
