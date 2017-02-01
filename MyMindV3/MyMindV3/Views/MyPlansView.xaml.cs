@@ -32,10 +32,8 @@ namespace MyMindV3.Views
             ViewModel.GuidToUse = guidToUse;
             resources = ViewModel.MyPlan;
             PlanList.ItemsSource = resources;
-            PlanList.ItemSelected += (sender, e) =>
-            {
-                if (e.SelectedItem == null) return;
-            };
+            PlanList.ItemTemplate = new DataTemplate(typeof(MyPlansListCell));
+            PlanList.ItemSelected += Handle_Clicked;
             PlanList.IsPullToRefreshEnabled = true;
             PlanList.Refreshing += (object sender, EventArgs e) =>
             {
@@ -52,20 +50,22 @@ namespace MyMindV3.Views
         }
 
 
-        void Handle_Clicked(object sender, System.EventArgs e)
+        void Handle_Clicked(object sender, SelectedItemChangedEventArgs e)
         {
-            var fileid = ((Button)sender).ClassId;
-            var file = resources?.FirstOrDefault(t => t.FileID == Convert.ToInt32(fileid)).FileName;
+            var id = e.SelectedItem as ClientPlan;
+            var file = resources?.FirstOrDefault(t => t.FileID == Convert.ToInt32(id.FileID)).FileName;
             //file = file.Replace(" ", "");
             if (!string.IsNullOrEmpty(file))
             {
-                var path = string.Format("{0}/{1}", App.Self.ContentDirectory, file);
+                var path = string.Format("{0}/{1}", ViewModel.GetCurrentFolder, file);
+                //var path = string.Format("{0}/{1}", App.Self.ContentDirectory, file);
                 if (!DependencyService.Get<IContent>().FileExists(path))
                 {
-                    GetData.GetFile(fileid, ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken, file).ContinueWith((t) =>
+                    GetData.GetFile(id.FileID.ToString(), ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken, file).ContinueWith((t) =>
                     {
                         if (t.IsCompleted)
                         {
+                            ViewModel.Filename = id.FileName;
                             var filetype = file.Split('.').Last().ToLower();
                             if (filetype == "jpg" || filetype == "jpeg" || filetype == "png")
                                 Device.BeginInvokeOnMainThread(() => Navigation.PushModalAsync(new MyFileView(path)));
@@ -98,6 +98,7 @@ namespace MyMindV3.Views
                 }
                 else
                 {
+                    ViewModel.Filename = id.FileName;
                     var filetype = file.Split('.').Last().ToLower();
                     if (filetype == "jpg" || filetype == "jpeg" || filetype == "png")
                         Device.BeginInvokeOnMainThread(() => Navigation.PushModalAsync(new MyFileView(path)));
