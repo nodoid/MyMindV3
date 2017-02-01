@@ -2,9 +2,9 @@
 using MvvmFramework.Models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.ComponentModel;
-using GalaSoft.MvvmLight.Messaging;
+using System.IO;
+using MvvmFramework.Helpers;
+using PCLStorage;
 
 namespace MvvmFramework.ViewModel
 {
@@ -13,12 +13,6 @@ namespace MvvmFramework.ViewModel
         public BaseViewModel()
         {
             UpdateSessionExpirationTime();
-        }
-
-        INetworkSpinner Spinner;
-        public BaseViewModel(INetworkSpinner spinner)
-        {
-            Spinner = spinner;
         }
 
         public bool IsConnected { get; set; }
@@ -183,6 +177,52 @@ namespace MvvmFramework.ViewModel
             set
             {
                 Set(() => IsBusy, ref isBusy, value, true);
+            }
+        }
+
+        bool isUser;
+        public bool IsUser
+        {
+            get { return isUser; }
+            set { Set(() => IsUser, ref isUser, value); }
+        }
+
+        string userImage;
+        public string GetUserImage
+        {
+            get { return SystemUser.Guid; }
+        }
+
+        string clinicianImage;
+        public string GetClinicianImage
+        {
+            get { return ClinicianUser.ClinicianGUID; }
+        }
+
+        string filename;
+        public string Filename
+        {
+            get { return filename; }
+            set { Set(() => Filename, ref filename, value); }
+        }
+
+        public Stream GetImage
+        {
+            get { return new FileIO().LoadFile(Filename).Result; }
+        }
+
+        public string GetCurrentFolder
+        {
+            get { return FileSystem.Current.LocalStorage.Path; }
+        }
+
+        public bool FileExists
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Filename))
+                    return false;
+                return new FileIO().FileExists(Filename);
             }
         }
     }
