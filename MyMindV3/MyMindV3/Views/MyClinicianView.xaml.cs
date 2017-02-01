@@ -54,9 +54,18 @@ namespace MyMindV3.Views
 
         void GetImage()
         {
-            var f = ViewModel.ClinicianUser.UserImage;
-
-            imgClinician.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(() => ViewModel.GetClinicianImage(f)) : "male_female.png";
+            var f = ViewModel.GetClinicianImage;
+            if (ViewModel.SystemUser.IsAuthenticated == 3)
+                imgClinician.Source = "male_female.png";
+            else
+            {
+                ViewModel.ImageFilename = ViewModel.Filename = string.Format("{0}.jpg", ViewModel.GetClinicianImage);
+                ViewModel.IsUser = ViewModel.SystemUser.IsAuthenticated == 2 ? true : false;
+                if (ViewModel.FileExists)
+                    imgClinician.Source = ImageSource.FromFile(string.Format("{0}/{1}", ViewModel.GetCurrentFolder, string.Format("{0}.jpg", ViewModel.GetClinicianImage)));
+                else
+                    imgClinician.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(() => ViewModel.GetProfileImage) : "male_female.png";
+            }
         }
 
         async Task GetDetails()
