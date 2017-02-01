@@ -283,7 +283,7 @@
     <value>Type</value>
   </data>
 	<data name="MyMind_PlansUpload" xml:space="preserve">
-    <value>Upload Date Time</value>
+    <value>Uploaded</value>
   </data>
 	<data name="MyMind_PlansView" xml:space="preserve">
     <value>View</value>
