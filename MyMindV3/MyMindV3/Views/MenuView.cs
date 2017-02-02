@@ -1,5 +1,8 @@
 using Xamarin.Forms;
 using System.Collections.Generic;
+using MyMindV3.Languages;
+using Messier16.Forms.Controls;
+using System;
 
 namespace MyMindV3.Views
 {
@@ -10,11 +13,18 @@ namespace MyMindV3.Views
         public string text { get; set; }
 
         public bool enabled { get; set; } = true;
+
+        public int id { get; set; }
     }
 
     public class MenuView : ContentView
     {
         List<MenuListClass> menuList;
+
+        bool SetAll { get; set; }
+        bool SetLocal { get; set; }
+        bool SetNational { get; set; }
+        bool SetWeb { get; set; }
 
         static string UppercaseFirst(string s)
         {
@@ -26,12 +36,13 @@ namespace MyMindV3.Views
             return char.ToUpper(s[0]) + s.Substring(1);
         }
 
-        public MenuView(List<string> filenames)
+        StackLayout GenerateUI(List<string> filenames)
         {
             menuList = new List<MenuListClass>();
             foreach (var f in filenames)
             {
-                var file = f.Replace("_", " ").Split(' ');
+                var idsplit = f.Split('|');
+                var file = idsplit[0].Replace("_", " ").Split(' ');
                 var ourname = string.Empty;
                 if (file.Length != 1)
                 {
@@ -40,7 +51,7 @@ namespace MyMindV3.Views
                 else
                     ourname = UppercaseFirst(file[0]);
 
-                menuList.Add(new MenuListClass { text = ourname, image = f });
+                menuList.Add(new MenuListClass { text = ourname, image = idsplit[0], id = Convert.ToInt32(idsplit[1]) });
             }
 
             var innerStack = new StackLayout
@@ -54,9 +65,133 @@ namespace MyMindV3.Views
 
             var stackScroll = new ScrollView
             {
-                HeightRequest = App.ScreenSize.Height,
                 WidthRequest = App.ScreenSize.Width * .3,
+                TranslationY = -48,
                 Content = innerStack
+            };
+
+            var lblResource = new Label
+            {
+                Text = Langs.Menu_Resources,
+                FontSize = 14,
+                FontAttributes = FontAttributes.Bold,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            var chkAll = new Checkbox();
+            var chkNational = new Checkbox();
+            var chkLocal = new Checkbox();
+            var chkWebOnly = new Checkbox();
+            chkAll.SetBinding(Checkbox.CheckedProperty, new Binding(SetAll.ToString()));
+            chkNational.SetBinding(Checkbox.CheckedProperty, new Binding(SetNational.ToString()));
+            chkLocal.SetBinding(Checkbox.CheckedProperty, new Binding(SetLocal.ToString()));
+            chkWebOnly.SetBinding(Checkbox.CheckedProperty, new Binding(SetWeb.ToString()));
+            var chkAllTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() => MessagingCenter.Send(this, "ChkAll", chkAll.Checked))
+            };
+            var chkNationalTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() => MessagingCenter.Send(this, "chkNational", chkAll.Checked))
+            };
+            var chkLocalTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() => MessagingCenter.Send(this, "chkLocal", chkAll.Checked))
+            };
+            var chkWebTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() => MessagingCenter.Send(this, "chkWebOnly", chkAll.Checked))
+            };
+            chkAll.GestureRecognizers.Add(chkAllTap);
+            chkNational.GestureRecognizers.Add(chkNationalTap);
+            chkLocal.GestureRecognizers.Add(chkLocalTap);
+            chkWebOnly.GestureRecognizers.Add(chkWebTap);
+
+            var topStack = new StackLayout
+            {
+                Orientation = StackOrientation.Vertical,
+                Children =
+                {
+                    lblResource,
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        Children =
+                        {
+                            chkAll,
+                            new Label
+                            {
+                                Text = Langs.Menu_All,
+                                FontSize = 12,
+                                TextColor = Color.Blue,
+                                VerticalTextAlignment = TextAlignment.Center
+                            }
+                        }
+                    },
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                            TranslationY = -16,
+                        Children =
+                        {
+                            chkNational,
+                            new Label
+                            {
+                                Text = Langs.Menu_National,
+                                FontSize = 12,
+                                TextColor = Color.Blue,
+                                VerticalTextAlignment = TextAlignment.Center
+                            }
+                        }
+                    },
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        TranslationY = -32,
+                        Children =
+                        {
+                            chkLocal,
+                            new Label
+                            {
+                                Text = Langs.Menu_Local,
+                                FontSize = 12,
+                                TextColor = Color.Blue,
+                                VerticalTextAlignment = TextAlignment.Center
+                            }
+                        }
+                    },
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        TranslationY = -48,
+                        Children =
+                        {
+                            chkWebOnly,
+                            new Label
+                            {
+                                Text = Langs.Menu_Web,
+                                FontSize = 12,
+                                TextColor = Color.Blue,
+                                VerticalTextAlignment = TextAlignment.Center
+                            }
+                        }
+                    },
+                    new BoxView
+                    {
+                        TranslationY = -56,
+                        Color = Color.Gray,
+                        HeightRequest = 1
+                    }
+                }
+            };
+
+            topStack.SizeChanged += (sender, e) =>
+            {
+                stackScroll.HeightRequest = App.ScreenSize.Height - topStack.Height;
             };
 
             var masterStack = new StackLayout
@@ -70,91 +205,51 @@ namespace MyMindV3.Views
                 Spacing = 0,
                 Padding = new Thickness(0),
                 StyleId = "menu",
-                Children = { stackScroll }
+                Children = { topStack, stackScroll }
             };
 
-            Content = masterStack;
+            return masterStack;
         }
 
-        public void UpdateMenu(List<string> filenames)
+        public MenuView(List<string> filenames, bool web, bool all, bool nat, bool local)
         {
-            menuList = new List<MenuListClass>();
+            SetAll = all;
+            SetLocal = local;
+            SetNational = nat;
+            SetWeb = web;
+            Content = GenerateUI(filenames);
+        }
 
-            foreach (var f in filenames)
-            {
-                var file = f.Replace("_", " ").Split(' ');
-                var ourname = string.Empty;
-                if (file.Length != 1)
-                {
-                    ourname = string.Format("{0} {1}", UppercaseFirst(file[0]), file[1]);
-                }
-                else
-                    ourname = UppercaseFirst(file[0]);
-
-                menuList.Add(new MenuListClass { text = ourname, image = f });
-            }
-
-            var innerStack = new StackLayout
-            {
-                BackgroundColor = Color.White,
-                Orientation = StackOrientation.Vertical,
-            };
-
-            for (var n = 0; n < menuList.Count; ++n)
-                innerStack.Children.Add(MenuListView(n));
-
-            var stackScroll = new ScrollView
-            {
-                HeightRequest = App.ScreenSize.Height,
-                WidthRequest = App.ScreenSize.Width * .3,
-                Content = innerStack
-            };
-
-            var masterStack = new StackLayout
-            {
-                BackgroundColor = Color.White,
-                Orientation = StackOrientation.Vertical,
-                MinimumWidthRequest = App.ScreenSize.Width * .35,
-                WidthRequest = App.ScreenSize.Width * .35,
-                HeightRequest = App.ScreenSize.Height /*- 52 - 36*/,
-                Spacing = 0,
-                Padding = new Thickness(0),
-                TranslationY = 8,
-                StyleId = "menu",
-                Children = { stackScroll }
-            };
-
-            Content = masterStack;
+        public void UpdateMenu(List<string> filenames, bool web, bool all, bool nat, bool local)
+        {
+            SetAll = all;
+            SetLocal = local;
+            SetNational = nat;
+            SetWeb = web;
+            Content = GenerateUI(filenames);
         }
 
         StackLayout MenuListView(int i)
         {
             var imgIcon = new Image
             {
-                WidthRequest = 42,
-                HeightRequest = 42,
+                WidthRequest = 36,
+                HeightRequest = 36,
                 Source = menuList[i].image
             };
 
             var lblText = new Label
             {
-                FontSize = 18,
+                FontSize = 12,
                 VerticalTextAlignment = TextAlignment.Center,
                 TextColor = Color.Blue,
-                HorizontalTextAlignment = TextAlignment.Center,
                 Text = menuList[i].text
             };
 
-            var tap = new TapGestureRecognizer
+            var stackTap = new TapGestureRecognizer
             {
                 NumberOfTapsRequired = 1,
-                Command = new Command((t) =>
-                   {
-                       MessagingCenter.Send(this, "Menu", "Close");
-                       Page page = null;
-
-                   }
-                )
+                Command = new Command(() => MessagingCenter.Send(this, "IconTap", menuList[i].id))
             };
 
             var stack = new StackLayout
@@ -166,17 +261,18 @@ namespace MyMindV3.Views
                 {
                     new StackLayout
                     {
-                        Orientation = StackOrientation.Vertical,
+                        Orientation = StackOrientation.Horizontal,
+                        Padding = new Thickness(8,0,0,4),
                         Children =
                         { imgIcon,
                             new StackLayout
                             {
                                 VerticalOptions = LayoutOptions.Center,
-                                HorizontalOptions = LayoutOptions.Center,
                                 Children = { lblText }
                             }
                         }
-                    }, new BoxView
+                    },
+                    new BoxView
                     {
                         WidthRequest = App.ScreenSize.Width,
                         HeightRequest = 1,
@@ -185,7 +281,7 @@ namespace MyMindV3.Views
                     }
                 },
             };
-            stack.GestureRecognizers.Add(tap);
+            stack.GestureRecognizers.Add(stackTap);
 
             return stack;
         }
