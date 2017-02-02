@@ -31,6 +31,1392 @@ namespace MyMindV3.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MyMindV3.Droid.Resource.Attribute.actionBarSize;
 			global::PCLStorage.Resource.String.ApplicationName = global::MyMindV3.Droid.Resource.String.ApplicationName;
 			global::PCLStorage.Resource.String.Hello = global::MyMindV3.Droid.Resource.String.Hello;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_fade_in = global::MyMindV3.Droid.Resource.Animation.abc_fade_in;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_fade_out = global::MyMindV3.Droid.Resource.Animation.abc_fade_out;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_grow_fade_in_from_bottom = global::MyMindV3.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_popup_enter = global::MyMindV3.Droid.Resource.Animation.abc_popup_enter;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_popup_exit = global::MyMindV3.Droid.Resource.Animation.abc_popup_exit;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_shrink_fade_out_from_bottom = global::MyMindV3.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_slide_in_bottom = global::MyMindV3.Droid.Resource.Animation.abc_slide_in_bottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_slide_in_top = global::MyMindV3.Droid.Resource.Animation.abc_slide_in_top;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_slide_out_bottom = global::MyMindV3.Droid.Resource.Animation.abc_slide_out_bottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.abc_slide_out_top = global::MyMindV3.Droid.Resource.Animation.abc_slide_out_top;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.design_fab_in = global::MyMindV3.Droid.Resource.Animation.design_fab_in;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.design_fab_out = global::MyMindV3.Droid.Resource.Animation.design_fab_out;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.design_snackbar_in = global::MyMindV3.Droid.Resource.Animation.design_snackbar_in;
+			global::Messier16.Forms.Droid.Controls.Resource.Animation.design_snackbar_out = global::MyMindV3.Droid.Resource.Animation.design_snackbar_out;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarDivider = global::MyMindV3.Droid.Resource.Attribute.actionBarDivider;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarItemBackground = global::MyMindV3.Droid.Resource.Attribute.actionBarItemBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarPopupTheme = global::MyMindV3.Droid.Resource.Attribute.actionBarPopupTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarSize = global::MyMindV3.Droid.Resource.Attribute.actionBarSize;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarSplitStyle = global::MyMindV3.Droid.Resource.Attribute.actionBarSplitStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarStyle = global::MyMindV3.Droid.Resource.Attribute.actionBarStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarTabBarStyle = global::MyMindV3.Droid.Resource.Attribute.actionBarTabBarStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarTabStyle = global::MyMindV3.Droid.Resource.Attribute.actionBarTabStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarTabTextStyle = global::MyMindV3.Droid.Resource.Attribute.actionBarTabTextStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarTheme = global::MyMindV3.Droid.Resource.Attribute.actionBarTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionBarWidgetTheme = global::MyMindV3.Droid.Resource.Attribute.actionBarWidgetTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionButtonStyle = global::MyMindV3.Droid.Resource.Attribute.actionButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionDropDownStyle = global::MyMindV3.Droid.Resource.Attribute.actionDropDownStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionLayout = global::MyMindV3.Droid.Resource.Attribute.actionLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionMenuTextAppearance = global::MyMindV3.Droid.Resource.Attribute.actionMenuTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionMenuTextColor = global::MyMindV3.Droid.Resource.Attribute.actionMenuTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeBackground = global::MyMindV3.Droid.Resource.Attribute.actionModeBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeCloseButtonStyle = global::MyMindV3.Droid.Resource.Attribute.actionModeCloseButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeCloseDrawable = global::MyMindV3.Droid.Resource.Attribute.actionModeCloseDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeCopyDrawable = global::MyMindV3.Droid.Resource.Attribute.actionModeCopyDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeCutDrawable = global::MyMindV3.Droid.Resource.Attribute.actionModeCutDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeFindDrawable = global::MyMindV3.Droid.Resource.Attribute.actionModeFindDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModePasteDrawable = global::MyMindV3.Droid.Resource.Attribute.actionModePasteDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModePopupWindowStyle = global::MyMindV3.Droid.Resource.Attribute.actionModePopupWindowStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeSelectAllDrawable = global::MyMindV3.Droid.Resource.Attribute.actionModeSelectAllDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeShareDrawable = global::MyMindV3.Droid.Resource.Attribute.actionModeShareDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeSplitBackground = global::MyMindV3.Droid.Resource.Attribute.actionModeSplitBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeStyle = global::MyMindV3.Droid.Resource.Attribute.actionModeStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionModeWebSearchDrawable = global::MyMindV3.Droid.Resource.Attribute.actionModeWebSearchDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionOverflowButtonStyle = global::MyMindV3.Droid.Resource.Attribute.actionOverflowButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionOverflowMenuStyle = global::MyMindV3.Droid.Resource.Attribute.actionOverflowMenuStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionProviderClass = global::MyMindV3.Droid.Resource.Attribute.actionProviderClass;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.actionViewClass = global::MyMindV3.Droid.Resource.Attribute.actionViewClass;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.activityChooserViewStyle = global::MyMindV3.Droid.Resource.Attribute.activityChooserViewStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.alertDialogButtonGroupStyle = global::MyMindV3.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.alertDialogCenterButtons = global::MyMindV3.Droid.Resource.Attribute.alertDialogCenterButtons;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.alertDialogStyle = global::MyMindV3.Droid.Resource.Attribute.alertDialogStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.alertDialogTheme = global::MyMindV3.Droid.Resource.Attribute.alertDialogTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.arrowHeadLength = global::MyMindV3.Droid.Resource.Attribute.arrowHeadLength;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.arrowShaftLength = global::MyMindV3.Droid.Resource.Attribute.arrowShaftLength;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.autoCompleteTextViewStyle = global::MyMindV3.Droid.Resource.Attribute.autoCompleteTextViewStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.background = global::MyMindV3.Droid.Resource.Attribute.background;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.backgroundSplit = global::MyMindV3.Droid.Resource.Attribute.backgroundSplit;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.backgroundStacked = global::MyMindV3.Droid.Resource.Attribute.backgroundStacked;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.backgroundTint = global::MyMindV3.Droid.Resource.Attribute.backgroundTint;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.backgroundTintMode = global::MyMindV3.Droid.Resource.Attribute.backgroundTintMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.barLength = global::MyMindV3.Droid.Resource.Attribute.barLength;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.behavior_overlapTop = global::MyMindV3.Droid.Resource.Attribute.behavior_overlapTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.borderWidth = global::MyMindV3.Droid.Resource.Attribute.borderWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.borderlessButtonStyle = global::MyMindV3.Droid.Resource.Attribute.borderlessButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonBarButtonStyle = global::MyMindV3.Droid.Resource.Attribute.buttonBarButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonBarNegativeButtonStyle = global::MyMindV3.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonBarNeutralButtonStyle = global::MyMindV3.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonBarPositiveButtonStyle = global::MyMindV3.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonBarStyle = global::MyMindV3.Droid.Resource.Attribute.buttonBarStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonPanelSideLayout = global::MyMindV3.Droid.Resource.Attribute.buttonPanelSideLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonStyle = global::MyMindV3.Droid.Resource.Attribute.buttonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonStyleSmall = global::MyMindV3.Droid.Resource.Attribute.buttonStyleSmall;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonTint = global::MyMindV3.Droid.Resource.Attribute.buttonTint;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.buttonTintMode = global::MyMindV3.Droid.Resource.Attribute.buttonTintMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.cardBackgroundColor = global::MyMindV3.Droid.Resource.Attribute.cardBackgroundColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.cardCornerRadius = global::MyMindV3.Droid.Resource.Attribute.cardCornerRadius;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.cardElevation = global::MyMindV3.Droid.Resource.Attribute.cardElevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.cardMaxElevation = global::MyMindV3.Droid.Resource.Attribute.cardMaxElevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.cardPreventCornerOverlap = global::MyMindV3.Droid.Resource.Attribute.cardPreventCornerOverlap;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.cardUseCompatPadding = global::MyMindV3.Droid.Resource.Attribute.cardUseCompatPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.checkboxStyle = global::MyMindV3.Droid.Resource.Attribute.checkboxStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.checkedTextViewStyle = global::MyMindV3.Droid.Resource.Attribute.checkedTextViewStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.closeIcon = global::MyMindV3.Droid.Resource.Attribute.closeIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.closeItemLayout = global::MyMindV3.Droid.Resource.Attribute.closeItemLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.collapseContentDescription = global::MyMindV3.Droid.Resource.Attribute.collapseContentDescription;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.collapseIcon = global::MyMindV3.Droid.Resource.Attribute.collapseIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.collapsedTitleGravity = global::MyMindV3.Droid.Resource.Attribute.collapsedTitleGravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.collapsedTitleTextAppearance = global::MyMindV3.Droid.Resource.Attribute.collapsedTitleTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.color = global::MyMindV3.Droid.Resource.Attribute.color;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.colorAccent = global::MyMindV3.Droid.Resource.Attribute.colorAccent;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.colorButtonNormal = global::MyMindV3.Droid.Resource.Attribute.colorButtonNormal;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.colorControlActivated = global::MyMindV3.Droid.Resource.Attribute.colorControlActivated;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.colorControlHighlight = global::MyMindV3.Droid.Resource.Attribute.colorControlHighlight;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.colorControlNormal = global::MyMindV3.Droid.Resource.Attribute.colorControlNormal;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.colorPrimary = global::MyMindV3.Droid.Resource.Attribute.colorPrimary;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.colorPrimaryDark = global::MyMindV3.Droid.Resource.Attribute.colorPrimaryDark;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.colorSwitchThumbNormal = global::MyMindV3.Droid.Resource.Attribute.colorSwitchThumbNormal;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.commitIcon = global::MyMindV3.Droid.Resource.Attribute.commitIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentInsetEnd = global::MyMindV3.Droid.Resource.Attribute.contentInsetEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentInsetLeft = global::MyMindV3.Droid.Resource.Attribute.contentInsetLeft;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentInsetRight = global::MyMindV3.Droid.Resource.Attribute.contentInsetRight;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentInsetStart = global::MyMindV3.Droid.Resource.Attribute.contentInsetStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentPadding = global::MyMindV3.Droid.Resource.Attribute.contentPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentPaddingBottom = global::MyMindV3.Droid.Resource.Attribute.contentPaddingBottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentPaddingLeft = global::MyMindV3.Droid.Resource.Attribute.contentPaddingLeft;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentPaddingRight = global::MyMindV3.Droid.Resource.Attribute.contentPaddingRight;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentPaddingTop = global::MyMindV3.Droid.Resource.Attribute.contentPaddingTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.contentScrim = global::MyMindV3.Droid.Resource.Attribute.contentScrim;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.controlBackground = global::MyMindV3.Droid.Resource.Attribute.controlBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.customNavigationLayout = global::MyMindV3.Droid.Resource.Attribute.customNavigationLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.defaultQueryHint = global::MyMindV3.Droid.Resource.Attribute.defaultQueryHint;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.dialogPreferredPadding = global::MyMindV3.Droid.Resource.Attribute.dialogPreferredPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.dialogTheme = global::MyMindV3.Droid.Resource.Attribute.dialogTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.displayOptions = global::MyMindV3.Droid.Resource.Attribute.displayOptions;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.divider = global::MyMindV3.Droid.Resource.Attribute.divider;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.dividerHorizontal = global::MyMindV3.Droid.Resource.Attribute.dividerHorizontal;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.dividerPadding = global::MyMindV3.Droid.Resource.Attribute.dividerPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.dividerVertical = global::MyMindV3.Droid.Resource.Attribute.dividerVertical;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.drawableSize = global::MyMindV3.Droid.Resource.Attribute.drawableSize;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.drawerArrowStyle = global::MyMindV3.Droid.Resource.Attribute.drawerArrowStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.dropDownListViewStyle = global::MyMindV3.Droid.Resource.Attribute.dropDownListViewStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.dropdownListPreferredItemHeight = global::MyMindV3.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.editTextBackground = global::MyMindV3.Droid.Resource.Attribute.editTextBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.editTextColor = global::MyMindV3.Droid.Resource.Attribute.editTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.editTextStyle = global::MyMindV3.Droid.Resource.Attribute.editTextStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.elevation = global::MyMindV3.Droid.Resource.Attribute.elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.errorEnabled = global::MyMindV3.Droid.Resource.Attribute.errorEnabled;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.errorTextAppearance = global::MyMindV3.Droid.Resource.Attribute.errorTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.expandActivityOverflowButtonDrawable = global::MyMindV3.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.expanded = global::MyMindV3.Droid.Resource.Attribute.expanded;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.expandedTitleGravity = global::MyMindV3.Droid.Resource.Attribute.expandedTitleGravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.expandedTitleMargin = global::MyMindV3.Droid.Resource.Attribute.expandedTitleMargin;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.expandedTitleMarginBottom = global::MyMindV3.Droid.Resource.Attribute.expandedTitleMarginBottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.expandedTitleMarginEnd = global::MyMindV3.Droid.Resource.Attribute.expandedTitleMarginEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.expandedTitleMarginStart = global::MyMindV3.Droid.Resource.Attribute.expandedTitleMarginStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.expandedTitleMarginTop = global::MyMindV3.Droid.Resource.Attribute.expandedTitleMarginTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.expandedTitleTextAppearance = global::MyMindV3.Droid.Resource.Attribute.expandedTitleTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.externalRouteEnabledDrawable = global::MyMindV3.Droid.Resource.Attribute.externalRouteEnabledDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.fabSize = global::MyMindV3.Droid.Resource.Attribute.fabSize;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.gapBetweenBars = global::MyMindV3.Droid.Resource.Attribute.gapBetweenBars;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.goIcon = global::MyMindV3.Droid.Resource.Attribute.goIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.headerLayout = global::MyMindV3.Droid.Resource.Attribute.headerLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.height = global::MyMindV3.Droid.Resource.Attribute.height;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.hideOnContentScroll = global::MyMindV3.Droid.Resource.Attribute.hideOnContentScroll;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.hintAnimationEnabled = global::MyMindV3.Droid.Resource.Attribute.hintAnimationEnabled;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.hintTextAppearance = global::MyMindV3.Droid.Resource.Attribute.hintTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.homeAsUpIndicator = global::MyMindV3.Droid.Resource.Attribute.homeAsUpIndicator;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.homeLayout = global::MyMindV3.Droid.Resource.Attribute.homeLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.icon = global::MyMindV3.Droid.Resource.Attribute.icon;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.iconifiedByDefault = global::MyMindV3.Droid.Resource.Attribute.iconifiedByDefault;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.indeterminateProgressStyle = global::MyMindV3.Droid.Resource.Attribute.indeterminateProgressStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.initialActivityCount = global::MyMindV3.Droid.Resource.Attribute.initialActivityCount;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.insetForeground = global::MyMindV3.Droid.Resource.Attribute.insetForeground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.isLightTheme = global::MyMindV3.Droid.Resource.Attribute.isLightTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.itemBackground = global::MyMindV3.Droid.Resource.Attribute.itemBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.itemIconTint = global::MyMindV3.Droid.Resource.Attribute.itemIconTint;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.itemPadding = global::MyMindV3.Droid.Resource.Attribute.itemPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.itemTextAppearance = global::MyMindV3.Droid.Resource.Attribute.itemTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.itemTextColor = global::MyMindV3.Droid.Resource.Attribute.itemTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.keylines = global::MyMindV3.Droid.Resource.Attribute.keylines;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.layout = global::MyMindV3.Droid.Resource.Attribute.layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.layout_anchor = global::MyMindV3.Droid.Resource.Attribute.layout_anchor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.layout_anchorGravity = global::MyMindV3.Droid.Resource.Attribute.layout_anchorGravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.layout_behavior = global::MyMindV3.Droid.Resource.Attribute.layout_behavior;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.layout_collapseMode = global::MyMindV3.Droid.Resource.Attribute.layout_collapseMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.layout_collapseParallaxMultiplier = global::MyMindV3.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.layout_keyline = global::MyMindV3.Droid.Resource.Attribute.layout_keyline;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.layout_scrollFlags = global::MyMindV3.Droid.Resource.Attribute.layout_scrollFlags;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.layout_scrollInterpolator = global::MyMindV3.Droid.Resource.Attribute.layout_scrollInterpolator;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listChoiceBackgroundIndicator = global::MyMindV3.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listDividerAlertDialog = global::MyMindV3.Droid.Resource.Attribute.listDividerAlertDialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listItemLayout = global::MyMindV3.Droid.Resource.Attribute.listItemLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listLayout = global::MyMindV3.Droid.Resource.Attribute.listLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listPopupWindowStyle = global::MyMindV3.Droid.Resource.Attribute.listPopupWindowStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listPreferredItemHeight = global::MyMindV3.Droid.Resource.Attribute.listPreferredItemHeight;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listPreferredItemHeightLarge = global::MyMindV3.Droid.Resource.Attribute.listPreferredItemHeightLarge;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listPreferredItemHeightSmall = global::MyMindV3.Droid.Resource.Attribute.listPreferredItemHeightSmall;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listPreferredItemPaddingLeft = global::MyMindV3.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.listPreferredItemPaddingRight = global::MyMindV3.Droid.Resource.Attribute.listPreferredItemPaddingRight;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.logo = global::MyMindV3.Droid.Resource.Attribute.logo;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.logoDescription = global::MyMindV3.Droid.Resource.Attribute.logoDescription;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.maxActionInlineWidth = global::MyMindV3.Droid.Resource.Attribute.maxActionInlineWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.maxButtonHeight = global::MyMindV3.Droid.Resource.Attribute.maxButtonHeight;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.measureWithLargestChild = global::MyMindV3.Droid.Resource.Attribute.measureWithLargestChild;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.mediaRouteButtonStyle = global::MyMindV3.Droid.Resource.Attribute.mediaRouteButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.mediaRouteCastDrawable = global::MyMindV3.Droid.Resource.Attribute.mediaRouteCastDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.mediaRouteConnectingDrawable = global::MyMindV3.Droid.Resource.Attribute.mediaRouteConnectingDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.mediaRouteOffDrawable = global::MyMindV3.Droid.Resource.Attribute.mediaRouteOffDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.mediaRouteOnDrawable = global::MyMindV3.Droid.Resource.Attribute.mediaRouteOnDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.mediaRoutePauseDrawable = global::MyMindV3.Droid.Resource.Attribute.mediaRoutePauseDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.mediaRoutePlayDrawable = global::MyMindV3.Droid.Resource.Attribute.mediaRoutePlayDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.menu = global::MyMindV3.Droid.Resource.Attribute.menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.multiChoiceItemLayout = global::MyMindV3.Droid.Resource.Attribute.multiChoiceItemLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.navigationContentDescription = global::MyMindV3.Droid.Resource.Attribute.navigationContentDescription;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.navigationIcon = global::MyMindV3.Droid.Resource.Attribute.navigationIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.navigationMode = global::MyMindV3.Droid.Resource.Attribute.navigationMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.overlapAnchor = global::MyMindV3.Droid.Resource.Attribute.overlapAnchor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.paddingEnd = global::MyMindV3.Droid.Resource.Attribute.paddingEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.paddingStart = global::MyMindV3.Droid.Resource.Attribute.paddingStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.panelBackground = global::MyMindV3.Droid.Resource.Attribute.panelBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.panelMenuListTheme = global::MyMindV3.Droid.Resource.Attribute.panelMenuListTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.panelMenuListWidth = global::MyMindV3.Droid.Resource.Attribute.panelMenuListWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.popupMenuStyle = global::MyMindV3.Droid.Resource.Attribute.popupMenuStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.popupTheme = global::MyMindV3.Droid.Resource.Attribute.popupTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.popupWindowStyle = global::MyMindV3.Droid.Resource.Attribute.popupWindowStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.preserveIconSpacing = global::MyMindV3.Droid.Resource.Attribute.preserveIconSpacing;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.pressedTranslationZ = global::MyMindV3.Droid.Resource.Attribute.pressedTranslationZ;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.progressBarPadding = global::MyMindV3.Droid.Resource.Attribute.progressBarPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.progressBarStyle = global::MyMindV3.Droid.Resource.Attribute.progressBarStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.queryBackground = global::MyMindV3.Droid.Resource.Attribute.queryBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.queryHint = global::MyMindV3.Droid.Resource.Attribute.queryHint;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.radioButtonStyle = global::MyMindV3.Droid.Resource.Attribute.radioButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.ratingBarStyle = global::MyMindV3.Droid.Resource.Attribute.ratingBarStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.rippleColor = global::MyMindV3.Droid.Resource.Attribute.rippleColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.searchHintIcon = global::MyMindV3.Droid.Resource.Attribute.searchHintIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.searchIcon = global::MyMindV3.Droid.Resource.Attribute.searchIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.searchViewStyle = global::MyMindV3.Droid.Resource.Attribute.searchViewStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.selectableItemBackground = global::MyMindV3.Droid.Resource.Attribute.selectableItemBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.selectableItemBackgroundBorderless = global::MyMindV3.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.showAsAction = global::MyMindV3.Droid.Resource.Attribute.showAsAction;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.showDividers = global::MyMindV3.Droid.Resource.Attribute.showDividers;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.showText = global::MyMindV3.Droid.Resource.Attribute.showText;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.singleChoiceItemLayout = global::MyMindV3.Droid.Resource.Attribute.singleChoiceItemLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.spinBars = global::MyMindV3.Droid.Resource.Attribute.spinBars;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.spinnerDropDownItemStyle = global::MyMindV3.Droid.Resource.Attribute.spinnerDropDownItemStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.spinnerStyle = global::MyMindV3.Droid.Resource.Attribute.spinnerStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.splitTrack = global::MyMindV3.Droid.Resource.Attribute.splitTrack;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.state_above_anchor = global::MyMindV3.Droid.Resource.Attribute.state_above_anchor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.statusBarBackground = global::MyMindV3.Droid.Resource.Attribute.statusBarBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.statusBarScrim = global::MyMindV3.Droid.Resource.Attribute.statusBarScrim;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.submitBackground = global::MyMindV3.Droid.Resource.Attribute.submitBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.subtitle = global::MyMindV3.Droid.Resource.Attribute.subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.subtitleTextAppearance = global::MyMindV3.Droid.Resource.Attribute.subtitleTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.subtitleTextColor = global::MyMindV3.Droid.Resource.Attribute.subtitleTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.subtitleTextStyle = global::MyMindV3.Droid.Resource.Attribute.subtitleTextStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.suggestionRowLayout = global::MyMindV3.Droid.Resource.Attribute.suggestionRowLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.switchMinWidth = global::MyMindV3.Droid.Resource.Attribute.switchMinWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.switchPadding = global::MyMindV3.Droid.Resource.Attribute.switchPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.switchStyle = global::MyMindV3.Droid.Resource.Attribute.switchStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.switchTextAppearance = global::MyMindV3.Droid.Resource.Attribute.switchTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabBackground = global::MyMindV3.Droid.Resource.Attribute.tabBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabContentStart = global::MyMindV3.Droid.Resource.Attribute.tabContentStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabGravity = global::MyMindV3.Droid.Resource.Attribute.tabGravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabIndicatorColor = global::MyMindV3.Droid.Resource.Attribute.tabIndicatorColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabIndicatorHeight = global::MyMindV3.Droid.Resource.Attribute.tabIndicatorHeight;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabMaxWidth = global::MyMindV3.Droid.Resource.Attribute.tabMaxWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabMinWidth = global::MyMindV3.Droid.Resource.Attribute.tabMinWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabMode = global::MyMindV3.Droid.Resource.Attribute.tabMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabPadding = global::MyMindV3.Droid.Resource.Attribute.tabPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabPaddingBottom = global::MyMindV3.Droid.Resource.Attribute.tabPaddingBottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabPaddingEnd = global::MyMindV3.Droid.Resource.Attribute.tabPaddingEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabPaddingStart = global::MyMindV3.Droid.Resource.Attribute.tabPaddingStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabPaddingTop = global::MyMindV3.Droid.Resource.Attribute.tabPaddingTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabSelectedTextColor = global::MyMindV3.Droid.Resource.Attribute.tabSelectedTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabTextAppearance = global::MyMindV3.Droid.Resource.Attribute.tabTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.tabTextColor = global::MyMindV3.Droid.Resource.Attribute.tabTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.textAllCaps = global::MyMindV3.Droid.Resource.Attribute.textAllCaps;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.textAppearanceLargePopupMenu = global::MyMindV3.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.textAppearanceListItem = global::MyMindV3.Droid.Resource.Attribute.textAppearanceListItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.textAppearanceListItemSmall = global::MyMindV3.Droid.Resource.Attribute.textAppearanceListItemSmall;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.textAppearanceSearchResultSubtitle = global::MyMindV3.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.textAppearanceSearchResultTitle = global::MyMindV3.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.textAppearanceSmallPopupMenu = global::MyMindV3.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.textColorAlertDialogListItem = global::MyMindV3.Droid.Resource.Attribute.textColorAlertDialogListItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.textColorSearchUrl = global::MyMindV3.Droid.Resource.Attribute.textColorSearchUrl;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.theme = global::MyMindV3.Droid.Resource.Attribute.theme;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.thickness = global::MyMindV3.Droid.Resource.Attribute.thickness;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.thumbTextPadding = global::MyMindV3.Droid.Resource.Attribute.thumbTextPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.title = global::MyMindV3.Droid.Resource.Attribute.title;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.titleEnabled = global::MyMindV3.Droid.Resource.Attribute.titleEnabled;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.titleMarginBottom = global::MyMindV3.Droid.Resource.Attribute.titleMarginBottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.titleMarginEnd = global::MyMindV3.Droid.Resource.Attribute.titleMarginEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.titleMarginStart = global::MyMindV3.Droid.Resource.Attribute.titleMarginStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.titleMarginTop = global::MyMindV3.Droid.Resource.Attribute.titleMarginTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.titleMargins = global::MyMindV3.Droid.Resource.Attribute.titleMargins;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.titleTextAppearance = global::MyMindV3.Droid.Resource.Attribute.titleTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.titleTextColor = global::MyMindV3.Droid.Resource.Attribute.titleTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.titleTextStyle = global::MyMindV3.Droid.Resource.Attribute.titleTextStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.toolbarId = global::MyMindV3.Droid.Resource.Attribute.toolbarId;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.toolbarNavigationButtonStyle = global::MyMindV3.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.toolbarStyle = global::MyMindV3.Droid.Resource.Attribute.toolbarStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.track = global::MyMindV3.Droid.Resource.Attribute.track;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.voiceIcon = global::MyMindV3.Droid.Resource.Attribute.voiceIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowActionBar = global::MyMindV3.Droid.Resource.Attribute.windowActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowActionBarOverlay = global::MyMindV3.Droid.Resource.Attribute.windowActionBarOverlay;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowActionModeOverlay = global::MyMindV3.Droid.Resource.Attribute.windowActionModeOverlay;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowFixedHeightMajor = global::MyMindV3.Droid.Resource.Attribute.windowFixedHeightMajor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowFixedHeightMinor = global::MyMindV3.Droid.Resource.Attribute.windowFixedHeightMinor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowFixedWidthMajor = global::MyMindV3.Droid.Resource.Attribute.windowFixedWidthMajor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowFixedWidthMinor = global::MyMindV3.Droid.Resource.Attribute.windowFixedWidthMinor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowMinWidthMajor = global::MyMindV3.Droid.Resource.Attribute.windowMinWidthMajor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowMinWidthMinor = global::MyMindV3.Droid.Resource.Attribute.windowMinWidthMinor;
+			global::Messier16.Forms.Droid.Controls.Resource.Attribute.windowNoTitle = global::MyMindV3.Droid.Resource.Attribute.windowNoTitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Boolean.abc_action_bar_embed_tabs = global::MyMindV3.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::Messier16.Forms.Droid.Controls.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb = global::MyMindV3.Droid.Resource.Boolean.abc_action_bar_embed_tabs_pre_jb;
+			global::Messier16.Forms.Droid.Controls.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive = global::MyMindV3.Droid.Resource.Boolean.abc_action_bar_expanded_action_views_exclusive;
+			global::Messier16.Forms.Droid.Controls.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::MyMindV3.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
+			global::Messier16.Forms.Droid.Controls.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon = global::MyMindV3.Droid.Resource.Boolean.abc_config_allowActionMenuItemTextWithIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::MyMindV3.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
+			global::Messier16.Forms.Droid.Controls.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::MyMindV3.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_background_cache_hint_selector_material_dark = global::MyMindV3.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_background_cache_hint_selector_material_light = global::MyMindV3.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_color_highlight_material = global::MyMindV3.Droid.Resource.Color.abc_color_highlight_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_input_method_navigation_guard = global::MyMindV3.Droid.Resource.Color.abc_input_method_navigation_guard;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_primary_text_disable_only_material_dark = global::MyMindV3.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_primary_text_disable_only_material_light = global::MyMindV3.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_primary_text_material_dark = global::MyMindV3.Droid.Resource.Color.abc_primary_text_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_primary_text_material_light = global::MyMindV3.Droid.Resource.Color.abc_primary_text_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_search_url_text = global::MyMindV3.Droid.Resource.Color.abc_search_url_text;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_search_url_text_normal = global::MyMindV3.Droid.Resource.Color.abc_search_url_text_normal;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_search_url_text_pressed = global::MyMindV3.Droid.Resource.Color.abc_search_url_text_pressed;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_search_url_text_selected = global::MyMindV3.Droid.Resource.Color.abc_search_url_text_selected;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_secondary_text_material_dark = global::MyMindV3.Droid.Resource.Color.abc_secondary_text_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.abc_secondary_text_material_light = global::MyMindV3.Droid.Resource.Color.abc_secondary_text_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.accent_material_dark = global::MyMindV3.Droid.Resource.Color.accent_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.accent_material_light = global::MyMindV3.Droid.Resource.Color.accent_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.background_floating_material_dark = global::MyMindV3.Droid.Resource.Color.background_floating_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.background_floating_material_light = global::MyMindV3.Droid.Resource.Color.background_floating_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.background_material_dark = global::MyMindV3.Droid.Resource.Color.background_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.background_material_light = global::MyMindV3.Droid.Resource.Color.background_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.bright_foreground_disabled_material_dark = global::MyMindV3.Droid.Resource.Color.bright_foreground_disabled_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.bright_foreground_disabled_material_light = global::MyMindV3.Droid.Resource.Color.bright_foreground_disabled_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.bright_foreground_inverse_material_dark = global::MyMindV3.Droid.Resource.Color.bright_foreground_inverse_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.bright_foreground_inverse_material_light = global::MyMindV3.Droid.Resource.Color.bright_foreground_inverse_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.bright_foreground_material_dark = global::MyMindV3.Droid.Resource.Color.bright_foreground_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.bright_foreground_material_light = global::MyMindV3.Droid.Resource.Color.bright_foreground_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.button_material_dark = global::MyMindV3.Droid.Resource.Color.button_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.button_material_light = global::MyMindV3.Droid.Resource.Color.button_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.cardview_dark_background = global::MyMindV3.Droid.Resource.Color.cardview_dark_background;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.cardview_light_background = global::MyMindV3.Droid.Resource.Color.cardview_light_background;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.cardview_shadow_end_color = global::MyMindV3.Droid.Resource.Color.cardview_shadow_end_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.cardview_shadow_start_color = global::MyMindV3.Droid.Resource.Color.cardview_shadow_start_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.design_fab_shadow_end_color = global::MyMindV3.Droid.Resource.Color.design_fab_shadow_end_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.design_fab_shadow_mid_color = global::MyMindV3.Droid.Resource.Color.design_fab_shadow_mid_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.design_fab_shadow_start_color = global::MyMindV3.Droid.Resource.Color.design_fab_shadow_start_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.design_fab_stroke_end_inner_color = global::MyMindV3.Droid.Resource.Color.design_fab_stroke_end_inner_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.design_fab_stroke_end_outer_color = global::MyMindV3.Droid.Resource.Color.design_fab_stroke_end_outer_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.design_fab_stroke_top_inner_color = global::MyMindV3.Droid.Resource.Color.design_fab_stroke_top_inner_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.design_fab_stroke_top_outer_color = global::MyMindV3.Droid.Resource.Color.design_fab_stroke_top_outer_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.design_snackbar_background_color = global::MyMindV3.Droid.Resource.Color.design_snackbar_background_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.dim_foreground_disabled_material_dark = global::MyMindV3.Droid.Resource.Color.dim_foreground_disabled_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.dim_foreground_disabled_material_light = global::MyMindV3.Droid.Resource.Color.dim_foreground_disabled_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.dim_foreground_material_dark = global::MyMindV3.Droid.Resource.Color.dim_foreground_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.dim_foreground_material_light = global::MyMindV3.Droid.Resource.Color.dim_foreground_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.foreground_material_dark = global::MyMindV3.Droid.Resource.Color.foreground_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.foreground_material_light = global::MyMindV3.Droid.Resource.Color.foreground_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.highlighted_text_material_dark = global::MyMindV3.Droid.Resource.Color.highlighted_text_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.highlighted_text_material_light = global::MyMindV3.Droid.Resource.Color.highlighted_text_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.hint_foreground_material_dark = global::MyMindV3.Droid.Resource.Color.hint_foreground_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.hint_foreground_material_light = global::MyMindV3.Droid.Resource.Color.hint_foreground_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_blue_grey_800 = global::MyMindV3.Droid.Resource.Color.material_blue_grey_800;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_blue_grey_900 = global::MyMindV3.Droid.Resource.Color.material_blue_grey_900;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_blue_grey_950 = global::MyMindV3.Droid.Resource.Color.material_blue_grey_950;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_deep_teal_200 = global::MyMindV3.Droid.Resource.Color.material_deep_teal_200;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_deep_teal_500 = global::MyMindV3.Droid.Resource.Color.material_deep_teal_500;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_grey_100 = global::MyMindV3.Droid.Resource.Color.material_grey_100;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_grey_300 = global::MyMindV3.Droid.Resource.Color.material_grey_300;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_grey_50 = global::MyMindV3.Droid.Resource.Color.material_grey_50;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_grey_600 = global::MyMindV3.Droid.Resource.Color.material_grey_600;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_grey_800 = global::MyMindV3.Droid.Resource.Color.material_grey_800;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_grey_850 = global::MyMindV3.Droid.Resource.Color.material_grey_850;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.material_grey_900 = global::MyMindV3.Droid.Resource.Color.material_grey_900;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.primary_dark_material_dark = global::MyMindV3.Droid.Resource.Color.primary_dark_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.primary_dark_material_light = global::MyMindV3.Droid.Resource.Color.primary_dark_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.primary_material_dark = global::MyMindV3.Droid.Resource.Color.primary_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.primary_material_light = global::MyMindV3.Droid.Resource.Color.primary_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.primary_text_default_material_dark = global::MyMindV3.Droid.Resource.Color.primary_text_default_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.primary_text_default_material_light = global::MyMindV3.Droid.Resource.Color.primary_text_default_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.primary_text_disabled_material_dark = global::MyMindV3.Droid.Resource.Color.primary_text_disabled_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.primary_text_disabled_material_light = global::MyMindV3.Droid.Resource.Color.primary_text_disabled_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.ripple_material_dark = global::MyMindV3.Droid.Resource.Color.ripple_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.ripple_material_light = global::MyMindV3.Droid.Resource.Color.ripple_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.secondary_text_default_material_dark = global::MyMindV3.Droid.Resource.Color.secondary_text_default_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.secondary_text_default_material_light = global::MyMindV3.Droid.Resource.Color.secondary_text_default_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.secondary_text_disabled_material_dark = global::MyMindV3.Droid.Resource.Color.secondary_text_disabled_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.secondary_text_disabled_material_light = global::MyMindV3.Droid.Resource.Color.secondary_text_disabled_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.switch_thumb_disabled_material_dark = global::MyMindV3.Droid.Resource.Color.switch_thumb_disabled_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.switch_thumb_disabled_material_light = global::MyMindV3.Droid.Resource.Color.switch_thumb_disabled_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.switch_thumb_material_dark = global::MyMindV3.Droid.Resource.Color.switch_thumb_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.switch_thumb_material_light = global::MyMindV3.Droid.Resource.Color.switch_thumb_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.switch_thumb_normal_material_dark = global::MyMindV3.Droid.Resource.Color.switch_thumb_normal_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Color.switch_thumb_normal_material_light = global::MyMindV3.Droid.Resource.Color.switch_thumb_normal_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_content_inset_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_default_height_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_default_height_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_default_padding_end_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_default_padding_start_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_progress_bar_size = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_stacked_max_height = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_button_min_height_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_button_min_height_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_button_min_width_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_button_min_width_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_action_button_min_width_overflow_material = global::MyMindV3.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_alert_dialog_button_bar_height = global::MyMindV3.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_button_inset_horizontal_material = global::MyMindV3.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_button_inset_vertical_material = global::MyMindV3.Droid.Resource.Dimension.abc_button_inset_vertical_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_button_padding_horizontal_material = global::MyMindV3.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_button_padding_vertical_material = global::MyMindV3.Droid.Resource.Dimension.abc_button_padding_vertical_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_config_prefDialogWidth = global::MyMindV3.Droid.Resource.Dimension.abc_config_prefDialogWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_control_corner_material = global::MyMindV3.Droid.Resource.Dimension.abc_control_corner_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_control_inset_material = global::MyMindV3.Droid.Resource.Dimension.abc_control_inset_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_control_padding_material = global::MyMindV3.Droid.Resource.Dimension.abc_control_padding_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_dialog_list_padding_vertical_material = global::MyMindV3.Droid.Resource.Dimension.abc_dialog_list_padding_vertical_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_dialog_min_width_major = global::MyMindV3.Droid.Resource.Dimension.abc_dialog_min_width_major;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_dialog_min_width_minor = global::MyMindV3.Droid.Resource.Dimension.abc_dialog_min_width_minor;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_dialog_padding_material = global::MyMindV3.Droid.Resource.Dimension.abc_dialog_padding_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_dialog_padding_top_material = global::MyMindV3.Droid.Resource.Dimension.abc_dialog_padding_top_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_disabled_alpha_material_dark = global::MyMindV3.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_disabled_alpha_material_light = global::MyMindV3.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_dropdownitem_icon_width = global::MyMindV3.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_dropdownitem_text_padding_left = global::MyMindV3.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_dropdownitem_text_padding_right = global::MyMindV3.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_edit_text_inset_bottom_material = global::MyMindV3.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::MyMindV3.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_edit_text_inset_top_material = global::MyMindV3.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_floating_window_z = global::MyMindV3.Droid.Resource.Dimension.abc_floating_window_z;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_list_item_padding_horizontal_material = global::MyMindV3.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_panel_menu_list_width = global::MyMindV3.Droid.Resource.Dimension.abc_panel_menu_list_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_search_view_preferred_width = global::MyMindV3.Droid.Resource.Dimension.abc_search_view_preferred_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_search_view_text_min_width = global::MyMindV3.Droid.Resource.Dimension.abc_search_view_text_min_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_switch_padding = global::MyMindV3.Droid.Resource.Dimension.abc_switch_padding;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_body_1_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_body_1_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_body_2_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_body_2_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_button_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_button_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_caption_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_caption_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_display_1_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_display_1_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_display_2_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_display_2_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_display_3_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_display_3_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_display_4_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_display_4_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_headline_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_headline_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_large_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_large_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_medium_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_medium_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_menu_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_menu_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_small_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_small_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_subhead_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_subhead_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_title_material = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_title_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.abc_text_size_title_material_toolbar = global::MyMindV3.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.cardview_compat_inset_shadow = global::MyMindV3.Droid.Resource.Dimension.cardview_compat_inset_shadow;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.cardview_default_elevation = global::MyMindV3.Droid.Resource.Dimension.cardview_default_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.cardview_default_radius = global::MyMindV3.Droid.Resource.Dimension.cardview_default_radius;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_appbar_elevation = global::MyMindV3.Droid.Resource.Dimension.design_appbar_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_fab_border_width = global::MyMindV3.Droid.Resource.Dimension.design_fab_border_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_fab_elevation = global::MyMindV3.Droid.Resource.Dimension.design_fab_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_fab_size_mini = global::MyMindV3.Droid.Resource.Dimension.design_fab_size_mini;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_fab_size_normal = global::MyMindV3.Droid.Resource.Dimension.design_fab_size_normal;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_fab_translation_z_pressed = global::MyMindV3.Droid.Resource.Dimension.design_fab_translation_z_pressed;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_navigation_elevation = global::MyMindV3.Droid.Resource.Dimension.design_navigation_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_navigation_icon_padding = global::MyMindV3.Droid.Resource.Dimension.design_navigation_icon_padding;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_navigation_icon_size = global::MyMindV3.Droid.Resource.Dimension.design_navigation_icon_size;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_navigation_max_width = global::MyMindV3.Droid.Resource.Dimension.design_navigation_max_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_navigation_padding_bottom = global::MyMindV3.Droid.Resource.Dimension.design_navigation_padding_bottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_navigation_separator_vertical_padding = global::MyMindV3.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_action_inline_max_width = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_background_corner_radius = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_elevation = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_max_width = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_max_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_min_width = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_min_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_padding_horizontal = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_padding_vertical = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_padding_vertical;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_snackbar_text_size = global::MyMindV3.Droid.Resource.Dimension.design_snackbar_text_size;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.design_tab_max_width = global::MyMindV3.Droid.Resource.Dimension.design_tab_max_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.disabled_alpha_material_dark = global::MyMindV3.Droid.Resource.Dimension.disabled_alpha_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.disabled_alpha_material_light = global::MyMindV3.Droid.Resource.Dimension.disabled_alpha_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.highlight_alpha_material_colored = global::MyMindV3.Droid.Resource.Dimension.highlight_alpha_material_colored;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.highlight_alpha_material_dark = global::MyMindV3.Droid.Resource.Dimension.highlight_alpha_material_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.highlight_alpha_material_light = global::MyMindV3.Droid.Resource.Dimension.highlight_alpha_material_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.notification_large_icon_height = global::MyMindV3.Droid.Resource.Dimension.notification_large_icon_height;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.notification_large_icon_width = global::MyMindV3.Droid.Resource.Dimension.notification_large_icon_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Dimension.notification_subtext_size = global::MyMindV3.Droid.Resource.Dimension.notification_subtext_size;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_action_bar_item_background_material = global::MyMindV3.Droid.Resource.Drawable.abc_action_bar_item_background_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_borderless_material = global::MyMindV3.Droid.Resource.Drawable.abc_btn_borderless_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_check_material = global::MyMindV3.Droid.Resource.Drawable.abc_btn_check_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::MyMindV3.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::MyMindV3.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_colored_material = global::MyMindV3.Droid.Resource.Drawable.abc_btn_colored_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_default_mtrl_shape = global::MyMindV3.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_radio_material = global::MyMindV3.Droid.Resource.Drawable.abc_btn_radio_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::MyMindV3.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::MyMindV3.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_btn_rating_star_off_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_btn_rating_star_on_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::MyMindV3.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::MyMindV3.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_cab_background_internal_bg = global::MyMindV3.Droid.Resource.Drawable.abc_cab_background_internal_bg;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_cab_background_top_material = global::MyMindV3.Droid.Resource.Drawable.abc_cab_background_top_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_control_background_material = global::MyMindV3.Droid.Resource.Drawable.abc_control_background_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_dialog_material_background_dark = global::MyMindV3.Droid.Resource.Drawable.abc_dialog_material_background_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_dialog_material_background_light = global::MyMindV3.Droid.Resource.Drawable.abc_dialog_material_background_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_edit_text_material = global::MyMindV3.Droid.Resource.Drawable.abc_edit_text_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_ab_back_mtrl_am_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_clear_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_clear_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_go_search_api_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_search_api_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_search_api_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_ic_voice_search_api_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_item_background_holo_dark = global::MyMindV3.Droid.Resource.Drawable.abc_item_background_holo_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_item_background_holo_light = global::MyMindV3.Droid.Resource.Drawable.abc_item_background_holo_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_divider_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_focused_holo = global::MyMindV3.Droid.Resource.Drawable.abc_list_focused_holo;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_longpressed_holo = global::MyMindV3.Droid.Resource.Drawable.abc_list_longpressed_holo;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_pressed_holo_dark = global::MyMindV3.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_pressed_holo_light = global::MyMindV3.Droid.Resource.Drawable.abc_list_pressed_holo_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::MyMindV3.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::MyMindV3.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::MyMindV3.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_selector_disabled_holo_light = global::MyMindV3.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_selector_holo_dark = global::MyMindV3.Droid.Resource.Drawable.abc_list_selector_holo_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_list_selector_holo_light = global::MyMindV3.Droid.Resource.Drawable.abc_list_selector_holo_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::MyMindV3.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_popup_background_mtrl_mult = global::MyMindV3.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_ratingbar_full_material = global::MyMindV3.Droid.Resource.Drawable.abc_ratingbar_full_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_spinner_textfield_background_material = global::MyMindV3.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_switch_thumb_material = global::MyMindV3.Droid.Resource.Drawable.abc_switch_thumb_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_switch_track_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_tab_indicator_material = global::MyMindV3.Droid.Resource.Drawable.abc_tab_indicator_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_text_cursor_material = global::MyMindV3.Droid.Resource.Drawable.abc_text_cursor_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::MyMindV3.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.abc_textfield_search_material = global::MyMindV3.Droid.Resource.Drawable.abc_textfield_search_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.design_fab_background = global::MyMindV3.Droid.Resource.Drawable.design_fab_background;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.design_snackbar_background = global::MyMindV3.Droid.Resource.Drawable.design_snackbar_background;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_cast_dark = global::MyMindV3.Droid.Resource.Drawable.ic_cast_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_cast_disabled_light = global::MyMindV3.Droid.Resource.Drawable.ic_cast_disabled_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_cast_light = global::MyMindV3.Droid.Resource.Drawable.ic_cast_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_cast_off_light = global::MyMindV3.Droid.Resource.Drawable.ic_cast_off_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_cast_on_0_light = global::MyMindV3.Droid.Resource.Drawable.ic_cast_on_0_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_cast_on_1_light = global::MyMindV3.Droid.Resource.Drawable.ic_cast_on_1_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_cast_on_2_light = global::MyMindV3.Droid.Resource.Drawable.ic_cast_on_2_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_cast_on_light = global::MyMindV3.Droid.Resource.Drawable.ic_cast_on_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_media_pause = global::MyMindV3.Droid.Resource.Drawable.ic_media_pause;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_media_play = global::MyMindV3.Droid.Resource.Drawable.ic_media_play;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_media_route_disabled_mono_dark = global::MyMindV3.Droid.Resource.Drawable.ic_media_route_disabled_mono_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_media_route_off_mono_dark = global::MyMindV3.Droid.Resource.Drawable.ic_media_route_off_mono_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_media_route_on_0_mono_dark = global::MyMindV3.Droid.Resource.Drawable.ic_media_route_on_0_mono_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_media_route_on_1_mono_dark = global::MyMindV3.Droid.Resource.Drawable.ic_media_route_on_1_mono_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_media_route_on_2_mono_dark = global::MyMindV3.Droid.Resource.Drawable.ic_media_route_on_2_mono_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_media_route_on_mono_dark = global::MyMindV3.Droid.Resource.Drawable.ic_media_route_on_mono_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_pause_dark = global::MyMindV3.Droid.Resource.Drawable.ic_pause_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_pause_light = global::MyMindV3.Droid.Resource.Drawable.ic_pause_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_play_dark = global::MyMindV3.Droid.Resource.Drawable.ic_play_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.ic_play_light = global::MyMindV3.Droid.Resource.Drawable.ic_play_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_cast_dark = global::MyMindV3.Droid.Resource.Drawable.mr_ic_cast_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_cast_light = global::MyMindV3.Droid.Resource.Drawable.mr_ic_cast_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_media_route_connecting_mono_dark = global::MyMindV3.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_media_route_connecting_mono_light = global::MyMindV3.Droid.Resource.Drawable.mr_ic_media_route_connecting_mono_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_media_route_mono_dark = global::MyMindV3.Droid.Resource.Drawable.mr_ic_media_route_mono_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_media_route_mono_light = global::MyMindV3.Droid.Resource.Drawable.mr_ic_media_route_mono_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_pause_dark = global::MyMindV3.Droid.Resource.Drawable.mr_ic_pause_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_pause_light = global::MyMindV3.Droid.Resource.Drawable.mr_ic_pause_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_play_dark = global::MyMindV3.Droid.Resource.Drawable.mr_ic_play_dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.mr_ic_play_light = global::MyMindV3.Droid.Resource.Drawable.mr_ic_play_light;
+			global::Messier16.Forms.Droid.Controls.Resource.Drawable.notification_template_icon_bg = global::MyMindV3.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action0 = global::MyMindV3.Droid.Resource.Id.action0;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_bar = global::MyMindV3.Droid.Resource.Id.action_bar;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_bar_activity_content = global::MyMindV3.Droid.Resource.Id.action_bar_activity_content;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_bar_container = global::MyMindV3.Droid.Resource.Id.action_bar_container;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_bar_root = global::MyMindV3.Droid.Resource.Id.action_bar_root;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_bar_spinner = global::MyMindV3.Droid.Resource.Id.action_bar_spinner;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_bar_subtitle = global::MyMindV3.Droid.Resource.Id.action_bar_subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_bar_title = global::MyMindV3.Droid.Resource.Id.action_bar_title;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_context_bar = global::MyMindV3.Droid.Resource.Id.action_context_bar;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_divider = global::MyMindV3.Droid.Resource.Id.action_divider;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_menu_divider = global::MyMindV3.Droid.Resource.Id.action_menu_divider;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_menu_presenter = global::MyMindV3.Droid.Resource.Id.action_menu_presenter;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_mode_bar = global::MyMindV3.Droid.Resource.Id.action_mode_bar;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_mode_bar_stub = global::MyMindV3.Droid.Resource.Id.action_mode_bar_stub;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.action_mode_close_button = global::MyMindV3.Droid.Resource.Id.action_mode_close_button;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.activity_chooser_view_content = global::MyMindV3.Droid.Resource.Id.activity_chooser_view_content;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.alertTitle = global::MyMindV3.Droid.Resource.Id.alertTitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.always = global::MyMindV3.Droid.Resource.Id.always;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.beginning = global::MyMindV3.Droid.Resource.Id.beginning;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.bottom = global::MyMindV3.Droid.Resource.Id.bottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.buttonPanel = global::MyMindV3.Droid.Resource.Id.buttonPanel;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.cancel_action = global::MyMindV3.Droid.Resource.Id.cancel_action;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.center = global::MyMindV3.Droid.Resource.Id.center;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.center_horizontal = global::MyMindV3.Droid.Resource.Id.center_horizontal;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.center_vertical = global::MyMindV3.Droid.Resource.Id.center_vertical;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.checkbox = global::MyMindV3.Droid.Resource.Id.checkbox;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.chronometer = global::MyMindV3.Droid.Resource.Id.chronometer;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.clip_horizontal = global::MyMindV3.Droid.Resource.Id.clip_horizontal;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.clip_vertical = global::MyMindV3.Droid.Resource.Id.clip_vertical;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.collapseActionView = global::MyMindV3.Droid.Resource.Id.collapseActionView;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.contentPanel = global::MyMindV3.Droid.Resource.Id.contentPanel;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.custom = global::MyMindV3.Droid.Resource.Id.custom;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.customPanel = global::MyMindV3.Droid.Resource.Id.customPanel;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.decor_content_parent = global::MyMindV3.Droid.Resource.Id.decor_content_parent;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.default_activity_button = global::MyMindV3.Droid.Resource.Id.default_activity_button;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.disableHome = global::MyMindV3.Droid.Resource.Id.disableHome;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.edit_query = global::MyMindV3.Droid.Resource.Id.edit_query;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.end = global::MyMindV3.Droid.Resource.Id.end;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.end_padder = global::MyMindV3.Droid.Resource.Id.end_padder;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.enterAlways = global::MyMindV3.Droid.Resource.Id.enterAlways;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.enterAlwaysCollapsed = global::MyMindV3.Droid.Resource.Id.enterAlwaysCollapsed;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.exitUntilCollapsed = global::MyMindV3.Droid.Resource.Id.exitUntilCollapsed;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.expand_activities_button = global::MyMindV3.Droid.Resource.Id.expand_activities_button;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.expanded_menu = global::MyMindV3.Droid.Resource.Id.expanded_menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.fill = global::MyMindV3.Droid.Resource.Id.fill;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.fill_horizontal = global::MyMindV3.Droid.Resource.Id.fill_horizontal;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.fill_vertical = global::MyMindV3.Droid.Resource.Id.fill_vertical;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.@fixed = global::MyMindV3.Droid.Resource.Id.@fixed;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.home = global::MyMindV3.Droid.Resource.Id.home;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.homeAsUp = global::MyMindV3.Droid.Resource.Id.homeAsUp;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.icon = global::MyMindV3.Droid.Resource.Id.icon;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.ifRoom = global::MyMindV3.Droid.Resource.Id.ifRoom;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.image = global::MyMindV3.Droid.Resource.Id.image;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.info = global::MyMindV3.Droid.Resource.Id.info;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.left = global::MyMindV3.Droid.Resource.Id.left;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.line1 = global::MyMindV3.Droid.Resource.Id.line1;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.line3 = global::MyMindV3.Droid.Resource.Id.line3;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.listMode = global::MyMindV3.Droid.Resource.Id.listMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.list_item = global::MyMindV3.Droid.Resource.Id.list_item;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.media_actions = global::MyMindV3.Droid.Resource.Id.media_actions;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.middle = global::MyMindV3.Droid.Resource.Id.middle;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.mini = global::MyMindV3.Droid.Resource.Id.mini;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.multiply = global::MyMindV3.Droid.Resource.Id.multiply;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.never = global::MyMindV3.Droid.Resource.Id.never;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.none = global::MyMindV3.Droid.Resource.Id.none;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.normal = global::MyMindV3.Droid.Resource.Id.normal;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.parallax = global::MyMindV3.Droid.Resource.Id.parallax;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.parentPanel = global::MyMindV3.Droid.Resource.Id.parentPanel;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.pin = global::MyMindV3.Droid.Resource.Id.pin;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.progress_circular = global::MyMindV3.Droid.Resource.Id.progress_circular;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.progress_horizontal = global::MyMindV3.Droid.Resource.Id.progress_horizontal;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.radio = global::MyMindV3.Droid.Resource.Id.radio;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.right = global::MyMindV3.Droid.Resource.Id.right;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.screen = global::MyMindV3.Droid.Resource.Id.screen;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.scroll = global::MyMindV3.Droid.Resource.Id.scroll;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.scrollView = global::MyMindV3.Droid.Resource.Id.scrollView;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.scrollable = global::MyMindV3.Droid.Resource.Id.scrollable;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_badge = global::MyMindV3.Droid.Resource.Id.search_badge;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_bar = global::MyMindV3.Droid.Resource.Id.search_bar;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_button = global::MyMindV3.Droid.Resource.Id.search_button;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_close_btn = global::MyMindV3.Droid.Resource.Id.search_close_btn;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_edit_frame = global::MyMindV3.Droid.Resource.Id.search_edit_frame;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_go_btn = global::MyMindV3.Droid.Resource.Id.search_go_btn;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_mag_icon = global::MyMindV3.Droid.Resource.Id.search_mag_icon;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_plate = global::MyMindV3.Droid.Resource.Id.search_plate;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_src_text = global::MyMindV3.Droid.Resource.Id.search_src_text;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.search_voice_btn = global::MyMindV3.Droid.Resource.Id.search_voice_btn;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.select_dialog_listview = global::MyMindV3.Droid.Resource.Id.select_dialog_listview;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.shortcut = global::MyMindV3.Droid.Resource.Id.shortcut;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.showCustom = global::MyMindV3.Droid.Resource.Id.showCustom;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.showHome = global::MyMindV3.Droid.Resource.Id.showHome;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.showTitle = global::MyMindV3.Droid.Resource.Id.showTitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.snackbar_action = global::MyMindV3.Droid.Resource.Id.snackbar_action;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.snackbar_text = global::MyMindV3.Droid.Resource.Id.snackbar_text;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.split_action_bar = global::MyMindV3.Droid.Resource.Id.split_action_bar;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.src_atop = global::MyMindV3.Droid.Resource.Id.src_atop;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.src_in = global::MyMindV3.Droid.Resource.Id.src_in;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.src_over = global::MyMindV3.Droid.Resource.Id.src_over;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.start = global::MyMindV3.Droid.Resource.Id.start;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.status_bar_latest_event_content = global::MyMindV3.Droid.Resource.Id.status_bar_latest_event_content;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.submit_area = global::MyMindV3.Droid.Resource.Id.submit_area;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.tabMode = global::MyMindV3.Droid.Resource.Id.tabMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.text = global::MyMindV3.Droid.Resource.Id.text;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.text2 = global::MyMindV3.Droid.Resource.Id.text2;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.textSpacerNoButtons = global::MyMindV3.Droid.Resource.Id.textSpacerNoButtons;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.time = global::MyMindV3.Droid.Resource.Id.time;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.title = global::MyMindV3.Droid.Resource.Id.title;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.title_template = global::MyMindV3.Droid.Resource.Id.title_template;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.top = global::MyMindV3.Droid.Resource.Id.top;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.topPanel = global::MyMindV3.Droid.Resource.Id.topPanel;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.up = global::MyMindV3.Droid.Resource.Id.up;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.useLogo = global::MyMindV3.Droid.Resource.Id.useLogo;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.view_offset_helper = global::MyMindV3.Droid.Resource.Id.view_offset_helper;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.withText = global::MyMindV3.Droid.Resource.Id.withText;
+			global::Messier16.Forms.Droid.Controls.Resource.Id.wrap_content = global::MyMindV3.Droid.Resource.Id.wrap_content;
+			global::Messier16.Forms.Droid.Controls.Resource.Integer.abc_config_activityDefaultDur = global::MyMindV3.Droid.Resource.Integer.abc_config_activityDefaultDur;
+			global::Messier16.Forms.Droid.Controls.Resource.Integer.abc_config_activityShortDur = global::MyMindV3.Droid.Resource.Integer.abc_config_activityShortDur;
+			global::Messier16.Forms.Droid.Controls.Resource.Integer.abc_max_action_buttons = global::MyMindV3.Droid.Resource.Integer.abc_max_action_buttons;
+			global::Messier16.Forms.Droid.Controls.Resource.Integer.cancel_button_image_alpha = global::MyMindV3.Droid.Resource.Integer.cancel_button_image_alpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Integer.design_snackbar_text_max_lines = global::MyMindV3.Droid.Resource.Integer.design_snackbar_text_max_lines;
+			global::Messier16.Forms.Droid.Controls.Resource.Integer.status_bar_notification_info_maxnum = global::MyMindV3.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_action_bar_title_item = global::MyMindV3.Droid.Resource.Layout.abc_action_bar_title_item;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_action_bar_up_container = global::MyMindV3.Droid.Resource.Layout.abc_action_bar_up_container;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_action_bar_view_list_nav_layout = global::MyMindV3.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_action_menu_item_layout = global::MyMindV3.Droid.Resource.Layout.abc_action_menu_item_layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_action_menu_layout = global::MyMindV3.Droid.Resource.Layout.abc_action_menu_layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_action_mode_bar = global::MyMindV3.Droid.Resource.Layout.abc_action_mode_bar;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_action_mode_close_item_material = global::MyMindV3.Droid.Resource.Layout.abc_action_mode_close_item_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_activity_chooser_view = global::MyMindV3.Droid.Resource.Layout.abc_activity_chooser_view;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_activity_chooser_view_list_item = global::MyMindV3.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_alert_dialog_material = global::MyMindV3.Droid.Resource.Layout.abc_alert_dialog_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_dialog_title_material = global::MyMindV3.Droid.Resource.Layout.abc_dialog_title_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_expanded_menu_layout = global::MyMindV3.Droid.Resource.Layout.abc_expanded_menu_layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_list_menu_item_checkbox = global::MyMindV3.Droid.Resource.Layout.abc_list_menu_item_checkbox;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_list_menu_item_icon = global::MyMindV3.Droid.Resource.Layout.abc_list_menu_item_icon;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_list_menu_item_layout = global::MyMindV3.Droid.Resource.Layout.abc_list_menu_item_layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_list_menu_item_radio = global::MyMindV3.Droid.Resource.Layout.abc_list_menu_item_radio;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_popup_menu_item_layout = global::MyMindV3.Droid.Resource.Layout.abc_popup_menu_item_layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_screen_content_include = global::MyMindV3.Droid.Resource.Layout.abc_screen_content_include;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_screen_simple = global::MyMindV3.Droid.Resource.Layout.abc_screen_simple;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_screen_simple_overlay_action_mode = global::MyMindV3.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_screen_toolbar = global::MyMindV3.Droid.Resource.Layout.abc_screen_toolbar;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_search_dropdown_item_icons_2line = global::MyMindV3.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_search_view = global::MyMindV3.Droid.Resource.Layout.abc_search_view;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.abc_select_dialog_material = global::MyMindV3.Droid.Resource.Layout.abc_select_dialog_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.design_layout_snackbar = global::MyMindV3.Droid.Resource.Layout.design_layout_snackbar;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.design_layout_snackbar_include = global::MyMindV3.Droid.Resource.Layout.design_layout_snackbar_include;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.design_layout_tab_icon = global::MyMindV3.Droid.Resource.Layout.design_layout_tab_icon;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.design_layout_tab_text = global::MyMindV3.Droid.Resource.Layout.design_layout_tab_text;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.design_navigation_item = global::MyMindV3.Droid.Resource.Layout.design_navigation_item;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.design_navigation_item_header = global::MyMindV3.Droid.Resource.Layout.design_navigation_item_header;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.design_navigation_item_separator = global::MyMindV3.Droid.Resource.Layout.design_navigation_item_separator;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.design_navigation_item_subheader = global::MyMindV3.Droid.Resource.Layout.design_navigation_item_subheader;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.design_navigation_menu = global::MyMindV3.Droid.Resource.Layout.design_navigation_menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.notification_media_action = global::MyMindV3.Droid.Resource.Layout.notification_media_action;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.notification_media_cancel_action = global::MyMindV3.Droid.Resource.Layout.notification_media_cancel_action;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.notification_template_big_media = global::MyMindV3.Droid.Resource.Layout.notification_template_big_media;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.notification_template_big_media_narrow = global::MyMindV3.Droid.Resource.Layout.notification_template_big_media_narrow;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.notification_template_lines = global::MyMindV3.Droid.Resource.Layout.notification_template_lines;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.notification_template_media = global::MyMindV3.Droid.Resource.Layout.notification_template_media;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.notification_template_part_chronometer = global::MyMindV3.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.notification_template_part_time = global::MyMindV3.Droid.Resource.Layout.notification_template_part_time;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.select_dialog_item_material = global::MyMindV3.Droid.Resource.Layout.select_dialog_item_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.select_dialog_multichoice_material = global::MyMindV3.Droid.Resource.Layout.select_dialog_multichoice_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.select_dialog_singlechoice_material = global::MyMindV3.Droid.Resource.Layout.select_dialog_singlechoice_material;
+			global::Messier16.Forms.Droid.Controls.Resource.Layout.support_simple_spinner_dropdown_item = global::MyMindV3.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_action_bar_home_description = global::MyMindV3.Droid.Resource.String.abc_action_bar_home_description;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_action_bar_home_description_format = global::MyMindV3.Droid.Resource.String.abc_action_bar_home_description_format;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_action_bar_home_subtitle_description_format = global::MyMindV3.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_action_bar_up_description = global::MyMindV3.Droid.Resource.String.abc_action_bar_up_description;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_action_menu_overflow_description = global::MyMindV3.Droid.Resource.String.abc_action_menu_overflow_description;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_action_mode_done = global::MyMindV3.Droid.Resource.String.abc_action_mode_done;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_activity_chooser_view_see_all = global::MyMindV3.Droid.Resource.String.abc_activity_chooser_view_see_all;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_activitychooserview_choose_application = global::MyMindV3.Droid.Resource.String.abc_activitychooserview_choose_application;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_search_hint = global::MyMindV3.Droid.Resource.String.abc_search_hint;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_searchview_description_clear = global::MyMindV3.Droid.Resource.String.abc_searchview_description_clear;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_searchview_description_query = global::MyMindV3.Droid.Resource.String.abc_searchview_description_query;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_searchview_description_search = global::MyMindV3.Droid.Resource.String.abc_searchview_description_search;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_searchview_description_submit = global::MyMindV3.Droid.Resource.String.abc_searchview_description_submit;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_searchview_description_voice = global::MyMindV3.Droid.Resource.String.abc_searchview_description_voice;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_shareactionprovider_share_with = global::MyMindV3.Droid.Resource.String.abc_shareactionprovider_share_with;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_shareactionprovider_share_with_application = global::MyMindV3.Droid.Resource.String.abc_shareactionprovider_share_with_application;
+			global::Messier16.Forms.Droid.Controls.Resource.String.abc_toolbar_collapse_description = global::MyMindV3.Droid.Resource.String.abc_toolbar_collapse_description;
+			global::Messier16.Forms.Droid.Controls.Resource.String.appbar_scrolling_view_behavior = global::MyMindV3.Droid.Resource.String.appbar_scrolling_view_behavior;
+			global::Messier16.Forms.Droid.Controls.Resource.String.library_name = global::MyMindV3.Droid.Resource.String.library_name;
+			global::Messier16.Forms.Droid.Controls.Resource.String.mr_system_route_name = global::MyMindV3.Droid.Resource.String.mr_system_route_name;
+			global::Messier16.Forms.Droid.Controls.Resource.String.mr_user_route_category_name = global::MyMindV3.Droid.Resource.String.mr_user_route_category_name;
+			global::Messier16.Forms.Droid.Controls.Resource.String.status_bar_notification_info_overflow = global::MyMindV3.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.AlertDialog_AppCompat = global::MyMindV3.Droid.Resource.Style.AlertDialog_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.AlertDialog_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.AlertDialog_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Animation_AppCompat_Dialog = global::MyMindV3.Droid.Resource.Style.Animation_AppCompat_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Animation_AppCompat_DropDownUp = global::MyMindV3.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_AlertDialog_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_AlertDialog_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_AlertDialog_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Animation_AppCompat_Dialog = global::MyMindV3.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::MyMindV3.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_DialogWindowTitle_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Button = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Large = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Small = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Title = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::MyMindV3.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Dialog = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::MyMindV3.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_ThemeOverlay_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::MyMindV3.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::MyMindV3.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::MyMindV3.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::MyMindV3.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::MyMindV3.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::MyMindV3.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::MyMindV3.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V21_Theme_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_V21_Theme_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::MyMindV3.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V21_Theme_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::MyMindV3.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V22_Theme_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_V22_Theme_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V22_Theme_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V23_Theme_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_V23_Theme_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V23_Theme_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V7_Theme_AppCompat = global::MyMindV3.Droid.Resource.Style.Base_V7_Theme_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::MyMindV3.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V7_Theme_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::MyMindV3.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::MyMindV3.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::MyMindV3.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActionBar = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActionButton = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActionMode = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Button = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Button;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Button_Small = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_EditText = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ListView = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_RatingBar = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_SearchView = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Spinner = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Toolbar = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::MyMindV3.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Base_Widget_Design_TabLayout = global::MyMindV3.Droid.Resource.Style.Base_Widget_Design_TabLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.CardView = global::MyMindV3.Droid.Resource.Style.CardView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.CardView_Dark = global::MyMindV3.Droid.Resource.Style.CardView_Dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.CardView_Light = global::MyMindV3.Droid.Resource.Style.CardView_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_AppCompat = global::MyMindV3.Droid.Resource.Style.Platform_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Platform_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_ThemeOverlay_AppCompat = global::MyMindV3.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::MyMindV3.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_V11_AppCompat = global::MyMindV3.Droid.Resource.Style.Platform_V11_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_V11_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Platform_V11_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_V14_AppCompat = global::MyMindV3.Droid.Resource.Style.Platform_V14_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_V14_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Platform_V14_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Platform_Widget_AppCompat_Spinner = global::MyMindV3.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::MyMindV3.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::MyMindV3.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Body1 = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Body2 = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Button = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Button;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Caption = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Display1 = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Display2 = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Display3 = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Display4 = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Headline = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Large = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Large;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Medium = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Menu = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Small = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Small;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Subhead = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Title = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::MyMindV3.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::MyMindV3.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_Design_Error = global::MyMindV3.Droid.Resource.Style.TextAppearance_Design_Error;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_Design_Hint = global::MyMindV3.Droid.Resource.Style.TextAppearance_Design_Hint;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_Design_Snackbar_Message = global::MyMindV3.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_Design_Tab = global::MyMindV3.Droid.Resource.Style.TextAppearance_Design_Tab;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_StatusBar_EventContent = global::MyMindV3.Droid.Resource.Style.TextAppearance_StatusBar_EventContent;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::MyMindV3.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::MyMindV3.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::MyMindV3.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::MyMindV3.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::MyMindV3.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::MyMindV3.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::MyMindV3.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_CompactMenu = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Dialog = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Dialog_Alert = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Light_Dialog = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_AppCompat_NoActionBar = global::MyMindV3.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_MediaRouter = global::MyMindV3.Droid.Resource.Style.Theme_MediaRouter;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Theme_MediaRouter_Light = global::MyMindV3.Droid.Resource.Style.Theme_MediaRouter_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.ThemeOverlay_AppCompat = global::MyMindV3.Droid.Resource.Style.ThemeOverlay_AppCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::MyMindV3.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.ThemeOverlay_AppCompat_Dark = global::MyMindV3.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::MyMindV3.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.ThemeOverlay_AppCompat_Light = global::MyMindV3.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActionBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActionButton = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActionButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActionMode = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActionMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ActivityChooserView = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Button = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Button;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Button_Borderless = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Button_Colored = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Button_Small = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Button_Small;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ButtonBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_EditText = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_EditText;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionButton = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_SearchView = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ListPopupWindow = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ListView = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ListView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ListView_DropDown = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ListView_Menu = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_PopupMenu = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_PopupWindow = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ProgressBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_RatingBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_RatingBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_SearchView = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_SearchView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Spinner = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Spinner;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Toolbar = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Toolbar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::MyMindV3.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_Design_AppBarLayout = global::MyMindV3.Droid.Resource.Style.Widget_Design_AppBarLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_Design_CollapsingToolbar = global::MyMindV3.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_Design_CoordinatorLayout = global::MyMindV3.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_Design_FloatingActionButton = global::MyMindV3.Droid.Resource.Style.Widget_Design_FloatingActionButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_Design_NavigationView = global::MyMindV3.Droid.Resource.Style.Widget_Design_NavigationView;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::MyMindV3.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_Design_Snackbar = global::MyMindV3.Droid.Resource.Style.Widget_Design_Snackbar;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_Design_TabLayout = global::MyMindV3.Droid.Resource.Style.Widget_Design_TabLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_Design_TextInputLayout = global::MyMindV3.Droid.Resource.Style.Widget_Design_TextInputLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::MyMindV3.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::MyMindV3.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar = global::MyMindV3.Droid.Resource.Styleable.ActionBar;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_background = global::MyMindV3.Droid.Resource.Styleable.ActionBar_background;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_backgroundSplit = global::MyMindV3.Droid.Resource.Styleable.ActionBar_backgroundSplit;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_backgroundStacked = global::MyMindV3.Droid.Resource.Styleable.ActionBar_backgroundStacked;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_contentInsetEnd = global::MyMindV3.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_contentInsetLeft = global::MyMindV3.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_contentInsetRight = global::MyMindV3.Droid.Resource.Styleable.ActionBar_contentInsetRight;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_contentInsetStart = global::MyMindV3.Droid.Resource.Styleable.ActionBar_contentInsetStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_customNavigationLayout = global::MyMindV3.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_displayOptions = global::MyMindV3.Droid.Resource.Styleable.ActionBar_displayOptions;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_divider = global::MyMindV3.Droid.Resource.Styleable.ActionBar_divider;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_elevation = global::MyMindV3.Droid.Resource.Styleable.ActionBar_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_height = global::MyMindV3.Droid.Resource.Styleable.ActionBar_height;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_hideOnContentScroll = global::MyMindV3.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_homeAsUpIndicator = global::MyMindV3.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_homeLayout = global::MyMindV3.Droid.Resource.Styleable.ActionBar_homeLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_icon = global::MyMindV3.Droid.Resource.Styleable.ActionBar_icon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::MyMindV3.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_itemPadding = global::MyMindV3.Droid.Resource.Styleable.ActionBar_itemPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_logo = global::MyMindV3.Droid.Resource.Styleable.ActionBar_logo;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_navigationMode = global::MyMindV3.Droid.Resource.Styleable.ActionBar_navigationMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_popupTheme = global::MyMindV3.Droid.Resource.Styleable.ActionBar_popupTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_progressBarPadding = global::MyMindV3.Droid.Resource.Styleable.ActionBar_progressBarPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_progressBarStyle = global::MyMindV3.Droid.Resource.Styleable.ActionBar_progressBarStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_subtitle = global::MyMindV3.Droid.Resource.Styleable.ActionBar_subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_subtitleTextStyle = global::MyMindV3.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_title = global::MyMindV3.Droid.Resource.Styleable.ActionBar_title;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBar_titleTextStyle = global::MyMindV3.Droid.Resource.Styleable.ActionBar_titleTextStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBarLayout = global::MyMindV3.Droid.Resource.Styleable.ActionBarLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::MyMindV3.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMenuItemView = global::MyMindV3.Droid.Resource.Styleable.ActionMenuItemView;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMenuItemView_android_minWidth = global::MyMindV3.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMenuView = global::MyMindV3.Droid.Resource.Styleable.ActionMenuView;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMode = global::MyMindV3.Droid.Resource.Styleable.ActionMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMode_background = global::MyMindV3.Droid.Resource.Styleable.ActionMode_background;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMode_backgroundSplit = global::MyMindV3.Droid.Resource.Styleable.ActionMode_backgroundSplit;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMode_closeItemLayout = global::MyMindV3.Droid.Resource.Styleable.ActionMode_closeItemLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMode_height = global::MyMindV3.Droid.Resource.Styleable.ActionMode_height;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMode_subtitleTextStyle = global::MyMindV3.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActionMode_titleTextStyle = global::MyMindV3.Droid.Resource.Styleable.ActionMode_titleTextStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActivityChooserView = global::MyMindV3.Droid.Resource.Styleable.ActivityChooserView;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::MyMindV3.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ActivityChooserView_initialActivityCount = global::MyMindV3.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AlertDialog = global::MyMindV3.Droid.Resource.Styleable.AlertDialog;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AlertDialog_android_layout = global::MyMindV3.Droid.Resource.Styleable.AlertDialog_android_layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::MyMindV3.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AlertDialog_listItemLayout = global::MyMindV3.Droid.Resource.Styleable.AlertDialog_listItemLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AlertDialog_listLayout = global::MyMindV3.Droid.Resource.Styleable.AlertDialog_listLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::MyMindV3.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::MyMindV3.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppBarLayout = global::MyMindV3.Droid.Resource.Styleable.AppBarLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppBarLayout_android_background = global::MyMindV3.Droid.Resource.Styleable.AppBarLayout_android_background;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppBarLayout_elevation = global::MyMindV3.Droid.Resource.Styleable.AppBarLayout_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppBarLayout_expanded = global::MyMindV3.Droid.Resource.Styleable.AppBarLayout_expanded;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppBarLayout_LayoutParams = global::MyMindV3.Droid.Resource.Styleable.AppBarLayout_LayoutParams;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags = global::MyMindV3.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollFlags;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator = global::MyMindV3.Droid.Resource.Styleable.AppBarLayout_LayoutParams_layout_scrollInterpolator;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppCompatTextView = global::MyMindV3.Droid.Resource.Styleable.AppCompatTextView;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppCompatTextView_android_textAppearance = global::MyMindV3.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.AppCompatTextView_textAllCaps = global::MyMindV3.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView = global::MyMindV3.Droid.Resource.Styleable.CardView;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_cardBackgroundColor = global::MyMindV3.Droid.Resource.Styleable.CardView_cardBackgroundColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_cardCornerRadius = global::MyMindV3.Droid.Resource.Styleable.CardView_cardCornerRadius;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_cardElevation = global::MyMindV3.Droid.Resource.Styleable.CardView_cardElevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_cardMaxElevation = global::MyMindV3.Droid.Resource.Styleable.CardView_cardMaxElevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_cardPreventCornerOverlap = global::MyMindV3.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_cardUseCompatPadding = global::MyMindV3.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_contentPadding = global::MyMindV3.Droid.Resource.Styleable.CardView_contentPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_contentPaddingBottom = global::MyMindV3.Droid.Resource.Styleable.CardView_contentPaddingBottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_contentPaddingLeft = global::MyMindV3.Droid.Resource.Styleable.CardView_contentPaddingLeft;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_contentPaddingRight = global::MyMindV3.Droid.Resource.Styleable.CardView_contentPaddingRight;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CardView_contentPaddingTop = global::MyMindV3.Droid.Resource.Styleable.CardView_contentPaddingTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingAppBarLayout_LayoutParams = global::MyMindV3.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode = global::MyMindV3.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier = global::MyMindV3.Droid.Resource.Styleable.CollapsingAppBarLayout_LayoutParams_layout_collapseParallaxMultiplier;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_title = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::MyMindV3.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CompoundButton = global::MyMindV3.Droid.Resource.Styleable.CompoundButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CompoundButton_android_button = global::MyMindV3.Droid.Resource.Styleable.CompoundButton_android_button;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CompoundButton_buttonTint = global::MyMindV3.Droid.Resource.Styleable.CompoundButton_buttonTint;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CompoundButton_buttonTintMode = global::MyMindV3.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CoordinatorLayout = global::MyMindV3.Droid.Resource.Styleable.CoordinatorLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CoordinatorLayout_keylines = global::MyMindV3.Droid.Resource.Styleable.CoordinatorLayout_keylines;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::MyMindV3.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CoordinatorLayout_LayoutParams = global::MyMindV3.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity = global::MyMindV3.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_android_layout_gravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor = global::MyMindV3.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity = global::MyMindV3.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_anchorGravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior = global::MyMindV3.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_behavior;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline = global::MyMindV3.Droid.Resource.Styleable.CoordinatorLayout_LayoutParams_layout_keyline;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.DrawerArrowToggle = global::MyMindV3.Droid.Resource.Styleable.DrawerArrowToggle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::MyMindV3.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::MyMindV3.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.DrawerArrowToggle_barLength = global::MyMindV3.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.DrawerArrowToggle_color = global::MyMindV3.Droid.Resource.Styleable.DrawerArrowToggle_color;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.DrawerArrowToggle_drawableSize = global::MyMindV3.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::MyMindV3.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.DrawerArrowToggle_spinBars = global::MyMindV3.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.DrawerArrowToggle_thickness = global::MyMindV3.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.FloatingActionButton = global::MyMindV3.Droid.Resource.Styleable.FloatingActionButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.FloatingActionButton_backgroundTint = global::MyMindV3.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::MyMindV3.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.FloatingActionButton_borderWidth = global::MyMindV3.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.FloatingActionButton_elevation = global::MyMindV3.Droid.Resource.Styleable.FloatingActionButton_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.FloatingActionButton_fabSize = global::MyMindV3.Droid.Resource.Styleable.FloatingActionButton_fabSize;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::MyMindV3.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.FloatingActionButton_rippleColor = global::MyMindV3.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_android_gravity = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_android_orientation = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_divider = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_divider;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_showDividers = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_Layout = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::MyMindV3.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ListPopupWindow = global::MyMindV3.Droid.Resource.Styleable.ListPopupWindow;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::MyMindV3.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::MyMindV3.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MediaRouteButton = global::MyMindV3.Droid.Resource.Styleable.MediaRouteButton;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MediaRouteButton_android_minHeight = global::MyMindV3.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MediaRouteButton_android_minWidth = global::MyMindV3.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::MyMindV3.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuGroup = global::MyMindV3.Droid.Resource.Styleable.MenuGroup;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuGroup_android_checkableBehavior = global::MyMindV3.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuGroup_android_enabled = global::MyMindV3.Droid.Resource.Styleable.MenuGroup_android_enabled;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuGroup_android_id = global::MyMindV3.Droid.Resource.Styleable.MenuGroup_android_id;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuGroup_android_menuCategory = global::MyMindV3.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuGroup_android_orderInCategory = global::MyMindV3.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuGroup_android_visible = global::MyMindV3.Droid.Resource.Styleable.MenuGroup_android_visible;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem = global::MyMindV3.Droid.Resource.Styleable.MenuItem;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_actionLayout = global::MyMindV3.Droid.Resource.Styleable.MenuItem_actionLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_actionProviderClass = global::MyMindV3.Droid.Resource.Styleable.MenuItem_actionProviderClass;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_actionViewClass = global::MyMindV3.Droid.Resource.Styleable.MenuItem_actionViewClass;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_checkable = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_checkable;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_checked = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_checked;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_enabled = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_enabled;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_icon = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_icon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_id = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_id;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_menuCategory = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_menuCategory;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_numericShortcut = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_onClick = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_onClick;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_orderInCategory = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_title = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_title;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_titleCondensed = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_android_visible = global::MyMindV3.Droid.Resource.Styleable.MenuItem_android_visible;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuItem_showAsAction = global::MyMindV3.Droid.Resource.Styleable.MenuItem_showAsAction;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuView = global::MyMindV3.Droid.Resource.Styleable.MenuView;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuView_android_headerBackground = global::MyMindV3.Droid.Resource.Styleable.MenuView_android_headerBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuView_android_horizontalDivider = global::MyMindV3.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuView_android_itemBackground = global::MyMindV3.Droid.Resource.Styleable.MenuView_android_itemBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::MyMindV3.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuView_android_itemTextAppearance = global::MyMindV3.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuView_android_verticalDivider = global::MyMindV3.Droid.Resource.Styleable.MenuView_android_verticalDivider;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuView_android_windowAnimationStyle = global::MyMindV3.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.MenuView_preserveIconSpacing = global::MyMindV3.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView = global::MyMindV3.Droid.Resource.Styleable.NavigationView;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_android_background = global::MyMindV3.Droid.Resource.Styleable.NavigationView_android_background;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::MyMindV3.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_android_maxWidth = global::MyMindV3.Droid.Resource.Styleable.NavigationView_android_maxWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_elevation = global::MyMindV3.Droid.Resource.Styleable.NavigationView_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_headerLayout = global::MyMindV3.Droid.Resource.Styleable.NavigationView_headerLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_itemBackground = global::MyMindV3.Droid.Resource.Styleable.NavigationView_itemBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_itemIconTint = global::MyMindV3.Droid.Resource.Styleable.NavigationView_itemIconTint;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_itemTextAppearance = global::MyMindV3.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_itemTextColor = global::MyMindV3.Droid.Resource.Styleable.NavigationView_itemTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.NavigationView_menu = global::MyMindV3.Droid.Resource.Styleable.NavigationView_menu;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.PopupWindow = global::MyMindV3.Droid.Resource.Styleable.PopupWindow;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.PopupWindow_android_popupBackground = global::MyMindV3.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.PopupWindow_overlapAnchor = global::MyMindV3.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.PopupWindowBackgroundState = global::MyMindV3.Droid.Resource.Styleable.PopupWindowBackgroundState;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::MyMindV3.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ScrimInsetsFrameLayout = global::MyMindV3.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::MyMindV3.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ScrollingViewBehavior_Params = global::MyMindV3.Droid.Resource.Styleable.ScrollingViewBehavior_Params;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop = global::MyMindV3.Droid.Resource.Styleable.ScrollingViewBehavior_Params_behavior_overlapTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView = global::MyMindV3.Droid.Resource.Styleable.SearchView;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_android_focusable = global::MyMindV3.Droid.Resource.Styleable.SearchView_android_focusable;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_android_imeOptions = global::MyMindV3.Droid.Resource.Styleable.SearchView_android_imeOptions;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_android_inputType = global::MyMindV3.Droid.Resource.Styleable.SearchView_android_inputType;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_android_maxWidth = global::MyMindV3.Droid.Resource.Styleable.SearchView_android_maxWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_closeIcon = global::MyMindV3.Droid.Resource.Styleable.SearchView_closeIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_commitIcon = global::MyMindV3.Droid.Resource.Styleable.SearchView_commitIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_defaultQueryHint = global::MyMindV3.Droid.Resource.Styleable.SearchView_defaultQueryHint;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_goIcon = global::MyMindV3.Droid.Resource.Styleable.SearchView_goIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_iconifiedByDefault = global::MyMindV3.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_layout = global::MyMindV3.Droid.Resource.Styleable.SearchView_layout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_queryBackground = global::MyMindV3.Droid.Resource.Styleable.SearchView_queryBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_queryHint = global::MyMindV3.Droid.Resource.Styleable.SearchView_queryHint;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_searchHintIcon = global::MyMindV3.Droid.Resource.Styleable.SearchView_searchHintIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_searchIcon = global::MyMindV3.Droid.Resource.Styleable.SearchView_searchIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_submitBackground = global::MyMindV3.Droid.Resource.Styleable.SearchView_submitBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_suggestionRowLayout = global::MyMindV3.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SearchView_voiceIcon = global::MyMindV3.Droid.Resource.Styleable.SearchView_voiceIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SnackbarLayout = global::MyMindV3.Droid.Resource.Styleable.SnackbarLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SnackbarLayout_android_maxWidth = global::MyMindV3.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SnackbarLayout_elevation = global::MyMindV3.Droid.Resource.Styleable.SnackbarLayout_elevation;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::MyMindV3.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Spinner = global::MyMindV3.Droid.Resource.Styleable.Spinner;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Spinner_android_dropDownWidth = global::MyMindV3.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Spinner_android_popupBackground = global::MyMindV3.Droid.Resource.Styleable.Spinner_android_popupBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Spinner_android_prompt = global::MyMindV3.Droid.Resource.Styleable.Spinner_android_prompt;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Spinner_popupTheme = global::MyMindV3.Droid.Resource.Styleable.Spinner_popupTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_android_textOff = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_android_textOff;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_android_textOn = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_android_textOn;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_android_thumb = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_android_thumb;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_showText = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_showText;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_splitTrack = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_splitTrack;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_switchMinWidth = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_switchPadding = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_switchPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_switchTextAppearance = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_thumbTextPadding = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.SwitchCompat_track = global::MyMindV3.Droid.Resource.Styleable.SwitchCompat_track;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout = global::MyMindV3.Droid.Resource.Styleable.TabLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabBackground = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabBackground;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabContentStart = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabContentStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabGravity = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabGravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabIndicatorColor = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabIndicatorHeight = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabMaxWidth = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabMinWidth = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabMinWidth;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabMode = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabPadding = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabPadding;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabPaddingBottom = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabPaddingEnd = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabPaddingStart = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabPaddingTop = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabSelectedTextColor = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabTextAppearance = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TabLayout_tabTextColor = global::MyMindV3.Droid.Resource.Styleable.TabLayout_tabTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextAppearance = global::MyMindV3.Droid.Resource.Styleable.TextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextAppearance_android_textColor = global::MyMindV3.Droid.Resource.Styleable.TextAppearance_android_textColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextAppearance_android_textSize = global::MyMindV3.Droid.Resource.Styleable.TextAppearance_android_textSize;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextAppearance_android_textStyle = global::MyMindV3.Droid.Resource.Styleable.TextAppearance_android_textStyle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextAppearance_android_typeface = global::MyMindV3.Droid.Resource.Styleable.TextAppearance_android_typeface;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextAppearance_textAllCaps = global::MyMindV3.Droid.Resource.Styleable.TextAppearance_textAllCaps;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextInputLayout = global::MyMindV3.Droid.Resource.Styleable.TextInputLayout;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextInputLayout_android_hint = global::MyMindV3.Droid.Resource.Styleable.TextInputLayout_android_hint;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextInputLayout_android_textColorHint = global::MyMindV3.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextInputLayout_errorEnabled = global::MyMindV3.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextInputLayout_errorTextAppearance = global::MyMindV3.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::MyMindV3.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.TextInputLayout_hintTextAppearance = global::MyMindV3.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar = global::MyMindV3.Droid.Resource.Styleable.Toolbar;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_android_gravity = global::MyMindV3.Droid.Resource.Styleable.Toolbar_android_gravity;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_android_minHeight = global::MyMindV3.Droid.Resource.Styleable.Toolbar_android_minHeight;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_collapseContentDescription = global::MyMindV3.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_collapseIcon = global::MyMindV3.Droid.Resource.Styleable.Toolbar_collapseIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_contentInsetEnd = global::MyMindV3.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_contentInsetLeft = global::MyMindV3.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_contentInsetRight = global::MyMindV3.Droid.Resource.Styleable.Toolbar_contentInsetRight;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_contentInsetStart = global::MyMindV3.Droid.Resource.Styleable.Toolbar_contentInsetStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_logo = global::MyMindV3.Droid.Resource.Styleable.Toolbar_logo;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_logoDescription = global::MyMindV3.Droid.Resource.Styleable.Toolbar_logoDescription;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_maxButtonHeight = global::MyMindV3.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_navigationContentDescription = global::MyMindV3.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_navigationIcon = global::MyMindV3.Droid.Resource.Styleable.Toolbar_navigationIcon;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_popupTheme = global::MyMindV3.Droid.Resource.Styleable.Toolbar_popupTheme;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_subtitle = global::MyMindV3.Droid.Resource.Styleable.Toolbar_subtitle;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_subtitleTextAppearance = global::MyMindV3.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_subtitleTextColor = global::MyMindV3.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_title = global::MyMindV3.Droid.Resource.Styleable.Toolbar_title;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_titleMarginBottom = global::MyMindV3.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_titleMarginEnd = global::MyMindV3.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_titleMarginStart = global::MyMindV3.Droid.Resource.Styleable.Toolbar_titleMarginStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_titleMarginTop = global::MyMindV3.Droid.Resource.Styleable.Toolbar_titleMarginTop;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_titleMargins = global::MyMindV3.Droid.Resource.Styleable.Toolbar_titleMargins;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_titleTextAppearance = global::MyMindV3.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.Toolbar_titleTextColor = global::MyMindV3.Droid.Resource.Styleable.Toolbar_titleTextColor;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.View = global::MyMindV3.Droid.Resource.Styleable.View;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.View_android_focusable = global::MyMindV3.Droid.Resource.Styleable.View_android_focusable;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.View_android_theme = global::MyMindV3.Droid.Resource.Styleable.View_android_theme;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.View_paddingEnd = global::MyMindV3.Droid.Resource.Styleable.View_paddingEnd;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.View_paddingStart = global::MyMindV3.Droid.Resource.Styleable.View_paddingStart;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.View_theme = global::MyMindV3.Droid.Resource.Styleable.View_theme;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ViewBackgroundHelper = global::MyMindV3.Droid.Resource.Styleable.ViewBackgroundHelper;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ViewBackgroundHelper_android_background = global::MyMindV3.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::MyMindV3.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::MyMindV3.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ViewStubCompat = global::MyMindV3.Droid.Resource.Styleable.ViewStubCompat;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ViewStubCompat_android_id = global::MyMindV3.Droid.Resource.Styleable.ViewStubCompat_android_id;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ViewStubCompat_android_inflatedId = global::MyMindV3.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
+			global::Messier16.Forms.Droid.Controls.Resource.Styleable.ViewStubCompat_android_layout = global::MyMindV3.Droid.Resource.Styleable.ViewStubCompat_android_layout;
 		}
 		
 		public partial class Animation
@@ -1986,568 +3372,574 @@ namespace MyMindV3.Droid
 			public const int autism = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
-			public const int bereavement = 2130837583;
+			public const int badlink = 2130837583;
 			
 			// aapt resource value: 0x7f020050
-			public const int bg1 = 2130837584;
+			public const int bereavement = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int bg10 = 2130837585;
+			public const int bg1 = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int bg11 = 2130837586;
+			public const int bg10 = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int bg12 = 2130837587;
+			public const int bg11 = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int bg2 = 2130837588;
+			public const int bg12 = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int bg3 = 2130837589;
+			public const int bg2 = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int bg4 = 2130837590;
+			public const int bg3 = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int bg5 = 2130837591;
+			public const int bg4 = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int bg6 = 2130837592;
+			public const int bg5 = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int bg7 = 2130837593;
+			public const int bg6 = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int bg8 = 2130837594;
+			public const int bg7 = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int bg9 = 2130837595;
+			public const int bg8 = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int bluestar = 2130837596;
+			public const int bg9 = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int bullying = 2130837597;
+			public const int bluestar = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ButtonTop = 2130837598;
+			public const int bullying = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int chatheader = 2130837599;
+			public const int ButtonTop = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int check = 2130837600;
+			public const int chatheader = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int clinicianheader = 2130837601;
+			public const int check = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int default_avatar = 2130837602;
+			public const int clinicianheader = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int depression = 2130837603;
+			public const int default_avatar = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int desert = 2130837604;
+			public const int depression = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int design_fab_background = 2130837605;
+			public const int desert = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int design_snackbar_background = 2130837606;
+			public const int design_fab_background = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int domestic_abuse = 2130837607;
+			public const int design_snackbar_background = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int dummy = 2130837608;
+			public const int domestic_abuse = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int empty_check = 2130837609;
+			public const int dummy = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int emptybackground = 2130837610;
+			public const int empty_check = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int emptystar = 2130837611;
+			public const int emptybackground = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int footer = 2130837612;
+			public const int emptystar = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int general = 2130837613;
+			public const int footer = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int gps = 2130837614;
+			public const int general = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int greenstar = 2130837615;
+			public const int gps = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int h = 2130837616;
+			public const int greenstar = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int hamburger = 2130837617;
+			public const int h = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int hamburgericon = 2130837618;
+			public const int hamburger = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int homescreen_bg = 2130837619;
+			public const int hamburgericon = 2130837619;
 			
 			// aapt resource value: 0x7f020074
-			public const int ic_audiotrack = 2130837620;
+			public const int homescreen_bg = 2130837620;
 			
 			// aapt resource value: 0x7f020075
-			public const int ic_audiotrack_light = 2130837621;
+			public const int ic_audiotrack = 2130837621;
 			
 			// aapt resource value: 0x7f020076
-			public const int ic_bluetooth_grey = 2130837622;
+			public const int ic_audiotrack_light = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int ic_bluetooth_white = 2130837623;
+			public const int ic_bluetooth_grey = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int ic_cast_dark = 2130837624;
+			public const int ic_bluetooth_white = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int ic_cast_disabled_light = 2130837625;
+			public const int ic_cast_dark = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int ic_cast_grey = 2130837626;
+			public const int ic_cast_disabled_light = 2130837626;
 			
 			// aapt resource value: 0x7f02007b
-			public const int ic_cast_light = 2130837627;
+			public const int ic_cast_grey = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int ic_cast_off_light = 2130837628;
+			public const int ic_cast_light = 2130837628;
 			
 			// aapt resource value: 0x7f02007d
-			public const int ic_cast_on_0_light = 2130837629;
+			public const int ic_cast_off_light = 2130837629;
 			
 			// aapt resource value: 0x7f02007e
-			public const int ic_cast_on_1_light = 2130837630;
+			public const int ic_cast_on_0_light = 2130837630;
 			
 			// aapt resource value: 0x7f02007f
-			public const int ic_cast_on_2_light = 2130837631;
+			public const int ic_cast_on_1_light = 2130837631;
 			
 			// aapt resource value: 0x7f020080
-			public const int ic_cast_on_light = 2130837632;
+			public const int ic_cast_on_2_light = 2130837632;
 			
 			// aapt resource value: 0x7f020081
-			public const int ic_cast_white = 2130837633;
+			public const int ic_cast_on_light = 2130837633;
 			
 			// aapt resource value: 0x7f020082
-			public const int ic_close_dark = 2130837634;
+			public const int ic_cast_white = 2130837634;
 			
 			// aapt resource value: 0x7f020083
-			public const int ic_close_light = 2130837635;
+			public const int ic_close_dark = 2130837635;
 			
 			// aapt resource value: 0x7f020084
-			public const int ic_collapse = 2130837636;
+			public const int ic_close_light = 2130837636;
 			
 			// aapt resource value: 0x7f020085
-			public const int ic_collapse_00000 = 2130837637;
+			public const int ic_collapse = 2130837637;
 			
 			// aapt resource value: 0x7f020086
-			public const int ic_collapse_00001 = 2130837638;
+			public const int ic_collapse_00000 = 2130837638;
 			
 			// aapt resource value: 0x7f020087
-			public const int ic_collapse_00002 = 2130837639;
+			public const int ic_collapse_00001 = 2130837639;
 			
 			// aapt resource value: 0x7f020088
-			public const int ic_collapse_00003 = 2130837640;
+			public const int ic_collapse_00002 = 2130837640;
 			
 			// aapt resource value: 0x7f020089
-			public const int ic_collapse_00004 = 2130837641;
+			public const int ic_collapse_00003 = 2130837641;
 			
 			// aapt resource value: 0x7f02008a
-			public const int ic_collapse_00005 = 2130837642;
+			public const int ic_collapse_00004 = 2130837642;
 			
 			// aapt resource value: 0x7f02008b
-			public const int ic_collapse_00006 = 2130837643;
+			public const int ic_collapse_00005 = 2130837643;
 			
 			// aapt resource value: 0x7f02008c
-			public const int ic_collapse_00007 = 2130837644;
+			public const int ic_collapse_00006 = 2130837644;
 			
 			// aapt resource value: 0x7f02008d
-			public const int ic_collapse_00008 = 2130837645;
+			public const int ic_collapse_00007 = 2130837645;
 			
 			// aapt resource value: 0x7f02008e
-			public const int ic_collapse_00009 = 2130837646;
+			public const int ic_collapse_00008 = 2130837646;
 			
 			// aapt resource value: 0x7f02008f
-			public const int ic_collapse_00010 = 2130837647;
+			public const int ic_collapse_00009 = 2130837647;
 			
 			// aapt resource value: 0x7f020090
-			public const int ic_collapse_00011 = 2130837648;
+			public const int ic_collapse_00010 = 2130837648;
 			
 			// aapt resource value: 0x7f020091
-			public const int ic_collapse_00012 = 2130837649;
+			public const int ic_collapse_00011 = 2130837649;
 			
 			// aapt resource value: 0x7f020092
-			public const int ic_collapse_00013 = 2130837650;
+			public const int ic_collapse_00012 = 2130837650;
 			
 			// aapt resource value: 0x7f020093
-			public const int ic_collapse_00014 = 2130837651;
+			public const int ic_collapse_00013 = 2130837651;
 			
 			// aapt resource value: 0x7f020094
-			public const int ic_collapse_00015 = 2130837652;
+			public const int ic_collapse_00014 = 2130837652;
 			
 			// aapt resource value: 0x7f020095
-			public const int ic_custom_chatroom_protected = 2130837653;
+			public const int ic_collapse_00015 = 2130837653;
 			
 			// aapt resource value: 0x7f020096
-			public const int ic_expand = 2130837654;
+			public const int ic_custom_chatroom_protected = 2130837654;
 			
 			// aapt resource value: 0x7f020097
-			public const int ic_expand_00000 = 2130837655;
+			public const int ic_expand = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int ic_expand_00001 = 2130837656;
+			public const int ic_expand_00000 = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int ic_expand_00002 = 2130837657;
+			public const int ic_expand_00001 = 2130837657;
 			
 			// aapt resource value: 0x7f02009a
-			public const int ic_expand_00003 = 2130837658;
+			public const int ic_expand_00002 = 2130837658;
 			
 			// aapt resource value: 0x7f02009b
-			public const int ic_expand_00004 = 2130837659;
+			public const int ic_expand_00003 = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int ic_expand_00005 = 2130837660;
+			public const int ic_expand_00004 = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int ic_expand_00006 = 2130837661;
+			public const int ic_expand_00005 = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int ic_expand_00007 = 2130837662;
+			public const int ic_expand_00006 = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int ic_expand_00008 = 2130837663;
+			public const int ic_expand_00007 = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int ic_expand_00009 = 2130837664;
+			public const int ic_expand_00008 = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int ic_expand_00010 = 2130837665;
+			public const int ic_expand_00009 = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int ic_expand_00011 = 2130837666;
+			public const int ic_expand_00010 = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int ic_expand_00012 = 2130837667;
+			public const int ic_expand_00011 = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int ic_expand_00013 = 2130837668;
+			public const int ic_expand_00012 = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int ic_expand_00014 = 2130837669;
+			public const int ic_expand_00013 = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int ic_expand_00015 = 2130837670;
+			public const int ic_expand_00014 = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int ic_launcher_small = 2130837671;
+			public const int ic_expand_00015 = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int ic_media_pause = 2130837672;
+			public const int ic_launcher_small = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int ic_media_play = 2130837673;
+			public const int ic_media_pause = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int ic_media_route_disabled_mono_dark = 2130837674;
+			public const int ic_media_play = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int ic_media_route_off_mono_dark = 2130837675;
+			public const int ic_media_route_disabled_mono_dark = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int ic_media_route_on_0_mono_dark = 2130837676;
+			public const int ic_media_route_off_mono_dark = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int ic_media_route_on_1_mono_dark = 2130837677;
+			public const int ic_media_route_on_0_mono_dark = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int ic_media_route_on_2_mono_dark = 2130837678;
+			public const int ic_media_route_on_1_mono_dark = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int ic_media_route_on_mono_dark = 2130837679;
+			public const int ic_media_route_on_2_mono_dark = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int ic_pause_dark = 2130837680;
+			public const int ic_media_route_on_mono_dark = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int ic_pause_light = 2130837681;
+			public const int ic_pause_dark = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int ic_play_dark = 2130837682;
+			public const int ic_pause_light = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int ic_play_light = 2130837683;
+			public const int ic_play_dark = 2130837683;
 			
 			// aapt resource value: 0x7f0200b4
-			public const int ic_speaker_dark = 2130837684;
+			public const int ic_play_light = 2130837684;
 			
 			// aapt resource value: 0x7f0200b5
-			public const int ic_speaker_group_dark = 2130837685;
+			public const int ic_speaker_dark = 2130837685;
 			
 			// aapt resource value: 0x7f0200b6
-			public const int ic_speaker_group_light = 2130837686;
+			public const int ic_speaker_group_dark = 2130837686;
 			
 			// aapt resource value: 0x7f0200b7
-			public const int ic_speaker_light = 2130837687;
+			public const int ic_speaker_group_light = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int ic_tv_dark = 2130837688;
+			public const int ic_speaker_light = 2130837688;
 			
 			// aapt resource value: 0x7f0200b9
-			public const int ic_tv_light = 2130837689;
+			public const int ic_tv_dark = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int ic_user_available = 2130837690;
+			public const int ic_tv_light = 2130837690;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int ic_user_away = 2130837691;
+			public const int ic_user_available = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
-			public const int ic_user_busy = 2130837692;
+			public const int ic_user_away = 2130837692;
 			
 			// aapt resource value: 0x7f0200bd
-			public const int ic_user_offline = 2130837693;
+			public const int ic_user_busy = 2130837693;
 			
 			// aapt resource value: 0x7f0200be
-			public const int icon = 2130837694;
+			public const int ic_user_offline = 2130837694;
 			
 			// aapt resource value: 0x7f0200bf
-			public const int iconattach = 2130837695;
+			public const int icon = 2130837695;
 			
 			// aapt resource value: 0x7f0200c0
-			public const int icondeliverd = 2130837696;
+			public const int iconattach = 2130837696;
 			
 			// aapt resource value: 0x7f0200c1
-			public const int iconemail = 2130837697;
+			public const int icondeliverd = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int iconlogout = 2130837698;
+			public const int iconemail = 2130837698;
 			
 			// aapt resource value: 0x7f0200c3
-			public const int iconname = 2130837699;
+			public const int iconlogout = 2130837699;
 			
 			// aapt resource value: 0x7f0200c4
-			public const int iconpassword = 2130837700;
+			public const int iconname = 2130837700;
 			
 			// aapt resource value: 0x7f0200c5
-			public const int iconphone = 2130837701;
+			public const int iconpassword = 2130837701;
 			
 			// aapt resource value: 0x7f0200c6
-			public const int iconread = 2130837702;
+			public const int iconphone = 2130837702;
 			
 			// aapt resource value: 0x7f0200c7
-			public const int iconsent = 2130837703;
+			public const int iconread = 2130837703;
 			
 			// aapt resource value: 0x7f0200c8
-			public const int involvement = 2130837704;
+			public const int iconsent = 2130837704;
 			
 			// aapt resource value: 0x7f0200c9
-			public const int journeyheader = 2130837705;
+			public const int involvement = 2130837705;
 			
 			// aapt resource value: 0x7f0200ca
-			public const int jpg = 2130837706;
+			public const int journeyheader = 2130837706;
 			
 			// aapt resource value: 0x7f0200cb
-			public const int learning_disabilities = 2130837707;
+			public const int jpg = 2130837707;
 			
 			// aapt resource value: 0x7f0200cc
-			public const int left = 2130837708;
+			public const int learning_disabilities = 2130837708;
 			
 			// aapt resource value: 0x7f0200cd
-			public const int left_bubble_drawable = 2130837709;
+			public const int left = 2130837709;
 			
 			// aapt resource value: 0x7f0200ce
-			public const int local_services = 2130837710;
+			public const int left_bubble_drawable = 2130837710;
 			
 			// aapt resource value: 0x7f0200cf
-			public const int lock32 = 2130837711;
+			public const int local_services = 2130837711;
 			
 			// aapt resource value: 0x7f0200d0
-			public const int looked_after_children = 2130837712;
+			public const int lock32 = 2130837712;
 			
 			// aapt resource value: 0x7f0200d1
-			public const int male_female = 2130837713;
+			public const int looked_after_children = 2130837713;
 			
 			// aapt resource value: 0x7f0200d2
-			public const int mental_health = 2130837714;
+			public const int male_female = 2130837714;
 			
 			// aapt resource value: 0x7f0200d3
-			public const int mindlogo = 2130837715;
+			public const int mappin = 2130837715;
 			
 			// aapt resource value: 0x7f0200d4
-			public const int mood = 2130837716;
+			public const int mental_health = 2130837716;
 			
 			// aapt resource value: 0x7f0200d5
-			public const int mr_dialog_material_background_dark = 2130837717;
+			public const int mindlogo = 2130837717;
 			
 			// aapt resource value: 0x7f0200d6
-			public const int mr_dialog_material_background_light = 2130837718;
+			public const int mood = 2130837718;
 			
 			// aapt resource value: 0x7f0200d7
-			public const int mr_ic_audiotrack_light = 2130837719;
+			public const int mr_dialog_material_background_dark = 2130837719;
 			
 			// aapt resource value: 0x7f0200d8
-			public const int mr_ic_cast_dark = 2130837720;
+			public const int mr_dialog_material_background_light = 2130837720;
 			
 			// aapt resource value: 0x7f0200d9
-			public const int mr_ic_cast_light = 2130837721;
+			public const int mr_ic_audiotrack_light = 2130837721;
 			
 			// aapt resource value: 0x7f0200da
-			public const int mr_ic_close_dark = 2130837722;
+			public const int mr_ic_cast_dark = 2130837722;
 			
 			// aapt resource value: 0x7f0200db
-			public const int mr_ic_close_light = 2130837723;
+			public const int mr_ic_cast_light = 2130837723;
 			
 			// aapt resource value: 0x7f0200dc
-			public const int mr_ic_media_route_connecting_mono_dark = 2130837724;
+			public const int mr_ic_close_dark = 2130837724;
 			
 			// aapt resource value: 0x7f0200dd
-			public const int mr_ic_media_route_connecting_mono_light = 2130837725;
+			public const int mr_ic_close_light = 2130837725;
 			
 			// aapt resource value: 0x7f0200de
-			public const int mr_ic_media_route_mono_dark = 2130837726;
+			public const int mr_ic_media_route_connecting_mono_dark = 2130837726;
 			
 			// aapt resource value: 0x7f0200df
-			public const int mr_ic_media_route_mono_light = 2130837727;
+			public const int mr_ic_media_route_connecting_mono_light = 2130837727;
 			
 			// aapt resource value: 0x7f0200e0
-			public const int mr_ic_pause_dark = 2130837728;
+			public const int mr_ic_media_route_mono_dark = 2130837728;
 			
 			// aapt resource value: 0x7f0200e1
-			public const int mr_ic_pause_light = 2130837729;
+			public const int mr_ic_media_route_mono_light = 2130837729;
 			
 			// aapt resource value: 0x7f0200e2
-			public const int mr_ic_play_dark = 2130837730;
+			public const int mr_ic_pause_dark = 2130837730;
 			
 			// aapt resource value: 0x7f0200e3
-			public const int mr_ic_play_light = 2130837731;
+			public const int mr_ic_pause_light = 2130837731;
 			
 			// aapt resource value: 0x7f0200e4
-			public const int mymindlogo = 2130837732;
+			public const int mr_ic_play_dark = 2130837732;
 			
 			// aapt resource value: 0x7f0200e5
-			public const int nelft = 2130837733;
+			public const int mr_ic_play_light = 2130837733;
 			
 			// aapt resource value: 0x7f0200e6
-			public const int NELFTLogo2015 = 2130837734;
-			
-			// aapt resource value: 0x7f02010a
-			public const int notification_template_icon_bg = 2130837770;
+			public const int mymindlogo = 2130837734;
 			
 			// aapt resource value: 0x7f0200e7
-			public const int orangestar = 2130837735;
+			public const int nelft = 2130837735;
 			
 			// aapt resource value: 0x7f0200e8
-			public const int p = 2130837736;
+			public const int NELFTLogo2015 = 2130837736;
+			
+			// aapt resource value: 0x7f02010c
+			public const int notification_template_icon_bg = 2130837772;
 			
 			// aapt resource value: 0x7f0200e9
-			public const int parent_guide = 2130837737;
+			public const int orangestar = 2130837737;
 			
 			// aapt resource value: 0x7f0200ea
-			public const int parent_resources = 2130837738;
+			public const int p = 2130837738;
 			
 			// aapt resource value: 0x7f0200eb
-			public const int pdf = 2130837739;
+			public const int parent_guide = 2130837739;
 			
 			// aapt resource value: 0x7f0200ec
-			public const int peer_support = 2130837740;
+			public const int parent_resources = 2130837740;
 			
 			// aapt resource value: 0x7f0200ed
-			public const int pinkstar = 2130837741;
+			public const int pdf = 2130837741;
 			
 			// aapt resource value: 0x7f0200ee
-			public const int plansheader = 2130837742;
+			public const int peer_support = 2130837742;
 			
 			// aapt resource value: 0x7f0200ef
-			public const int png = 2130837743;
+			public const int pinkstar = 2130837743;
 			
 			// aapt resource value: 0x7f0200f0
-			public const int profileheader = 2130837744;
+			public const int plansheader = 2130837744;
 			
 			// aapt resource value: 0x7f0200f1
-			public const int purplestar = 2130837745;
+			public const int png = 2130837745;
 			
 			// aapt resource value: 0x7f0200f2
-			public const int resourcesheader = 2130837746;
+			public const int profileheader = 2130837746;
 			
 			// aapt resource value: 0x7f0200f3
-			public const int right = 2130837747;
+			public const int purplestar = 2130837747;
 			
 			// aapt resource value: 0x7f0200f4
-			public const int right_bubble_drawable = 2130837748;
+			public const int resourcesheader = 2130837748;
 			
 			// aapt resource value: 0x7f0200f5
-			public const int roundedbutton = 2130837749;
+			public const int right = 2130837749;
 			
 			// aapt resource value: 0x7f0200f6
-			public const int safeguard = 2130837750;
+			public const int right_bubble_drawable = 2130837750;
 			
 			// aapt resource value: 0x7f0200f7
-			public const int self_harm = 2130837751;
+			public const int roundedbutton = 2130837751;
 			
 			// aapt resource value: 0x7f0200f8
-			public const int self_help = 2130837752;
+			public const int safeguard = 2130837752;
 			
 			// aapt resource value: 0x7f0200f9
-			public const int sleeping = 2130837753;
+			public const int self_harm = 2130837753;
 			
 			// aapt resource value: 0x7f0200fa
-			public const int smiley_button = 2130837754;
+			public const int self_help = 2130837754;
 			
 			// aapt resource value: 0x7f0200fb
-			public const int solvent_abuse = 2130837755;
+			public const int sleeping = 2130837755;
 			
 			// aapt resource value: 0x7f0200fc
-			public const int splashscreen = 2130837756;
+			public const int smiley_button = 2130837756;
 			
 			// aapt resource value: 0x7f0200fd
-			public const int spousal_abuse = 2130837757;
+			public const int solvent_abuse = 2130837757;
 			
 			// aapt resource value: 0x7f0200fe
-			public const int sticker_button = 2130837758;
+			public const int splashscreen = 2130837758;
 			
 			// aapt resource value: 0x7f0200ff
-			public const int stress = 2130837759;
+			public const int spousal_abuse = 2130837759;
 			
 			// aapt resource value: 0x7f020100
-			public const int substance_misuse = 2130837760;
+			public const int sticker_button = 2130837760;
 			
 			// aapt resource value: 0x7f020101
-			public const int thumbnail_default = 2130837761;
+			public const int stress = 2130837761;
 			
 			// aapt resource value: 0x7f020102
-			public const int user32 = 2130837762;
+			public const int substance_misuse = 2130837762;
 			
 			// aapt resource value: 0x7f020103
-			public const int video = 2130837763;
+			public const int thumbnail_default = 2130837763;
 			
 			// aapt resource value: 0x7f020104
-			public const int w = 2130837764;
+			public const int user32 = 2130837764;
 			
 			// aapt resource value: 0x7f020105
-			public const int well_being = 2130837765;
+			public const int video = 2130837765;
 			
 			// aapt resource value: 0x7f020106
-			public const int word = 2130837766;
+			public const int w = 2130837766;
 			
 			// aapt resource value: 0x7f020107
-			public const int www = 2130837767;
+			public const int well_being = 2130837767;
 			
 			// aapt resource value: 0x7f020108
-			public const int yellowstar = 2130837768;
+			public const int word = 2130837768;
 			
 			// aapt resource value: 0x7f020109
-			public const int young_carer = 2130837769;
+			public const int www = 2130837769;
+			
+			// aapt resource value: 0x7f02010a
+			public const int yellowstar = 2130837770;
+			
+			// aapt resource value: 0x7f02010b
+			public const int young_carer = 2130837771;
 			
 			static Drawable()
 			{
@@ -2562,8 +3954,8 @@ namespace MyMindV3.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f08009b
-			public const int action0 = 2131230875;
+			// aapt resource value: 0x7f08009a
+			public const int action0 = 2131230874;
 			
 			// aapt resource value: 0x7f08005a
 			public const int action_bar = 2131230810;
@@ -2589,8 +3981,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f08005b
 			public const int action_context_bar = 2131230811;
 			
-			// aapt resource value: 0x7f08009f
-			public const int action_divider = 2131230879;
+			// aapt resource value: 0x7f08009e
+			public const int action_divider = 2131230878;
 			
 			// aapt resource value: 0x7f080003
 			public const int action_menu_divider = 2131230723;
@@ -2622,20 +4014,20 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f08002a
 			public const int bottom = 2131230762;
 			
-			// aapt resource value: 0x7f080080
-			public const int btnCancel = 2131230848;
-			
 			// aapt resource value: 0x7f08007f
-			public const int btnClear = 2131230847;
+			public const int btnCancel = 2131230847;
 			
-			// aapt resource value: 0x7f080081
-			public const int btnDone = 2131230849;
+			// aapt resource value: 0x7f08007e
+			public const int btnClear = 2131230846;
+			
+			// aapt resource value: 0x7f080080
+			public const int btnDone = 2131230848;
 			
 			// aapt resource value: 0x7f080044
 			public const int buttonPanel = 2131230788;
 			
-			// aapt resource value: 0x7f08009c
-			public const int cancel_action = 2131230876;
+			// aapt resource value: 0x7f08009b
+			public const int cancel_action = 2131230875;
 			
 			// aapt resource value: 0x7f08002b
 			public const int center = 2131230763;
@@ -2649,8 +4041,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f080052
 			public const int checkbox = 2131230802;
 			
-			// aapt resource value: 0x7f0800a2
-			public const int chronometer = 2131230882;
+			// aapt resource value: 0x7f0800a1
+			public const int chronometer = 2131230881;
 			
 			// aapt resource value: 0x7f080033
 			public const int clip_horizontal = 2131230771;
@@ -2700,8 +4092,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f08001c
 			public const int end = 2131230748;
 			
-			// aapt resource value: 0x7f0800a7
-			public const int end_padder = 2131230887;
+			// aapt resource value: 0x7f0800a6
+			public const int end_padder = 2131230886;
 			
 			// aapt resource value: 0x7f080023
 			public const int enterAlways = 2131230755;
@@ -2760,11 +4152,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f08007c
 			public const int imageButton5 = 2131230844;
 			
-			// aapt resource value: 0x7f08007d
-			public const int imageButton6 = 2131230845;
-			
-			// aapt resource value: 0x7f0800a6
-			public const int info = 2131230886;
+			// aapt resource value: 0x7f0800a5
+			public const int info = 2131230885;
 			
 			// aapt resource value: 0x7f080000
 			public const int item_touch_helper_previous_elevation = 2131230720;
@@ -2772,11 +4161,11 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f08002f
 			public const int left = 2131230767;
 			
-			// aapt resource value: 0x7f0800a0
-			public const int line1 = 2131230880;
+			// aapt resource value: 0x7f08009f
+			public const int line1 = 2131230879;
 			
-			// aapt resource value: 0x7f0800a4
-			public const int line3 = 2131230884;
+			// aapt resource value: 0x7f0800a3
+			public const int line3 = 2131230883;
 			
 			// aapt resource value: 0x7f080072
 			public const int linearLayout1 = 2131230834;
@@ -2787,8 +4176,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f080074
 			public const int linearLayout5 = 2131230836;
 			
-			// aapt resource value: 0x7f08007e
-			public const int linearLayout6 = 2131230846;
+			// aapt resource value: 0x7f08007d
+			public const int linearLayout6 = 2131230845;
 			
 			// aapt resource value: 0x7f080076
 			public const int linearLayout7 = 2131230838;
@@ -2802,8 +4191,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f080041
 			public const int list_item = 2131230785;
 			
-			// aapt resource value: 0x7f08009e
-			public const int media_actions = 2131230878;
+			// aapt resource value: 0x7f08009d
+			public const int media_actions = 2131230877;
 			
 			// aapt resource value: 0x7f08001d
 			public const int middle = 2131230749;
@@ -2811,77 +4200,77 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f080037
 			public const int mini = 2131230775;
 			
-			// aapt resource value: 0x7f08008d
-			public const int mr_art = 2131230861;
+			// aapt resource value: 0x7f08008c
+			public const int mr_art = 2131230860;
 			
-			// aapt resource value: 0x7f080082
-			public const int mr_chooser_list = 2131230850;
-			
-			// aapt resource value: 0x7f080085
-			public const int mr_chooser_route_desc = 2131230853;
-			
-			// aapt resource value: 0x7f080083
-			public const int mr_chooser_route_icon = 2131230851;
+			// aapt resource value: 0x7f080081
+			public const int mr_chooser_list = 2131230849;
 			
 			// aapt resource value: 0x7f080084
-			public const int mr_chooser_route_name = 2131230852;
+			public const int mr_chooser_route_desc = 2131230852;
 			
-			// aapt resource value: 0x7f08008a
-			public const int mr_close = 2131230858;
+			// aapt resource value: 0x7f080082
+			public const int mr_chooser_route_icon = 2131230850;
 			
-			// aapt resource value: 0x7f080090
-			public const int mr_control_divider = 2131230864;
-			
-			// aapt resource value: 0x7f080096
-			public const int mr_control_play_pause = 2131230870;
-			
-			// aapt resource value: 0x7f080099
-			public const int mr_control_subtitle = 2131230873;
-			
-			// aapt resource value: 0x7f080098
-			public const int mr_control_title = 2131230872;
-			
-			// aapt resource value: 0x7f080097
-			public const int mr_control_title_container = 2131230871;
-			
-			// aapt resource value: 0x7f08008b
-			public const int mr_custom_control = 2131230859;
-			
-			// aapt resource value: 0x7f08008c
-			public const int mr_default_control = 2131230860;
-			
-			// aapt resource value: 0x7f080087
-			public const int mr_dialog_area = 2131230855;
-			
-			// aapt resource value: 0x7f080086
-			public const int mr_expandable_area = 2131230854;
-			
-			// aapt resource value: 0x7f08009a
-			public const int mr_group_expand_collapse = 2131230874;
-			
-			// aapt resource value: 0x7f08008e
-			public const int mr_media_main_control = 2131230862;
+			// aapt resource value: 0x7f080083
+			public const int mr_chooser_route_name = 2131230851;
 			
 			// aapt resource value: 0x7f080089
-			public const int mr_name = 2131230857;
+			public const int mr_close = 2131230857;
 			
 			// aapt resource value: 0x7f08008f
-			public const int mr_playback_control = 2131230863;
-			
-			// aapt resource value: 0x7f080088
-			public const int mr_title_bar = 2131230856;
-			
-			// aapt resource value: 0x7f080091
-			public const int mr_volume_control = 2131230865;
-			
-			// aapt resource value: 0x7f080092
-			public const int mr_volume_group_list = 2131230866;
-			
-			// aapt resource value: 0x7f080094
-			public const int mr_volume_item_icon = 2131230868;
+			public const int mr_control_divider = 2131230863;
 			
 			// aapt resource value: 0x7f080095
-			public const int mr_volume_slider = 2131230869;
+			public const int mr_control_play_pause = 2131230869;
+			
+			// aapt resource value: 0x7f080098
+			public const int mr_control_subtitle = 2131230872;
+			
+			// aapt resource value: 0x7f080097
+			public const int mr_control_title = 2131230871;
+			
+			// aapt resource value: 0x7f080096
+			public const int mr_control_title_container = 2131230870;
+			
+			// aapt resource value: 0x7f08008a
+			public const int mr_custom_control = 2131230858;
+			
+			// aapt resource value: 0x7f08008b
+			public const int mr_default_control = 2131230859;
+			
+			// aapt resource value: 0x7f080086
+			public const int mr_dialog_area = 2131230854;
+			
+			// aapt resource value: 0x7f080085
+			public const int mr_expandable_area = 2131230853;
+			
+			// aapt resource value: 0x7f080099
+			public const int mr_group_expand_collapse = 2131230873;
+			
+			// aapt resource value: 0x7f08008d
+			public const int mr_media_main_control = 2131230861;
+			
+			// aapt resource value: 0x7f080088
+			public const int mr_name = 2131230856;
+			
+			// aapt resource value: 0x7f08008e
+			public const int mr_playback_control = 2131230862;
+			
+			// aapt resource value: 0x7f080087
+			public const int mr_title_bar = 2131230855;
+			
+			// aapt resource value: 0x7f080090
+			public const int mr_volume_control = 2131230864;
+			
+			// aapt resource value: 0x7f080091
+			public const int mr_volume_group_list = 2131230865;
+			
+			// aapt resource value: 0x7f080093
+			public const int mr_volume_item_icon = 2131230867;
+			
+			// aapt resource value: 0x7f080094
+			public const int mr_volume_slider = 2131230868;
 			
 			// aapt resource value: 0x7f080016
 			public const int multiply = 2131230742;
@@ -3009,8 +4398,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f080031
 			public const int start = 2131230769;
 			
-			// aapt resource value: 0x7f08009d
-			public const int status_bar_latest_event_content = 2131230877;
+			// aapt resource value: 0x7f08009c
+			public const int status_bar_latest_event_content = 2131230876;
 			
 			// aapt resource value: 0x7f080065
 			public const int submit_area = 2131230821;
@@ -3018,11 +4407,11 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f08000d
 			public const int tabMode = 2131230733;
 			
-			// aapt resource value: 0x7f0800a5
-			public const int text = 2131230885;
+			// aapt resource value: 0x7f0800a4
+			public const int text = 2131230884;
 			
-			// aapt resource value: 0x7f0800a3
-			public const int text2 = 2131230883;
+			// aapt resource value: 0x7f0800a2
+			public const int text2 = 2131230882;
 			
 			// aapt resource value: 0x7f08004d
 			public const int textSpacerNoButtons = 2131230797;
@@ -3030,8 +4419,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f080075
 			public const int textView1 = 2131230837;
 			
-			// aapt resource value: 0x7f0800a1
-			public const int time = 2131230881;
+			// aapt resource value: 0x7f0800a0
+			public const int time = 2131230880;
 			
 			// aapt resource value: 0x7f080043
 			public const int title = 2131230787;
@@ -3057,8 +4446,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f08000a
 			public const int view_offset_helper = 2131230730;
 			
-			// aapt resource value: 0x7f080093
-			public const int volume_item_container = 2131230867;
+			// aapt resource value: 0x7f080092
+			public const int volume_item_container = 2131230866;
 			
 			// aapt resource value: 0x7f080022
 			public const int withText = 2131230754;
@@ -3322,11 +4711,11 @@ namespace MyMindV3.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f090027
-			public const int ApplicationName = 2131296295;
+			// aapt resource value: 0x7f090028
+			public const int ApplicationName = 2131296296;
 			
-			// aapt resource value: 0x7f090026
-			public const int Hello = 2131296294;
+			// aapt resource value: 0x7f090027
+			public const int Hello = 2131296295;
 			
 			// aapt resource value: 0x7f09000f
 			public const int abc_action_bar_home_description = 2131296271;
@@ -3393,6 +4782,9 @@ namespace MyMindV3.Droid
 			
 			// aapt resource value: 0x7f090025
 			public const int character_counter_pattern = 2131296293;
+			
+			// aapt resource value: 0x7f090026
+			public const int library_name = 2131296294;
 			
 			// aapt resource value: 0x7f090000
 			public const int mr_button_content_description = 2131296256;
