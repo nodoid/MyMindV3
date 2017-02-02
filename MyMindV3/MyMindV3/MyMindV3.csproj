@@ -85,6 +85,7 @@
     <Compile Include="Views\MenuView.cs" />
     <Compile Include="Converters\ImageTypeConverter.cs" />
     <Compile Include="Views\MyPlansListCell.cs" />
+    <Compile Include="Views\MyProfileView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Languages\Langs.resx">
@@ -253,9 +254,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Views\MyResourcesView.xaml-old.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Network\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVVM\MVVM.csproj">

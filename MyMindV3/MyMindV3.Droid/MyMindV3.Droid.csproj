@@ -211,7 +211,6 @@
     <Compile Include="Injected\ModalView.cs" />
     <Compile Include="Injected\SQLConnection.cs" />
     <Compile Include="Splash.cs" />
-    <Compile Include="Resources\MyProfileView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
