@@ -66,7 +66,7 @@ namespace MyMindV3.Views
                 MinimumWidthRequest = App.ScreenSize.Width * .35,
                 WidthRequest = App.ScreenSize.Width * .35,
                 HeightRequest = App.ScreenSize.Height /*- 52 - 36*/,
-                //TranslationY = 8,
+                TranslationY = 8,
                 Spacing = 0,
                 Padding = new Thickness(0),
                 StyleId = "menu",
@@ -119,7 +119,7 @@ namespace MyMindV3.Views
                 HeightRequest = App.ScreenSize.Height /*- 52 - 36*/,
                 Spacing = 0,
                 Padding = new Thickness(0),
-                //TranslationY = 8,
+                TranslationY = 8,
                 StyleId = "menu",
                 Children = { stackScroll }
             };
@@ -171,7 +171,6 @@ namespace MyMindV3.Views
                         { imgIcon,
                             new StackLayout
                             {
-                                Padding = new Thickness(8, 0, 0, 0),
                                 VerticalOptions = LayoutOptions.Center,
                                 HorizontalOptions = LayoutOptions.Center,
                                 Children = { lblText }
