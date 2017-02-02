@@ -30,6 +30,12 @@ namespace MyMindV3.Views
                 WidthRequest = 56
             };
             imgIcon.SetBinding(Image.SourceProperty, new Binding("ImageIcon"));
+            var imgMapPin = new Image
+            {
+                Source = "mappin",
+                HeightRequest = 20,
+                WidthRequest = 20
+            };
 
             var imgStar1 = new Image
             {
@@ -106,7 +112,8 @@ namespace MyMindV3.Views
             var lblDistance = new Label
             {
                 TextColor = Color.Green,
-                FontSize = 12
+                FontSize = 8,
+                VerticalTextAlignment = TextAlignment.Center
             };
             lblDistance.SetBinding(Label.TextProperty, new Binding("Distance"));
 
@@ -158,7 +165,21 @@ namespace MyMindV3.Views
                         WidthRequest = App.ScreenSize.Width * .1,
                         MinimumWidthRequest = App.ScreenSize.Width * .1,
                         VerticalOptions = LayoutOptions.Start,
-                        Children = {imgIcon}
+                        Orientation = StackOrientation.Vertical
+                        Children =
+                        {
+                            imgIcon,
+                             new StackLayout
+                            {
+                                Orientation = StackOrientation.Horizontal,
+                                Children =
+                                {
+                                    imgMapPin,
+                                    lblDistance,
+                                    new Label {Text=Langs.MyResources_Miles, FontSize = 8, TextColor = Color.Green},
+                                }
+                            }
+                        }
                     },
                     new StackLayout
                     {
@@ -181,16 +202,6 @@ namespace MyMindV3.Views
                             {
                                 Orientation = StackOrientation.Horizontal,
                                 Children = {new Label{Text=Langs.MyResources_Category, FontSize = 12, TextColor = Color.Green}, lblCategory}
-                            },
-                            new StackLayout
-                            {
-                                Orientation = StackOrientation.Horizontal,
-                                Children =
-                                {
-                                            new Label {Text=Langs.MyResources_Distance, FontSize = 12, TextColor = Color.Green},
-                                    lblDistance,
-                                            new Label {Text=Langs.MyResources_Miles, FontSize = 12, TextColor = Color.Green},
-                                }
                             }
                         }
                     },
