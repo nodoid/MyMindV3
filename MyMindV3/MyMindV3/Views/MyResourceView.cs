@@ -70,13 +70,14 @@ namespace MyMindV3.Views
                 BackgroundColor = Color.White,
                 TextColor = Color.Blue,
                 PlaceholderColor = Color.Gray,
-                SearchCommand = new Command(() =>
+                SearchCommand = new Command((w) =>
                 {
                     ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
                     ViewModel.SpinnerTitle = Langs.Data_DownloadTitle;
                     ViewModel.IsBusy = true;
                     ViewModel.SearchPostcode = postcodeSearch.Text.Replace(" ", "").ToLowerInvariant();
                     ViewModel.GetAvailablePostcodes();
+                    ViewModel.GetResources();
                     ViewModel.GetUIList();
                     dataList = ViewModel.UIList;
                     postcodes = ViewModel.AvailablePostcodes;
@@ -85,7 +86,7 @@ namespace MyMindV3.Views
                         if (listView.ItemsSource != null)
                             listView.ItemsSource = null;
                         listView.ItemsSource = dataList;
-                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()));
+                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchWeb, ViewModel.SearchAll, ViewModel.SearchNational, ViewModel.SearchLocal);
                         ViewModel.IsBusy = false;
                     });
                 })
@@ -107,7 +108,7 @@ namespace MyMindV3.Views
                 }
             };
 
-            menu = new MenuView(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()));
+            menu = new MenuView(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchWeb, ViewModel.SearchAll, ViewModel.SearchNational, ViewModel.SearchLocal);
             menu.SizeChanged += (sender, e) => { menu.HeightRequest = App.ScreenSize.Height - searchStack.HeightRequest; };
 
             listView = new ListView
@@ -130,7 +131,7 @@ namespace MyMindV3.Views
                         listView.ItemsSource = null;
                         listView.ItemsSource = dataList;
                         listView.IsRefreshing = false;
-                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()));
+                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchWeb, ViewModel.SearchAll, ViewModel.SearchNational, ViewModel.SearchLocal);
                     });
                 });
 
@@ -153,6 +154,7 @@ namespace MyMindV3.Views
                             ViewModel.SearchPostcode = myPostcode;
                             ViewModel.GetAvailablePostcodes();
                             var postcodes = ViewModel.AvailablePostcodes;
+                            ViewModel.GetResources();
                             ViewModel.GetUIList();
                             dataList = ViewModel.UIList;
                             Device.BeginInvokeOnMainThread(() =>
@@ -161,7 +163,7 @@ namespace MyMindV3.Views
                                      listView.ItemsSource = null;
                                  listView.ItemsSource = dataList;
                                  ViewModel.IsBusy = false;
-                                 menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()));
+                                 menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchWeb, ViewModel.SearchAll, ViewModel.SearchNational, ViewModel.SearchLocal);
                              });
                         }
                         else
