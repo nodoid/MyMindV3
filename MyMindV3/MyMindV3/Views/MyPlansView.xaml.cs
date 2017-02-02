@@ -5,6 +5,7 @@ using System;
 using MvvmFramework.Models;
 using MvvmFramework.ViewModel;
 using MvvmFramework;
+using MyMindV3.Languages;
 
 namespace MyMindV3.Views
 {
@@ -12,6 +13,21 @@ namespace MyMindV3.Views
     {
         IEnumerable<ClientPlan> resources;
         MyPlansViewModel ViewModel => App.Locator.MyPlans;
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            ViewModel.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName == "IsBusy")
+                {
+                    ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
+                    ViewModel.SpinnerTitle = Langs.Data_DownloadTitle;
+                    Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage));
+                }
+            };
+        }
+
 
         public MyPlansView()
         {
@@ -61,10 +77,12 @@ namespace MyMindV3.Views
                 //var path = string.Format("{0}/{1}", App.Self.ContentDirectory, file);
                 if (!DependencyService.Get<IContent>().FileExists(path))
                 {
+                    ViewModel.IsBusy = true;
                     GetData.GetFile(id.FileID.ToString(), ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken, file).ContinueWith((t) =>
                     {
                         if (t.IsCompleted)
                         {
+                            ViewModel.IsBusy = false;
                             ViewModel.Filename = id.FileName;
                             var filetype = file.Split('.').Last().ToLower();
                             if (filetype == "jpg" || filetype == "jpeg" || filetype == "png")
