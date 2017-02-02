@@ -154,6 +154,10 @@
     <BundleResource Include="Resources\jpg.png" />
     <BundleResource Include="Resources\pdf.png" />
     <BundleResource Include="Resources\word.png" />
+    <BundleResource Include="Resources\badlink.png" />
+    <BundleResource Include="Resources\mappin.png" />
+    <Compile Include="CustomRenderers\RatingModalView.cs" />
+    <Compile Include="UIUtils\UIUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
@@ -249,6 +253,12 @@
     </Reference>
     <Reference Include="Plugin.Media">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\Xamarin.iOS10\Plugin.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="Messier16.Forms.Controls.Checkbox">
+      <HintPath>..\Checkbox\iOS\bin\Release\Messier16.Forms.Controls.Checkbox.dll</HintPath>
+    </Reference>
+    <Reference Include="Messier16.Forms.iOS.Controls.Checkbox">
+      <HintPath>..\Checkbox\iOS\bin\Release\Messier16.Forms.iOS.Controls.Checkbox.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -444,6 +454,9 @@
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UIUtils\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

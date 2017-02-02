@@ -116,7 +116,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.ObjectModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Xamarin.Android.Support.Design, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -188,6 +187,12 @@
     </Reference>
     <Reference Include="Plugin.Media">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\MonoAndroid10\Plugin.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="Messier16.Forms.Controls.Checkbox">
+      <HintPath>..\Checkbox\Droid\bin\Release\Messier16.Forms.Controls.Checkbox.dll</HintPath>
+    </Reference>
+    <Reference Include="Messier16.Forms.Droid.Controls.Checkbox">
+      <HintPath>..\Checkbox\Droid\bin\Release\Messier16.Forms.Droid.Controls.Checkbox.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -273,6 +278,8 @@
     <AndroidResource Include="Resources\drawable\jpg.png" />
     <AndroidResource Include="Resources\drawable\pdf.png" />
     <AndroidResource Include="Resources\drawable\word.png" />
+    <AndroidResource Include="Resources\drawable\badlink.png" />
+    <AndroidResource Include="Resources\drawable\mappin.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
