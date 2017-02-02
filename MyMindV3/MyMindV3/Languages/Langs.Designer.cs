@@ -77,6 +77,36 @@ namespace MyMindV3.Languages {
             }
         }
         
+        public static string Menu_Resources {
+            get {
+                return ResourceManager.GetString("Menu_Resources", resourceCulture);
+            }
+        }
+        
+        public static string Menu_All {
+            get {
+                return ResourceManager.GetString("Menu_All", resourceCulture);
+            }
+        }
+        
+        public static string Menu_National {
+            get {
+                return ResourceManager.GetString("Menu_National", resourceCulture);
+            }
+        }
+        
+        public static string Menu_Local {
+            get {
+                return ResourceManager.GetString("Menu_Local", resourceCulture);
+            }
+        }
+        
+        public static string Menu_Web {
+            get {
+                return ResourceManager.GetString("Menu_Web", resourceCulture);
+            }
+        }
+        
         public static string Login_EnterName {
             get {
                 return ResourceManager.GetString("Login_EnterName", resourceCulture);

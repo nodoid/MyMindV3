@@ -132,6 +132,21 @@
 	<data name="Gen_PleaseWait" xml:space="preserve">
     <value>Please wait</value>
   </data>
+	<data name="Menu_Resources" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+	<data name="Menu_All" xml:space="preserve">
+    <value>All</value>
+  </data>
+	<data name="Menu_National" xml:space="preserve">
+    <value>National</value>
+  </data>
+	<data name="Menu_Local" xml:space="preserve">
+    <value>Local</value>
+  </data>
+	<data name="Menu_Web" xml:space="preserve">
+    <value>Web only</value>
+  </data>
 	<data name="Login_EnterName" xml:space="preserve">
     <value>Enter name</value>
   </data>
