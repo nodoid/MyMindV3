@@ -26,13 +26,13 @@
 	<key>CFBundleDisplayName</key>
 	<string>MyMindV3</string>
 	<key>CFBundleIdentifier</key>
-	<string>uk.nhs.nelft.MyMindV3</string>
+	<string>uk.nhs.nelft.mymindv3</string>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.1</string>
+	<string>0.3</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Monitoring and notification of upcoming clinical appintments</string>
 	<key>NSPhotoLibraryUsageDescription</key>
