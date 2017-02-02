@@ -8,6 +8,11 @@ using System.Globalization;
 
 using Xamarin.Forms;
 using Plugin.Geolocator.Abstractions;
+using Plugin.Geolocator;
+
+#if DEBUG
+using System.Diagnostics;
+#endif
 
 namespace MyMindV3
 {
@@ -57,10 +62,25 @@ namespace MyMindV3
 
             IsConnected = CrossConnectivity.Current.IsConnected;
 
-            if (!string.IsNullOrEmpty(UserSettings.LoadSetting<string>("ImageDirectory", SettingType.String)))
+            CrossGeolocator.Current.StartListeningAsync(3000, 10, true);
+            if (CrossGeolocator.Current.IsListening)
+                CrossGeolocator.Current.GetPositionAsync(3000).ContinueWith((t) =>
             {
-                PicturesDirectory = UserSettings.LoadSetting<string>("ImageDirectory", SettingType.String);
-            }
+                if (t.IsCompleted)
+                    Location = t.Result;
+            });
+
+            CrossGeolocator.Current.PositionError += (object sender, PositionErrorEventArgs e) =>
+            {
+#if DEBUG
+                Debug.WriteLine(e.Error.ToString());
+#endif
+            };
+
+            CrossGeolocator.Current.PositionChanged += (object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e) =>
+            {
+                Location = e.Position;
+            };
 
             var nav = new NavigationService();
             nav.Configure(ViewModelLocator.AllRegisteredUsersKey, typeof(AllRegisteredUsers));
