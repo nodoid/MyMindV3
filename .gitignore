@@ -10,3 +10,13 @@ MyMindV3/MyMindV3.Windows/*
 MyMindV3/MyMindV3.WinPhone/*
 MyMindV3/MVVM/bin/*
 MyMindV3/MVVM/obj/*
+MyMindV3/Checkbox/Droid/obj/*
+MyMindV3/Checkbox/Droid/bin/*
+MyMindV3/Checkbox/iOS/bin/*
+MyMindV3/Checkbox/iOS/obj/*
+MyMindV3/Checkbox/Forms/bin/*
+MyMindV3/Checkbox/Forms/obj/*
+MyMindV3/Checkbox/Uwp/*
+MyMindV3/Checkbox/WinPhone/*
+MyMindV3/Checkbox/packages/*
+
