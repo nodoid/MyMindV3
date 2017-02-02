@@ -144,6 +144,8 @@ namespace MyMindV3.Views
                         ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
                         ViewModel.SpinnerTitle = Langs.Data_DownloadTitle;
                         ViewModel.IsBusy = true;
+                        ViewModel.Longitude = App.Self.Location.Longitude;
+                        ViewModel.Latitude = App.Self.Location.Latitude;
                         var myPostcode = ViewModel.GetMyPostcode;
 
                         if (!string.IsNullOrEmpty(myPostcode))
@@ -159,6 +161,7 @@ namespace MyMindV3.Views
                                      listView.ItemsSource = null;
                                  listView.ItemsSource = dataList;
                                  ViewModel.IsBusy = false;
+                                 menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()));
                              });
                         }
                         else
