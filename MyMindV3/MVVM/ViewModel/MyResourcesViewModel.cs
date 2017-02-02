@@ -16,6 +16,34 @@ namespace MvvmFramework.ViewModel
             navService = nav;
         }
 
+        bool searchAll;
+        public bool SearchAll
+        {
+            get { return searchAll; }
+            set { Set(() => SearchAll, ref searchAll, value); }
+        }
+
+        bool searchNational;
+        public bool SearchNational
+        {
+            get { return searchNational; }
+            set { Set(() => SearchNational, ref searchNational, value); }
+        }
+
+        bool searchLocal;
+        public bool SearchLocal
+        {
+            get { return searchLocal; }
+            set { Set(() => SearchLocal, ref searchLocal, value); }
+        }
+
+        bool searchWeb;
+        public bool SearchWeb
+        {
+            get { return searchWeb; }
+            set { Set(() => SearchWeb, ref searchWeb, value); }
+        }
+
         string searchPostcode;
         public string SearchPostcode
         {
@@ -66,7 +94,7 @@ namespace MvvmFramework.ViewModel
             set { Set(() => Resources, ref resources, value); }
         }
 
-        void GetResources()
+        public void GetResources()
         {
             Resources = new UsersWebservice().GetResources().Result;
         }
@@ -93,15 +121,19 @@ namespace MvvmFramework.ViewModel
             var cat = cats.Select(t => t.Replace('-', '_')).Select(t => t.Replace(' ', '_')).ToList();
 
             var names = new List<string>();
+            var res = Resources.ToList();
             foreach (var c in cat)
             {
                 try
                 {
-                    names.Add(filenames[filenames.IndexOf(c.ToLowerInvariant())]);
+                    var resid = res.FirstOrDefault(t => t.ResourceCategory == categories[cat.IndexOf(c)]).ResourceID;
+                    names.Add(string.Format("{0}|{1}", filenames[filenames.IndexOf(c.ToLowerInvariant())], resid));
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+#if DEBUG
+                    Debug.WriteLine("Exception - {0}::{1}", ex.Message, ex.InnerException);
+#endif
                 }
             }
 
@@ -202,7 +234,7 @@ namespace MvvmFramework.ViewModel
                         Title = titles[rnd.Next(0, titles.Count)],
                         ImageIcon = icons[rnd.Next(0, icons.Count)],
                         Category = cats[rnd.Next(0, titles.Count)],
-                        CurrentRating = rnd.Next(0, 6),
+                        CurrentRating = rnd.Next(0, 5),
                         StarRatings = new List<string>(),
                         Id = n,
                         Postcode = AvailablePostcodes[pc].postcode,
@@ -227,44 +259,36 @@ namespace MvvmFramework.ViewModel
 
         public List<string> ConvertRatingToStars(int rating)
         {
-            var ratingStars = new List<string>() { "emptystar", "emptystar", "emptystar", "emptystar", "emptystar", "emptystar" };
+            var ratingStars = new List<string>() { "emptystar", "emptystar", "emptystar", "emptystar", "emptystar" };
             if (rating == 0)
                 return ratingStars;
 
             switch (rating)
             {
                 case 1:
-                    ratingStars[0] = "pinkstar";
+                    ratingStars[0] = "greenstar";
                     break;
                 case 2:
-                    ratingStars[0] = "pinkstar";
-                    ratingStars[1] = "purplestar";
+                    ratingStars[0] = "greenstar";
+                    ratingStars[1] = "yellowstar";
                     break;
                 case 3:
-                    ratingStars[0] = "pinkstar";
-                    ratingStars[1] = "purplestar";
-                    ratingStars[2] = "greenstar";
+                    ratingStars[0] = "greenstar";
+                    ratingStars[1] = "yellowstar";
+                    ratingStars[2] = "orangestar";
                     break;
                 case 4:
-                    ratingStars[0] = "pinkstar";
-                    ratingStars[1] = "purplestar";
-                    ratingStars[2] = "greenstar";
-                    ratingStars[3] = "bluestar";
+                    ratingStars[0] = "greenstar";
+                    ratingStars[1] = "yellowstar";
+                    ratingStars[2] = "orangestar";
+                    ratingStars[3] = "purplestar";
                     break;
                 case 5:
-                    ratingStars[0] = "pinkstar";
-                    ratingStars[1] = "purplestar";
-                    ratingStars[2] = "greenstar";
-                    ratingStars[3] = "bluestar";
-                    ratingStars[4] = "yellowstar";
-                    break;
-                case 6:
-                    ratingStars[0] = "pinkstar";
-                    ratingStars[1] = "purplestar";
-                    ratingStars[2] = "greenstar";
-                    ratingStars[3] = "bluestar";
-                    ratingStars[4] = "yellowstar";
-                    ratingStars[5] = "orangestar";
+                    ratingStars[0] = "greenstar";
+                    ratingStars[1] = "yellowstar";
+                    ratingStars[2] = "orangestar";
+                    ratingStars[3] = "purplestar";
+                    ratingStars[4] = "bluestar";
                     break;
             }
 
