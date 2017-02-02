@@ -29,7 +29,7 @@ namespace MyMindV3.Droid
             }
         }
 
-        ImageView imgBtn1, imgBtn2, imgBtn3, imgBtn4, imgBtn5, imgBtn6;
+        ImageView imgBtn1, imgBtn2, imgBtn3, imgBtn4, imgBtn5;
 
         public void CreateDialog(ModalView dialog)
         {
@@ -57,9 +57,8 @@ namespace MyMindV3.Droid
             imgBtn3 = dispModal.FindViewById<ImageView>(Resource.Id.imageButton3);
             imgBtn4 = dispModal.FindViewById<ImageView>(Resource.Id.imageButton4);
             imgBtn5 = dispModal.FindViewById<ImageView>(Resource.Id.imageButton5);
-            imgBtn6 = dispModal.FindViewById<ImageView>(Resource.Id.imageButton6);
 
-            imgBtn1.Clickable = imgBtn2.Clickable = imgBtn3.Clickable = imgBtn4.Clickable = imgBtn5.Clickable = imgBtn6.Clickable = true;
+            imgBtn1.Clickable = imgBtn2.Clickable = imgBtn3.Clickable = imgBtn4.Clickable = imgBtn5.Clickable = true;
 
             SetStartStars();
 
@@ -88,11 +87,6 @@ namespace MyMindV3.Droid
                 currentRating = 5;
                 UpdateStars(currentRating);
             };
-            imgBtn6.Click += delegate
-            {
-                currentRating = 6;
-                UpdateStars(currentRating);
-            };
 
             // data is in, let's show the dialog box
             dispModal.Show();
@@ -103,12 +97,11 @@ namespace MyMindV3.Droid
             var resources = new List<int>
             {
                 Resource.Drawable.emptystar,
-                Resource.Drawable.pinkstar,
+Resource.Drawable.greenstar,
+Resource.Drawable.yellowstar,
+Resource.Drawable.orangestar,
                 Resource.Drawable.purplestar,
-                Resource.Drawable.greenstar,
                 Resource.Drawable.bluestar,
-                Resource.Drawable.yellowstar,
-                Resource.Drawable.orangestar
             };
 
             switch (rating)
@@ -119,7 +112,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[0]);
                     imgBtn4.SetImageResource(resources[0]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 1:
                     imgBtn1.SetImageResource(resources[1]);
@@ -127,7 +119,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[0]);
                     imgBtn4.SetImageResource(resources[0]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 2:
                     imgBtn1.SetImageResource(resources[1]);
@@ -135,7 +126,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[0]);
                     imgBtn4.SetImageResource(resources[0]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 3:
                     imgBtn1.SetImageResource(resources[1]);
@@ -143,7 +133,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[3]);
                     imgBtn4.SetImageResource(resources[0]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 4:
                     imgBtn1.SetImageResource(resources[1]);
@@ -151,7 +140,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[3]);
                     imgBtn4.SetImageResource(resources[4]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 5:
                     imgBtn1.SetImageResource(resources[1]);
@@ -159,15 +147,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[3]);
                     imgBtn4.SetImageResource(resources[4]);
                     imgBtn5.SetImageResource(resources[5]);
-                    imgBtn6.SetImageResource(resources[0]);
-                    break;
-                case 6:
-                    imgBtn1.SetImageResource(resources[1]);
-                    imgBtn2.SetImageResource(resources[2]);
-                    imgBtn3.SetImageResource(resources[3]);
-                    imgBtn4.SetImageResource(resources[4]);
-                    imgBtn5.SetImageResource(resources[5]);
-                    imgBtn6.SetImageResource(resources[6]);
                     break;
             }
         }
@@ -177,12 +156,12 @@ namespace MyMindV3.Droid
             var resources = new List<int>
             {
                 Resource.Drawable.emptystar,
-                Resource.Drawable.pinkstar,
+Resource.Drawable.greenstar,
+Resource.Drawable.yellowstar,
+Resource.Drawable.orangestar,
                 Resource.Drawable.purplestar,
-                Resource.Drawable.greenstar,
                 Resource.Drawable.bluestar,
-                Resource.Drawable.yellowstar,
-                Resource.Drawable.orangestar
+Resource.Drawable.pinkstar
             };
 
             switch (initialRating)
@@ -193,7 +172,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[0]);
                     imgBtn4.SetImageResource(resources[0]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 1:
                     imgBtn1.SetImageResource(resources[1]);
@@ -201,7 +179,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[0]);
                     imgBtn4.SetImageResource(resources[0]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 2:
                     imgBtn1.SetImageResource(resources[1]);
@@ -209,7 +186,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[0]);
                     imgBtn4.SetImageResource(resources[0]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 3:
                     imgBtn1.SetImageResource(resources[1]);
@@ -217,7 +193,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[3]);
                     imgBtn4.SetImageResource(resources[0]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 4:
                     imgBtn1.SetImageResource(resources[1]);
@@ -225,7 +200,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[3]);
                     imgBtn4.SetImageResource(resources[4]);
                     imgBtn5.SetImageResource(resources[0]);
-                    imgBtn6.SetImageResource(resources[0]);
                     break;
                 case 5:
                     imgBtn1.SetImageResource(resources[1]);
@@ -233,15 +207,6 @@ namespace MyMindV3.Droid
                     imgBtn3.SetImageResource(resources[3]);
                     imgBtn4.SetImageResource(resources[4]);
                     imgBtn5.SetImageResource(resources[5]);
-                    imgBtn6.SetImageResource(resources[0]);
-                    break;
-                case 6:
-                    imgBtn1.SetImageResource(resources[1]);
-                    imgBtn2.SetImageResource(resources[2]);
-                    imgBtn3.SetImageResource(resources[3]);
-                    imgBtn4.SetImageResource(resources[4]);
-                    imgBtn5.SetImageResource(resources[5]);
-                    imgBtn6.SetImageResource(resources[6]);
                     break;
             }
         }
