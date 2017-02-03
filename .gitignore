@@ -19,4 +19,11 @@ MyMindV3/Checkbox/Forms/obj/*
 MyMindV3/Checkbox/Uwp/*
 MyMindV3/Checkbox/WinPhone/*
 MyMindV3/Checkbox/packages/*
-
+MyMindV3/XFormsRadioButton/XFormsRadioButton/bin/*
+MyMindV3/XFormsRadioButton/XFormsRadioButton/obj/*
+MyMindV3/XFormsRadioButton/XFormsRadioButton.Android/bin/*
+MyMindV3/XFormsRadioButton/XFormsRadioButton.Android/obj/*
+MyMindV3/XFormsRadioButton/XFormsRadioButton.iOS/bin/*
+MyMindV3/XFormsRadioButton/XFormsRadioButton.iOS/obj/*
+MyMindV3/XFormsRadioButton/XFormsRadioButton.WinPhone/*
+MyMindV3/XFormsRadioButton/packages/*
