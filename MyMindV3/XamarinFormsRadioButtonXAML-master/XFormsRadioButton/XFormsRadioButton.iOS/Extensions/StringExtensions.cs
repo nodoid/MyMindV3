@@ -1,12 +1,12 @@
 ﻿using System;
-using MonoTouch.UIKit;
-using MonoTouch.Foundation;
+using Foundation;
+using UIKit;
 
 namespace XFormsRadioButton.iOS
 {
     public static class StringExtensions
     {
-        public static float StringHeight(this string text, UIFont font, float width)
+        public static nfloat StringHeight(this string text, UIFont font, float width)
         {
             var nativeString = new NSString(text);
 

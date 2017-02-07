@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
-using MonoTouch.Foundation;
-using MonoTouch.UIKit;
+using Foundation;
+using UIKit;
+using CoreGraphics;
 
 namespace XFormsRadioButton.iOS.Controls
 {
@@ -12,13 +13,13 @@ namespace XFormsRadioButton.iOS.Controls
             Initialize();
         }
 
-        public RadioButtonView(RectangleF bounds)
+        public RadioButtonView(CGRect bounds)
             : base(bounds)
         {
             Initialize();
         }
 
-        
+
         public bool Checked
         {
             set { this.Selected = value; }
@@ -28,7 +29,7 @@ namespace XFormsRadioButton.iOS.Controls
         public string Text
         {
             set { this.SetTitle(value, UIControlState.Normal); }
-            
+
         }
 
         void Initialize()

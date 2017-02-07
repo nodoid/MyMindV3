@@ -1,19 +1,17 @@
 using System;
 using System.ComponentModel;
-using MonoTouch.UIKit;
+using UIKit;
 using Xamarin.Forms;
 
 using Xamarin.Forms.Platform.iOS;
 using XFormsRadioButton.CustomControls;
 using XFormsRadioButton.iOS.Controls;
+using CoreGraphics;
 
 [assembly: ExportRenderer(typeof(CustomRadioButton), typeof(RadioButtonRenderer))]
 
 namespace XFormsRadioButton.iOS.Controls
 {
-    /// <summary>
-    /// The Radio button renderer for iOS.
-    /// </summary>
     public class RadioButtonRenderer : ViewRenderer<CustomRadioButton, RadioButtonView>
     {
         protected override void OnElementChanged(ElementChangedEventArgs<CustomRadioButton> e)
@@ -30,9 +28,6 @@ namespace XFormsRadioButton.iOS.Controls
                 SetNativeControl(checkBox);
             }
 
-           
-            
-
             Control.LineBreakMode = UILineBreakMode.CharacterWrap;
             Control.VerticalAlignment = UIControlContentVerticalAlignment.Top;
             Control.Text = e.NewElement.Text;
@@ -44,15 +39,15 @@ namespace XFormsRadioButton.iOS.Controls
         private void ResizeText()
         {
             var text = this.Element.Text;
-               
+
 
             var bounds = this.Control.Bounds;
 
             var width = this.Control.TitleLabel.Bounds.Width;
 
-            var height = text.StringHeight(this.Control.Font, width);
+            var height = text.StringHeight(this.Control.Font, (float)width);
 
-            var minHeight = string.Empty.StringHeight(this.Control.Font, width);
+            var minHeight = string.Empty.StringHeight(this.Control.Font, (float)width);
 
             var requiredLines = Math.Round(height / minHeight, MidpointRounding.AwayFromZero);
 
@@ -66,13 +61,13 @@ namespace XFormsRadioButton.iOS.Controls
             }
         }
 
-        public override void Draw(System.Drawing.RectangleF rect)
+        public override void Draw(CGRect rect)
         {
             base.Draw(rect);
             this.ResizeText();
         }
 
-        
+
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
