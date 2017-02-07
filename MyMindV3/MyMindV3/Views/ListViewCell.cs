@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using MvvmFramework.Models;
 using MyMindV3.Languages;
+using System;
 
 namespace MyMindV3.Views
 {
@@ -27,9 +28,16 @@ namespace MyMindV3.Views
             var imgIcon = new Image
             {
                 HeightRequest = 56,
-                WidthRequest = 56
+                WidthRequest = 56,
             };
-            imgIcon.SetBinding(Image.SourceProperty, new Binding("ImageIcon"));
+            imgIcon.SetBinding(Image.ClassIdProperty, new Binding("Url"));
+            var imgIconTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() => MessagingCenter.Send(this, "LaunchWeb", imgIcon.ClassId))
+            };
+            imgIcon.GestureRecognizers.Add(imgIconTap);
+
             var imgMapPin = new Image
             {
                 Source = "mappin",
@@ -130,6 +138,8 @@ namespace MyMindV3.Views
 #if DEBUG
                     Debug.WriteLine("H={0}, R={1}, W={2}", ts.HasH ? 1 : 0, ts.HasR ? 1 : 0, ts.HasW ? 1 : 0);
 #endif
+                    imgIcon.Source = new UriImageSource { Uri = new Uri(ts.ImageIcon) };
+
                     if (ts.HasH && ts.HasR && ts.HasW)
                     {
                         resourceStack.Children.Add(
