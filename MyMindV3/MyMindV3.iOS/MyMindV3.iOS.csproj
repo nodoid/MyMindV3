@@ -254,11 +254,8 @@
     <Reference Include="Plugin.Media">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\Xamarin.iOS10\Plugin.Media.dll</HintPath>
     </Reference>
-    <Reference Include="Messier16.Forms.Controls.Checkbox">
-      <HintPath>..\Checkbox\iOS\bin\Release\Messier16.Forms.Controls.Checkbox.dll</HintPath>
-    </Reference>
-    <Reference Include="Messier16.Forms.iOS.Controls.Checkbox">
-      <HintPath>..\Checkbox\iOS\bin\Release\Messier16.Forms.iOS.Controls.Checkbox.dll</HintPath>
+    <Reference Include="XFormsRadioButton">
+      <HintPath>..\XamarinFormsRadioButtonXAML-master\XFormsRadioButton\XFormsRadioButton.iOS\bin\iPhone\Release\XFormsRadioButton.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

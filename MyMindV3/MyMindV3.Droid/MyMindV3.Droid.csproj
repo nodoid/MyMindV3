@@ -188,11 +188,11 @@
     <Reference Include="Plugin.Media">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\MonoAndroid10\Plugin.Media.dll</HintPath>
     </Reference>
-    <Reference Include="Messier16.Forms.Controls.Checkbox">
-      <HintPath>..\Checkbox\Droid\bin\Release\Messier16.Forms.Controls.Checkbox.dll</HintPath>
+    <Reference Include="XFormsRadioButton.Android">
+      <HintPath>..\XamarinFormsRadioButtonXAML-master\XFormsRadioButton\XFormsRadioButton.Android\bin\Release\XFormsRadioButton.Android.dll</HintPath>
     </Reference>
-    <Reference Include="Messier16.Forms.Droid.Controls.Checkbox">
-      <HintPath>..\Checkbox\Droid\bin\Release\Messier16.Forms.Droid.Controls.Checkbox.dll</HintPath>
+    <Reference Include="XFormsRadioButton">
+      <HintPath>..\XamarinFormsRadioButtonXAML-master\XFormsRadioButton\XFormsRadioButton.Android\bin\Release\XFormsRadioButton.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

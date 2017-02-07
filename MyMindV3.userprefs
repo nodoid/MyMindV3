@@ -1,50 +1,14 @@
 ﻿<Properties StartupConfiguration="{B7EC01B5-1C8D-49E7-BF43-C989BDCD90FF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3.iOS/CustomRenderers/RatingModalView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs">
     <Files>
-      <File FileName="MyMindV3/MyMindV3/Views/MenuView.cs" Line="42" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Languages/Langs.resx" Line="552" Column="8" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="237" Column="54" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="80" Column="46" />
-      <File FileName="MyMindV3/MVVM/Models/ResourceModel.cs" Line="25" Column="52" />
-      <File FileName="MyMindV3/MyMindV3/Views/ListViewCell.cs" Line="196" Column="34" />
-      <File FileName="MyMindV3/MyMindV3.iOS/CustomRenderers/PullToRefreshViewRenderer.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3.Droid/Injected/ModalView.cs" Line="100" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/CustomViews/ModalView.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3.iOS/Injected/OpenFile.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3.iOS/Injected/Localisation.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3.iOS/Injected/Encrypt.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3.iOS/CustomRenderers/RatingModalView.cs" Line="27" Column="9" />
-      <File FileName="MyMindV3/MyMindV3.iOS/UIUtils/UIUtils.cs" Line="23" Column="38" />
+      <File FileName="MyMindV3/MVVM/Webservices/GetData.cs" Line="277" Column="87" />
+      <File FileName="MyMindV3/MVVM/Models/Postcode.cs" Line="29" Column="32" />
+      <File FileName="MyMindV3/MVVM/Webservices/SendData.cs" Line="107" Column="13" />
+      <File FileName="MyMindV3/MVVM/Models/Ratings.cs" Line="8" Column="43" />
+      <File FileName="MyMindV3/MVVM/Models/ResourceModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="74" Column="46" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="MyMindV3" expanded="True">
-            <Node name="MyMindV3" expanded="True">
-              <Node name="Packages" expanded="True" selected="True" />
-              <Node name="CustomViews" expanded="True" />
-              <Node name="Interfaces" expanded="True" />
-              <Node name="Languages" expanded="True" />
-              <Node name="Properties" expanded="True" />
-              <Node name="Services" expanded="True" />
-              <Node name="Views" expanded="True" />
-            </Node>
-            <Node name="MyMindV3.Droid" expanded="True">
-              <Node name="CustomRenderers" expanded="True" />
-              <Node name="Injected" expanded="True" />
-              <Node name="Resources" expanded="True">
-                <Node name="layout" expanded="True" />
-              </Node>
-              <Node name="Utils" expanded="True" />
-            </Node>
-            <Node name="MyMindV3.iOS" expanded="True">
-              <Node name="CustomRenderers" expanded="True" />
-              <Node name="UIUtils" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.66.101:5555" AndroidDesignerPreferredTheme="MyTheme" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
@@ -52,8 +16,6 @@
     <BreakpointStore>
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Converters/ImageTypeConverter.cs" line="22" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" line="29" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="140" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="129" column="119" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

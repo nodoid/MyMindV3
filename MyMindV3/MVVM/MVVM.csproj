@@ -85,6 +85,7 @@
     <Compile Include="Models\Postcode.cs" />
     <Compile Include="Models\SortedListData.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="Models\Ratings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
