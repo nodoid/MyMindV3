@@ -30,10 +30,18 @@ namespace MvvmFramework.ViewModel
             set
             {
                 Set(() => CurrentPage, ref currentPage, value);
-                if (value + 10 > maxPages)
-                    DisableNextPageButton = true;
+                DisableNextPageButton = currentPage + 1 > maxPages;
+                DisableBackPageButton = currentPage == 0;
             }
         }
+
+        bool disableBackPageButton;
+        public bool DisableBackPageButton
+        {
+            get { return disableBackPageButton; }
+            set { Set(() => DisableBackPageButton, ref disableBackPageButton, value, true); }
+        }
+
 
         bool disableNextPageButton;
         public bool DisableNextPageButton
