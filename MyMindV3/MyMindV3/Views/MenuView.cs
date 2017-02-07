@@ -1,8 +1,8 @@
 using Xamarin.Forms;
 using System.Collections.Generic;
 using MyMindV3.Languages;
-using Messier16.Forms.Controls;
 using System;
+using XFormsRadioButton.CustomControls;
 
 namespace MyMindV3.Views
 {
@@ -21,10 +21,7 @@ namespace MyMindV3.Views
     {
         List<MenuListClass> menuList;
 
-        bool SetAll { get; set; }
-        bool SetLocal { get; set; }
-        bool SetNational { get; set; }
-        bool SetWeb { get; set; }
+        int SetSelected { get; set; }
 
         static string UppercaseFirst(string s)
         {
@@ -78,38 +75,17 @@ namespace MyMindV3.Views
                 HorizontalTextAlignment = TextAlignment.Center
             };
 
-            var chkAll = new Checkbox();
-            var chkNational = new Checkbox();
-            var chkLocal = new Checkbox();
-            var chkWebOnly = new Checkbox();
-            chkAll.SetBinding(Checkbox.CheckedProperty, new Binding(SetAll.ToString()));
-            chkNational.SetBinding(Checkbox.CheckedProperty, new Binding(SetNational.ToString()));
-            chkLocal.SetBinding(Checkbox.CheckedProperty, new Binding(SetLocal.ToString()));
-            chkWebOnly.SetBinding(Checkbox.CheckedProperty, new Binding(SetWeb.ToString()));
-            var chkAllTap = new TapGestureRecognizer
+            var radio = new BindableRadioGroup
             {
-                NumberOfTapsRequired = 1,
-                Command = new Command(() => MessagingCenter.Send(this, "ChkAll", chkAll.Checked))
+                ItemsSource = new List<string> { Langs.MyResources_Distance, Langs.Menu_AveRating, Langs.Menu_AZ, Langs.Menu_Popular },
+                SelectedIndex = SetSelected
             };
-            var chkNationalTap = new TapGestureRecognizer
+
+            radio.CheckedChanged += (sender, e) =>
             {
-                NumberOfTapsRequired = 1,
-                Command = new Command(() => MessagingCenter.Send(this, "chkNational", chkAll.Checked))
+                var button = sender as BindableRadioGroup;
+                MessagingCenter.Send(this, "buttonClicked", button.SelectedIndex);
             };
-            var chkLocalTap = new TapGestureRecognizer
-            {
-                NumberOfTapsRequired = 1,
-                Command = new Command(() => MessagingCenter.Send(this, "chkLocal", chkAll.Checked))
-            };
-            var chkWebTap = new TapGestureRecognizer
-            {
-                NumberOfTapsRequired = 1,
-                Command = new Command(() => MessagingCenter.Send(this, "chkWebOnly", chkAll.Checked))
-            };
-            chkAll.GestureRecognizers.Add(chkAllTap);
-            chkNational.GestureRecognizers.Add(chkNationalTap);
-            chkLocal.GestureRecognizers.Add(chkLocalTap);
-            chkWebOnly.GestureRecognizers.Add(chkWebTap);
 
             var topStack = new StackLayout
             {
@@ -117,69 +93,7 @@ namespace MyMindV3.Views
                 Children =
                 {
                     lblResource,
-                    new StackLayout
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                        Children =
-                        {
-                            chkAll,
-                            new Label
-                            {
-                                Text = Langs.Menu_All,
-                                FontSize = 12,
-                                TextColor = Color.Blue,
-                                VerticalTextAlignment = TextAlignment.Center
-                            }
-                        }
-                    },
-                    new StackLayout
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                            TranslationY = -16,
-                        Children =
-                        {
-                            chkNational,
-                            new Label
-                            {
-                                Text = Langs.Menu_National,
-                                FontSize = 12,
-                                TextColor = Color.Blue,
-                                VerticalTextAlignment = TextAlignment.Center
-                            }
-                        }
-                    },
-                    new StackLayout
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                        TranslationY = -32,
-                        Children =
-                        {
-                            chkLocal,
-                            new Label
-                            {
-                                Text = Langs.Menu_Local,
-                                FontSize = 12,
-                                TextColor = Color.Blue,
-                                VerticalTextAlignment = TextAlignment.Center
-                            }
-                        }
-                    },
-                    new StackLayout
-                    {
-                        Orientation = StackOrientation.Horizontal,
-                        TranslationY = -48,
-                        Children =
-                        {
-                            chkWebOnly,
-                            new Label
-                            {
-                                Text = Langs.Menu_Web,
-                                FontSize = 12,
-                                TextColor = Color.Blue,
-                                VerticalTextAlignment = TextAlignment.Center
-                            }
-                        }
-                    },
+                    radio,
                     new BoxView
                     {
                         TranslationY = -56,
@@ -211,7 +125,7 @@ namespace MyMindV3.Views
             return masterStack;
         }
 
-        public MenuView(List<string> filenames, bool web, bool all, bool nat, bool local)
+        public MenuView(List<string> filenames, int selected)
         {
             SetAll = all;
             SetLocal = local;
@@ -220,7 +134,7 @@ namespace MyMindV3.Views
             Content = GenerateUI(filenames);
         }
 
-        public void UpdateMenu(List<string> filenames, bool web, bool all, bool nat, bool local)
+        public void UpdateMenu(List<string> filenames, int selected)
         {
             SetAll = all;
             SetLocal = local;
