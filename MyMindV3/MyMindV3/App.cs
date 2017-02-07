@@ -30,7 +30,16 @@ namespace MyMindV3
 
         public bool IsConnected { get; private set; }
 
-        public Position Location { get; set; }
+        Position location;
+        public Position Location
+        {
+            get { return location; }
+            set
+            {
+                location = value;
+                OnPropertyChanged("Location");
+            }
+        }
 
         int newIconRating;
         public int NewIconRating
