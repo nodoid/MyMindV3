@@ -16,6 +16,32 @@ namespace MvvmFramework.ViewModel
             set { Set(() => SearchSelected, ref searchSelected, value); }
         }
 
+        int maxPages;
+        public int MaxPages
+        {
+            get { return maxPages; }
+            set { Set(() => MaxPages, ref maxPages, value); }
+        }
+
+        int currentPage;
+        public int CurrentPage
+        {
+            get { return currentPage; }
+            set
+            {
+                Set(() => CurrentPage, ref currentPage, value);
+                if (value + 10 > maxPages)
+                    DisableNextPageButton = true;
+            }
+        }
+
+        bool disableNextPageButton;
+        public bool DisableNextPageButton
+        {
+            get { return disableNextPageButton; }
+            set { Set(() => DisableNextPageButton, ref disableNextPageButton, value, true); }
+        }
+
         double longitude;
         public double Longitude
         {
@@ -70,7 +96,7 @@ namespace MvvmFramework.ViewModel
         {
             var url = isLocal ? "GetLocalResources" : "GetNationalResources";
             var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
-                "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", "1", "Sorting", "null", "Categorys", "1,2,3"};
+                "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", currentPage.ToString(), "Sorting", "null", "Categorys", "null"};
             Resources = GetData.GetLocalNationalResources(url, param.ToArray()).Result;
         }
 
@@ -98,7 +124,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return Resources.ToList().OrderBy(t => t.ResourceRating.ResourceRating) as IEnumerable<ResourceModel>;
+                return Resources.ToList().OrderBy(t => t.ResourceRating) as IEnumerable<ResourceModel>;
 
             }
         }
@@ -141,7 +167,7 @@ namespace MvvmFramework.ViewModel
             var cat = cats.Select(t => t.Replace('-', '_')).Select(t => t.Replace(' ', '_')).ToList();
 
             var names = new List<string>();
-            var res = Resources.ToList();
+            var res = Resources?.ToList();
             foreach (var c in cat)
             {
                 try
@@ -232,49 +258,31 @@ namespace MvvmFramework.ViewModel
                 return;
 
             var nums = AvailablePostcodes.Count / 10;
-
+            var res = Resources.ToList();
             var lastPostcode = 0;
             var c = 1;
-            var titles = new List<string>
-            {
-                "Mental health facilites in London",
-                "Dealing with loss",
-                "Recognising depression",
-                "Coping with senility",
-                "ADHD - strategies for learning",
-                "Your visit to hospital",
-                "Care for the elderly",
-                "What to do if you notice self harm",
-                "Recognising the signs of drug misuse",
-                "Solvent abuse. How to help",
-                "You are not alone"
-            };
-            var icons = new List<string>{"anxiety","depression","apps","autism","bereavement","bullying","general","involvement", "learning_disabilities",
+            var resTitles = res.Select(t => t.ResourceCategorysPiped).ToString().Replace('|', ',');
+            /*var icons = new List<string>{"anxiety","depression","apps","autism","bereavement","bullying","general","involvement", "learning_disabilities",
                 "local_services", "looked_after_children","mental_health","safeguarding","mood", "parent_resources", "peer_support", "self_harm", "self_help", "www", "stress", "substance_abuse",
                 "video", "well_being", "young_carer", "sleeping","adhd","domestic_abuse","spousal_abuse","solvent_abuse"};
-            var cats = new List<string> { "Anxiety", "Depression", "Self-harm", "Solvent abuse", "Young carer", "Domestic abuse", "Well being", "Spousal abuse", "Autism", "ADHD" };
-            var rnd = new Random();
+            var cats = new List<string> { "Anxiety", "Depression", "Self-harm", "Solvent abuse", "Young carer", "Domestic abuse", "Well being", "Spousal abuse", "Autism", "ADHD" };*/
             try
             {
                 for (var n = 0; n < 10; ++n)
                 {
-                    var pc = rnd.Next(lastPostcode, nums * c);
                     dataList.Add(new ListviewModel
                     {
-                        Title = titles[rnd.Next(0, titles.Count)],
-                        ImageIcon = icons[rnd.Next(0, icons.Count)],
-                        Category = cats[rnd.Next(0, titles.Count)],
-                        CurrentRating = rnd.Next(0, 5),
+                        Title = res[n].ResourceTitle,
+                        ImageIcon = res[n].ResourceLogoLink,
+                        Category = resTitles,
+                        CurrentRating = res[n].ResourceRating,
                         StarRatings = new List<string>(),
                         Id = n,
-                        Postcode = AvailablePostcodes[pc].postcode,
-                        Distance = AvailablePostcodes[pc].distance,
-                        HasH = rnd.Next(0, 10) > 5,
-                        HasR = rnd.Next(0, 10) < 5,
-                        HasW = rnd.Next(0, 10) > 6
+                        Postcode = res[n].ResourcePostcode,
+                        Distance = GetData.GetDistanceFromPostcodes(SearchPostcode, res[n].ResourcePostcode).Result,
+                        HasW = res[n].ResourceIsDead,
+                        Url = res[n].ResourceIsDead ? string.Empty : res[n].ResourceURL
                     });
-                    lastPostcode += nums;
-                    c++;
                     dataList[n].StarRatings = ConvertRatingToStars(dataList[n].CurrentRating);
                 }
             }
@@ -344,7 +352,7 @@ namespace MvvmFramework.ViewModel
 
         public async Task SetRating(bool isClinician)
         {
-            var currentRespond = Resources.FirstOrDefault(t => t.ResourceRating.ResourceRatingId == ResId).ResourceRating;
+            var currentRespond = Resources.FirstOrDefault(t => t.ResourceID == ResId);
             var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
                 "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString(), "Rating", NewRating.ToString()};
             await Send.Rated("RateResource", ResId, data.ToArray()).ContinueWith((t) =>
@@ -352,7 +360,7 @@ namespace MvvmFramework.ViewModel
                 if (t.IsCompleted)
                 {
                     currentRespond.ResourceRating = t.Result.Rating;
-                    currentRespond.ResourceResponded = t.Result.Respondents;
+                    currentRespond.ResourceNumberOfRating = t.Result.Respondents;
                 }
             });
         }
@@ -362,6 +370,25 @@ namespace MvvmFramework.ViewModel
             var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
                 "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString()};
             await Send.ReportBrokenLink("ReportBrokenLink", data.ToArray());
+            var res = Resources.FirstOrDefault(t => t.ResourceID == ResId);
+            res.ResourceIsDead = true;
+            res.ResourceLogoLink = string.Empty;
+            SetUpdateResource = res;
+        }
+
+        ResourceModel setUpdateResource;
+        public ResourceModel SetUpdateResource
+        {
+            get { return setUpdateResource; }
+            set { Set(() => SetUpdateResource, ref setUpdateResource, value, true); }
+        }
+
+        public List<string> GetCategtoriesFromResource
+        {
+            get
+            {
+                return Resources.FirstOrDefault(t => t.ResourceID == ResId).ResourceCategorysPiped.Split('|').ToList();
+            }
         }
     }
 }
