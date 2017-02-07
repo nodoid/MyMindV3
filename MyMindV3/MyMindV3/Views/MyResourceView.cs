@@ -4,7 +4,7 @@ using MvvmFramework.Models;
 using MvvmFramework.ViewModel;
 using MyMindV3.Languages;
 using System.Linq;
-using System;
+using System.ComponentModel;
 
 namespace MyMindV3.Views
 {
@@ -22,39 +22,72 @@ namespace MyMindV3.Views
         {
             base.OnAppearing();
 
-            ViewModel.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "IsBusy")
-                {
-                    Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage));
-                }
-            };
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
 
-            App.Self.PropertyChanged += (sender, e) =>
-            {
-                if (e.PropertyName == "NewIconRating")
-                {
-                    var bc = dataList[App.Self.IdInUse];
-                    bc.CurrentRating = App.Self.NewIconRating;
-                    bc.StarRatings = ViewModel.ConvertRatingToStars(bc.CurrentRating);
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        listView.ItemsSource = null;
-                        listView.ItemsSource = dataList;
-                    });
-                }
-            };
+            App.Self.PropertyChanged += Self_PropertyChanged;
 
             MessagingCenter.Subscribe<MenuView, int>(this, "buttonClicked", (arg1, arg2) =>
             {
                 ViewModel.SearchSelected = arg2;
             });
+
+            MessagingCenter.Subscribe<ListViewCell, string>(this, "LaunchWeb", async (arg1, arg2) =>
+            {
+                if (!string.IsNullOrEmpty(arg2))
+                    await Navigation.PushAsync(new MyWebview(arg2));
+            });
+        }
+
+        void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "IsBusy")
+            {
+                Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage));
+            }
+        }
+
+        void Self_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "NewIconRating")
+            {
+                var bc = dataList[App.Self.IdInUse];
+                bc.CurrentRating = App.Self.NewIconRating;
+                bc.StarRatings = ViewModel.ConvertRatingToStars(bc.CurrentRating);
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    listView.ItemsSource = null;
+                    listView.ItemsSource = dataList;
+                });
+            }
+
+            if (e.PropertyName == "Location")
+            {
+                ViewModel.Speed = App.Self.Location.Speed;
+                ViewModel.IsBusy = true;
+                if (ViewModel.PositionChanged(App.Self.Location.Longitude, App.Self.Location.Latitude))
+                {
+                    ViewModel.GetResources();
+                    ViewModel.GetUIList();
+                    dataList = ViewModel.UIList;
+                    Device.BeginInvokeOnMainThread(() =>
+                     {
+                         if (listView.ItemsSource != null)
+                             listView.ItemsSource = null;
+                         listView.ItemsSource = dataList;
+                         ViewModel.IsBusy = false;
+                         menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                     });
+                }
+            }
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<MenuView>(this, "buttonChecked");
+            MessagingCenter.Unsubscribe<ListViewCell>(this, "LaunchWeb");
+            App.Self.PropertyChanged -= Self_PropertyChanged;
+            ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
         }
 
         public MyResourcesView()
@@ -161,6 +194,7 @@ namespace MyMindV3.Views
                 PlaceholderColor = Color.Gray,
                 SearchCommand = new Command((w) =>
                 {
+                    ViewModel.Speed = 0;
                     ViewModel.IsBusy = true;
                     ViewModel.SearchPostcode = postcodeSearch.Text.Replace(" ", "").ToLowerInvariant();
                     ViewModel.GetAvailablePostcodes();
@@ -232,13 +266,14 @@ namespace MyMindV3.Views
                         ViewModel.IsBusy = true;
                         ViewModel.Longitude = App.Self.Location.Longitude;
                         ViewModel.Latitude = App.Self.Location.Latitude;
+                        ViewModel.Speed = App.Self.Location.Speed;
                         var myPostcode = ViewModel.GetMyPostcode;
 
                         if (!string.IsNullOrEmpty(myPostcode))
                         {
                             ViewModel.SearchPostcode = myPostcode;
                             ViewModel.GetAvailablePostcodes();
-                            var postcodes = ViewModel.AvailablePostcodes;
+                            var _ = ViewModel.AvailablePostcodes;
                             ViewModel.GetResources();
                             ViewModel.GetUIList();
                             dataList = ViewModel.UIList;
