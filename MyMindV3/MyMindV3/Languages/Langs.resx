@@ -135,17 +135,14 @@
 	<data name="Menu_Resources" xml:space="preserve">
     <value>Resources</value>
   </data>
-	<data name="Menu_All" xml:space="preserve">
-    <value>All</value>
+	<data name="Menu_AveRating" xml:space="preserve">
+    <value>Average rating</value>
   </data>
-	<data name="Menu_National" xml:space="preserve">
-    <value>National</value>
+	<data name="Menu_AZ" xml:space="preserve">
+    <value>A-Z</value>
   </data>
-	<data name="Menu_Local" xml:space="preserve">
-    <value>Local</value>
-  </data>
-	<data name="Menu_Web" xml:space="preserve">
-    <value>Web only</value>
+	<data name="Menu_Popular" xml:space="preserve">
+    <value>Most popular</value>
   </data>
 	<data name="Login_EnterName" xml:space="preserve">
     <value>Enter name</value>
