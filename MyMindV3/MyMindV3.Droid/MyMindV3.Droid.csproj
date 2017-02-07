@@ -280,6 +280,8 @@
     <AndroidResource Include="Resources\drawable\word.png" />
     <AndroidResource Include="Resources\drawable\badlink.png" />
     <AndroidResource Include="Resources\drawable\mappin.png" />
+    <AndroidResource Include="Resources\drawable\leftgrey.png" />
+    <AndroidResource Include="Resources\drawable\rightgrey.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

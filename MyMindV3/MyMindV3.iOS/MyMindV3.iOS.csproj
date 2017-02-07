@@ -158,6 +158,8 @@
     <BundleResource Include="Resources\mappin.png" />
     <Compile Include="CustomRenderers\RatingModalView.cs" />
     <Compile Include="UIUtils\UIUtils.cs" />
+    <BundleResource Include="Resources\leftgrey.png" />
+    <BundleResource Include="Resources\rightgrey.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
