@@ -86,6 +86,9 @@
     <Compile Include="Converters\ImageTypeConverter.cs" />
     <Compile Include="Views\MyPlansListCell.cs" />
     <Compile Include="Views\MyProfileView.xaml.cs" />
+    <Compile Include="Converters\CorrectBackImage.cs" />
+    <Compile Include="Converters\CorrectForwardImage.cs" />
+    <Compile Include="Views\MyWebview.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Languages\Langs.resx">

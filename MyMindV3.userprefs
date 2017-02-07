@@ -1,15 +1,20 @@
 ﻿<Properties StartupConfiguration="{B7EC01B5-1C8D-49E7-BF43-C989BDCD90FF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MVVM/Models/ResourceModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs">
     <Files>
-      <File FileName="MyMindV3/MVVM/Webservices/GetData.cs" Line="71" Column="63" />
+      <File FileName="MyMindV3/MVVM/Webservices/GetData.cs" Line="71" Column="39" />
       <File FileName="MyMindV3/MVVM/Models/Postcode.cs" Line="29" Column="32" />
       <File FileName="MyMindV3/MVVM/Webservices/SendData.cs" Line="99" Column="10" />
       <File FileName="MyMindV3/MVVM/Models/Ratings.cs" Line="8" Column="44" />
-      <File FileName="MyMindV3/MVVM/Models/ResourceModel.cs" Line="43" Column="6" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="99" Column="140" />
+      <File FileName="MyMindV3/MVVM/Models/ResourceModel.cs" Line="15" Column="60" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="150" Column="16" />
       <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" Line="1" Column="1" />
       <File FileName="MyMindV3/MyMindV3/Views/MenuView.cs" Line="137" Column="13" />
       <File FileName="MyMindV3/MVVM/Models/ListviewModel.cs" Line="18" Column="38" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="6" Column="19" />
+      <File FileName="MyMindV3/MyMindV3/Languages/Langs.resx" Line="555" Column="8" />
+      <File FileName="MyMindV3/MyMindV3/Views/ListViewCell.cs" Line="37" Column="82" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyWebview.cs" Line="8" Column="10" />
+      <File FileName="MyMindV3/MyMindV3/App.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.66.101:5555" AndroidDesignerPreferredTheme="MyTheme" />
