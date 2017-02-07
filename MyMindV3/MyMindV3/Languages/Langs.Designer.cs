@@ -635,6 +635,18 @@ namespace MyMindV3.Languages {
             }
         }
         
+        public static string MyResources_Previous {
+            get {
+                return ResourceManager.GetString("MyResources_Previous", resourceCulture);
+            }
+        }
+        
+        public static string MyResources_Next {
+            get {
+                return ResourceManager.GetString("MyResources_Next", resourceCulture);
+            }
+        }
+        
         public static string SignUp_Title {
             get {
                 return ResourceManager.GetString("SignUp_Title", resourceCulture);

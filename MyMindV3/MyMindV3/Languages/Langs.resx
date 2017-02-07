@@ -411,6 +411,12 @@
 	<data name="MyResources_FilterOff" xml:space="preserve">
     <value>No filter</value>
   </data>
+	<data name="MyResources_Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+	<data name="MyResources_Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
 	<data name="SignUp_Title" xml:space="preserve">
     <value>Sign Up</value>
   </data>
