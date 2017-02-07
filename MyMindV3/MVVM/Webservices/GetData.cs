@@ -278,26 +278,30 @@ namespace MvvmFramework
         {
             IEnumerable<ResourceModel> rm = null;
 
-            var url = string.Format("{0}/{1}", Constants.BaseTestUrl, apiToUse);
+            var url = string.Format("{0}/api/MyMind/{1}", Constants.BaseTestUrl, apiToUse);
+
 
             try
             {
-                var client = new RestClient(url);
-                var request = new RestRequest(Method.POST);
-                request.AddHeader("cache-control", "no-cache");
-                for (var i = 0; i < data.Length; i += 2)
+                using (var client = new HttpClient())
                 {
-                    request.AddHeader(data[i].ToLowerInvariant(), data[i + 1]);
+                    using (var message = new HttpRequestMessage(HttpMethod.Post, url))
+                    {
+                        for (var i = 0; i < data.Length; i += 2)
+                        {
+                            message.Headers.Add(data[i].ToLowerInvariant(), data[i + 1]);
+                        }
+                        var response = client.SendAsync(message).Result;
+                        var str = await response.Content.ReadAsStringAsync();
+                        rm = JsonConvert.DeserializeObject<IEnumerable<ResourceModel>>(str);
+                    }
                 }
-                var response = await client.Execute(request);
-                rm = JsonConvert.DeserializeObject<IEnumerable<ResourceModel>>(response.Content);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-#if DEBUG
-                Debug.WriteLine("Exception - {0}::{1}", e.Message, e.InnerException);
-#endif
+                Debug.WriteLine("Exception getting data - {0}::{1}", ex.Message, ex.InnerException);
             }
+
             return rm;
         }
     }
