@@ -43,6 +43,17 @@ namespace MyMindV3.Views
                     });
                 }
             };
+
+            MessagingCenter.Subscribe<MenuView, int>(this, "buttonClicked", (arg1, arg2) =>
+            {
+                ViewModel.SearchSelected = arg2;
+            });
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            MessagingCenter.Unsubscribe<MenuView>(this, "buttonChecked");
         }
 
         public MyResourcesView()
@@ -86,7 +97,7 @@ namespace MyMindV3.Views
                         if (listView.ItemsSource != null)
                             listView.ItemsSource = null;
                         listView.ItemsSource = dataList;
-                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchWeb, ViewModel.SearchAll, ViewModel.SearchNational, ViewModel.SearchLocal);
+                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
                         ViewModel.IsBusy = false;
                     });
                 })
@@ -108,7 +119,7 @@ namespace MyMindV3.Views
                 }
             };
 
-            menu = new MenuView(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchWeb, ViewModel.SearchAll, ViewModel.SearchNational, ViewModel.SearchLocal);
+            menu = new MenuView(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
             menu.SizeChanged += (sender, e) => { menu.HeightRequest = App.ScreenSize.Height - searchStack.HeightRequest; };
 
             listView = new ListView
@@ -131,7 +142,7 @@ namespace MyMindV3.Views
                         listView.ItemsSource = null;
                         listView.ItemsSource = dataList;
                         listView.IsRefreshing = false;
-                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchWeb, ViewModel.SearchAll, ViewModel.SearchNational, ViewModel.SearchLocal);
+                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
                     });
                 });
 
@@ -163,7 +174,7 @@ namespace MyMindV3.Views
                                      listView.ItemsSource = null;
                                  listView.ItemsSource = dataList;
                                  ViewModel.IsBusy = false;
-                                 menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchWeb, ViewModel.SearchAll, ViewModel.SearchNational, ViewModel.SearchLocal);
+                                 menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
                              });
                         }
                         else
