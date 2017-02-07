@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using RestSharp.Portable.HttpClient;
 using RestSharp.Portable;
 using MvvmFramework.Helpers;
+using MvvmFramework.Models;
 
 #if DEBUG
 using System.Diagnostics;
@@ -100,6 +101,56 @@ namespace MvvmFramework
 #endif
             }
         }
+
+        public static async Task<Ratings> Rated(string apiToUse, int resourceId, params string[] data)
+        {
+            var url = string.Format("{0}/{1}", Constants.BaseTestUrl, apiToUse);
+            Ratings rated = null;
+
+            try
+            {
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                for (var i = 0; i < data.Length; i += 2)
+                {
+                    request.AddHeader(data[i].ToLowerInvariant(), data[i + 1]);
+                }
+                var response = await client.Execute(request);
+                rated = JsonConvert.DeserializeObject<Ratings>(response.Content);
+            }
+            catch (Exception e)
+            {
+#if DEBUG
+                Debug.WriteLine("Exception - {0}::{1}", e.Message, e.InnerException);
+#endif
+            }
+            return rated;
+        }
+
+        public static async Task ReportBrokenLink(string apiToUse, params string[] data)
+        {
+            var url = string.Format("{0}/{1}", Constants.BaseTestUrl, apiToUse);
+            try
+            {
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                for (var i = 0; i < data.Length; i += 2)
+                {
+                    request.AddHeader(data[i].ToLowerInvariant(), data[i + 1]);
+                }
+                var response = await client.Execute(request);
+            }
+            catch (Exception e)
+            {
+#if DEBUG
+                Debug.WriteLine("Exception - {0}::{1}", e.Message, e.InnerException);
+#endif
+            }
+        }
+
+
     }
 }
 
