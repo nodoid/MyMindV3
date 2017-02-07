@@ -165,7 +165,7 @@ namespace MyMindV3.Views
                         WidthRequest = App.ScreenSize.Width * .1,
                         MinimumWidthRequest = App.ScreenSize.Width * .1,
                         VerticalOptions = LayoutOptions.Start,
-                        Orientation = StackOrientation.Vertical
+                        Orientation = StackOrientation.Vertical,
                         Children =
                         {
                             imgIcon,
