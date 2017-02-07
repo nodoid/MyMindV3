@@ -4,6 +4,7 @@ using MvvmFramework.Models;
 using MvvmFramework.ViewModel;
 using MyMindV3.Languages;
 using System.Linq;
+using System;
 
 namespace MyMindV3.Views
 {
@@ -66,6 +67,77 @@ namespace MyMindV3.Views
         {
             this.BackgroundColor = Color.White;
 
+            ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
+            ViewModel.SpinnerTitle = Langs.Data_DownloadTitle;
+
+            var imgLeft = new Image
+            {
+                HeightRequest = 32,
+                WidthRequest = 32
+            };
+            imgLeft.SetBinding(Image.SourceProperty, new Binding("ViewModel.DisableBackPageButton", converter: new CorrectBackImage()));
+
+            var imgRight = new Image
+            {
+                Source = "right",
+                HeightRequest = 32,
+                WidthRequest = 32,
+            };
+            imgRight.SetBinding(Image.SourceProperty, new Binding("ViewModel.DisableNextPageButton", converter: new CorrectForwardImage()));
+
+            var leftTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() =>
+                {
+                    if (!ViewModel.DisableBackPageButton)
+                    {
+                        ViewModel.CurrentPage--;
+                        ViewModel.IsBusy = true;
+                        ViewModel.GetResources();
+                        ViewModel.GetUIList();
+                        dataList = ViewModel.UIList;
+                        postcodes = ViewModel.AvailablePostcodes;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            if (listView.ItemsSource != null)
+                                listView.ItemsSource = null;
+                            listView.ItemsSource = dataList;
+                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                            ViewModel.IsBusy = false;
+                        });
+                    }
+                })
+            };
+
+            var rightTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() =>
+                {
+                    if (!ViewModel.DisableNextPageButton)
+                    {
+                        ViewModel.CurrentPage++;
+                        ViewModel.IsBusy = true;
+                        ViewModel.GetResources();
+                        ViewModel.GetUIList();
+                        dataList = ViewModel.UIList;
+                        postcodes = ViewModel.AvailablePostcodes;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            if (listView.ItemsSource != null)
+                                listView.ItemsSource = null;
+                            listView.ItemsSource = dataList;
+                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                            ViewModel.IsBusy = false;
+                        });
+                    }
+                })
+            };
+
+            imgLeft.GestureRecognizers.Add(leftTap);
+            imgRight.GestureRecognizers.Add(rightTap);
+
             var imgGPS = new Image
             {
                 Source = "gps",
@@ -73,6 +145,12 @@ namespace MyMindV3.Views
                 WidthRequest = 28,
                 HorizontalOptions = LayoutOptions.Center
             };
+            var lblPrevious = new Label
+            {
+                Text = Langs.MyResources_Previous,
+                FontSize = 14,
+            };
+
 
             postcodeSearch = new SearchBar
             {
@@ -83,8 +161,6 @@ namespace MyMindV3.Views
                 PlaceholderColor = Color.Gray,
                 SearchCommand = new Command((w) =>
                 {
-                    ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
-                    ViewModel.SpinnerTitle = Langs.Data_DownloadTitle;
                     ViewModel.IsBusy = true;
                     ViewModel.SearchPostcode = postcodeSearch.Text.Replace(" ", "").ToLowerInvariant();
                     ViewModel.GetAvailablePostcodes();
@@ -153,8 +229,6 @@ namespace MyMindV3.Views
                 {
                     if (App.Self.Location != null)
                     {
-                        ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
-                        ViewModel.SpinnerTitle = Langs.Data_DownloadTitle;
                         ViewModel.IsBusy = true;
                         ViewModel.Longitude = App.Self.Location.Longitude;
                         ViewModel.Latitude = App.Self.Location.Latitude;
