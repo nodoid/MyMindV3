@@ -1,54 +1,19 @@
-﻿using GalaSoft.MvvmLight.Views;
-using MvvmFramework.Models;
-using MvvmFramework.Webservices;
+﻿using MvvmFramework.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace MvvmFramework.ViewModel
 {
     public class MyResourcesViewModel : BaseViewModel
     {
-        INavigationService navService;
-        public MyResourcesViewModel(INavigationService nav)
+        int searchSelected;
+        public int SearchSelected
         {
-            navService = nav;
-        }
-
-        bool searchAll;
-        public bool SearchAll
-        {
-            get { return searchAll; }
-            set { Set(() => SearchAll, ref searchAll, value); }
-        }
-
-        bool searchNational;
-        public bool SearchNational
-        {
-            get { return searchNational; }
-            set { Set(() => SearchNational, ref searchNational, value); }
-        }
-
-        bool searchLocal;
-        public bool SearchLocal
-        {
-            get { return searchLocal; }
-            set { Set(() => SearchLocal, ref searchLocal, value); }
-        }
-
-        bool searchWeb;
-        public bool SearchWeb
-        {
-            get { return searchWeb; }
-            set { Set(() => SearchWeb, ref searchWeb, value); }
-        }
-
-        string searchPostcode;
-        public string SearchPostcode
-        {
-            get { return searchPostcode; }
-            set { Set(() => SearchPostcode, ref searchPostcode, value, true); }
+            get { return searchSelected; }
+            set { Set(() => SearchSelected, ref searchSelected, value); }
         }
 
         double longitude;
@@ -70,6 +35,13 @@ namespace MvvmFramework.ViewModel
         {
             get { return availablePostcodes; }
             set { Set(() => AvailablePostcodes, ref availablePostcodes, value); }
+        }
+
+        string searchPostcode;
+        public string SearchPostcode
+        {
+            get { return searchPostcode; }
+            set { Set(() => SearchPostcode, ref searchPostcode, value, true); }
         }
 
         public void GetAvailablePostcodes()
@@ -94,16 +66,64 @@ namespace MvvmFramework.ViewModel
             set { Set(() => Resources, ref resources, value); }
         }
 
-        public void GetResources()
+        public void GetResources(bool isClinicial = false, bool isLocal = false)
         {
-            Resources = new UsersWebservice().GetResources().Result;
+            var url = isLocal ? "GetLocalResources" : "GetNationalResources";
+            var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
+                "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", "1", "Sorting", "null", "Categorys", "1,2,3"};
+            Resources = GetData.GetLocalNationalResources(url, param.ToArray()).Result;
+        }
+
+        public IEnumerable<ResourceModel> GetNationalResources
+        {
+            get
+            {
+                return Resources.Where(t => t.ResourceIsNational) as IEnumerable<ResourceModel>;
+            }
+        }
+
+        public IEnumerable<ResourceModel> GetLocalResources
+        {
+            get { return Resources.Where(t => !t.ResourceIsNational) as IEnumerable<ResourceModel>; }
         }
 
         public string SearchBy { get; set; }
 
         public IEnumerable<ResourceModel> GetSearchByResources
         {
-            get { return Resources.Where(t => t.ResourceCategory == SearchBy); }
+            get { return Resources.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == SearchBy)) as IEnumerable<ResourceModel>; }
+        }
+
+        public IEnumerable<ResourceModel> GetSearchByRatings
+        {
+            get
+            {
+                return Resources.ToList().OrderBy(t => t.ResourceRating.ResourceRating) as IEnumerable<ResourceModel>;
+
+            }
+        }
+
+        public IEnumerable<ResourceModel> GetSearchByAZ
+        {
+            get
+            {
+                return Resources.ToList().OrderBy(t => t) as IEnumerable<ResourceModel>;
+            }
+        }
+
+        public IEnumerable<ResourceModel> GetSearchByDistance
+        {
+            get
+            {
+                var res = Resources.ToList();
+                IsBusy = true;
+                foreach (var r in res)
+                {
+                    r.ResourceDistance = GetData.GetDistanceFromPostcodes(SearchPostcode, r.ResourcePostcode).Result;
+                }
+                IsBusy = false;
+                return res.OrderBy(t => t.ResourceDistance) as IEnumerable<ResourceModel>;
+            }
         }
 
         public List<string> GetResourceFilenames(List<string> categories)
@@ -126,7 +146,7 @@ namespace MvvmFramework.ViewModel
             {
                 try
                 {
-                    var resid = res.FirstOrDefault(t => t.ResourceCategory == categories[cat.IndexOf(c)]).ResourceID;
+                    var resid = res.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == categories[cat.IndexOf(c)]).ResourceCategoryId);
                     names.Add(string.Format("{0}|{1}", filenames[filenames.IndexOf(c.ToLowerInvariant())], resid));
                 }
                 catch (Exception ex)
@@ -153,23 +173,30 @@ namespace MvvmFramework.ViewModel
             };
                 catList.Sort();
 
-                var rt = Resources.Where(t => !string.IsNullOrEmpty(t.ResourceCategory)).Select(t => t).ToList();
+                var rt = (from Res in Resources
+                          from Rc in Res.ResourceCategory
+                          where !string.IsNullOrEmpty(Rc.ResourceCategoryTitle)
+                          select Res).ToList();
+
                 resources = rt;
 
                 foreach (var r in resources)
                 {
-                    if (!string.IsNullOrEmpty(r.ResourceCategory))
+                    foreach (var c in r.ResourceCategory)
                     {
-                        var splitRes = r.ResourceCategory.Split(',').ToList();
-                        if (splitRes.Count == 1)
-                            Categories.Add(splitRes[0]);
-                        else
+                        if (!string.IsNullOrEmpty(c.ResourceCategoryTitle))
                         {
-                            foreach (var s in splitRes)
+                            var splitRes = c.ResourceCategoryTitle.Split(',').ToList();
+                            if (splitRes.Count == 1)
+                                Categories.Add(splitRes[0]);
+                            else
                             {
-                                foreach (var c in catList)
-                                    if (c.ToLowerInvariant() == s.ToLowerInvariant())
-                                        Categories.Add(c);
+                                foreach (var s in splitRes)
+                                {
+                                    foreach (var l in catList)
+                                        if (l.ToLowerInvariant() == s.ToLowerInvariant())
+                                            Categories.Add(l);
+                                }
                             }
                         }
                     }
@@ -178,7 +205,10 @@ namespace MvvmFramework.ViewModel
                 Categories.Sort();
 
                 if (Categories.Count == 0)
-                    Categories.AddRange(resources.Select(t => t.ResourceCategory).ToList());
+                    Categories.AddRange((from Res in Resources
+                                         from Rc in Res.ResourceCategory
+                                         where !string.IsNullOrEmpty(Rc.ResourceCategoryTitle)
+                                         select Rc.ResourceCategoryTitle).ToList());
 
                 return Categories;
             }
@@ -296,6 +326,42 @@ namespace MvvmFramework.ViewModel
                 ratingStars[i] = "emptystar";
 
             return ratingStars;
+        }
+
+        int newRating;
+        public int NewRating
+        {
+            get { return newRating; }
+            set { Set(() => NewRating, ref newRating, value); }
+        }
+
+        int resId;
+        public int ResId
+        {
+            get { return resId; }
+            set { Set(() => ResId, ref resId, value); }
+        }
+
+        public async Task SetRating(bool isClinician)
+        {
+            var currentRespond = Resources.FirstOrDefault(t => t.ResourceRating.ResourceRatingId == ResId).ResourceRating;
+            var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
+                "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString(), "Rating", NewRating.ToString()};
+            await Send.Rated("RateResource", ResId, data.ToArray()).ContinueWith((t) =>
+            {
+                if (t.IsCompleted)
+                {
+                    currentRespond.ResourceRating = t.Result.Rating;
+                    currentRespond.ResourceResponded = t.Result.Respondents;
+                }
+            });
+        }
+
+        public async Task ReportLink(bool isClinician)
+        {
+            var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
+                "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString()};
+            await Send.ReportBrokenLink("ReportBrokenLink", data.ToArray());
         }
     }
 }
