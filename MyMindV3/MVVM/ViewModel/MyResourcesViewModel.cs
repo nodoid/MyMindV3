@@ -64,6 +64,34 @@ namespace MvvmFramework.ViewModel
             set { Set(() => Latitude, ref latitude, value, true); }
         }
 
+        double speed;
+        public double Speed
+        {
+            get { return speed; }
+            set { Set(() => Speed, ref speed, value); }
+        }
+
+        public bool PositionChanged(double lon, double lat)
+        {
+            if (Speed > 4) // a stroll
+                return false;
+
+            var changed = false;
+            if ((lon != Longitude && lat != Latitude)
+                || (lon != Longitude) || (lat != Latitude))
+                changed = true;
+
+            if (changed)
+            {
+                Latitude = lat;
+                Longitude = lon;
+                var _ = GetMyPostcode;
+                GetAvailablePostcodes();
+            }
+
+            return changed;
+        }
+
         List<Postcodes> availablePostcodes;
         public List<Postcodes> AvailablePostcodes
         {
@@ -153,7 +181,7 @@ namespace MvvmFramework.ViewModel
                 IsBusy = true;
                 foreach (var r in res)
                 {
-                    r.ResourceDistance = GetData.GetDistanceFromPostcodes(SearchPostcode, r.ResourcePostcode).Result;
+                    r.ResourceDistance = GetData.GetDistanceFromPostcodes(SearchPostcode, r.ResourcePostcode).Result.ToString();
                 }
                 IsBusy = false;
                 return res.OrderBy(t => t.ResourceDistance) as IEnumerable<ResourceModel>;
