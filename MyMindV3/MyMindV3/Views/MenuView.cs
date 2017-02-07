@@ -127,19 +127,13 @@ namespace MyMindV3.Views
 
         public MenuView(List<string> filenames, int selected)
         {
-            SetAll = all;
-            SetLocal = local;
-            SetNational = nat;
-            SetWeb = web;
+            SetSelected = selected;
             Content = GenerateUI(filenames);
         }
 
         public void UpdateMenu(List<string> filenames, int selected)
         {
-            SetAll = all;
-            SetLocal = local;
-            SetNational = nat;
-            SetWeb = web;
+            SetSelected = selected;
             Content = GenerateUI(filenames);
         }
 
