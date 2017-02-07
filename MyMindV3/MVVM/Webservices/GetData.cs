@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MvvmFramework.Helpers;
 using MvvmFramework.Models;
+using RestSharp.Portable.HttpClient;
+using RestSharp.Portable;
 
 namespace MvvmFramework
 {
@@ -64,6 +66,28 @@ namespace MvvmFramework
                 return new List<Postcodes>();
             }
 
+        }
+
+        public static async Task<int> GetDistanceFromPostcodes(string myPostcode, string theirPostcode)
+        {
+            var url = string.Format("http://maps.googleapis.com/maps/api/distancematrix/json?origins={0}&destinations={1}&mode=driving&language=en-EN&sensor=false", myPostcode, theirPostcode);
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var response = client.GetAsync(url).Result;
+                    var res = await response.Content.ReadAsStringAsync();
+                    var obj = JsonConvert.DeserializeObject<GooglePostcode>(res);
+                    return obj.rows[0].elements[0].distance.value;
+                }
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                Debug.WriteLine("Exception in GetData {0}-{1}", ex.Message, ex.InnerException);
+#endif
+                return -1;
+            }
         }
 
         public static async Task GetImage(string id, bool isUser = true)
@@ -248,6 +272,33 @@ namespace MvvmFramework
                 Debug.WriteLine("Exception deserializing data - {0}::{1}", ex.Message, ex.InnerException);
             }
             return rv;
+        }
+
+        public static async Task<IEnumerable<ResourceModel>> GetLocalNationalResources(string apiToUse, params string[] data)
+        {
+            IEnumerable<ResourceModel> rm = null;
+
+            var url = string.Format("{0}/{1}", Constants.BaseTestUrl, apiToUse);
+
+            try
+            {
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                for (var i = 0; i < data.Length; i += 2)
+                {
+                    request.AddHeader(data[i].ToLowerInvariant(), data[i + 1]);
+                }
+                var response = await client.Execute(request);
+                rm = JsonConvert.DeserializeObject<IEnumerable<ResourceModel>>(response.Content);
+            }
+            catch (Exception e)
+            {
+#if DEBUG
+                Debug.WriteLine("Exception - {0}::{1}", e.Message, e.InnerException);
+#endif
+            }
+            return rm;
         }
     }
 }
