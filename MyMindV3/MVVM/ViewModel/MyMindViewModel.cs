@@ -56,6 +56,16 @@ namespace MvvmFramework.ViewModel
             }
         }
 
+        RelayCommand showMyUserHelpCommand;
+        public RelayCommand ShowMyUserHelpCommand
+        {
+            get
+            {
+                var clinic = SystemUser.IsAuthenticated == 3 ? "clinic" : "";
+                return showMyUserHelpCommand ?? (showMyUserHelpCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyHelpKey, clinic)));
+            }
+        }
+
         RelayCommand showMyChatCommand;
         public RelayCommand ShowMyChatCommand
         {
