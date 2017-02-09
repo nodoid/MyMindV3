@@ -323,15 +323,15 @@ namespace MyMindV3.Languages {
             }
         }
         
-        public static string MyJourney_AlertSelected {
+        public static string MyJourney_PastAppts {
             get {
-                return ResourceManager.GetString("MyJourney_AlertSelected", resourceCulture);
+                return ResourceManager.GetString("MyJourney_PastAppts", resourceCulture);
             }
         }
         
-        public static string MyJourney_AlertSelectedMsg {
+        public static string MyJourney_ComingAppts {
             get {
-                return ResourceManager.GetString("MyJourney_AlertSelectedMsg", resourceCulture);
+                return ResourceManager.GetString("MyJourney_ComingAppts", resourceCulture);
             }
         }
         
@@ -362,6 +362,12 @@ namespace MyMindV3.Languages {
         public static string MyMind_Resources {
             get {
                 return ResourceManager.GetString("MyMind_Resources", resourceCulture);
+            }
+        }
+        
+        public static string MyMind_Help {
+            get {
+                return ResourceManager.GetString("MyMind_Help", resourceCulture);
             }
         }
         
@@ -914,6 +920,54 @@ namespace MyMindV3.Languages {
         public static string Message_UploadingTitle {
             get {
                 return ResourceManager.GetString("Message_UploadingTitle", resourceCulture);
+            }
+        }
+        
+        public static string Slider_MyProfile {
+            get {
+                return ResourceManager.GetString("Slider_MyProfile", resourceCulture);
+            }
+        }
+        
+        public static string Slider_MyPatient {
+            get {
+                return ResourceManager.GetString("Slider_MyPatient", resourceCulture);
+            }
+        }
+        
+        public static string Slider_MyClinician {
+            get {
+                return ResourceManager.GetString("Slider_MyClinician", resourceCulture);
+            }
+        }
+        
+        public static string Slider_MyJourney {
+            get {
+                return ResourceManager.GetString("Slider_MyJourney", resourceCulture);
+            }
+        }
+        
+        public static string Slider_MyChat {
+            get {
+                return ResourceManager.GetString("Slider_MyChat", resourceCulture);
+            }
+        }
+        
+        public static string Slider_MyPlans {
+            get {
+                return ResourceManager.GetString("Slider_MyPlans", resourceCulture);
+            }
+        }
+        
+        public static string Slider_MyResources {
+            get {
+                return ResourceManager.GetString("Slider_MyResources", resourceCulture);
+            }
+        }
+        
+        public static string Slider_MyResourcesRate {
+            get {
+                return ResourceManager.GetString("Slider_MyResourcesRate", resourceCulture);
             }
         }
     }

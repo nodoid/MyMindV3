@@ -136,7 +136,7 @@
     <value>Resources</value>
   </data>
 	<data name="Menu_AveRating" xml:space="preserve">
-    <value>Average rating</value>
+    <value>Ave rating</value>
   </data>
 	<data name="Menu_AZ" xml:space="preserve">
     <value>A-Z</value>
@@ -255,11 +255,11 @@
 	<data name="MyJourney_Outcome" xml:space="preserve">
     <value>Outcome:</value>
   </data>
-	<data name="MyJourney_AlertSelected" xml:space="preserve">
-    <value>Selected</value>
+	<data name="MyJourney_PastAppts" xml:space="preserve">
+    <value>Past Appts</value>
   </data>
-	<data name="MyJourney_AlertSelectedMsg" xml:space="preserve">
-    <value>You selected</value>
+	<data name="MyJourney_ComingAppts" xml:space="preserve">
+    <value>Future Appts</value>
   </data>
 	<data name="MyMind_Title" xml:space="preserve">
     <value>My Mind</value>
@@ -275,6 +275,9 @@
   </data>
 	<data name="MyMind_Resources" xml:space="preserve">
     <value>My Resources</value>
+  </data>
+	<data name="MyMind_Help" xml:space="preserve">
+    <value>Help</value>
   </data>
 	<data name="MyMind_Clinician" xml:space="preserve">
     <value>My Clinician</value>
@@ -551,5 +554,29 @@
   </data>
 	<data name="Message_UploadingTitle" xml:space="preserve">
     <value>Uploading</value>
+  </data>
+	<data name="Slider_MyProfile" xml:space="preserve">
+    <value>This contains the basic data you've supplied. If you scroll the white section to the bottom and hit the EDIT button, you can alter your details and once done, it's sent back to us. Clicking on the circle image allows you to update your profile picture</value>
+  </data>
+	<data name="Slider_MyPatient" xml:space="preserve">
+    <value>The drop down allows you to see the details on a particular patient</value>
+  </data>
+	<data name="Slider_MyClinician" xml:space="preserve">
+    <value>This gives you details over who your clinician is (including any sort of fun fact about them!)</value>
+  </data>
+	<data name="Slider_MyJourney" xml:space="preserve">
+    <value>This shows you your appointment details for the coming month. It also gives access to the ICANN website.</value>
+  </data>
+	<data name="Slider_MyChat" xml:space="preserve">
+    <value>Apps are all well and good. However, if it's during office hours it is always good to talk to your clinician. Here you can not only do that, but if it's out of hours you can record a voice message which will be heard when the clinician next logs in. Video chat is also available</value>
+  </data>
+	<data name="Slider_MyPlans" xml:space="preserve">
+    <value>Download and view your personal plans from your clinician. Viewing the plans require you to have the appropriate viewer installed</value>
+  </data>
+	<data name="Slider_MyResources" xml:space="preserve">
+    <value>National and local resources at your fingertips. View, rate and use the resources. Click on the GPS icon to find resources in your area or type in a postcode for resources in that area.</value>
+  </data>
+	<data name="Slider_MyResourcesRate" xml:space="preserve">
+    <value>Clicking on the stars allows you to rate the resource. If you want to give a score of no stars, click on clear. Once you've finished, click on Done and the score will be submitted</value>
   </data>
 </root>
