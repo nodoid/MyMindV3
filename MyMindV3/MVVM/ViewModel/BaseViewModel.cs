@@ -150,8 +150,8 @@ namespace MvvmFramework.ViewModel
 
         public void Logout()
         {
-            _systemUser = null;
-            _clinicianUser = null;
+            SystemUser = null;
+            ClinicianUser = null;
             SessionExpirationTime = System.DateTime.Now;
             SessionExpirationTime.AddHours(-5);
         }
