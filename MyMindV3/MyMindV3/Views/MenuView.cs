@@ -78,13 +78,15 @@ namespace MyMindV3.Views
             var radio = new BindableRadioGroup
             {
                 ItemsSource = new List<string> { Langs.MyResources_Distance, Langs.Menu_AveRating, Langs.Menu_AZ, Langs.Menu_Popular },
-                SelectedIndex = SetSelected
+                TranslationY = -8,
             };
+
+            radio.SelectedIndex = 0;
 
             radio.CheckedChanged += (sender, e) =>
             {
-                var button = sender as BindableRadioGroup;
-                MessagingCenter.Send(this, "buttonClicked", button.SelectedIndex);
+                var button = sender as CustomRadioButton;
+                MessagingCenter.Send(this, "buttonClicked", button.Id);
             };
 
             var topStack = new StackLayout
