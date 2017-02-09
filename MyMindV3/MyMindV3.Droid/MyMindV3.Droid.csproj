@@ -216,6 +216,7 @@
     <Compile Include="Injected\ModalView.cs" />
     <Compile Include="Injected\SQLConnection.cs" />
     <Compile Include="Splash.cs" />
+    <Compile Include="CustomRenderers\SliderViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -282,6 +283,14 @@
     <AndroidResource Include="Resources\drawable\mappin.png" />
     <AndroidResource Include="Resources\drawable\leftgrey.png" />
     <AndroidResource Include="Resources\drawable\rightgrey.png" />
+    <AndroidResource Include="Resources\drawable\a_mypatient.png" />
+    <AndroidResource Include="Resources\drawable\a_myprofile.png" />
+    <AndroidResource Include="Resources\drawable\b_myclinician.png" />
+    <AndroidResource Include="Resources\drawable\c_myjourney.png" />
+    <AndroidResource Include="Resources\drawable\d_mychat.png" />
+    <AndroidResource Include="Resources\drawable\e_myplans.png" />
+    <AndroidResource Include="Resources\drawable\f_myresources.png" />
+    <AndroidResource Include="Resources\drawable\g_myresources.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

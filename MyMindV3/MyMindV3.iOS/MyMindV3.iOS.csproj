@@ -160,6 +160,7 @@
     <Compile Include="UIUtils\UIUtils.cs" />
     <BundleResource Include="Resources\leftgrey.png" />
     <BundleResource Include="Resources\rightgrey.png" />
+    <Compile Include="CustomRenderers\SlideViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />

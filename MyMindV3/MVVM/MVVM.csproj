@@ -86,6 +86,8 @@
     <Compile Include="Models\SortedListData.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="Models\Ratings.cs" />
+    <Compile Include="ViewModel\MyHelpViewModel.cs" />
+    <Compile Include="Helpers\DTSanity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

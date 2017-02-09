@@ -46,7 +46,6 @@
     <Compile Include="CustomViews\CustomWebview.cs" />
     <Compile Include="CustomViews\PullToRefreshView.cs" />
     <Compile Include="Helpers\decrypter.cs" />
-    <Compile Include="Helpers\DTSanity.cs" />
     <Compile Include="Interfaces\IAndroidMethods.cs" />
     <Compile Include="Interfaces\IContent.cs" />
     <Compile Include="Interfaces\IEncrypt.cs" />
@@ -89,6 +88,10 @@
     <Compile Include="Converters\CorrectBackImage.cs" />
     <Compile Include="Converters\CorrectForwardImage.cs" />
     <Compile Include="Views\MyWebview.cs" />
+    <Compile Include="Converters\CorrectColor.cs" />
+    <Compile Include="Views\MyUserHelp.cs" />
+    <Compile Include="Views\SliderView.cs" />
+    <Compile Include="Views\ApptList.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Languages\Langs.resx">
