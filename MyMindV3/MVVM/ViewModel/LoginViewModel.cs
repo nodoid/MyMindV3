@@ -2,7 +2,6 @@
 using GalaSoft.MvvmLight.Views;
 using MvvmFramework.Models;
 using MvvmFramework.Webservices;
-using System;
 
 namespace MvvmFramework.ViewModel
 {
@@ -10,15 +9,16 @@ namespace MvvmFramework.ViewModel
     {
         INavigationService navService;
         IDialogService dialogService;
-        IRepository repo;
 
-        public LoginViewModel(INavigationService navigation, IDialogService dialog, IRepository sql)
+        public LoginViewModel(INavigationService navigation, IDialogService dialog)
         {
             navService = navigation;
             dialogService = dialog;
-            repo = sql;
-            DisplayLogin = true;
-            DisplayAcceptance = false;
+            if (SystemUser == null && ClinicianUser == null)
+            {
+                DisplayLogin = true;
+                DisplayAcceptance = false;
+            }
             HasValidInput = false;
         }
 
@@ -31,7 +31,6 @@ namespace MvvmFramework.ViewModel
                     (
                     loginCommand = new RelayCommand(async () =>
                     {
-                        var Result = string.Empty;
                         if (HasValidInput)
                         {
                             DisplayLogin = false;
