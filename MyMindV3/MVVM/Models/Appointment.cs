@@ -14,6 +14,8 @@ namespace MvvmFramework.Models
             }
         }
 
+        public DateTime ApptDateTime { get { return AppointmentDateTime.CleanDate(); } }
+
         public string ClientId { get; set; }
 
         public string NhsNo { get; set; }
