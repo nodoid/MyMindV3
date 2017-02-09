@@ -128,12 +128,14 @@ namespace MvvmFramework.ViewModel
             set { Set(() => Resources, ref resources, value); }
         }
 
-        public void GetResources(bool isClinicial = false, bool isLocal = false)
+        public void GetResources(bool isClinicial = false, bool isLocal = true)
         {
+            IsBusy = true;
             var url = isLocal ? "GetLocalResources" : "GetNationalResources";
             var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
-                "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", currentPage.ToString(), "Sorting", "null", "Categorys", "null"};
+                "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", /*currentPage.ToString()*/"1", "Sorting", "null", "Categorys", "null"};
             Resources = GetData.GetLocalNationalResources(url, param.ToArray()).Result;
+            IsBusy = false;
         }
 
         public IEnumerable<ResourceModel> GetNationalResources
@@ -293,41 +295,42 @@ namespace MvvmFramework.ViewModel
             if (AvailablePostcodes.Count == 0)
                 return;
 
-            var nums = AvailablePostcodes.Count / 10;
-            var res = Resources.ToList();
-            var lastPostcode = 0;
-            var c = 1;
-            var resTitles = res.Select(t => t.ResourceCategorysPiped).ToString().Replace('|', ',');
-            /*var icons = new List<string>{"anxiety","depression","apps","autism","bereavement","bullying","general","involvement", "learning_disabilities",
-                "local_services", "looked_after_children","mental_health","safeguarding","mood", "parent_resources", "peer_support", "self_harm", "self_help", "www", "stress", "substance_abuse",
-                "video", "well_being", "young_carer", "sleeping","adhd","domestic_abuse","spousal_abuse","solvent_abuse"};
-            var cats = new List<string> { "Anxiety", "Depression", "Self-harm", "Solvent abuse", "Young carer", "Domestic abuse", "Well being", "Spousal abuse", "Autism", "ADHD" };*/
-            try
+            var res = Resources?.ToList();
+            if (res != null)
             {
-                for (var n = 0; n < 10; ++n)
+                var resTitles = res.Select(t => t.ResourceCategorysPiped).ToString().Replace('|', ',');
+                /*var icons = new List<string>{"anxiety","depression","apps","autism","bereavement","bullying","general","involvement", "learning_disabilities",
+                    "local_services", "looked_after_children","mental_health","safeguarding","mood", "parent_resources", "peer_support", "self_harm", "self_help", "www", "stress", "substance_abuse",
+                    "video", "well_being", "young_carer", "sleeping","adhd","domestic_abuse","spousal_abuse","solvent_abuse"};
+                var cats = new List<string> { "Anxiety", "Depression", "Self-harm", "Solvent abuse", "Young carer", "Domestic abuse", "Well being", "Spousal abuse", "Autism", "ADHD" };*/
+                try
                 {
-                    dataList.Add(new ListviewModel
+                    for (var n = 0; n < 10; ++n)
                     {
-                        Title = res[n].ResourceTitle,
-                        ImageIcon = res[n].ResourceLogoLink,
-                        Category = resTitles,
-                        CurrentRating = res[n].ResourceRating,
-                        StarRatings = new List<string>(),
-                        Id = n,
-                        Postcode = res[n].ResourcePostcode,
-                        Distance = GetData.GetDistanceFromPostcodes(SearchPostcode, res[n].ResourcePostcode).Result,
-                        HasW = res[n].ResourceIsDead,
-                        Url = res[n].ResourceIsDead ? string.Empty : res[n].ResourceURL
-                    });
-                    dataList[n].StarRatings = ConvertRatingToStars(dataList[n].CurrentRating);
+                        dataList.Add(new ListviewModel
+                        {
+                            Title = res[n].ResourceTitle,
+                            ImageIcon = res[n].ResourceLogoLink,
+                            Category = resTitles,
+                            CurrentRating = res[n].ResourceRating,
+                            StarRatings = new List<string>(),
+                            Id = n,
+                            Postcode = res[n].ResourcePostcode,
+                            Distance = GetData.GetDistanceFromPostcodes(SearchPostcode, res[n].ResourcePostcode).Result,
+                            HasW = res[n].ResourceIsDead,
+                            Url = res[n].ResourceIsDead ? string.Empty : res[n].ResourceURL
+                        });
+                        dataList[n].StarRatings = ConvertRatingToStars(dataList[n].CurrentRating);
+                    }
+                }
+                catch (Exception ex)
+                {
+#if DEBUG
+                    Debug.WriteLine(ex.Message);
+#endif
                 }
             }
-            catch (Exception ex)
-            {
-#if DEBUG
-                Debug.WriteLine(ex.Message);
-#endif
-            }
+
             UIList = dataList;
         }
 
