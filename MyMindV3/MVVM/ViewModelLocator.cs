@@ -42,6 +42,7 @@ namespace MvvmFramework
         public const string MyPlansKey = "MyPlans";
         public const string MyProfileKey = "MyProfile";
         public const string MyResourcesKey = "MyResources";
+        public const string MyHelpKey = "MyHelp";
         public const string SignupKey = "SignUp";
 
         public ViewModelLocator()
@@ -62,6 +63,15 @@ namespace MvvmFramework
             SimpleIoc.Default.Register<MyProfileViewModel>();
             SimpleIoc.Default.Register<MyResourcesViewModel>();
             SimpleIoc.Default.Register<SignUpViewModel>();
+            SimpleIoc.Default.Register<MyHelpViewModel>();
+        }
+
+        public MyHelpViewModel MyHelp
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<MyHelpViewModel>();
+            }
         }
 
         public AllRegisteredUserViewModel AllRegisteredUsers
