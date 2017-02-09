@@ -93,6 +93,7 @@ namespace MyMindV3.Views
         public MyResourcesView()
         {
             BackgroundColor = Color.FromHex("022330");
+            Title = Langs.MyResources_Title;
             CreateUI();
         }
 
@@ -183,7 +184,13 @@ namespace MyMindV3.Views
                 Text = Langs.MyResources_Previous,
                 FontSize = 14,
             };
-
+            var lblNext = new Label
+            {
+                Text = Langs.MyResources_Next,
+                FontSize = 14,
+            };
+            lblPrevious.SetBinding(Label.TextColorProperty, new Binding("ViewModel.DisableBackPageButton", converter: new CorrectColor()));
+            lblNext.SetBinding(Label.TextColorProperty, new Binding("ViewModel.DisableNextPageButton", converter: new CorrectColor()));
 
             postcodeSearch = new SearchBar
             {
@@ -236,7 +243,6 @@ namespace MyMindV3.Views
             {
                 ItemTemplate = new DataTemplate(typeof(ListViewCell)),
                 HasUnevenRows = true,
-                HeightRequest = App.ScreenSize.Height,
                 BackgroundColor = Color.FromHex("022330"),
                 SeparatorVisibility = SeparatorVisibility.None,
                 IsPullToRefreshEnabled = true,
@@ -308,6 +314,33 @@ namespace MyMindV3.Views
                 HeightRequest = 32
             };
 
+
+            var moveStack = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                BackgroundColor = Color.White,
+                Children =
+                {
+                    new StackLayout
+                    {
+                        WidthRequest = App.ScreenSize.Width *.25,
+                        Orientation = StackOrientation.Horizontal,
+                        Children = {imgLeft, lblPrevious}
+                    },
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        WidthRequest = App.ScreenSize.Width *.5,
+                    },
+                    new StackLayout
+                    {
+                        WidthRequest = App.ScreenSize.Width *.25,
+                        Orientation = StackOrientation.Horizontal,
+                        Children = {lblNext, imgRight}
+                    },
+                }
+            };
+
             var innerStack = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
@@ -318,7 +351,15 @@ namespace MyMindV3.Views
                 Children =
                 {
                     imgButton,
-                    listView
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Vertical,
+                        Children =
+                        {
+                           listView,
+                            moveStack
+                        }
+                    }
                 }
             };
 
