@@ -106,6 +106,7 @@ namespace MyMindV3
             nav.Configure(ViewModelLocator.MyProfileKey, typeof(MyProfileView));
             nav.Configure(ViewModelLocator.MyResourcesKey, typeof(MyResourcesView));
             nav.Configure(ViewModelLocator.SignupKey, typeof(SignUpView));
+            nav.Configure(ViewModelLocator.MyHelpKey, typeof(MyHelpView));
             SimpleIoc.Default.Register<INavigationService>(() => nav);
 
             // Register the SQL
