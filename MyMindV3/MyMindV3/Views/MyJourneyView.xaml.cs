@@ -6,6 +6,7 @@ using Xamarin.Forms;
 using MyMindV3.Languages;
 using MvvmFramework.ViewModel;
 using MvvmFramework.Models;
+using MvvmFramework;
 
 namespace MyMindV3.Views
 {
@@ -22,7 +23,16 @@ namespace MyMindV3.Views
             ViewModel.IsConnected = App.Self.IsConnected;
             LoadData();
             id = ViewModel.SystemUser.IsAuthenticated == 3 ? ViewModel.ClinicianUser.HCPID : ViewModel.SystemUser.ICANN;
-            btnWebview.IsVisible = !string.IsNullOrEmpty(id);
+            AddUIToContent();
+        }
+
+        void AddUIToContent()
+        {
+            var btnWebview = new Button
+            {
+                Text = Langs.Launch_Ican,
+                IsVisible = !string.IsNullOrEmpty(id)
+            };
             btnWebview.Clicked += delegate
             {
                 var which = btnWebview.Text == Langs.Launch_Ican;
@@ -30,6 +40,131 @@ namespace MyMindV3.Views
                 {
                     Launcher().ConfigureAwait(true);
                 }
+            };
+            ContentStack.Children.Add(btnWebview);
+
+            var masterGrid = new Grid
+            {
+                WidthRequest = App.ScreenSize.Width,
+                HeightRequest = App.ScreenSize.Height,
+                ColumnDefinitions = new ColumnDefinitionCollection
+                {
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .3},
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .3},
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .3}
+                },
+                ColumnSpacing = 2,
+                RowDefinitions = new RowDefinitionCollection
+                {
+                    new RowDefinition {Height = 22},
+                    new RowDefinition {Height = GridLength.Star}
+                }
+            };
+
+            var lblTop = new Label
+            {
+                Text = Langs.MyJourney_PastAppts,
+                TextColor = Color.White,
+                BackgroundColor = Color.Red,
+                HorizontalTextAlignment = TextAlignment.Center,
+            };
+            var lblNext = new Label
+            {
+                Text = Langs.MyJourney_ComingAppts,
+                TextColor = Color.Red,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            var stack = new StackLayout
+            {
+                WidthRequest = App.ScreenSize.Width,
+                Orientation = StackOrientation.Vertical,
+                Children = { SwapView(0) }
+            };
+
+            var lblTopTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() =>
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        stack.Children.RemoveAt(0);
+                        stack.Children.Add(SwapView(0));
+                        lblTop.BackgroundColor = Color.Red;
+                        lblNext.BackgroundColor = Color.White;
+                        lblTop.TextColor = Color.White;
+                        lblNext.TextColor = Color.Red;
+                    });
+                })
+            };
+
+            var lblNextTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() =>
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        stack.Children.RemoveAt(0);
+                        stack.Children.Add(SwapView(1));
+                        lblTop.BackgroundColor = Color.White;
+                        lblNext.BackgroundColor = Color.Red;
+                        lblTop.TextColor = Color.Red;
+                        lblNext.TextColor = Color.White;
+                    });
+                })
+            };
+
+            lblTop.GestureRecognizers.Add(lblTopTap);
+            lblNext.GestureRecognizers.Add(lblNextTap);
+
+            masterGrid.Children.Add(lblTop, 0, 0);
+            masterGrid.Children.Add(lblNext, 1, 0);
+            masterGrid.Children.Add(stack, 0, 1);
+            Grid.SetColumnSpan(stack, 3);
+
+            ContentStack.Children.Add(masterGrid);
+        }
+
+        StackLayout SwapView(int view)
+        {
+            var listPast = new ListView
+            {
+                HasUnevenRows = true,
+                ItemsSource = view == 0 ? ViewModel.PastAppointments : ViewModel.NextAppointments,
+                ItemTemplate = new DataTemplate(typeof(ApptList)),
+                IsPullToRefreshEnabled = true,
+            };
+
+            listPast.Refreshing += (object sender, EventArgs e) =>
+             {
+                 listPast.IsRefreshing = true;
+                 ViewModel.ClientID = ViewModel.SystemUser.RIOID;
+                 ViewModel.HCP = ViewModel.ClinicianUser.HCPID;
+                 appointments = view == 0 ? ViewModel.PastAppointments : ViewModel.NextAppointments;
+                 Device.BeginInvokeOnMainThread(() =>
+                     {
+                         listPast.ItemsSource = null;
+                         listPast.ItemsSource = appointments;
+                     });
+                 listPast.IsRefreshing = false;
+             };
+            listPast.ItemSelected += (sender, e) =>
+            {
+                if (e.SelectedItem == null) return; // don't do anything if we just de-selected the row
+
+                var appointment = e.SelectedItem as Appointment;
+
+                //await DisplayAlert(Langs.MyJourney_AlertSelected, string.Format("{0} {1}", Langs.MyJourney_AlertSelectedMsg, appointment.AppointmentDateTime), Langs.Gen_OK);
+                ((ListView)sender).SelectedItem = null; // de-select the row
+            };
+
+            return new StackLayout
+            {
+                Orientation = StackOrientation.Vertical,
+                Padding = new Thickness(8, 8),
+                Children = { listPast }
             };
         }
 
@@ -48,6 +183,7 @@ namespace MyMindV3.Views
         {
             ViewModel.ClientID = ViewModel.SystemUser.RIOID;
             ViewModel.HCP = ViewModel.ClinicianUser.HCPID;
+            ViewModel.GetAppointments();
             appointments = ViewModel.Appointments;
 
             if (appointments != null)
@@ -76,31 +212,6 @@ namespace MyMindV3.Views
 
                 txtApptsWeek.Text = thisWeek.ToString();
                 txtApptsMonth.Text = thisMonth.ToString();
-
-                ClientAppointmentsListView.ItemsSource = sortedList;
-                ClientAppointmentsListView.IsPullToRefreshEnabled = true;
-                ClientAppointmentsListView.Refreshing += (object sender, EventArgs e) =>
-                 {
-                     ClientAppointmentsListView.IsRefreshing = true;
-                     ViewModel.ClientID = ViewModel.SystemUser.RIOID;
-                     ViewModel.HCP = ViewModel.ClinicianUser.HCPID;
-                     appointments = ViewModel.Appointments;
-                     Device.BeginInvokeOnMainThread(() =>
-                         {
-                             ClientAppointmentsListView.ItemsSource = null;
-                             ClientAppointmentsListView.ItemsSource = appointments;
-                         });
-                     ClientAppointmentsListView.IsRefreshing = false;
-                 };
-                ClientAppointmentsListView.ItemSelected += (sender, e) =>
-                {
-                    if (e.SelectedItem == null) return; // don't do anything if we just de-selected the row
-
-                    var appointment = e.SelectedItem as Appointment;
-
-                    //await DisplayAlert(Langs.MyJourney_AlertSelected, string.Format("{0} {1}", Langs.MyJourney_AlertSelectedMsg, appointment.AppointmentDateTime), Langs.Gen_OK);
-                    ((ListView)sender).SelectedItem = null; // de-select the row
-                };
             }
         }
 
