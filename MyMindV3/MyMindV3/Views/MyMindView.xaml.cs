@@ -35,13 +35,17 @@ namespace MyMindV3.Views
                 btnPatient.Text = Langs.MyMind_PatientProfile;
         }
 
-
         void LoadMyProfileBtn(object sender, EventArgs e)
         {
             if (ViewModel.SystemUser.IsAuthenticated != 3)
                 ViewModel.ShowMyProfileCommand.Execute(null);
             else
                 ViewModel.ShowMyPatientCommand.Execute(null);
+        }
+
+        void LoadMyHelpBtn(object sender, EventArgs e)
+        {
+            ViewModel.ShowMyUserHelpCommand.Execute(null);
         }
 
         void UpdateSessionTimeOut()
