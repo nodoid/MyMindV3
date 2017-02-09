@@ -56,6 +56,8 @@
 						<RowDefinition Height="*" />
 						<RowDefinition Height="1" />
 						<RowDefinition Height="*" />
+						<RowDefinition Height="1" />
+						<RowDefinition Height="*" />
 					</Grid.RowDefinitions>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="*" />
@@ -83,8 +85,12 @@
 						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Plans}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{Binding ShowMyPlansCommand}" />
 					</StackLayout>
 					<BoxView Grid.Row="5" Grid.Column="1" BackgroundColor="#ffffff" Opacity="0.5" />
-					<StackLayout Grid.Row="5" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-3,-3">
+					<StackLayout Grid.Row="5" Grid.Column="2" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
 						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Resources}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Command="{Binding ShowMyResourcesCommand}" />
+					</StackLayout>
+					<BoxView Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" BackgroundColor="#ffffff" Opacity="0.5" />
+					<StackLayout Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" Padding="-2,-2">
+						<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyMind_Help}" TextColor="#ffffff" HorizontalOptions="Fill" VerticalOptions="FillAndExpand" Clicked="LoadMyHelpBtn" />
 					</StackLayout>
 				</Grid>
 				<!--/Options-->
