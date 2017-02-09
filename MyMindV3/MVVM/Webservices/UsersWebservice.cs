@@ -43,11 +43,23 @@ namespace MvvmFramework.Webservices
                                     Constants.BaseTestUrl, clientId, hcp);
 
             var encMgr = Factory.Instance.GetEncryptionManager();
+            IEnumerable<Encryption> encryptions = null;
 
-            var client = new System.Net.Http.HttpClient();
-            var response = await client.GetAsync(url);
-            var encryptionJson = response.Content.ReadAsStringAsync().Result;
-            var encryptions = JsonConvert.DeserializeObject<IEnumerable<Encryption>>(encryptionJson);
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var response = client.GetAsync(url).Result;
+                    var encryptionJson = await response.Content.ReadAsStringAsync();
+                    encryptions = JsonConvert.DeserializeObject<IEnumerable<Encryption>>(encryptionJson);
+                }
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                Debug.WriteLine("get appts exception - {0}::{1}", ex.Message, ex.InnerException);
+#endif
+            }
 
             return encMgr.DecryptAppointments(encryptions);
         }
