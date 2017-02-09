@@ -79,8 +79,9 @@
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
-				<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-					<Button x:Name="btnWebview" Text="{Binding Converter={StaticResource Language}, ConverterParameter=Launch_Ican}" />
+				<StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical" x:Name="ContentStack">
+					<!--<Button x:Name="btnWebview" Text="{Binding Converter={StaticResource Language}, ConverterParameter=Launch_Ican}" />
+
 					<ListView x:Name="ClientAppointmentsListView" HasUnevenRows="True" SeparatorVisibility="None" IsVisible="true">
 						<ListView.ItemTemplate>
 							<DataTemplate>
@@ -105,7 +106,7 @@
 							</DataTemplate>
 						</ListView.ItemTemplate>
 					</ListView>
-					<!--<WebView IsVisible="false" x:Name="webView" Source="https://apps.nelft.nhs.uk/ican/" VerticalOptions="FillAndExpand" />-->
+					<WebView IsVisible="false" x:Name="webView" Source="https://apps.nelft.nhs.uk/ican/" VerticalOptions="FillAndExpand" />-->
 				</StackLayout>
 			</Grid>
 		</StackLayout>
