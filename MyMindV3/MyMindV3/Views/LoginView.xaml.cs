@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using MyMindV3.Languages;
+using System;
 
 namespace MyMindV3.Views
 {
@@ -24,7 +25,6 @@ namespace MyMindV3.Views
             };
         }
 
-        // construct
         public LoginView()
         {
             InitializeComponent();
@@ -34,11 +34,11 @@ namespace MyMindV3.Views
 
             var errorMessage = new Dictionary<string, string>
             {
-                {"Login_InvalidError", Langs.Login_InvalidError}
+                {"Gen_Error", Langs.Gen_Error}
             };
             var errorTitle = new Dictionary<string, string>
             {
-                {"Gen_Error", Langs.Gen_Error}
+                {"Login_InvalidError", Langs.Login_InvalidError}
             };
             var message = new Dictionary<string, string>
             {
@@ -59,18 +59,23 @@ namespace MyMindV3.Views
 
         void SwapImage()
         {
-            BackgrdImg.FadeTo(0);
+            try
+            {
+                BackgrdImg.FadeTo(0);
 
-            /* update counter & re-init timer */
-            if (_imgCount < 13)
-                _imgCount++;
-            else
-                _imgCount = 2;
+                /* update counter & re-init timer */
+                if (_imgCount < 13)
+                    _imgCount++;
+                else
+                    _imgCount = 2;
 
-            BackgrdImg.ImageSource = "bg" + _imgCount.ToString() + ".png";
-            BackgrdImg.FadeTo(1);
+                BackgrdImg.ImageSource = "bg" + _imgCount.ToString() + ".png";
+                BackgrdImg.FadeTo(1);
 
-            InitBGTimer().ConfigureAwait(true);
+                InitBGTimer().ConfigureAwait(true);
+            }
+            catch (Exception)
+            { }
         }
 
     }
