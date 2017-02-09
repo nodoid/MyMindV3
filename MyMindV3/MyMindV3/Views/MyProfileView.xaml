@@ -33,68 +33,68 @@
 					<ColumnDefinition Width="*" />
 				</Grid.ColumnDefinitions>
 				<local:PullToRefreshView x:Name="vwRefresh">
-				<ScrollView x:Name="ProfileScrollView" Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-					<StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="20,20">
-						<!--<StackLayout Orientation="Horizontal" WidthRequest="150" HorizontalOptions="Start" VerticalOptions="Center">
+					<ScrollView x:Name="ProfileScrollView" Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+						<StackLayout Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="20,20">
+							<!--<StackLayout Orientation="Horizontal" WidthRequest="150" HorizontalOptions="Start" VerticalOptions="Center">
 							<controls:CircleImage Source="{Binding UserImage}" Aspect="AspectFill" WidthRequest="125" HeightRequest="125" HorizontalOptions="Center" VerticalOptions="Center" />
 							<StackLayout Orientation="Vertical">-->
-						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
-							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Name}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
-							<Frame Padding="0,0">
-								<Entry x:Name="ProfileNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterName}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Name}" IsEnabled="False" TextColor="#707070" />
-							</Frame>
-						</StackLayout>
-						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
-							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_PrefName}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
-							<Frame Padding="0,0">
-								<Entry x:Name="ProfilePreferredNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPrefName}" PlaceholderColor="#939393" FontSize="15" Text="{Binding PreferredName}" IsEnabled="False" TextColor="#707070" />
-							</Frame>
-						</StackLayout>
-						<!--</StackLayout>
+							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=Login_Name}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+								<Frame Padding="0,0">
+									<Entry x:Name="ProfileNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterName}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Name}" IsEnabled="False" TextColor="#707070" />
+								</Frame>
+							</StackLayout>
+							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_PrefName}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+								<Frame Padding="0,0">
+									<Entry x:Name="ProfilePreferredNameInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPrefName}" PlaceholderColor="#939393" FontSize="15" Text="{Binding PreferredName}" IsEnabled="False" TextColor="#707070" />
+								</Frame>
+							</StackLayout>
+							<!--</StackLayout>
 						</StackLayout>-->
-						<StackLayout Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
-							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_DOB}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
-							<Frame Padding="0,0">
-								<Entry x:Name="ProfileDoBInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterDOB}" PlaceholderColor="#939393" FontSize="15" Text="{Binding DateOfBirthToString}" IsEnabled="False" TextColor="#707070" />
-							</Frame>
+							<StackLayout Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_DOB}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+								<Frame Padding="0,0">
+									<Entry x:Name="ProfileDoBInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterDOB}" PlaceholderColor="#939393" FontSize="15" Text="{Binding DateOfBirthToString}" IsEnabled="False" TextColor="#707070" />
+								</Frame>
+							</StackLayout>
+							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Phone}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+								<Frame Padding="0,0">
+									<Entry x:Name="ProfilePhoneInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPhone}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Phone}" IsEnabled="False" TextColor="#707070" />
+								</Frame>
+							</StackLayout>
+							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_WhyRefer}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+								<Frame Padding="0,0">
+									<Entry x:Name="RegPhoneInput" Keyboard="Numeric" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterReason}" PlaceholderColor="#939393" FontSize="15" Text="{Binding ReferralReason}" IsEnabled="False" TextColor="#707070" />
+								</Frame>
+							</StackLayout>
+							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Like}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+								<Frame Padding="0,0">
+									<Entry x:Name="ProfileLikesInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterLikes}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Likes}" IsEnabled="False" TextColor="#707070" />
+								</Frame>
+							</StackLayout>
+							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Dislike}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+								<Frame Padding="0,0">
+									<Entry x:Name="ProfileDislikesInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterDislikes}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Dislikes}" IsEnabled="False" TextColor="#707070" />
+								</Frame>
+							</StackLayout>
+							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_WhatIWant}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+								<Frame Padding="0,0">
+									<Entry x:Name="ProfileGoalsInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterGoals}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Goals}" IsEnabled="False" TextColor="#707070" />
+								</Frame>
+							</StackLayout>
+							<StackLayout Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
+								<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Edit}" FontSize="15" TextColor="White" BackgroundColor="#ff9900" HeightRequest="50" Clicked="EditDetails" />
+							</StackLayout>
 						</StackLayout>
-						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
-							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Phone}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
-							<Frame Padding="0,0">
-								<Entry x:Name="ProfilePhoneInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPhone}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Phone}" IsEnabled="False" TextColor="#707070" />
-							</Frame>
-						</StackLayout>
-						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
-							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_WhyRefer}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
-							<Frame Padding="0,0">
-								<Entry x:Name="RegPhoneInput" Keyboard="Numeric" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterReason}" PlaceholderColor="#939393" FontSize="15" Text="{Binding ReferralReason}" IsEnabled="False" TextColor="#707070" />
-							</Frame>
-						</StackLayout>
-						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
-							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Kile}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
-							<Frame Padding="0,0">
-								<Entry x:Name="ProfileLikesInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterLikes}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Likes}" IsEnabled="False" TextColor="#707070" />
-							</Frame>
-						</StackLayout>
-						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
-							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Dislike}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
-							<Frame Padding="0,0">
-								<Entry x:Name="ProfileDislikesInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterDislikes}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Dislikes}" IsEnabled="False" TextColor="#707070" />
-							</Frame>
-						</StackLayout>
-						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
-							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_WhatIWant}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
-							<Frame Padding="0,0">
-								<Entry x:Name="ProfileGoalsInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterGoals}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Goals}" IsEnabled="False" TextColor="#707070" />
-							</Frame>
-						</StackLayout>
-						<StackLayout Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
-							<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Edit}" FontSize="15" TextColor="White" BackgroundColor="#ff9900" HeightRequest="50" Clicked="EditDetails" />
-						</StackLayout>
-					</StackLayout>
-					<!--/PROFILE DETAILS-->
-				</ScrollView>
-					</local:PullToRefreshView>
+						<!--/PROFILE DETAILS-->
+					</ScrollView>
+				</local:PullToRefreshView>
 			</Grid>
 		</StackLayout>
 		<StackLayout x:Name="EditProfileDetails" Grid.Row="1" Grid.Column="0" Orientation="Vertical" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="#ffffff" Padding="0,0">
