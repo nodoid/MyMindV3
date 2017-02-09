@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-namespace MyMindV3
+namespace MvvmFramework
 {
     public static class DTSanity
     {
@@ -23,7 +23,8 @@ namespace MyMindV3
                     times[1] = Convert.ToInt32(tr[1]);
                 }
                 // get the date bit
-                var bits = dt.Split('/');
+                var bitsFull = dt.Split(' ');
+                var bits = bitsFull[0].Split('/');
                 if (times[0] != -1)
                 {
                     dateTime = new DateTime(Convert.ToInt32(bits[2]), Convert.ToInt32(bits[1]), Convert.ToInt32(bits[0]), times[0], times[1], times[2]);
