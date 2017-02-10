@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MyMindV3.Languages;
 using System;
 using XFormsRadioButton.CustomControls;
+using System.Linq;
 
 namespace MyMindV3.Views
 {
@@ -35,8 +36,9 @@ namespace MyMindV3.Views
 
         StackLayout GenerateUI(List<string> filenames)
         {
+            var fns = filenames.Distinct().ToList();
             menuList = new List<MenuListClass>();
-            foreach (var f in filenames)
+            foreach (var f in fns)
             {
                 var idsplit = f.Split('|');
                 var file = idsplit[0].Replace("_", " ").Split(' ');
@@ -130,12 +132,15 @@ namespace MyMindV3.Views
         public MenuView(List<string> filenames, int selected)
         {
             SetSelected = selected;
+
             Content = GenerateUI(filenames);
         }
 
         public void UpdateMenu(List<string> filenames, int selected)
         {
             SetSelected = selected;
+            if (Content != null)
+                Content = null;
             Content = GenerateUI(filenames);
         }
 
