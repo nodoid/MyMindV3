@@ -12,7 +12,7 @@ namespace MyMindV3.Views
     {
         SearchBar postcodeSearch;
         List<ListviewModel> dataList;
-        List<Postcodes> postcodes;
+        //List<Postcodes> postcodes;
         ListView listView;
         MenuView menu;
 
@@ -42,7 +42,7 @@ namespace MyMindV3.Views
         {
             if (e.PropertyName == "IsBusy")
             {
-                Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage));
+                //DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage);
             }
         }
 
@@ -94,12 +94,22 @@ namespace MyMindV3.Views
         {
             BackgroundColor = Color.FromHex("022330");
             Title = Langs.MyResources_Title;
+            ViewModel.CurrentPage = 1;
+            ViewModel.DisableBackPageButton = true;
             CreateUI();
         }
 
         void CreateUI()
         {
             this.BackgroundColor = Color.White;
+            listView = new ListView(ListViewCachingStrategy.RecycleElement)
+            {
+                ItemTemplate = new DataTemplate(typeof(ListViewCell)),
+                HasUnevenRows = true,
+                BackgroundColor = Color.FromHex("022330"),
+                SeparatorVisibility = SeparatorVisibility.None,
+                IsPullToRefreshEnabled = true,
+            };
 
             ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
             ViewModel.SpinnerTitle = Langs.Data_DownloadTitle;
@@ -131,7 +141,7 @@ namespace MyMindV3.Views
                         ViewModel.GetResources();
                         ViewModel.GetUIList();
                         dataList = ViewModel.UIList;
-                        postcodes = ViewModel.AvailablePostcodes;
+                        //postcodes = ViewModel.AvailablePostcodes;
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             if (listView.ItemsSource != null)
@@ -156,7 +166,7 @@ namespace MyMindV3.Views
                         ViewModel.GetResources();
                         ViewModel.GetUIList();
                         dataList = ViewModel.UIList;
-                        postcodes = ViewModel.AvailablePostcodes;
+                        //postcodes = ViewModel.AvailablePostcodes;
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             if (listView.ItemsSource != null)
@@ -199,21 +209,19 @@ namespace MyMindV3.Views
                 BackgroundColor = Color.White,
                 TextColor = Color.Blue,
                 PlaceholderColor = Color.Gray,
-                SearchCommand = new Command((w) =>
+                SearchCommand = new Command(() =>
                 {
                     ViewModel.Speed = 0;
                     ViewModel.IsBusy = true;
                     ViewModel.SearchPostcode = postcodeSearch.Text.Replace(" ", "").ToLowerInvariant();
-                    ViewModel.GetAvailablePostcodes();
-                    ViewModel.GetResources();
-                    ViewModel.GetUIList();
+                    ViewModel.GetAllDetails();
                     dataList = ViewModel.UIList;
-                    postcodes = ViewModel.AvailablePostcodes;
+                    //postcodes = ViewModel.AvailablePostcodes;
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         if (listView.ItemsSource != null)
                             listView.ItemsSource = null;
-                        listView.ItemsSource = dataList;
+                        listView.ItemsSource = dataList as IEnumerable<ListviewModel>;
                         menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
                         ViewModel.IsBusy = false;
                     });
@@ -236,17 +244,11 @@ namespace MyMindV3.Views
                 }
             };
 
-            menu = new MenuView(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
-            menu.SizeChanged += (sender, e) => { menu.HeightRequest = App.ScreenSize.Height - searchStack.HeightRequest; };
-
-            listView = new ListView
+            if (menu == null)
             {
-                ItemTemplate = new DataTemplate(typeof(ListViewCell)),
-                HasUnevenRows = true,
-                BackgroundColor = Color.FromHex("022330"),
-                SeparatorVisibility = SeparatorVisibility.None,
-                IsPullToRefreshEnabled = true,
-            };
+                menu = new MenuView(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                //menu.SizeChanged += (sender, e) => { menu.HeightRequest = App.ScreenSize.Height - searchStack.HeightRequest; };
+            }
 
             listView.RefreshCommand = new Command(() =>
                 {
@@ -259,6 +261,7 @@ namespace MyMindV3.Views
                         listView.ItemsSource = dataList;
                         listView.IsRefreshing = false;
                         menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                        listView.IsRefreshing = false;
                     });
                 });
 
@@ -278,8 +281,8 @@ namespace MyMindV3.Views
                         if (!string.IsNullOrEmpty(myPostcode))
                         {
                             ViewModel.SearchPostcode = myPostcode;
-                            ViewModel.GetAvailablePostcodes();
-                            var _ = ViewModel.AvailablePostcodes;
+                            //ViewModel.GetAvailablePostcodes();
+                            //var _ = ViewModel.AvailablePostcodes;
                             ViewModel.GetResources();
                             ViewModel.GetUIList();
                             dataList = ViewModel.UIList;
@@ -313,7 +316,6 @@ namespace MyMindV3.Views
                 WidthRequest = 12,
                 HeightRequest = 32
             };
-
 
             var moveStack = new StackLayout
             {
