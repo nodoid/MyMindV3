@@ -3,28 +3,12 @@ namespace MvvmFramework.Models
 {
     public class ResourceCategory
     {
-        public int ResourceCategoryId { get; set; }
+        public int ResourceCategoryID { get; set; }
         public string ResourceCategoryTitle { get; set; }
         public string ResourceCategoryDescription { get; set; }
     }
 
-    public class NationalResources
-    {
-        public int CurrentNationalPage { get; set; }
-        public int TotalNationalResouces { get; set; }
-        public int TotalNationalPagesRequired { get; set; }
-        public List<ResourceModel> Resources { get; set; }
-    }
-
-    public class LocalResources
-    {
-        public int CurrentLocalPage { get; set; }
-        public int TotalLocalResouces { get; set; }
-        public int TotalLocalPagesRequired { get; set; }
-        public List<ResourceModel> Resources { get; set; }
-    }
-
-    public class ResourceModel
+    public class Resources
     {
         public int ResourceID { get; set; }
         public List<ResourceCategory> ResourceCategory { get; set; }
@@ -43,5 +27,8 @@ namespace MvvmFramework.Models
         public string ResourceDistance { get; set; }
     }
 
-
+    public class ResourcesModel
+    {
+        public List<Resources> Resources { get; set; }
+    }
 }
