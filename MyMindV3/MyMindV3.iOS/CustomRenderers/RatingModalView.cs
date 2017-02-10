@@ -107,12 +107,6 @@ namespace MyMindV3.iOS
             UIApplication.SharedApplication.KeyWindow.RootViewController.Add(view);
         }
 
-        Resource.Drawable.greenstar,
-Resource.Drawable.yellowstar,
-Resource.Drawable.orangestar,
-                Resource.Drawable.purplestar,
-                Resource.Drawable.bluestar,
-
         void SetStarsUpto(int rating)
         {
             var imageNames = new List<string> { "greenstar.png", "yellowstar.png", "orangestar.png", "purplestar.png", "bluestar.png" };
