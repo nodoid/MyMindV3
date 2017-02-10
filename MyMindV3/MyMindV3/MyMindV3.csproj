@@ -92,6 +92,8 @@
     <Compile Include="Views\MyUserHelp.cs" />
     <Compile Include="Views\SliderView.cs" />
     <Compile Include="Views\ApptList.cs" />
+    <Compile Include="CustomViews\BetterTabs\BetterTabButtons.cs" />
+    <Compile Include="CustomViews\BetterTabs\BetterTabs.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Languages\Langs.resx">
@@ -269,6 +271,9 @@
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>MVVM</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomViews\BetterTabs\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
