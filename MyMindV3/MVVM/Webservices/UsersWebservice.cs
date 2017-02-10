@@ -13,7 +13,7 @@ namespace MvvmFramework.Webservices
 {
     class UsersWebservice
     {
-        public async Task<IEnumerable<ResourceModel>> GetResources()
+        public async Task<IEnumerable<Resources>> GetResources()
         {
             using (var client = new HttpClient())
             {
@@ -27,7 +27,7 @@ namespace MvvmFramework.Webservices
                 if (response.IsSuccessStatusCode)
                 {
                     var responseString = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<IEnumerable<ResourceModel>>(responseString);
+                    return JsonConvert.DeserializeObject<IEnumerable<Resources>>(responseString);
                 }
 
                 return null;
