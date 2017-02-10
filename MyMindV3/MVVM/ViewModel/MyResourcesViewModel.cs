@@ -121,8 +121,8 @@ namespace MvvmFramework.ViewModel
             }
         }
 
-        IEnumerable<ResourceModel> resources;
-        public IEnumerable<ResourceModel> Resources
+        IEnumerable<Models.Resources> resources;
+        public IEnumerable<Models.Resources> Resources
         {
             get { return resources; }
             set { Set(() => Resources, ref resources, value); }
@@ -130,52 +130,50 @@ namespace MvvmFramework.ViewModel
 
         public void GetResources(bool isClinicial = false, bool isLocal = true)
         {
-            IsBusy = true;
             var url = isLocal ? "GetLocalResources" : "GetNationalResources";
             var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
-                "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", /*currentPage.ToString()*/"1", "Sorting", "null", "Categorys", "null"};
+                "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", currentPage.ToString(), "Sorting", "AZ", "Postcode", SearchPostcode, "Title", null, "Categorys", "null"};
             Resources = GetData.GetLocalNationalResources(url, param.ToArray()).Result;
-            IsBusy = false;
         }
 
-        public IEnumerable<ResourceModel> GetNationalResources
+        public IEnumerable<Models.Resources> GetNationalResources
         {
             get
             {
-                return Resources.Where(t => t.ResourceIsNational) as IEnumerable<ResourceModel>;
+                return Resources.Where(t => t.ResourceIsNational) as IEnumerable<Models.Resources>;
             }
         }
 
-        public IEnumerable<ResourceModel> GetLocalResources
+        public IEnumerable<Models.Resources> GetLocalResources
         {
-            get { return Resources.Where(t => !t.ResourceIsNational) as IEnumerable<ResourceModel>; }
+            get { return Resources.Where(t => !t.ResourceIsNational) as IEnumerable<Models.Resources>; }
         }
 
         public string SearchBy { get; set; }
 
-        public IEnumerable<ResourceModel> GetSearchByResources
+        public IEnumerable<Models.Resources> GetSearchByResources
         {
-            get { return Resources.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == SearchBy)) as IEnumerable<ResourceModel>; }
+            get { return Resources.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == SearchBy)) as IEnumerable<Models.Resources>; }
         }
 
-        public IEnumerable<ResourceModel> GetSearchByRatings
+        public IEnumerable<Models.Resources> GetSearchByRatings
         {
             get
             {
-                return Resources.ToList().OrderBy(t => t.ResourceRating) as IEnumerable<ResourceModel>;
+                return Resources.ToList().OrderBy(t => t.ResourceRating) as IEnumerable<Models.Resources>;
 
             }
         }
 
-        public IEnumerable<ResourceModel> GetSearchByAZ
+        public IEnumerable<Models.Resources> GetSearchByAZ
         {
             get
             {
-                return Resources.ToList().OrderBy(t => t) as IEnumerable<ResourceModel>;
+                return Resources.ToList().OrderBy(t => t) as IEnumerable<Models.Resources>;
             }
         }
 
-        public IEnumerable<ResourceModel> GetSearchByDistance
+        public IEnumerable<Models.Resources> GetSearchByDistance
         {
             get
             {
@@ -186,7 +184,7 @@ namespace MvvmFramework.ViewModel
                     r.ResourceDistance = GetData.GetDistanceFromPostcodes(SearchPostcode, r.ResourcePostcode).Result.ToString();
                 }
                 IsBusy = false;
-                return res.OrderBy(t => t.ResourceDistance) as IEnumerable<ResourceModel>;
+                return res.OrderBy(t => t.ResourceDistance) as IEnumerable<Models.Resources>;
             }
         }
 
@@ -206,12 +204,28 @@ namespace MvvmFramework.ViewModel
 
             var names = new List<string>();
             var res = Resources?.ToList();
+            var count = 0;
             foreach (var c in cat)
             {
                 try
                 {
-                    var resid = res.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == categories[cat.IndexOf(c)]).ResourceCategoryId);
-                    names.Add(string.Format("{0}|{1}", filenames[filenames.IndexOf(c.ToLowerInvariant())], resid));
+                    var resid = res[count].ResourceID;
+                    var spn = c.Split(',');
+                    var filename = string.Empty;
+
+                    foreach (var s in spn)
+                    {
+                        if (filenames.IndexOf(s.ToLowerInvariant()) != -1)
+                        {
+                            filename = filenames[filenames.IndexOf(s.ToLowerInvariant())];
+                            break;
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(filename))
+                        filename = "general";
+                    names.Add(string.Format("{0}|{1}", filename, resid));
+                    count++;
                 }
                 catch (Exception ex)
                 {
@@ -222,60 +236,6 @@ namespace MvvmFramework.ViewModel
             }
 
             return names;
-        }
-
-        public List<string> FillCategories
-        {
-            get
-            {
-                var Categories = new List<string>();
-                var catList = new List<string>
-            {
-                "Self-help", "Self-harm", "Depression", "Bullying", "Support", "Anxiety", "Stress", "Parent resources", "Involvement", "Local Services",
-                "Mood","Substance misuse", "Bereavement", "Well-being", "Young carers", "Peer support", "Video resources", "Safeguarding",
-                "Looked after children", "Apps", "Involvement", "Learning disabilities", "Autism", "Sleep", "ADHD", "General", "Spousal Abuse", "Domestic Abuse", "Solvent Abuse"
-            };
-                catList.Sort();
-
-                var rt = (from Res in Resources
-                          from Rc in Res.ResourceCategory
-                          where !string.IsNullOrEmpty(Rc.ResourceCategoryTitle)
-                          select Res).ToList();
-
-                resources = rt;
-
-                foreach (var r in resources)
-                {
-                    foreach (var c in r.ResourceCategory)
-                    {
-                        if (!string.IsNullOrEmpty(c.ResourceCategoryTitle))
-                        {
-                            var splitRes = c.ResourceCategoryTitle.Split(',').ToList();
-                            if (splitRes.Count == 1)
-                                Categories.Add(splitRes[0]);
-                            else
-                            {
-                                foreach (var s in splitRes)
-                                {
-                                    foreach (var l in catList)
-                                        if (l.ToLowerInvariant() == s.ToLowerInvariant())
-                                            Categories.Add(l);
-                                }
-                            }
-                        }
-                    }
-                }
-                Categories = Categories.Distinct().ToList();
-                Categories.Sort();
-
-                if (Categories.Count == 0)
-                    Categories.AddRange((from Res in Resources
-                                         from Rc in Res.ResourceCategory
-                                         where !string.IsNullOrEmpty(Rc.ResourceCategoryTitle)
-                                         select Rc.ResourceCategoryTitle).ToList());
-
-                return Categories;
-            }
         }
 
         List<ListviewModel> uiList;
@@ -292,31 +252,27 @@ namespace MvvmFramework.ViewModel
                 UIList.Clear();
             else
                 UIList = new List<ListviewModel>();
-            if (AvailablePostcodes.Count == 0)
-                return;
+            /*if (AvailablePostcodes.Count == 0)
+                return;*/
 
             var res = Resources?.ToList();
             if (res != null)
             {
-                var resTitles = res.Select(t => t.ResourceCategorysPiped).ToString().Replace('|', ',');
-                /*var icons = new List<string>{"anxiety","depression","apps","autism","bereavement","bullying","general","involvement", "learning_disabilities",
-                    "local_services", "looked_after_children","mental_health","safeguarding","mood", "parent_resources", "peer_support", "self_harm", "self_help", "www", "stress", "substance_abuse",
-                    "video", "well_being", "young_carer", "sleeping","adhd","domestic_abuse","spousal_abuse","solvent_abuse"};
-                var cats = new List<string> { "Anxiety", "Depression", "Self-harm", "Solvent abuse", "Young carer", "Domestic abuse", "Well being", "Spousal abuse", "Autism", "ADHD" };*/
                 try
                 {
-                    for (var n = 0; n < 10; ++n)
+                    for (var n = 0; n < res.Count; ++n)
                     {
                         dataList.Add(new ListviewModel
                         {
                             Title = res[n].ResourceTitle,
-                            ImageIcon = res[n].ResourceLogoLink,
-                            Category = resTitles,
+                            ImageIcon = !string.IsNullOrEmpty(res[n].ResourceLogoLink) ? res[n].ResourceLogoLink : string.Empty,
+                            Category = res[n].ResourceCategorysPiped.Replace('|', ',').Replace(" ", ""),
                             CurrentRating = res[n].ResourceRating,
                             StarRatings = new List<string>(),
                             Id = n,
                             Postcode = res[n].ResourcePostcode,
-                            Distance = GetData.GetDistanceFromPostcodes(SearchPostcode, res[n].ResourcePostcode).Result,
+                            //Distance = GetData.GetDistanceFromPostcodes(SearchPostcode, res[n].ResourcePostcode).Result,
+                            Distance = Convert.ToDouble(res[n].ResourceDistance),
                             HasW = res[n].ResourceIsDead,
                             Url = res[n].ResourceIsDead ? string.Empty : res[n].ResourceURL
                         });
@@ -415,8 +371,8 @@ namespace MvvmFramework.ViewModel
             SetUpdateResource = res;
         }
 
-        ResourceModel setUpdateResource;
-        public ResourceModel SetUpdateResource
+        Models.Resources setUpdateResource;
+        public Models.Resources SetUpdateResource
         {
             get { return setUpdateResource; }
             set { Set(() => SetUpdateResource, ref setUpdateResource, value, true); }
@@ -428,6 +384,13 @@ namespace MvvmFramework.ViewModel
             {
                 return Resources.FirstOrDefault(t => t.ResourceID == ResId).ResourceCategorysPiped.Split('|').ToList();
             }
+        }
+
+        public void GetAllDetails()
+        {
+            GetAvailablePostcodes();
+            GetResources();
+            GetUIList();
         }
     }
 }
