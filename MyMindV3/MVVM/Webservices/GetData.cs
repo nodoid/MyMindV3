@@ -7,8 +7,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MvvmFramework.Helpers;
 using MvvmFramework.Models;
-using RestSharp.Portable.HttpClient;
-using RestSharp.Portable;
 
 namespace MvvmFramework
 {
@@ -274,9 +272,9 @@ namespace MvvmFramework
             return rv;
         }
 
-        public static async Task<IEnumerable<ResourceModel>> GetLocalNationalResources(string apiToUse, params string[] data)
+        public static async Task<IEnumerable<Resources>> GetLocalNationalResources(string apiToUse, params string[] data)
         {
-            IEnumerable<ResourceModel> rm = null;
+            IEnumerable<Resources> rm = null;
 
             var url = string.Format("{0}/api/MyMind/{1}", Constants.BaseTestUrl, apiToUse);
 
@@ -293,7 +291,8 @@ namespace MvvmFramework
                         }
                         var response = client.SendAsync(message).Result;
                         var str = await response.Content.ReadAsStringAsync();
-                        rm = JsonConvert.DeserializeObject<IEnumerable<ResourceModel>>(str);
+                        var t = JsonConvert.DeserializeObject<ResourcesModel>(str);
+                        rm = t?.Resources as IEnumerable<Resources>;
                     }
                 }
             }
