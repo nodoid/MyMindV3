@@ -3,6 +3,7 @@ using System.Diagnostics;
 using MvvmFramework.Models;
 using MyMindV3.Languages;
 using System;
+using MyMindV3.Helpers;
 
 namespace MyMindV3.Views
 {
@@ -123,7 +124,7 @@ namespace MyMindV3.Views
                 FontSize = 8,
                 VerticalTextAlignment = TextAlignment.Center
             };
-            lblDistance.SetBinding(Label.TextProperty, new Binding("Distance"));
+            lblDistance.SetBinding(Label.TextProperty, new Binding("Distance", converter: new IntToStringConverter()));
 
             var resourceStack = new StackLayout
             {
@@ -138,7 +139,8 @@ namespace MyMindV3.Views
 #if DEBUG
                     Debug.WriteLine("H={0}, R={1}, W={2}", ts.HasH ? 1 : 0, ts.HasR ? 1 : 0, ts.HasW ? 1 : 0);
 #endif
-                    imgIcon.Source = new UriImageSource { Uri = new Uri(ts.ImageIcon) };
+                    if (!string.IsNullOrEmpty(ts.ImageIcon))
+                        imgIcon.Source = new UriImageSource { Uri = new Uri(ts.ImageIcon) };
 
                     if (ts.HasH && ts.HasR && ts.HasW)
                     {
