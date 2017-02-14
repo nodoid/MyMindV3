@@ -72,6 +72,7 @@ namespace MyMindV3.Views
             {
                 Text = Langs.MyJourney_ComingAppts,
                 TextColor = Color.Red,
+                BackgroundColor = Color.White,
                 HorizontalTextAlignment = TextAlignment.Center
             };
 
@@ -132,9 +133,11 @@ namespace MyMindV3.Views
             var listPast = new ListView
             {
                 HasUnevenRows = true,
+                SeparatorVisibility = SeparatorVisibility.None,
                 ItemsSource = view == 0 ? ViewModel.PastAppointments : ViewModel.NextAppointments,
                 ItemTemplate = new DataTemplate(typeof(ApptList)),
                 IsPullToRefreshEnabled = true,
+                BackgroundColor = Color.FromHex("022330")
             };
 
             listPast.Refreshing += (object sender, EventArgs e) =>
