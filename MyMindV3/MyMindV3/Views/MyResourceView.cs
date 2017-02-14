@@ -5,14 +5,16 @@ using MvvmFramework.ViewModel;
 using MyMindV3.Languages;
 using System.Linq;
 using System.ComponentModel;
+using System.Threading.Tasks;
+using BetterTabControls;
+using MvvmFramework;
 
 namespace MyMindV3.Views
 {
     public class MyResourcesView : ContentPage
     {
         SearchBar postcodeSearch;
-        List<ListviewModel> dataList;
-        //List<Postcodes> postcodes;
+        static List<ListviewModel> dataList { get; set; }
         ListView listView;
         MenuView menu;
 
@@ -21,6 +23,10 @@ namespace MyMindV3.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            ViewModel.ShowingLocal = true;
+            ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
+            ViewModel.GetResources(ViewModel.GetIsClinician, !ViewModel.ShowingLocal);
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
 
@@ -42,7 +48,7 @@ namespace MyMindV3.Views
         {
             if (e.PropertyName == "IsBusy")
             {
-                //DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage);
+                Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage));
             }
         }
 
@@ -138,7 +144,7 @@ namespace MyMindV3.Views
                     {
                         ViewModel.CurrentPage--;
                         ViewModel.IsBusy = true;
-                        ViewModel.GetResources();
+                        ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
                         ViewModel.GetUIList();
                         dataList = ViewModel.UIList;
                         //postcodes = ViewModel.AvailablePostcodes;
@@ -163,10 +169,11 @@ namespace MyMindV3.Views
                     {
                         ViewModel.CurrentPage++;
                         ViewModel.IsBusy = true;
-                        ViewModel.GetResources();
+                        ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
                         ViewModel.GetUIList();
                         dataList = ViewModel.UIList;
                         //postcodes = ViewModel.AvailablePostcodes;
+
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             if (listView.ItemsSource != null)
@@ -214,16 +221,17 @@ namespace MyMindV3.Views
                     ViewModel.Speed = 0;
                     ViewModel.IsBusy = true;
                     ViewModel.SearchPostcode = postcodeSearch.Text.Replace(" ", "").ToLowerInvariant();
-                    ViewModel.GetAllDetails();
-                    dataList = ViewModel.UIList;
-                    //postcodes = ViewModel.AvailablePostcodes;
-                    Device.BeginInvokeOnMainThread(() =>
+                    Task.Run(() =>
                     {
+                        ViewModel.GetAllDetails();
+                        dataList = ViewModel.UIList;
                         if (listView.ItemsSource != null)
                             listView.ItemsSource = null;
-                        listView.ItemsSource = dataList as IEnumerable<ListviewModel>;
-                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
-                        ViewModel.IsBusy = false;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            ViewModel.IsBusy = false;
+                            listView.ItemsSource = dataList;
+                        });
                     });
                 })
             };
@@ -261,7 +269,6 @@ namespace MyMindV3.Views
                         listView.ItemsSource = dataList;
                         listView.IsRefreshing = false;
                         menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
-                        listView.IsRefreshing = false;
                     });
                 });
 
@@ -276,30 +283,31 @@ namespace MyMindV3.Views
                         ViewModel.Longitude = App.Self.Location.Longitude;
                         ViewModel.Latitude = App.Self.Location.Latitude;
                         ViewModel.Speed = App.Self.Location.Speed;
-                        var myPostcode = ViewModel.GetMyPostcode;
+                        Task.Run(() =>
+                        {
+                            var myPostcode = ViewModel.GetMyPostcode;
 
-                        if (!string.IsNullOrEmpty(myPostcode))
-                        {
-                            ViewModel.SearchPostcode = myPostcode;
-                            //ViewModel.GetAvailablePostcodes();
-                            //var _ = ViewModel.AvailablePostcodes;
-                            ViewModel.GetResources();
-                            ViewModel.GetUIList();
-                            dataList = ViewModel.UIList;
-                            Device.BeginInvokeOnMainThread(() =>
-                             {
-                                 if (listView.ItemsSource != null)
-                                     listView.ItemsSource = null;
-                                 listView.ItemsSource = dataList;
-                                 ViewModel.IsBusy = false;
-                                 menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
-                             });
-                        }
-                        else
-                        {
-                            ViewModel.IsBusy = false;
-                            DisplayAlert(Langs.Error_NetworkTitle, Langs.Error_PostcodeMessage, Langs.Gen_OK);
-                        }
+                            if (!string.IsNullOrEmpty(myPostcode))
+                            {
+                                ViewModel.SearchPostcode = myPostcode;
+                                ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
+                                ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National);
+                                dataList = ViewModel.UIList;
+                                Device.BeginInvokeOnMainThread(() =>
+                                 {
+                                     if (listView.ItemsSource != null)
+                                         listView.ItemsSource = null;
+                                     listView.ItemsSource = dataList;
+                                     ViewModel.IsBusy = false;
+                                     menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                                 });
+                            }
+                            else
+                            {
+                                ViewModel.IsBusy = false;
+                                DisplayAlert(Langs.Error_NetworkTitle, Langs.Error_PostcodeMessage, Langs.Gen_OK);
+                            }
+                        });
                     }
                     else
                     {
@@ -346,22 +354,12 @@ namespace MyMindV3.Views
             var innerStack = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                TranslationY = -4,
                 HeightRequest = App.ScreenSize.Height,
                 BackgroundColor = Color.FromHex("022330"),
                 MinimumHeightRequest = App.ScreenSize.Height,
                 Children =
                 {
                     imgButton,
-                    new StackLayout
-                    {
-                        Orientation = StackOrientation.Vertical,
-                        Children =
-                        {
-                           listView,
-                            moveStack
-                        }
-                    }
                 }
             };
 
@@ -407,6 +405,104 @@ namespace MyMindV3.Views
                 });
                 }
             };
+
+            var tabviewer = new BetterTabs
+            {
+                Orientation = StackOrientation.Vertical,
+                SelectedTabIndex = 1,
+                SelectedColor = Color.Yellow,
+                UnselectedColor = Color.Silver,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                HorizontalOptions = LayoutOptions.FillAndExpand,
+                HeightRequest = App.ScreenSize.Height * .75
+            };
+
+            var choiceTabs = new BetterTabButtons
+            {
+                Orientation = StackOrientation.Horizontal,
+            };
+            var nationalTab = new BetterTabButton
+            {
+                Text = "National",
+                BorderRadius = 1,
+                BorderWidth = 2,
+                WidthRequest = App.ScreenSize.Width * .3,
+                HeightRequest = 36,
+                TextColor = Color.Black
+            };
+            var localTab = new BetterTabButton
+            {
+                Text = "Local",
+                BorderRadius = 1,
+                BorderWidth = 2,
+                HeightRequest = 36,
+                WidthRequest = App.ScreenSize.Width * .3,
+                TextColor = Color.Black
+            };
+            choiceTabs.Children.Add(nationalTab);
+            choiceTabs.Children.Add(localTab);
+
+            nationalTab.Clicked += (sender, e) =>
+            {
+                if (!ViewModel.ShowingLocal)
+                    return;
+                else
+                {
+                    listView.ItemsSource = null;
+                    ViewModel.IsBusy = true;
+                    Task.Run(() =>
+                    {
+                        ViewModel.GetUIList(UIType.National);
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            listView.ItemsSource = ViewModel.UIList;
+                            ViewModel.IsBusy = false;
+                        });
+                    });
+                    ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
+                }
+            };
+
+            localTab.Clicked += (sender, e) =>
+            {
+                if (ViewModel.ShowingLocal)
+                    return;
+                else
+                {
+                    listView.ItemsSource = null;
+                    ViewModel.IsBusy = true;
+                    Task.Run(() =>
+                    {
+                        ViewModel.GetUIList(UIType.Local);
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            listView.ItemsSource = ViewModel.UIList;
+                            ViewModel.IsBusy = false;
+                        });
+                    });
+                    ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
+                }
+            };
+
+            var nationalTabView = new BetterTab
+            {
+                IsVisible = true,
+                Children = { listView }
+            };
+            var localTabView = new BetterTab
+            {
+                IsVisible = false,
+                Children = { listView }
+            };
+            tabviewer.Children.Add(choiceTabs);
+            tabviewer.Children.Add(nationalTabView);
+            tabviewer.Children.Add(localTabView);
+
+            innerStack.Children.Add(new StackLayout
+            {
+                Orientation = StackOrientation.Vertical,
+                Children = { tabviewer, moveStack }
+            });
 
             Content = new StackLayout
             {
