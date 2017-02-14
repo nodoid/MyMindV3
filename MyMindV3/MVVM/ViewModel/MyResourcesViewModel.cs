@@ -2,13 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
+#if DEBUG
+using System.Diagnostics;
+#endif
 
 namespace MvvmFramework.ViewModel
 {
     public class MyResourcesViewModel : BaseViewModel
     {
+        bool showingLocal;
+        public bool ShowingLocal
+        {
+            get { return showingLocal; }
+            set { Set(() => ShowingLocal, ref showingLocal, value); }
+        }
+
         int searchSelected;
         public int SearchSelected
         {
@@ -121,11 +130,18 @@ namespace MvvmFramework.ViewModel
             }
         }
 
-        IEnumerable<Models.Resources> resources;
-        public IEnumerable<Models.Resources> Resources
+        IEnumerable<Resources> localResources;
+        public IEnumerable<Resources> ListLocalResources
         {
-            get { return resources; }
-            set { Set(() => Resources, ref resources, value); }
+            get { return localResources; }
+            set { Set(() => ListLocalResources, ref localResources, value, true); }
+        }
+
+        IEnumerable<Resources> nationalResources;
+        public IEnumerable<Resources> ListNationalResources
+        {
+            get { return nationalResources; }
+            set { Set(() => ListNationalResources, ref nationalResources, value, true); }
         }
 
         public void GetResources(bool isClinicial = false, bool isLocal = true)
@@ -133,51 +149,48 @@ namespace MvvmFramework.ViewModel
             var url = isLocal ? "GetLocalResources" : "GetNationalResources";
             var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
                 "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", currentPage.ToString(), "Sorting", "AZ", "Postcode", SearchPostcode, "Title", null, "Categorys", "null"};
-            Resources = GetData.GetLocalNationalResources(url, param.ToArray()).Result;
-        }
-
-        public IEnumerable<Models.Resources> GetNationalResources
-        {
-            get
-            {
-                return Resources.Where(t => t.ResourceIsNational) as IEnumerable<Models.Resources>;
-            }
-        }
-
-        public IEnumerable<Models.Resources> GetLocalResources
-        {
-            get { return Resources.Where(t => !t.ResourceIsNational) as IEnumerable<Models.Resources>; }
+            var res = GetData.GetLocalNationalResources(url, param.ToArray()).Result;
+            if (isLocal)
+                ListLocalResources = res;
+            else
+                ListNationalResources = res;
         }
 
         public string SearchBy { get; set; }
 
-        public IEnumerable<Models.Resources> GetSearchByResources
-        {
-            get { return Resources.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == SearchBy)) as IEnumerable<Models.Resources>; }
-        }
-
-        public IEnumerable<Models.Resources> GetSearchByRatings
+        public IEnumerable<Resources> GetSearchByResources
         {
             get
             {
-                return Resources.ToList().OrderBy(t => t.ResourceRating) as IEnumerable<Models.Resources>;
+                return ShowingLocal ? ListLocalResources.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == SearchBy)) as IEnumerable<Resources> :
+                                                        ListNationalResources.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == SearchBy)) as IEnumerable<Resources>;
+            }
+        }
+
+        public IEnumerable<Resources> GetSearchByRatings
+        {
+            get
+            {
+                return ShowingLocal ? ListLocalResources.ToList().OrderBy(t => t.ResourceRating) as IEnumerable<Resources> :
+                                                        ListNationalResources.ToList().OrderBy(t => t.ResourceRating) as IEnumerable<Resources>;
 
             }
         }
 
-        public IEnumerable<Models.Resources> GetSearchByAZ
+        public IEnumerable<Resources> GetSearchByAZ
         {
             get
             {
-                return Resources.ToList().OrderBy(t => t) as IEnumerable<Models.Resources>;
+                return ShowingLocal ? ListLocalResources.ToList().OrderBy(t => t) as IEnumerable<Resources> :
+                                                        ListNationalResources.ToList().OrderBy(t => t) as IEnumerable<Resources>;
             }
         }
 
-        public IEnumerable<Models.Resources> GetSearchByDistance
+        public IEnumerable<Resources> GetSearchByDistance
         {
             get
             {
-                var res = Resources.ToList();
+                var res = ShowingLocal ? ListLocalResources.ToList() : ListNationalResources.ToList();
                 IsBusy = true;
                 foreach (var r in res)
                 {
@@ -203,7 +216,7 @@ namespace MvvmFramework.ViewModel
             var cat = cats.Select(t => t.Replace('-', '_')).Select(t => t.Replace(' ', '_')).ToList();
 
             var names = new List<string>();
-            var res = Resources?.ToList();
+            var res = ShowingLocal ? ListLocalResources?.ToList() : ListNationalResources?.ToList();
             var count = 0;
             foreach (var c in cat)
             {
@@ -238,43 +251,83 @@ namespace MvvmFramework.ViewModel
             return names;
         }
 
+        public string GetResourceFilename(string category)
+        {
+            var filenames = new List<string>{"anxiety","depression","apps","autism","bereavement","bullying","general","involvement", "learning_disabilities",
+                "local_services", "looked_after_children","mental_health","safeguarding","mood", "parent_resources", "peer_support", "self_harm", "self_help", "www", "stress", "substance_abuse",
+                "video", "well_being", "youth_support", "sleeping","adhd","young_carer", "domestic_abuse", "spousal_abuse", "solvent_abuse"};
+            var cats = category.Split(',').ToList();
+            var cat = cats.Select(t => t.Replace('-', '_')).Select(t => t.Replace(' ', '_')).ToList();
+            var name = string.Empty;
+            var count = 0;
+            foreach (var c in cat)
+            {
+                try
+                {
+                    foreach (var s in cat)
+                    {
+                        if (filenames.IndexOf(s.ToLowerInvariant()) != -1)
+                        {
+                            name = filenames[filenames.IndexOf(s.ToLowerInvariant())];
+                            break;
+                        }
+                    }
+
+                    if (string.IsNullOrEmpty(name))
+                        name = "general";
+                    count++;
+                }
+                catch (Exception ex)
+                {
+#if DEBUG
+                    Debug.WriteLine("Exception - {0}::{1}", ex.Message, ex.InnerException);
+#endif
+                }
+            }
+
+            return name;
+        }
+
         List<ListviewModel> uiList;
         public List<ListviewModel> UIList
         {
             get { return uiList; }
-            set { Set(() => UIList, ref uiList, value); }
+            set { Set(() => UIList, ref uiList, value, true); }
         }
 
-        public void GetUIList()
+        public void GetUIList(UIType ui = UIType.Global)
         {
             var dataList = new List<ListviewModel>();
             if (UIList != null)
                 UIList.Clear();
             else
                 UIList = new List<ListviewModel>();
-            /*if (AvailablePostcodes.Count == 0)
-                return;*/
+            List<Resources> res = new List<Resources>();
 
-            var res = Resources?.ToList();
+            if (ShowingLocal)
+                res = ui == UIType.Global ? ListLocalResources?.ToList() : (ui == UIType.Global ? ListNationalResources?.ToList() : ListLocalResources?.ToList());
+
             if (res != null)
             {
                 try
                 {
                     for (var n = 0; n < res.Count; ++n)
                     {
+                        var cat = res[n].ResourceCategorysPiped.Replace('|', ',').Replace(" ", "");
                         dataList.Add(new ListviewModel
                         {
                             Title = res[n].ResourceTitle,
-                            ImageIcon = !string.IsNullOrEmpty(res[n].ResourceLogoLink) ? res[n].ResourceLogoLink : string.Empty,
-                            Category = res[n].ResourceCategorysPiped.Replace('|', ',').Replace(" ", ""),
+                            ImageIcon = !string.IsNullOrEmpty(res[n].ResourceLogoLink) ? res[n].ResourceLogoLink : GetResourceFilename(cat),
+                            Category = cat,
                             CurrentRating = res[n].ResourceRating,
                             StarRatings = new List<string>(),
                             Id = n,
                             Postcode = res[n].ResourcePostcode,
-                            //Distance = GetData.GetDistanceFromPostcodes(SearchPostcode, res[n].ResourcePostcode).Result,
                             Distance = Convert.ToDouble(res[n].ResourceDistance),
                             HasW = res[n].ResourceIsDead,
-                            Url = res[n].ResourceIsDead ? string.Empty : res[n].ResourceURL
+                            HasH = false,
+                            HasR = false,
+                            Url = (string.IsNullOrEmpty(res[n].ResourceURL)) ? string.Empty : res[n].ResourceURL
                         });
                         dataList[n].StarRatings = ConvertRatingToStars(dataList[n].CurrentRating);
                     }
@@ -347,7 +400,7 @@ namespace MvvmFramework.ViewModel
 
         public async Task SetRating(bool isClinician)
         {
-            var currentRespond = Resources.FirstOrDefault(t => t.ResourceID == ResId);
+            var currentRespond = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) : ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
             var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
                 "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString(), "Rating", NewRating.ToString()};
             await Send.Rated("RateResource", ResId, data.ToArray()).ContinueWith((t) =>
@@ -365,14 +418,14 @@ namespace MvvmFramework.ViewModel
             var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
                 "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString()};
             await Send.ReportBrokenLink("ReportBrokenLink", data.ToArray());
-            var res = Resources.FirstOrDefault(t => t.ResourceID == ResId);
+            var res = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) : ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
             res.ResourceIsDead = true;
             res.ResourceLogoLink = string.Empty;
             SetUpdateResource = res;
         }
 
-        Models.Resources setUpdateResource;
-        public Models.Resources SetUpdateResource
+        Resources setUpdateResource;
+        public Resources SetUpdateResource
         {
             get { return setUpdateResource; }
             set { Set(() => SetUpdateResource, ref setUpdateResource, value, true); }
@@ -382,14 +435,15 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return Resources.FirstOrDefault(t => t.ResourceID == ResId).ResourceCategorysPiped.Split('|').ToList();
+                return ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId).ResourceCategorysPiped.Split('|').ToList() :
+                                                        ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId).ResourceCategorysPiped.Split('|').ToList();
             }
         }
 
         public void GetAllDetails()
         {
-            GetAvailablePostcodes();
-            GetResources();
+            //GetAvailablePostcodes();
+            GetResources(GetIsClinician, ShowingLocal);
             GetUIList();
         }
     }
