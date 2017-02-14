@@ -4,6 +4,7 @@ using MvvmFramework.Models;
 using MyMindV3.Languages;
 using System;
 using MyMindV3.Helpers;
+using MvvmFramework;
 
 namespace MyMindV3.Views
 {
@@ -38,13 +39,6 @@ namespace MyMindV3.Views
                 Command = new Command(() => MessagingCenter.Send(this, "LaunchWeb", imgIcon.ClassId))
             };
             imgIcon.GestureRecognizers.Add(imgIconTap);
-
-            var imgMapPin = new Image
-            {
-                Source = "mappin",
-                HeightRequest = 20,
-                WidthRequest = 20
-            };
 
             var imgStar1 = new Image
             {
@@ -81,18 +75,11 @@ namespace MyMindV3.Views
             };
             imgStar5.SetBinding(Image.SourceProperty, new Binding("StarRatings[4]"));
 
-            var imgStar6 = new Image
-            {
-                WidthRequest = 16,
-                HeightRequest = 16,
-            };
-            imgStar6.SetBinding(Image.SourceProperty, new Binding("StarRatings[5]"));
-
             var starStack = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
                 Padding = new Thickness(2, 0),
-                Children = { imgStar1, imgStar2, imgStar3, imgStar4, imgStar5, imgStar6 }
+                Children = { imgStar1, imgStar2, imgStar3, imgStar4, imgStar5 }
             };
             starStack.SetBinding(StackLayout.ClassIdProperty, new Binding("Id"));
 
@@ -140,7 +127,9 @@ namespace MyMindV3.Views
                     Debug.WriteLine("H={0}, R={1}, W={2}", ts.HasH ? 1 : 0, ts.HasR ? 1 : 0, ts.HasW ? 1 : 0);
 #endif
                     if (!string.IsNullOrEmpty(ts.ImageIcon))
-                        imgIcon.Source = new UriImageSource { Uri = new Uri(ts.ImageIcon) };
+                    {
+                        imgIcon.Source = new UriImageSource { Uri = new Uri(string.Format("{0}/{1}", Constants.ImageIconUrl, ts.ImageIcon)) };
+                    }
 
                     if (ts.HasH && ts.HasR && ts.HasW)
                     {
@@ -174,28 +163,48 @@ namespace MyMindV3.Views
                 {
                     new StackLayout
                     {
-                        WidthRequest = App.ScreenSize.Width * .1,
-                        MinimumWidthRequest = App.ScreenSize.Width * .1,
+                        WidthRequest = App.ScreenSize.Width * .14,
+                        MinimumWidthRequest = App.ScreenSize.Width * .14,
                         VerticalOptions = LayoutOptions.Start,
                         Orientation = StackOrientation.Vertical,
                         Children =
                         {
                             imgIcon,
-                             new StackLayout
+                            new StackLayout
                             {
                                 Orientation = StackOrientation.Horizontal,
                                 Children =
                                 {
-                                    imgMapPin,
-                                    lblDistance,
-                                    new Label {Text=Langs.MyResources_Miles, FontSize = 8, TextColor = Color.Green},
+                                    new StackLayout
+                                    {
+                                        Orientation = StackOrientation.Horizontal,
+                                        Children =
+                                        {
+                                            new Image
+                                            {
+                                                Source = "mappin",
+                                                HeightRequest = 16,
+                                                WidthRequest = 16
+                                            }
+                                        }
+                                    },
+                                    new StackLayout
+                                    {
+                                        Orientation = StackOrientation.Vertical,
+                                        VerticalOptions = LayoutOptions.Center,
+                                        Children =
+                                        {
+                                            lblDistance,
+                                            new Label {Text=Langs.MyResources_Miles, FontSize = 8, TextColor = Color.Green},
+                                        }
+                                    }
                                 }
                             }
                         }
                     },
                     new StackLayout
                     {
-                        WidthRequest = App.ScreenSize.Width * .65,
+                        WidthRequest = App.ScreenSize.Width * .63,
                         MinimumWidthRequest = App.ScreenSize.Width * .60,
                         Orientation = StackOrientation.Vertical,
                         Children =
@@ -255,7 +264,14 @@ namespace MyMindV3.Views
             };
             theStack.GestureRecognizers.Add(tapRecogniser);
 
-            View = theStack;
+            try
+            {
+                View = theStack;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception {0}--{1}", ex.Message, ex.InnerException);
+            }
         }
     }
 }
