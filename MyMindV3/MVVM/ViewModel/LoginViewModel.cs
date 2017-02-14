@@ -38,7 +38,7 @@ namespace MvvmFramework.ViewModel
                         }
                         else
                         {
-                            await dialogService.ShowMessage(GetErrorTitle("Gen_Error"), GetErrorMessage("Login_InvalidError"));
+                            await dialogService.ShowMessage(GetErrorMessage("Login_InvalidError"), GetErrorTitle("Gen_Error"));
                         }
                     })
                 );
@@ -66,7 +66,7 @@ namespace MvvmFramework.ViewModel
                                     if (SystemUser.IsAuthenticated < 1)
                                     {
                                         IsBusy = false;
-                                        await dialogService.ShowMessage(GetErrorTitle("Gen_Error"), GetErrorMessage("Login_InvalidError"));
+                                        await dialogService.ShowMessage(GetErrorMessage("Login_InvalidError"), GetErrorTitle("Gen_Error"));
                                     }
                                     /* if the client is a member only - just show limited version */
                                     if (SystemUser.IsAuthenticated == 1)
@@ -83,7 +83,7 @@ namespace MvvmFramework.ViewModel
                                 {
                                     SpinnerMessage = SpinnerTitle = string.Empty;
                                     IsBusy = false;
-                                    await dialogService.ShowMessage(GetErrorTitle("Gen_Error"), GetErrorMessage("Login_InvalidError"));
+                                    await dialogService.ShowMessage(GetErrorMessage("Login_InvalidError"), GetErrorTitle("Gen_Error"));
                                 }
                             }
                         })
