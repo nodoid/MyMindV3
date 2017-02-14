@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" x:Class="MyMindV3.Views.MyResourcesView" Title="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Title}" BackgroundColor="#022330">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:MyMindV3;assembly=MyMindV3" xmlns:helpers="clr-namespace:MyMindV3.Helpers;assembly=MyMindV3" x:Class="MyMindV3.Views.MyResourcesView-old" Title="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Title}" BackgroundColor="#022330">
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<helpers:LanguageConverter x:Key="Language" />
