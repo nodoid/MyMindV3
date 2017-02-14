@@ -66,13 +66,13 @@ namespace MyMindV3.iOS
             else
                 spinView.RemoveFromSuperview();
 
-            using (var pool = new NSAutoreleasePool())
-            {
-                pool.InvokeOnMainThread(delegate ()
-                {
-                    UIApplication.SharedApplication.NetworkActivityIndicatorVisible = on;
-                });
-            }
+            //using (var pool = new NSAutoreleasePool())
+            //{
+            //pool.InvokeOnMainThread(delegate ()
+            //{
+            UIApplication.SharedApplication.NetworkActivityIndicatorVisible = on;
+            //});
+            // }
         }
     }
 }
