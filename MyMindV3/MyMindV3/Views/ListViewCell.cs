@@ -222,7 +222,7 @@ namespace MyMindV3.Views
                             new StackLayout
                             {
                                 Orientation = StackOrientation.Horizontal,
-                                Children = {new Label{Text=Langs.MyResources_Category, FontSize = 12, TextColor = Color.Green}, lblCategory}
+                                Children = {new Label{Text=Langs.MyResources_Category, FontSize = 12, TextColor = Color.Green, MinimumWidthRequest=60}, lblCategory}
                             }
                         }
                     },
