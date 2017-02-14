@@ -2,7 +2,6 @@ using Xamarin.Forms;
 using System.Collections.Generic;
 using MyMindV3.Languages;
 using System;
-using XFormsRadioButton.CustomControls;
 using System.Linq;
 
 namespace MyMindV3.Views
@@ -83,7 +82,7 @@ namespace MyMindV3.Views
                 TranslationY = -8,
             };
 
-            radio.SelectedIndex = 0;
+            radio.SelectedIndex = SetSelected;
 
             radio.CheckedChanged += (sender, e) =>
             {
