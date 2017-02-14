@@ -25,8 +25,11 @@ namespace MyMindV3.Views
             base.OnAppearing();
 
             ViewModel.ShowingLocal = true;
+            ViewModel.IsBusy = true;
             ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
             ViewModel.GetResources(ViewModel.GetIsClinician, !ViewModel.ShowingLocal);
+
+            ViewModel.IsBusy = false;
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
 
@@ -34,7 +37,27 @@ namespace MyMindV3.Views
 
             MessagingCenter.Subscribe<MenuView, int>(this, "buttonClicked", (arg1, arg2) =>
             {
-                ViewModel.SearchSelected = arg2;
+                if (arg2 != ViewModel.SearchSelected)
+                {
+                    if (listView.ItemsSource != null)
+                    {
+                        listView.ItemsSource = null;
+                        ViewModel.SearchSelected = arg2;
+                        switch (arg2)
+                        {
+                            case 0:
+                                ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National, Sorting.Distance);
+                                break;
+                            case 1:
+                                ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National, Sorting.Rating);
+                                break;
+                            case 2:
+                                ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National, Sorting.AZ);
+                                break;
+                        }
+                        Device.BeginInvokeOnMainThread(() => listView.ItemsSource = ViewModel.UIList);
+                    }
+                }
             });
 
             MessagingCenter.Subscribe<ListViewCell, string>(this, "LaunchWeb", async (arg1, arg2) =>
@@ -101,6 +124,7 @@ namespace MyMindV3.Views
             BackgroundColor = Color.FromHex("022330");
             Title = Langs.MyResources_Title;
             ViewModel.CurrentPage = 1;
+            ViewModel.SearchSelected = 2;
             ViewModel.DisableBackPageButton = true;
             CreateUI();
         }
