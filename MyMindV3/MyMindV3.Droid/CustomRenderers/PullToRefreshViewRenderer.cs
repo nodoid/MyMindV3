@@ -57,12 +57,12 @@ namespace MyMindV3.Droid
 
                     if (base.Refreshing == refreshing)
                         return;
-                    
+
                     base.Refreshing = refreshing;
                 }
                 catch (Exception ex)
                 {
-                    
+
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace MyMindV3.Droid
 
         public Android.Views.ViewGroup ViewGroup
         {
-            get{ return this; }
+            get { return this; }
         }
 
         public VisualElement Element
@@ -134,9 +134,9 @@ namespace MyMindV3.Droid
             }
             catch (Exception ex)
             {
-                #if DEBUG
+#if DEBUG
                 System.Diagnostics.Debug.WriteLine("Unable to sent renderer property, maybe an issue: " + ex);
-                #endif
+#endif
             }
 
             AddView(packed.ViewGroup, LayoutParams.MatchParent);
@@ -176,12 +176,12 @@ namespace MyMindV3.Droid
             var sdk = (int)global::Android.OS.Build.VERSION.SdkInt;
             if (sdk >= 16)
             {
-                #if __ANDROID_16__
+#if __ANDROID_16__
                 if (viewGroup.IsScrollContainer)
                 {
                     return base.CanChildScrollUp();
                 }
-                #endif
+#endif
             }
 
             for (var i = 0; i < viewGroup.ChildCount; i++)
@@ -236,7 +236,7 @@ namespace MyMindV3.Droid
 
         void HandlePropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName =="Content")
+            if (e.PropertyName == "Content")
                 UpdateContent();
             else if (e.PropertyName == PullToRefreshView.IsPullToRefreshEnabledProperty.PropertyName)
                 UpdateIsSwipeToRefreshEnabled();
@@ -261,6 +261,11 @@ namespace MyMindV3.Droid
                 return;
 
             Tracker.UpdateLayout();
+        }
+
+        public void SetLabelFor(int? id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
