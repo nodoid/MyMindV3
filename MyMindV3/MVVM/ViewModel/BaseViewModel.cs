@@ -225,5 +225,10 @@ namespace MvvmFramework.ViewModel
                 return new FileIO().FileExists(Filename);
             }
         }
+
+        public bool GetIsClinician
+        {
+            get { return SystemUser.IsAuthenticated == 3; }
+        }
     }
 }
