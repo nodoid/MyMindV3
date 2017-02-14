@@ -105,7 +105,7 @@ namespace MyMindV3
                                             TextColor = Color.White,
                                             FontSize = 14,
                                             HorizontalTextAlignment = TextAlignment.Center,
-                                            WidthRequest = App.ScreenSize.Width * (width >= 1 ? multiplier : width * multiplier),
+                                            WidthRequest = App.ScreenSize.Width * .8,
                                             LineBreakMode = LineBreakMode.WordWrap,
                                             HorizontalOptions = LayoutOptions.Center
                                         }
