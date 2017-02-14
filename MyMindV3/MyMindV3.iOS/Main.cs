@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-using Foundation;
 using UIKit;
+using System.Diagnostics;
 
 namespace MyMindV3.iOS
 {
@@ -14,7 +11,14 @@ namespace MyMindV3.iOS
         {
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
-            UIApplication.Main(args, null, "AppDelegate");
+            try
+            {
+                UIApplication.Main(args, null, "AppDelegate");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("BANG! {0}--{1}", ex.Message, ex.InnerException);
+            }
         }
     }
 }
