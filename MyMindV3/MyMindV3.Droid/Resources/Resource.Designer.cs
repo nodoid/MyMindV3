@@ -28,9 +28,9 @@ namespace MyMindV3.Droid
 		{
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.ApplicationName = global::MyMindV3.Droid.Resource.String.ApplicationName;
 			global::SQLite.Net.Platform.XamarinAndroid.Resource.String.Hello = global::MyMindV3.Droid.Resource.String.Hello;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MyMindV3.Droid.Resource.Attribute.actionBarSize;
 			global::PCLStorage.Resource.String.ApplicationName = global::MyMindV3.Droid.Resource.String.ApplicationName;
 			global::PCLStorage.Resource.String.Hello = global::MyMindV3.Droid.Resource.String.Hello;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MyMindV3.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation
