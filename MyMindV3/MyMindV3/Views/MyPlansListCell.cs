@@ -28,20 +28,23 @@ namespace MyMindV3
             };
             this.BindingContextChanged += (sender, e) =>
             {
-                var ts = BindingContext as ClientPlan;
-                var lc = ts.FileType.ToLowerInvariant();
-                if (lc.Contains("jpg") || lc.Contains("jpeg"))
-                    imgFiletype.Source = "jpg";
-                if (lc.Contains("png"))
-                    imgFiletype.Source = "png";
-                if (lc.Contains("pdf"))
-                    imgFiletype.Source = "pdf";
-                if (lc.Contains("doc"))
-                    imgFiletype.Source = "doc";
+                if (BindingContext != null)
+                {
+                    var ts = BindingContext as ClientPlan;
+                    var lc = ts.FileType.ToLowerInvariant();
+                    if (lc.Contains("jpg") || lc.Contains("jpeg"))
+                        imgFiletype.Source = "jpg";
+                    if (lc.Contains("png"))
+                        imgFiletype.Source = "png";
+                    if (lc.Contains("pdf"))
+                        imgFiletype.Source = "pdf";
+                    if (lc.Contains("doc"))
+                        imgFiletype.Source = "doc";
 
-                var dt = ts.FileUploadDateTime.Split('T');
-                var t = dt[1].Split('.');
-                lblUploaded.Text = string.Format("{0}\n{1}", dt[0], t[0]);
+                    var dt = ts.FileUploadDateTime.Split('T');
+                    var t = dt[1].Split('.');
+                    lblUploaded.Text = string.Format("{0}\n{1}", dt[0], t[0]);
+                }
             };
             var btnView = new Button
             {
