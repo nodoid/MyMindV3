@@ -11,6 +11,13 @@ namespace MvvmFramework.ViewModel
 {
     public class MyResourcesViewModel : BaseViewModel
     {
+        DateTime lastUpdated;
+        public DateTime LastUpdated
+        {
+            get { return lastUpdated; }
+            set { Set(() => LastUpdated, ref lastUpdated, value); }
+        }
+
         bool showingLocal;
         public bool ShowingLocal
         {
@@ -146,14 +153,18 @@ namespace MvvmFramework.ViewModel
 
         public void GetResources(bool isClinicial = false, bool isLocal = true)
         {
-            var url = isLocal ? "GetLocalResources" : "GetNationalResources";
-            var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
+            if (LastUpdated.AddHours(1) > DateTime.Now || LastUpdated.Year == 1)
+            {
+                var url = isLocal ? "GetLocalResources" : "GetNationalResources";
+                var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
                 "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", currentPage.ToString(), "Sorting", "AZ", "Postcode", SearchPostcode, "Title", null, "Categorys", "null"};
-            var res = GetData.GetLocalNationalResources(url, param.ToArray()).Result;
-            if (isLocal)
-                ListLocalResources = res;
-            else
-                ListNationalResources = res;
+                var res = GetData.GetLocalNationalResources(url, param.ToArray()).Result;
+                if (isLocal)
+                    ListLocalResources = res;
+                else
+                    ListNationalResources = res;
+                LastUpdated = DateTime.Now;
+            }
         }
 
         public string SearchBy { get; set; }
@@ -167,38 +178,19 @@ namespace MvvmFramework.ViewModel
             }
         }
 
-        public IEnumerable<Resources> GetSearchByRatings
+        List<Resources> SortByRatings(List<Resources> res)
         {
-            get
-            {
-                return ShowingLocal ? ListLocalResources.ToList().OrderBy(t => t.ResourceRating) as IEnumerable<Resources> :
-                                                        ListNationalResources.ToList().OrderBy(t => t.ResourceRating) as IEnumerable<Resources>;
-
-            }
+            return res.OrderByDescending(t => t.ResourceRating).ToList();
         }
 
-        public IEnumerable<Resources> GetSearchByAZ
+        List<Resources> SortByAZ(List<Resources> res)
         {
-            get
-            {
-                return ShowingLocal ? ListLocalResources.ToList().OrderBy(t => t) as IEnumerable<Resources> :
-                                                        ListNationalResources.ToList().OrderBy(t => t) as IEnumerable<Resources>;
-            }
+            return res.OrderBy(t => t.ResourceTitle).ToList();
         }
 
-        public IEnumerable<Resources> GetSearchByDistance
+        List<Resources> SortByDistance(List<Resources> res)
         {
-            get
-            {
-                var res = ShowingLocal ? ListLocalResources.ToList() : ListNationalResources.ToList();
-                IsBusy = true;
-                foreach (var r in res)
-                {
-                    r.ResourceDistance = GetData.GetDistanceFromPostcodes(SearchPostcode, r.ResourcePostcode).Result.ToString();
-                }
-                IsBusy = false;
-                return res.OrderBy(t => t.ResourceDistance) as IEnumerable<Models.Resources>;
-            }
+            return res.OrderBy(t => t.ResourceDistance).ToList();
         }
 
         public List<string> GetResourceFilenames(List<string> categories)
@@ -295,7 +287,7 @@ namespace MvvmFramework.ViewModel
             set { Set(() => UIList, ref uiList, value, true); }
         }
 
-        public void GetUIList(UIType ui = UIType.Global)
+        public void GetUIList(UIType ui = UIType.Global, Sorting sort = Sorting.AZ)
         {
             var dataList = new List<ListviewModel>();
             if (UIList != null)
@@ -305,7 +297,21 @@ namespace MvvmFramework.ViewModel
             List<Resources> res = new List<Resources>();
 
             if (ShowingLocal)
+            {
                 res = ui == UIType.Global ? ListLocalResources?.ToList() : (ui == UIType.Global ? ListNationalResources?.ToList() : ListLocalResources?.ToList());
+            }
+            switch (sort)
+            {
+                case Sorting.AZ:
+                    res = SortByAZ(res);
+                    break;
+                case Sorting.Rating:
+                    res = SortByRatings(res);
+                    break;
+                case Sorting.Distance:
+                    res = SortByDistance(res);
+                    break;
+            }
 
             if (res != null)
             {
