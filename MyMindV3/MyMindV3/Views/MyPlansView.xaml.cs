@@ -48,6 +48,7 @@ namespace MyMindV3.Views
             ViewModel.GuidToUse = guidToUse;
             resources = ViewModel.MyPlan;
             PlanList.ItemsSource = resources;
+            PlanList.BackgroundColor = Color.FromHex("022330");
             PlanList.ItemTemplate = new DataTemplate(typeof(MyPlansListCell));
             PlanList.ItemSelected += Handle_Clicked;
             PlanList.IsPullToRefreshEnabled = true;
