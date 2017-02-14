@@ -89,6 +89,7 @@
     <Compile Include="ViewModel\MyHelpViewModel.cs" />
     <Compile Include="Helpers\DTSanity.cs" />
     <Compile Include="Enums\UIType.cs" />
+    <Compile Include="Enums\Sorting.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

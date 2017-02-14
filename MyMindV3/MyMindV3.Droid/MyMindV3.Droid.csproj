@@ -21,7 +21,7 @@
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86;x86_64;arm64-v8a</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
-    <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
+    <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
     <JavaOptions />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
@@ -43,7 +43,6 @@
     <Debugger>Xamarin</Debugger>
     <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
 <RunCodeAnalysis>true</RunCodeAnalysis><CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-<AndroidEnableMultiDex>true</AndroidEnableMultiDex>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -167,12 +166,6 @@
     <Reference Include="Plugin.Media">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\MonoAndroid10\Plugin.Media.dll</HintPath>
     </Reference>
-    <Reference Include="XFormsRadioButton.Android">
-      <HintPath>..\XamarinFormsRadioButtonXAML-master\XFormsRadioButton\XFormsRadioButton.Android\bin\Release\XFormsRadioButton.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="XFormsRadioButton">
-      <HintPath>..\XamarinFormsRadioButtonXAML-master\XFormsRadioButton\XFormsRadioButton.Android\bin\Release\XFormsRadioButton.dll</HintPath>
-    </Reference>
     <Reference Include="FormsViewGroup">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.3.180\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>
@@ -211,6 +204,7 @@
     <Compile Include="Injected\SQLConnection.cs" />
     <Compile Include="Splash.cs" />
     <Compile Include="CustomRenderers\SliderViewRenderer.cs" />
+    <Compile Include="CustomRenderers\RadioButtonRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

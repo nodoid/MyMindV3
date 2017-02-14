@@ -169,6 +169,13 @@
     <BundleResource Include="Resources\c_myjourney.png" />
     <BundleResource Include="Resources\d_mychat.png" />
     <BundleResource Include="Resources\e_myplans.png" />
+    <Compile Include="CustomRenderers\RadioButtonRenderer.cs" />
+    <Compile Include="CustomRenderers\RadioButtonView.cs" />
+    <BundleResource Include="Images\checked.png" />
+    <BundleResource Include="Images\checked%402x.png" />
+    <BundleResource Include="Images\unchecked.png" />
+    <BundleResource Include="Images\unchecked%402x.png" />
+    <Compile Include="UIUtils\ColorExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
@@ -248,9 +255,6 @@
     </Reference>
     <Reference Include="Plugin.Media">
       <HintPath>..\..\packages\Xam.Plugin.Media.2.6.2\lib\Xamarin.iOS10\Plugin.Media.dll</HintPath>
-    </Reference>
-    <Reference Include="XFormsRadioButton">
-      <HintPath>..\XamarinFormsRadioButtonXAML-master\XFormsRadioButton\XFormsRadioButton.iOS\bin\iPhone\Release\XFormsRadioButton.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.3.180\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
@@ -461,6 +465,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UIUtils\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.3.180\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
