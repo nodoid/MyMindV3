@@ -20,7 +20,7 @@ namespace MyMindV3.Views
             {
                 if (e.PropertyName == "IsBusy")
                 {
-                    Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage));
+                    Task.Run(() => Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage)));
                 }
             };
         }
@@ -34,11 +34,11 @@ namespace MyMindV3.Views
 
             var errorMessage = new Dictionary<string, string>
             {
-                {"Gen_Error", Langs.Gen_Error}
+                {"Login_InvalidError", Langs.Login_InvalidError}
             };
             var errorTitle = new Dictionary<string, string>
             {
-                {"Login_InvalidError", Langs.Login_InvalidError}
+                {"Gen_Error", Langs.Gen_Error}
             };
             var message = new Dictionary<string, string>
             {
