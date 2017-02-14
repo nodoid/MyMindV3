@@ -1,39 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace XFormsRadioButton.CustomControls
 {
     public class CustomRadioButton : View
     {
-        public static readonly BindableProperty CheckedProperty =
-                   BindableProperty.Create<CustomRadioButton, bool>(
-                       p => p.Checked, false);
+        public static readonly BindableProperty CheckedProperty = BindableProperty.Create(nameof(Checked), typeof(bool), typeof(CustomRadioButton), false);
 
-        /// <summary>
-        /// The default text property.
-        /// </summary>
-        public static readonly BindableProperty TextProperty =
-            BindableProperty.Create<CustomRadioButton, string>(
-                p => p.Text, string.Empty);
+        public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(CustomRadioButton), string.Empty);
 
-        /// <summary>
-        /// The checked changed event.
-        /// </summary>
         public EventHandler<EventArgs<bool>> CheckedChanged;
 
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(CustomRadioButton), Color.Black);
 
-        /// <summary>
-        /// Identifies the TextColor bindable property.
-        /// </summary>
-        /// 
-        /// <remarks/>
-        public static readonly BindableProperty TextColorProperty =
-            BindableProperty.Create<CustomRadioButton, Color>(
-                p => p.TextColor, Color.Black);
 
         /// <summary>
         /// Gets or sets a value indicating whether the control is checked.
@@ -52,7 +31,7 @@ namespace XFormsRadioButton.CustomControls
                 var eventHandler = this.CheckedChanged;
                 if (eventHandler != null)
                 {
-                   
+
                     eventHandler.Invoke(this, value);
                 }
             }
@@ -85,10 +64,10 @@ namespace XFormsRadioButton.CustomControls
         }
 
         public int Id { get; set; }
-   
-        
-       
+
+
+
     }
 
-  
+
 }
