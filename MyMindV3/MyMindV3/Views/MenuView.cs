@@ -22,6 +22,8 @@ namespace MyMindV3.Views
         List<MenuListClass> menuList;
 
         int SetSelected { get; set; }
+        int SetCategory { get; set; }
+        List<string> Categories { get; set; }
 
         static string UppercaseFirst(string s)
         {
@@ -35,39 +37,6 @@ namespace MyMindV3.Views
 
         StackLayout GenerateUI(List<string> filenames)
         {
-            var fns = filenames.Distinct().ToList();
-            menuList = new List<MenuListClass>();
-            foreach (var f in fns)
-            {
-                var idsplit = f.Split('|');
-                var file = idsplit[0].Replace("_", " ").Split(' ');
-                var ourname = string.Empty;
-                if (file.Length != 1)
-                {
-                    ourname = string.Format("{0} {1}", UppercaseFirst(file[0]), file[1]);
-                }
-                else
-                    ourname = UppercaseFirst(file[0]);
-
-                menuList.Add(new MenuListClass { text = ourname, image = idsplit[0], id = Convert.ToInt32(idsplit[1]) });
-            }
-
-            var innerStack = new StackLayout
-            {
-                BackgroundColor = Color.White,
-                Orientation = StackOrientation.Vertical,
-            };
-
-            for (var n = 0; n < menuList.Count; ++n)
-                innerStack.Children.Add(MenuListView(n));
-
-            var stackScroll = new ScrollView
-            {
-                WidthRequest = App.ScreenSize.Width * .3,
-                TranslationY = -48,
-                Content = innerStack
-            };
-
             var lblResource = new Label
             {
                 Text = Langs.Menu_Resources,
@@ -90,6 +59,28 @@ namespace MyMindV3.Views
                 MessagingCenter.Send(this, "buttonClicked", button.Id);
             };
 
+            var catStack = new StackLayout
+            {
+                Orientation = StackOrientation.Vertical
+            };
+            if (Categories.Count != 0)
+            {
+                var catScroll = new ScrollView { };
+                var catlist = new BindableRadioGroup
+                {
+                    ItemsSource = Categories,
+                    TranslationY = -8,
+                    SelectedIndex = SetCategory
+                };
+                catlist.CheckedChanged += (sender, e) =>
+                {
+                    var button = sender as CustomRadioButton;
+                    MessagingCenter.Send(this, "catButtonClicked", button.Id);
+                };
+                catScroll.Content = catlist;
+                catStack.Children.Add(catScroll);
+            }
+
             var topStack = new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
@@ -99,16 +90,19 @@ namespace MyMindV3.Views
                     radio,
                     new BoxView
                     {
-                        TranslationY = -56,
                         Color = Color.Gray,
                         HeightRequest = 1
-                    }
+                    },
+                    new Label
+                    {
+                        Text =Langs.MyResources_Categories,
+                        TextColor = Color.Black,
+                        FontSize = 14,
+                        FontAttributes = FontAttributes.Bold,
+                        HorizontalTextAlignment = TextAlignment.Center
+                    },
+                    catStack
                 }
-            };
-
-            topStack.SizeChanged += (sender, e) =>
-            {
-                stackScroll.HeightRequest = App.ScreenSize.Height - topStack.Height;
             };
 
             var masterStack = new StackLayout
@@ -122,22 +116,25 @@ namespace MyMindV3.Views
                 Spacing = 0,
                 Padding = new Thickness(0),
                 StyleId = "menu",
-                Children = { topStack, stackScroll }
+                Children = { topStack }
             };
 
             return masterStack;
         }
 
-        public MenuView(List<string> filenames, int selected)
+        public MenuView(List<string> filenames, int selected, int cat, List<string> cats)
         {
             SetSelected = selected;
-
+            SetCategory = cat;
+            Categories = cats;
             Content = GenerateUI(filenames);
         }
 
-        public void UpdateMenu(List<string> filenames, int selected)
+        public void UpdateMenu(List<string> filenames, int selected, int cat, List<string> cats)
         {
             SetSelected = selected;
+            SetCategory = cat;
+            Categories = cats;
             if (Content != null)
                 Content = null;
             Content = GenerateUI(filenames);
