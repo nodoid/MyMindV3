@@ -8,6 +8,8 @@ using System.ComponentModel;
 using System.Threading.Tasks;
 using BetterTabControls;
 using MvvmFramework;
+using MvvmFramework.Enums;
+using System;
 
 namespace MyMindV3.Views
 {
@@ -108,6 +110,7 @@ namespace MyMindV3.Views
                         (ViewModel.SystemUser.IsAuthenticated == 1 ? ActionCodes.Member_Resource_Accessed :
                         ActionCodes.User_Resource_Accessed), urlid, DateTime.Now.ToString("g"));
                     await Navigation.PushAsync(new MyWebview(arg2));
+                }
             });
 
             ViewModel.GetUIList(UIType.National, Sorting.AZ);
