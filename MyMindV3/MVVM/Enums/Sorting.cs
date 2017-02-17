@@ -4,6 +4,7 @@
     {
         Distance,
         Rating,
-        AZ
+        AZ,
+        MostPopular
     }
 }
