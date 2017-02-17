@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using System.Threading.Tasks;
+using GalaSoft.MvvmLight.Command;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -11,6 +12,27 @@ namespace MvvmFramework.ViewModel
 {
     public class MyResourcesViewModel : BaseViewModel
     {
+        IRepository sqlRepo;
+
+        public MyResourcesViewModel(IRepository repo)
+        {
+            sqlRepo = repo;
+        }
+
+        Sorting currentSort;
+        public Sorting CurrentSort
+        {
+            get { return currentSort; }
+            set { Set(() => CurrentSort, ref currentSort, value); }
+        }
+
+        bool backForwardChanged;
+        public bool BackForwardChanged
+        {
+            get { return backForwardChanged; }
+            set { Set(() => BackForwardChanged, ref backForwardChanged, value, true); }
+        }
+
         DateTime lastUpdated;
         public DateTime LastUpdated
         {
@@ -32,22 +54,48 @@ namespace MvvmFramework.ViewModel
             set { Set(() => SearchSelected, ref searchSelected, value); }
         }
 
-        int maxPages;
-        public int MaxPages
+        int searchCategory;
+        public int SearchCategory
         {
-            get { return maxPages; }
-            set { Set(() => MaxPages, ref maxPages, value); }
+            get { return searchCategory; }
+            set { Set(() => SearchCategory, ref searchCategory, value); }
         }
 
-        int currentPage;
-        public int CurrentPage
+        int maxLocalPages;
+        public int MaxLocalPages
         {
-            get { return currentPage; }
+            get { return maxLocalPages; }
+            set { Set(() => MaxLocalPages, ref maxLocalPages, value); }
+        }
+
+        int currentLocalPage;
+        public int CurrentLocalPage
+        {
+            get { return currentLocalPage; }
             set
             {
-                Set(() => CurrentPage, ref currentPage, value);
-                DisableNextPageButton = currentPage + 1 > maxPages;
-                DisableBackPageButton = currentPage == 0;
+                Set(() => CurrentLocalPage, ref currentLocalPage, value);
+                DisableNextPageButton = currentLocalPage + 1 > MaxLocalPages;
+                DisableBackPageButton = currentLocalPage == 0;
+            }
+        }
+
+        int maxNationalPages;
+        public int MaxNataionalPages
+        {
+            get { return maxNationalPages; }
+            set { Set(() => MaxNataionalPages, ref maxNationalPages, value); }
+        }
+
+        int currentNationalPage;
+        public int CurrentNationalPage
+        {
+            get { return currentNationalPage; }
+            set
+            {
+                Set(() => CurrentLocalPage, ref currentNationalPage, value);
+                DisableNextPageButton = currentNationalPage + 1 > MaxNataionalPages;
+                DisableBackPageButton = currentNationalPage == 0;
             }
         }
 
@@ -153,44 +201,137 @@ namespace MvvmFramework.ViewModel
 
         public void GetResources(bool isClinicial = false, bool isLocal = true)
         {
-            if (LastUpdated.AddHours(1) > DateTime.Now || LastUpdated.Year == 1)
+            if ((LastUpdated.Hour + 1) > DateTime.Now.Hour || LastUpdated.Year == 1)
             {
-                var url = isLocal ? "GetLocalResources" : "GetNationalResources";
                 var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
-                "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", currentPage.ToString(), "Sorting", "AZ", "Postcode", SearchPostcode, "Title", null, "Categorys", "null"};
-                var res = GetData.GetLocalNationalResources(url, param.ToArray()).Result;
-                if (isLocal)
-                    ListLocalResources = res;
-                else
-                    ListNationalResources = res;
+                    "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", isLocal ? currentLocalPage.ToString() : currentNationalPage.ToString(),
+                    "Sorting", "AZ", "Postcode", SearchPostcode, "Title", null, "Categorys", "null"};
+
+                var local = GetData.GetLocalNationalResources("GetLocalResources", param.ToArray()).Result;
+                var national = GetData.GetLocalNationalResources("GetNationalResources", param.ToArray()).Result;
+
+                var nr = new List<Resources>();
+                var rescat = new List<ResourceCategory>();
+
+                if (local != null)
+                {
+                    MaxLocalPages = local.TotalLocalPagesRequired;
+                    foreach (var lr in local.Resources)
+                    {
+                        lr.ResDateTime = DateTime.Now;
+                        for (var n = 0; n < lr.ResourceCategory.Count; ++n)
+                            lr.ResourceCategory[n].ResId = lr.ResourceID;
+                        rescat.AddRange(lr.ResourceCategory);
+                        nr.Add(lr);
+                    }
+                    ListLocalResources = nr;
+                    sqlRepo.SaveData(local.Resources);
+                    sqlRepo.SaveData(rescat);
+                }
+                if (national != null)
+                {
+                    nr.Clear();
+                    rescat.Clear();
+                    MaxNataionalPages = national.TotalNationalPagesRequired;
+                    foreach (var nrs in national.Resources)
+                    {
+                        nrs.IsLocal = false;
+                        for (var n = 0; n < nrs.ResourceCategory.Count; ++n)
+                            nrs.ResourceCategory[n].ResId = nrs.ResourceID;
+                        rescat.AddRange(nrs.ResourceCategory);
+                        nr.Add(nrs);
+                    }
+                    ListNationalResources = nr;
+                    sqlRepo.SaveData(nr);
+                    sqlRepo.SaveData(rescat);
+                }
+
                 LastUpdated = DateTime.Now;
+            }
+            else
+            {
+                var data = sqlRepo.GetList<Resources>().Where(t => t.IsLocal == ShowingLocal).ToList();
+                var res = new List<Resources>();
+                foreach (var d in data)
+                {
+                    if (d.ResDateTime.Year == DateTime.Now.Year && d.ResDateTime.Month == DateTime.Now.Month && d.ResDateTime.Day == DateTime.Now.Day)
+                    {
+                        if (d.ResDateTime.Hour <= DateTime.Now.Hour - 1)
+                        {
+                            var cat = sqlRepo.GetList<ResourceCategory>().Where(t => t.ResId == d.ResourceID).ToList();
+                            if (d.ResourceCategory == null)
+                                d.ResourceCategory = new List<ResourceCategory>();
+                            d.ResourceCategory.AddRange(cat);
+                            res.Add(d);
+                        }
+                    }
+                }
+
+                if (res.Count != 0)
+                {
+                    if (ShowingLocal)
+                    {
+                        MaxLocalPages = res.Count + res.Count % 10 != 0 ? 1 : 0;
+                        ListLocalResources = res;
+                    }
+                    else
+                    {
+                        MaxNataionalPages = res.Count + res.Count % 10 != 0 ? 1 : 0;
+                        ListNationalResources = res;
+                    }
+                }
             }
         }
 
         public string SearchBy { get; set; }
 
-        public IEnumerable<Resources> GetSearchByResources
-        {
-            get
-            {
-                return ShowingLocal ? ListLocalResources.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == SearchBy)) as IEnumerable<Resources> :
-                                                        ListNationalResources.Select(t => t.ResourceCategory.FirstOrDefault(w => w.ResourceCategoryTitle == SearchBy)) as IEnumerable<Resources>;
-            }
-        }
-
         List<Resources> SortByRatings(List<Resources> res)
         {
-            return res.OrderByDescending(t => t.ResourceRating).ToList();
+            return res?.OrderByDescending(t => t.ResourceRating).ToList();
         }
 
         List<Resources> SortByAZ(List<Resources> res)
         {
-            return res.OrderBy(t => t.ResourceTitle).ToList();
+            return res?.OrderBy(t => t.ResourceTitle).ToList();
         }
 
         List<Resources> SortByDistance(List<Resources> res)
         {
-            return res.OrderBy(t => t.ResourceDistance).ToList();
+            return res?.OrderBy(t => t.ResourceDistance).ToList();
+        }
+
+        List<Resources> SortByMostPopular(List<Resources> res)
+        {
+            return res?.OrderByDescending(t => t.ResourceNumberOfRating).ThenBy(t => t.ResourceRating).ToList();
+        }
+
+        public List<string> GetCategoryList
+        {
+            get
+            {
+                var cats = ShowingLocal ? ListLocalResources?.Select(t => t.ResourceCategorysPiped).ToList() : ListNationalResources?.Select(t => t.ResourceCategorysPiped).ToList();
+                var catlist = new List<string> { "None" };
+                if (cats != null)
+                {
+                    foreach (var cat in cats)
+                    {
+                        var cs = cat.Split('|');
+                        foreach (var c in cs)
+                        {
+                            if (c.Contains(" "))
+                            {
+#if DEBUG
+                                Debug.WriteLine("LastIndex = {0}, Length = {1}", c.LastIndexOf(' '), c.Length);
+#endif
+                                catlist.Add(c.TrimStart(' ').TrimEnd(' '));
+                            }
+                            else
+                                catlist.Add(c);
+                        }
+                    }
+                }
+                return catlist.Distinct().ToList();
+            }
         }
 
         public List<string> GetResourceFilenames(List<string> categories)
@@ -298,19 +439,45 @@ namespace MvvmFramework.ViewModel
 
             if (ShowingLocal)
             {
-                res = ui == UIType.Global ? ListLocalResources?.ToList() : (ui == UIType.Global ? ListNationalResources?.ToList() : ListLocalResources?.ToList());
+                res = ui == UIType.Global ? ListLocalResources?.ToList() : (ui == UIType.National ? ListNationalResources?.ToList() : ListLocalResources?.ToList());
             }
-            switch (sort)
+
+            if (SearchCategory == 0)
             {
-                case Sorting.AZ:
-                    res = SortByAZ(res);
-                    break;
-                case Sorting.Rating:
-                    res = SortByRatings(res);
-                    break;
-                case Sorting.Distance:
-                    res = SortByDistance(res);
-                    break;
+                switch (sort)
+                {
+                    case Sorting.AZ:
+                        res = SortByAZ(res);
+                        break;
+                    case Sorting.Rating:
+                        res = SortByRatings(res);
+                        break;
+                    case Sorting.Distance:
+                        res = SortByDistance(res);
+                        break;
+                    case Sorting.MostPopular:
+                        res = SortByMostPopular(res);
+                        break;
+                }
+            }
+            else
+            {
+                var searchby = GetCategoryList[SearchCategory];
+                switch (sort)
+                {
+                    case Sorting.AZ:
+                        res = SortByAZ(res).Where(t => t.ResourceCategorysPiped.Contains(searchby)).ToList();
+                        break;
+                    case Sorting.Rating:
+                        res = SortByRatings(res).Where(t => t.ResourceCategorysPiped.Contains(searchby)).ToList();
+                        break;
+                    case Sorting.Distance:
+                        res = SortByDistance(res).Where(t => t.ResourceCategorysPiped.Contains(searchby)).ToList();
+                        break;
+                    case Sorting.MostPopular:
+                        res = SortByMostPopular(res);
+                        break;
+                }
             }
 
             if (res != null)
@@ -448,9 +615,84 @@ namespace MvvmFramework.ViewModel
 
         public void GetAllDetails()
         {
-            //GetAvailablePostcodes();
             GetResources(GetIsClinician, ShowingLocal);
             GetUIList();
+        }
+
+        RelayCommand btnBackCommand;
+        public RelayCommand BtnBackCommand
+        {
+            get
+            {
+                return btnBackCommand ??
+                    (
+                        btnBackCommand = new RelayCommand(() =>
+                {
+                    if (ShowingLocal)
+                    {
+                        if (CurrentLocalPage - 1 >= 0)
+                        {
+                            CurrentLocalPage--;
+                            LastUpdated = DateTime.Now;
+                            GetResources(GetIsClinician, ShowingLocal);
+                            BackForwardChanged = true;
+                        }
+                        else
+                            DisableBackPageButton = true;
+                    }
+                    else
+                    {
+                        if (CurrentNationalPage - 1 >= 0)
+                        {
+                            CurrentNationalPage--;
+                            LastUpdated = DateTime.Now;
+                            GetResources(GetIsClinician, ShowingLocal);
+                            BackForwardChanged = true;
+                        }
+                        else
+                            DisableBackPageButton = true;
+                    }
+                })
+                    );
+            }
+        }
+
+        RelayCommand btnForwardCommand;
+        public RelayCommand BtnForwardCommand
+        {
+            get
+            {
+                return btnForwardCommand ??
+                    (
+                        btnForwardCommand = new RelayCommand(() =>
+                {
+                    if (ShowingLocal)
+                    {
+                        if (CurrentLocalPage + 1 < MaxLocalPages)
+                        {
+                            CurrentLocalPage++;
+                            LastUpdated = DateTime.Now;
+                            GetResources(GetIsClinician, ShowingLocal);
+                            BackForwardChanged = true;
+                        }
+                        else
+                            DisableNextPageButton = true;
+                    }
+                    else
+                    {
+                        if (CurrentNationalPage + 1 < MaxNataionalPages)
+                        {
+                            CurrentNationalPage++;
+                            LastUpdated = DateTime.Now;
+                            GetResources(GetIsClinician, ShowingLocal);
+                            BackForwardChanged = true;
+                        }
+                        else
+                            DisableNextPageButton = true;
+                    }
+                })
+                    );
+            }
         }
     }
 }
