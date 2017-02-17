@@ -136,11 +136,15 @@ namespace MyMindV3.Views
                 var bc = dataList[App.Self.IdInUse];
                 bc.CurrentRating = App.Self.NewIconRating;
                 bc.StarRatings = ViewModel.ConvertRatingToStars(bc.CurrentRating);
+                ViewModel.UpdateUIList(bc);
+                dataList = ViewModel.UIList;
+                listView.ItemsSource = null;
                 Device.BeginInvokeOnMainThread(() =>
-                {
-                    listView.ItemsSource = null;
-                    listView.ItemsSource = dataList;
-                });
+                                {
+
+                                    listView.ItemsSource = dataList;
+                                    listView.Focus();
+                                });
             }
 
             if (e.PropertyName == "Location")
@@ -295,8 +299,8 @@ namespace MyMindV3.Views
             {
                 WidthRequest = App.ScreenSize.Width * .75,
                 Placeholder = Langs.MyResources_Postcode,
-                BackgroundColor = Color.White,
-                TextColor = Color.Blue,
+                BackgroundColor = Color.FromHex("022330"),
+                TextColor = Color.White,
                 PlaceholderColor = Color.Gray,
                 SearchCommand = new Command(() =>
                 {
@@ -639,7 +643,8 @@ namespace MyMindV3.Views
         {
             ViewModel.GetUIList(view == 0 ? UIType.National : UIType.Local);
             listView.ItemsSource = null;
-            Device.BeginInvokeOnMainThread(() => listView.ItemsSource = ViewModel.UIList);
+            dataList = ViewModel.UIList;
+            Device.BeginInvokeOnMainThread(() => listView.ItemsSource = dataList);
         }
     }
 }

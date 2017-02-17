@@ -41,6 +41,7 @@ namespace MyMindV3.Views
             {
                 Text = Langs.Menu_Resources,
                 FontSize = 14,
+                TextColor = Color.White,
                 FontAttributes = FontAttributes.Bold,
                 HorizontalTextAlignment = TextAlignment.Center
             };
@@ -48,6 +49,7 @@ namespace MyMindV3.Views
             var radio = new BindableRadioGroup
             {
                 ItemsSource = new List<string> { Langs.MyResources_Distance, Langs.Menu_AveRating, Langs.Menu_AZ, Langs.Menu_Popular },
+                TextColor = Color.White,
                 TranslationY = -8,
             };
 
@@ -96,7 +98,7 @@ namespace MyMindV3.Views
                     new Label
                     {
                         Text =Langs.MyResources_Categories,
-                        TextColor = Color.Black,
+                        TextColor = Color.White,
                         FontSize = 14,
                         FontAttributes = FontAttributes.Bold,
                         HorizontalTextAlignment = TextAlignment.Center
@@ -107,7 +109,8 @@ namespace MyMindV3.Views
 
             var masterStack = new StackLayout
             {
-                BackgroundColor = Color.White,
+                BackgroundColor = Color.FromHex("022330"),
+                Opacity = .6,
                 Orientation = StackOrientation.Vertical,
                 MinimumWidthRequest = App.ScreenSize.Width * .35,
                 WidthRequest = App.ScreenSize.Width * .35,

@@ -201,7 +201,8 @@ namespace MvvmFramework.ViewModel
 
         public void GetResources(bool isClinicial = false, bool isLocal = true)
         {
-            if ((LastUpdated.Hour + 1) > DateTime.Now.Hour || LastUpdated.Year == 1)
+            var dtn = DateTime.Now;
+            if ((LastUpdated.Hour + 1) > dtn.Hour || LastUpdated.Year == 1)
             {
                 var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
                     "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", isLocal ? currentLocalPage.ToString() : currentNationalPage.ToString(),
@@ -426,6 +427,14 @@ namespace MvvmFramework.ViewModel
         {
             get { return uiList; }
             set { Set(() => UIList, ref uiList, value, true); }
+        }
+
+        public void UpdateUIList(ListviewModel lvm)
+        {
+            var list = UIList;
+            var rep = list.IndexOf(list.FirstOrDefault(t => t.Id == lvm.Id));
+            list[rep] = lvm;
+            UIList = list;
         }
 
         public void GetUIList(UIType ui = UIType.Global, Sorting sort = Sorting.AZ)
