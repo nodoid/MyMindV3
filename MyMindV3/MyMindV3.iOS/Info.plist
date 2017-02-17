@@ -32,7 +32,7 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.5</string>
+	<string>0.7</string>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Monitoring and notification of upcoming clinical appintments</string>
 	<key>NSPhotoLibraryUsageDescription</key>

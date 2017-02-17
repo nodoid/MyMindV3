@@ -176,6 +176,7 @@
     <BundleResource Include="Images\unchecked.png" />
     <BundleResource Include="Images\unchecked%402x.png" />
     <Compile Include="UIUtils\ColorExtensions.cs" />
+    <Compile Include="UIUtils\StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
