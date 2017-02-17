@@ -6,6 +6,8 @@ namespace MvvmFramework
     {
         void SaveData<T>(T toStore);
 
+        void SaveData<T>(List<T> toStore);
+
         List<T> GetList<T>(int top = 0) where T : class, new();
 
         T GetData<T>() where T : class, new();
