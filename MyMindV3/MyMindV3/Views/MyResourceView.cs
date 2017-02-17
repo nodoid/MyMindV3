@@ -101,6 +101,12 @@ namespace MyMindV3.Views
             MessagingCenter.Subscribe<ListViewCell, string>(this, "LaunchWeb", async (arg1, arg2) =>
             {
                 if (!string.IsNullOrEmpty(arg2))
+                {
+                    var urlid = dataList.FirstOrDefault(t => t.Url == arg2).Id;
+                    ViewModel.SendTrackingInformation(ViewModel.GetIsClinician ?
+                        ActionCodes.Clinician_Resource_Accessed :
+                        (ViewModel.SystemUser.IsAuthenticated == 1 ? ActionCodes.Member_Resource_Accessed :
+                        ActionCodes.User_Resource_Accessed), urlid, DateTime.Now.ToString("g"));
                     await Navigation.PushAsync(new MyWebview(arg2));
             });
 
