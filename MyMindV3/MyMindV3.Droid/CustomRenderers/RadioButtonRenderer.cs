@@ -50,7 +50,6 @@ namespace MyMindV3.Droid
                 _defaultTextColor = radButton.TextColors;
 
                 radButton.CheckedChange += radButton_CheckedChange;
-
                 SetNativeControl(radButton);
             }
 
