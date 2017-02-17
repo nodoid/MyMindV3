@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using MvvmFramework.Enums;
 
 namespace MvvmFramework.ViewModel
 {
@@ -9,6 +10,7 @@ namespace MvvmFramework.ViewModel
         public MyMindViewModel(INavigationService nav)
         {
             navService = nav;
+           SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Login : ActionCodes.User_Login);
         }
 
         RelayCommand logoutCommand;

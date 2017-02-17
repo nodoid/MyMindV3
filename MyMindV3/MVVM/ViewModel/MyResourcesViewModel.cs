@@ -4,6 +4,7 @@ using System.Linq;
 using System;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
+using MvvmFramework.Enums;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -17,6 +18,8 @@ namespace MvvmFramework.ViewModel
         public MyResourcesViewModel(IRepository repo)
         {
             sqlRepo = repo;
+            SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Page_View :
+                (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Page_View : ActionCodes.Member_Resources_Page_View));
         }
 
         Sorting currentSort;
@@ -167,7 +170,13 @@ namespace MvvmFramework.ViewModel
         public string SearchPostcode
         {
             get { return searchPostcode; }
-            set { Set(() => SearchPostcode, ref searchPostcode, value, true); }
+            set
+            {
+                Set(() => SearchPostcode, ref searchPostcode, value, true);
+                SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Searched_By_Postcode :
+                (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Searched_By_Postcode : 
+                ActionCodes.Member_Resources_Searched_By_Postcode));
+            }
         }
 
         public void GetAvailablePostcodes()
@@ -595,12 +604,12 @@ namespace MvvmFramework.ViewModel
             });
         }
 
-        public async Task ReportLink(bool isClinician)
-        {
-            var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
-                "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString()};
-            await Send.ReportBrokenLink("ReportBrokenLink", data.ToArray());
-            var res = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) : ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
+        public void ReportLink(int ResId)
+        { 
+            SendBrokenLink(ResId, GetIsClinician ? ActionCodes.Clinician_Resource_Reported_Broken : 
+                (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resource_Reported_Broken : ActionCodes.Member_Resource_Reported_Broken));
+            var res = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) : 
+                ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
             res.ResourceIsDead = true;
             res.ResourceLogoLink = string.Empty;
             SetUpdateResource = res;

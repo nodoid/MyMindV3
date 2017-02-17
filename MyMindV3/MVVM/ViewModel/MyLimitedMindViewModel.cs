@@ -9,6 +9,7 @@ namespace MvvmFramework.ViewModel
         public MyLimitedMindViewModel(INavigationService nav)
         {
             navService = nav;
+            SendTrackingInformation(Enums.ActionCodes.Member_Login);
         }
 
         RelayCommand showMyProfileCommand;

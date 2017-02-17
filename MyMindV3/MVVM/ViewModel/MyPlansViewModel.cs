@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Views;
+using MvvmFramework.Enums;
 using MvvmFramework.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace MvvmFramework.ViewModel
         public MyPlansViewModel(INavigationService nav)
         {
             navService = nav;
+            SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Plans_Page_View : ActionCodes.User_My_Plans_Page_View);
         }
 
         public string GuidToUse { get; set; }

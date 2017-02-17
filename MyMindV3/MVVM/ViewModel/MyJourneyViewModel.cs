@@ -4,6 +4,7 @@ using MvvmFramework.Webservices;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using MvvmFramework.Enums;
 
 namespace MvvmFramework.ViewModel
 {
@@ -13,6 +14,7 @@ namespace MvvmFramework.ViewModel
         public MyJourneyViewModel(INavigationService nav)
         {
             navService = nav;
+            SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Journey_Page_View : ActionCodes.User_My_Journey_Page_View);
         }
 
         public string ClientID { get; set; }

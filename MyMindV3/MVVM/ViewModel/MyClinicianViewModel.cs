@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Views;
+using MvvmFramework.Enums;
 using MvvmFramework.Helpers;
 using MvvmFramework.Models;
 using System.IO;
@@ -13,6 +14,7 @@ namespace MvvmFramework.ViewModel
         {
             navService = nav;
             sqlConn = repo;
+            SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Profile_Page_View : ActionCodes.User_My_Clinician_Page_View);
         }
 
         string filename;
