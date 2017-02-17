@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.IO;
 using MvvmFramework.Helpers;
 using PCLStorage;
+using MvvmFramework.Enums;
+using System.Threading.Tasks;
 
 namespace MvvmFramework.ViewModel
 {
@@ -193,7 +195,6 @@ namespace MvvmFramework.ViewModel
             get { return SystemUser.Guid; }
         }
 
-        string clinicianImage;
         public string GetClinicianImage
         {
             get { return ClinicianUser.ClinicianGUID; }
@@ -229,6 +230,41 @@ namespace MvvmFramework.ViewModel
         public bool GetIsClinician
         {
             get { return SystemUser.IsAuthenticated == 3; }
+        }
+
+        public void SendTrackingInformation(ActionCodes actionCode, int resId = 0, string info = "", string clientId = "")
+        {
+            var paramList = new List<string>
+            {
+                "UserGUID",
+                GetIsClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid,
+                "AuthToken",
+                SystemUser.APIToken,
+                "AccountType",
+                SystemUser.IsAuthenticated.ToString(),
+                "ActionCode",
+                actionCode.ToString(),
+                "ResourceID",
+                resId.ToString(),
+                "SearchData",
+                info,
+                "ClientGUID",
+                clientId
+            };
+            Task.Run(async()=>await Send.SendData("LogPageAccess", paramList.ToArray()));
+        }
+
+        public void SendBrokenLink(int resId, ActionCodes code)
+        {
+            var paramList = new List<string>
+            {
+                "UserGUID", GetIsClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid,
+                "AuthToken", SystemUser.APIToken,
+                "AccountType", SystemUser.IsAuthenticated.ToString(),
+                "ResourceID", resId.ToString()
+            };
+            Task.Run(async () => await Send.SendData("ReportBrokenLink", paramList.ToArray()));
+            SendTrackingInformation(code, resId);
         }
     }
 }
