@@ -587,6 +587,12 @@ namespace MyMindV3.Languages {
             }
         }
         
+        public static string MyResources_Categories {
+            get {
+                return ResourceManager.GetString("MyResources_Categories", resourceCulture);
+            }
+        }
+        
         public static string MyResources_Distance {
             get {
                 return ResourceManager.GetString("MyResources_Distance", resourceCulture);
@@ -596,6 +602,18 @@ namespace MyMindV3.Languages {
         public static string MyResources_Miles {
             get {
                 return ResourceManager.GetString("MyResources_Miles", resourceCulture);
+            }
+        }
+        
+        public static string MyResources_National {
+            get {
+                return ResourceManager.GetString("MyResources_National", resourceCulture);
+            }
+        }
+        
+        public static string MyResources_Local {
+            get {
+                return ResourceManager.GetString("MyResources_Local", resourceCulture);
             }
         }
         
@@ -650,6 +668,12 @@ namespace MyMindV3.Languages {
         public static string MyResources_Next {
             get {
                 return ResourceManager.GetString("MyResources_Next", resourceCulture);
+            }
+        }
+        
+        public static string MyResources_Sorting {
+            get {
+                return ResourceManager.GetString("MyResources_Sorting", resourceCulture);
             }
         }
         
