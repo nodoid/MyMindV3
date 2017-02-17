@@ -6,7 +6,6 @@ using MyMindV3.Languages;
 using System.Linq;
 using System.ComponentModel;
 using System.Threading.Tasks;
-using BetterTabControls;
 using MvvmFramework;
 using MvvmFramework.Enums;
 using System;
@@ -34,8 +33,12 @@ namespace MyMindV3.Views
             Task.Run(() =>
             {
                 ViewModel.IsBusy = true;
-                ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
+                ViewModel.GetLocalResources(ViewModel.GetIsClinician);
+                ViewModel.GetNationalResources(ViewModel.GetIsClinician);
+                ViewModel.GetUIList(UIType.National);
                 ViewModel.IsBusy = false;
+                dataList = ViewModel.UIList;
+                Device.BeginInvokeOnMainThread(() => listView.ItemsSource = dataList);
                 FirstRun = false;
             });
 
@@ -112,9 +115,6 @@ namespace MyMindV3.Views
                     await Navigation.PushAsync(new MyWebview(arg2));
                 }
             });
-
-            ViewModel.GetUIList(UIType.National, Sorting.AZ);
-            Device.BeginInvokeOnMainThread(() => listView.ItemsSource = ViewModel.UIList);
         }
 
         void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -144,7 +144,7 @@ namespace MyMindV3.Views
             {
                 var bc = dataList[App.Self.IdInUse];
                 bc.CurrentRating = App.Self.NewIconRating;
-                bc.StarRatings = ViewModel.ConvertRatingToStars(bc.CurrentRating);
+                bc.StarRatings = ViewModel.ConvertRatingToStars(bc.CurrentRating, bc.CurrentRating);
                 ViewModel.UpdateUIList(bc);
                 dataList = ViewModel.UIList;
                 listView.ItemsSource = null;
@@ -162,7 +162,7 @@ namespace MyMindV3.Views
                 ViewModel.IsBusy = true;
                 if (ViewModel.PositionChanged(App.Self.Location.Longitude, App.Self.Location.Latitude))
                 {
-                    ViewModel.GetResources();
+                    if (ViewModel.ShowingLocal) ViewModel.GetLocalResources(ViewModel.GetIsClinician); else ViewModel.GetNationalResources(ViewModel.GetIsClinician);
                     ViewModel.GetUIList();
                     dataList = ViewModel.UIList;
                     Device.BeginInvokeOnMainThread(() =>
@@ -201,7 +201,6 @@ namespace MyMindV3.Views
 
         void CreateUI()
         {
-            this.BackgroundColor = Color.White;
             listView = new ListView(ListViewCachingStrategy.RecycleElement)
             {
                 ItemTemplate = new DataTemplate(typeof(ListViewCell)),
@@ -237,7 +236,7 @@ namespace MyMindV3.Views
                     {
                         ViewModel.BtnBackCommand.Execute(null);
                         ViewModel.IsBusy = true;
-                        ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
+                        if (ViewModel.ShowingLocal) ViewModel.GetLocalResources(ViewModel.GetIsClinician); else ViewModel.GetNationalResources(ViewModel.GetIsClinician);
                         ViewModel.GetUIList();
                         dataList = ViewModel.UIList;
 
@@ -262,7 +261,10 @@ namespace MyMindV3.Views
                     {
                         ViewModel.BtnForwardCommand.Execute(null);
                         ViewModel.IsBusy = true;
-                        ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
+                        if (ViewModel.ShowingLocal)
+                            ViewModel.GetLocalResources(ViewModel.GetIsClinician);
+                        else
+                            ViewModel.GetNationalResources(ViewModel.GetIsClinician);
                         ViewModel.GetUIList();
                         dataList = ViewModel.UIList;
 
@@ -388,7 +390,10 @@ namespace MyMindV3.Views
                             {
                                 GeoEnabled = true;
                                 ViewModel.SearchPostcode = myPostcode;
-                                ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
+                                if (ViewModel.ShowingLocal)
+                                    ViewModel.GetLocalResources(ViewModel.GetIsClinician);
+                                else
+                                    ViewModel.GetNationalResources(ViewModel.GetIsClinician);
                                 ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National);
                                 dataList = ViewModel.UIList;
                                 Device.BeginInvokeOnMainThread(() =>
@@ -543,7 +548,7 @@ namespace MyMindV3.Views
                 HorizontalTextAlignment = TextAlignment.Center
             };
 
-            SwapView(0);
+            //SwapView(0);
 
             var stack = new StackLayout
             {

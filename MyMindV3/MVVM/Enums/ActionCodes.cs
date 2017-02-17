@@ -37,5 +37,12 @@
         Clinician_My_Profile_Page_View,
         Clinician_Help_Page_View,
         User_Help_Page_View,
+        Clinician_Updated_Profile,
+        User_Rated_Resource,
+        Member_Rated_Resource,
+        Clinician_Rated_Resource,
+        Member_End_Of_Session,
+        User_End_Of_Session,
+        Clinician_End_Of_Session,
     }
 }

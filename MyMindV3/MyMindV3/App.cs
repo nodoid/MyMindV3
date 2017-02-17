@@ -9,9 +9,12 @@ using System.Globalization;
 using Xamarin.Forms;
 using Plugin.Geolocator.Abstractions;
 using Plugin.Geolocator;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 #if DEBUG
 using System.Diagnostics;
+using MvvmFramework.Enums;
 #endif
 
 namespace MyMindV3
@@ -133,7 +136,24 @@ namespace MyMindV3
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            var paramList = new List<string>
+            {
+                "UserGUID",
+                Locator.Login.GetIsClinician ? Locator.Login.ClinicianUser.ClinicianGUID : Locator.Login.SystemUser.Guid,
+                "AuthToken",
+                Locator.Login.SystemUser.APIToken,
+                "AccountType",
+                Locator.Login.SystemUser.IsAuthenticated.ToString(),
+                "ActionCode",
+                Locator.Login.GetIsClinician ? ActionCodes.Clinician_End_Of_Session.ToString() : (Locator.Login.SystemUser.IsAuthenticated == 1 ? ActionCodes.Member_End_Of_Session.ToString() : ActionCodes.User_End_Of_Session.ToString()),
+                "ResourceID",
+                "0",
+                "SearchData",
+                "",
+                "ClientGUID",
+                ""
+            };
+            Task.Run(async () => await Send.SendData("LogPageAccess", paramList.ToArray()));
         }
 
         protected override void OnResume()

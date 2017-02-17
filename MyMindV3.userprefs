@@ -1,15 +1,23 @@
 ﻿<Properties StartupConfiguration="{B7EC01B5-1C8D-49E7-BF43-C989BDCD90FF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3/Views/ListViewCell.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MVVM/ViewModel/BaseViewModel.cs">
     <Files>
-      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="143" Column="1" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="204" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="551" Column="15" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="408" Column="1" />
       <File FileName="MyMindV3/MyMindV3/Views/MyJourneyView.xaml.cs" Line="172" Column="10" />
       <File FileName="MyMindV3/MyMindV3/Languages/Langs.resx" Line="403" Column="17" />
-      <File FileName="MyMindV3/MyMindV3/Views/MenuView.cs" Line="52" Column="41" />
-      <File FileName="MyMindV3/MyMindV3/Views/ListViewCell.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MenuView.cs" Line="55" Column="13" />
+      <File FileName="MyMindV3/MyMindV3/Views/ListViewCell.cs" Line="123" Column="1" />
+      <File FileName="MyMindV3/MVVM/Models/ListviewModel.cs" Line="12" Column="40" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyPatientViewModel.cs" Line="17" Column="9" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyPatient.xaml.cs" Line="31" Column="104" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyProfileViewModel.cs" Line="40" Column="75" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" Line="9" Column="54" />
+      <File FileName="MyMindV3/MVVM/Enums/ActionCodes.cs" Line="46" Column="19" />
+      <File FileName="MyMindV3/MyMindV3/App.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/BaseViewModel.cs" Line="243" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.192.168.68.101:5555" AndroidDesignerPreferredTheme="MyTheme" />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.192.168.68.101:5555" />
   <MonoDevelop.Ide.ItemProperties.MyMindV3 HideGettingStarted="True" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -18,11 +26,15 @@
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/GetData.cs" line="85" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Converters/CorrectBackImage.cs" line="11" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/GetData.cs" line="325" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" line="149" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" line="143" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" line="151" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/ListViewCell.cs" line="123" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="228" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" line="41" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="408" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="428" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="207" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.MyMindV3.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
   <MultiItemStartupConfigurations />
 </Properties>

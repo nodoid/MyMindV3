@@ -10,6 +10,10 @@ namespace MvvmFramework.ViewModel
     public class MyPatientViewModel : BaseViewModel
     {
         public MyPatientViewModel(INavigationService nav)
-        { }
+        {
+
+        }
+
+
     }
 }

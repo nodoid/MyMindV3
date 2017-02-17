@@ -35,6 +35,7 @@ namespace MvvmFramework.ViewModel
 
         public void UpdateSystemUser()
         {
+            SendTrackingInformation(ActionCodes.Clinician_Updated_Profile);
             sqlConn.SaveData<SystemUser>(SystemUser);
         }
     }

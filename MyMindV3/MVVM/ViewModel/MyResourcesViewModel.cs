@@ -174,7 +174,7 @@ namespace MvvmFramework.ViewModel
             {
                 Set(() => SearchPostcode, ref searchPostcode, value, true);
                 SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Searched_By_Postcode :
-                (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Searched_By_Postcode : 
+                (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Searched_By_Postcode :
                 ActionCodes.Member_Resources_Searched_By_Postcode));
             }
         }
@@ -208,88 +208,33 @@ namespace MvvmFramework.ViewModel
             set { Set(() => ListNationalResources, ref nationalResources, value, true); }
         }
 
-        public void GetResources(bool isClinicial = false, bool isLocal = true)
+        public void GetLocalResources(bool isClinicial = false)
         {
-            var dtn = DateTime.Now;
-            if ((LastUpdated.Hour + 1) > dtn.Hour || LastUpdated.Year == 1)
-            {
-                var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
-                    "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", isLocal ? currentLocalPage.ToString() : currentNationalPage.ToString(),
+            var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
+                    "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", CurrentLocalPage.ToString(),
                     "Sorting", "AZ", "Postcode", SearchPostcode, "Title", null, "Categorys", "null"};
 
-                var local = GetData.GetLocalNationalResources("GetLocalResources", param.ToArray()).Result;
-                var national = GetData.GetLocalNationalResources("GetNationalResources", param.ToArray()).Result;
+            var local = GetData.GetLocalNationalResources("GetLocalResources", param.ToArray()).Result;
 
-                var nr = new List<Resources>();
-                var rescat = new List<ResourceCategory>();
-
-                if (local != null)
-                {
-                    MaxLocalPages = local.TotalLocalPagesRequired;
-                    foreach (var lr in local.Resources)
-                    {
-                        lr.ResDateTime = DateTime.Now;
-                        for (var n = 0; n < lr.ResourceCategory.Count; ++n)
-                            lr.ResourceCategory[n].ResId = lr.ResourceID;
-                        rescat.AddRange(lr.ResourceCategory);
-                        nr.Add(lr);
-                    }
-                    ListLocalResources = nr;
-                    sqlRepo.SaveData(local.Resources);
-                    sqlRepo.SaveData(rescat);
-                }
-                if (national != null)
-                {
-                    nr.Clear();
-                    rescat.Clear();
-                    MaxNataionalPages = national.TotalNationalPagesRequired;
-                    foreach (var nrs in national.Resources)
-                    {
-                        nrs.IsLocal = false;
-                        for (var n = 0; n < nrs.ResourceCategory.Count; ++n)
-                            nrs.ResourceCategory[n].ResId = nrs.ResourceID;
-                        rescat.AddRange(nrs.ResourceCategory);
-                        nr.Add(nrs);
-                    }
-                    ListNationalResources = nr;
-                    sqlRepo.SaveData(nr);
-                    sqlRepo.SaveData(rescat);
-                }
-
-                LastUpdated = DateTime.Now;
-            }
-            else
+            if (local != null)
             {
-                var data = sqlRepo.GetList<Resources>().Where(t => t.IsLocal == ShowingLocal).ToList();
-                var res = new List<Resources>();
-                foreach (var d in data)
-                {
-                    if (d.ResDateTime.Year == DateTime.Now.Year && d.ResDateTime.Month == DateTime.Now.Month && d.ResDateTime.Day == DateTime.Now.Day)
-                    {
-                        if (d.ResDateTime.Hour <= DateTime.Now.Hour - 1)
-                        {
-                            var cat = sqlRepo.GetList<ResourceCategory>().Where(t => t.ResId == d.ResourceID).ToList();
-                            if (d.ResourceCategory == null)
-                                d.ResourceCategory = new List<ResourceCategory>();
-                            d.ResourceCategory.AddRange(cat);
-                            res.Add(d);
-                        }
-                    }
-                }
+                MaxLocalPages = local.TotalLocalPagesRequired;
+                ListLocalResources = local.Resources;
+            }
+        }
 
-                if (res.Count != 0)
-                {
-                    if (ShowingLocal)
-                    {
-                        MaxLocalPages = res.Count + res.Count % 10 != 0 ? 1 : 0;
-                        ListLocalResources = res;
-                    }
-                    else
-                    {
-                        MaxNataionalPages = res.Count + res.Count % 10 != 0 ? 1 : 0;
-                        ListNationalResources = res;
-                    }
-                }
+        public void GetNationalResources(bool isClinicial = false)
+        {
+            var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
+                "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", CurrentNationalPage.ToString(),
+                    "Sorting", "AZ", "Postcode", SearchPostcode, "Title", null, "Categorys", "null"};
+
+            var national = GetData.GetLocalNationalResources("GetNationalResources", param.ToArray()).Result;
+
+            if (national != null)
+            {
+                MaxNataionalPages = national.TotalNationalPagesRequired;
+                ListNationalResources = national.Resources;
             }
         }
 
@@ -520,7 +465,7 @@ namespace MvvmFramework.ViewModel
                             HasR = false,
                             Url = (string.IsNullOrEmpty(res[n].ResourceURL)) ? string.Empty : res[n].ResourceURL
                         });
-                        dataList[n].StarRatings = ConvertRatingToStars(dataList[n].CurrentRating);
+                        dataList[n].StarRatings = ConvertRatingToStars(dataList[n].CurrentRating, n);
                     }
                 }
                 catch (Exception ex)
@@ -534,9 +479,11 @@ namespace MvvmFramework.ViewModel
             UIList = dataList;
         }
 
-        public List<string> ConvertRatingToStars(int rating)
+        public List<string> ConvertRatingToStars(int rating, int id)
         {
             var ratingStars = new List<string>() { "emptystar", "emptystar", "emptystar", "emptystar", "emptystar" };
+            SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Rated_Resource : (SystemUser.IsAuthenticated == 1 ? ActionCodes.Member_Rated_Resource : ActionCodes.User_Rated_Resource), id, rating.ToString());
+            RaisePropertyChanged("StarRatings");
             if (rating == 0)
                 return ratingStars;
 
@@ -579,7 +526,7 @@ namespace MvvmFramework.ViewModel
         public int NewRating
         {
             get { return newRating; }
-            set { Set(() => NewRating, ref newRating, value); }
+            set { Set(() => NewRating, ref newRating, value, true); }
         }
 
         int resId;
@@ -605,10 +552,10 @@ namespace MvvmFramework.ViewModel
         }
 
         public void ReportLink(int ResId)
-        { 
-            SendBrokenLink(ResId, GetIsClinician ? ActionCodes.Clinician_Resource_Reported_Broken : 
+        {
+            SendBrokenLink(ResId, GetIsClinician ? ActionCodes.Clinician_Resource_Reported_Broken :
                 (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resource_Reported_Broken : ActionCodes.Member_Resource_Reported_Broken));
-            var res = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) : 
+            var res = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) :
                 ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
             res.ResourceIsDead = true;
             res.ResourceLogoLink = string.Empty;
@@ -633,7 +580,10 @@ namespace MvvmFramework.ViewModel
 
         public void GetAllDetails()
         {
-            GetResources(GetIsClinician, ShowingLocal);
+            if (ShowingLocal)
+                GetLocalResources(GetIsClinician);
+            else
+                GetNationalResources(GetIsClinician);
             GetUIList();
         }
 
@@ -652,7 +602,7 @@ namespace MvvmFramework.ViewModel
                         {
                             CurrentLocalPage--;
                             LastUpdated = DateTime.Now;
-                            GetResources(GetIsClinician, ShowingLocal);
+                            GetLocalResources(GetIsClinician);
                             BackForwardChanged = true;
                         }
                         else
@@ -664,7 +614,7 @@ namespace MvvmFramework.ViewModel
                         {
                             CurrentNationalPage--;
                             LastUpdated = DateTime.Now;
-                            GetResources(GetIsClinician, ShowingLocal);
+                            GetNationalResources(GetIsClinician);
                             BackForwardChanged = true;
                         }
                         else
@@ -690,7 +640,7 @@ namespace MvvmFramework.ViewModel
                         {
                             CurrentLocalPage++;
                             LastUpdated = DateTime.Now;
-                            GetResources(GetIsClinician, ShowingLocal);
+                            GetLocalResources(GetIsClinician);
                             BackForwardChanged = true;
                         }
                         else
@@ -702,7 +652,7 @@ namespace MvvmFramework.ViewModel
                         {
                             CurrentNationalPage++;
                             LastUpdated = DateTime.Now;
-                            GetResources(GetIsClinician, ShowingLocal);
+                            GetNationalResources(GetIsClinician);
                             BackForwardChanged = true;
                         }
                         else

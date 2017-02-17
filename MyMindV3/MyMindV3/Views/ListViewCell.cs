@@ -36,7 +36,7 @@ namespace MyMindV3.Views
             var imgIconTap = new TapGestureRecognizer
             {
                 NumberOfTapsRequired = 1,
-                Command = new Command(() => MessagingCenter.Send(this, "LaunchWeb", imgIcon.ClassId)
+                Command = new Command(() => MessagingCenter.Send(this, "LaunchWeb", imgIcon.ClassId))
             };
             imgIcon.GestureRecognizers.Add(imgIconTap);
 
