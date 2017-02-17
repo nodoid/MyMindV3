@@ -17,6 +17,11 @@ namespace MyMindV3.Views
         static List<ListviewModel> dataList { get; set; }
         ListView listView;
         MenuView menu;
+        Image imgLeft, imgRight;
+        Label lblNext, lblPrevious;
+
+        bool FirstRun { get; set; } = true;
+        bool GeoEnabled { get; set; } = false;
 
         MyResourcesViewModel ViewModel => App.Locator.MyResources;
 
@@ -24,12 +29,13 @@ namespace MyMindV3.Views
         {
             base.OnAppearing();
 
-            ViewModel.ShowingLocal = true;
-            ViewModel.IsBusy = true;
-            ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
-            ViewModel.GetResources(ViewModel.GetIsClinician, !ViewModel.ShowingLocal);
-
-            ViewModel.IsBusy = false;
+            Task.Run(() =>
+            {
+                ViewModel.IsBusy = true;
+                ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
+                ViewModel.IsBusy = false;
+                FirstRun = false;
+            });
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
 
@@ -54,24 +60,72 @@ namespace MyMindV3.Views
                             case 2:
                                 ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National, Sorting.AZ);
                                 break;
+                            case 3:
+                                ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National, Sorting.MostPopular);
+                                break;
                         }
                         Device.BeginInvokeOnMainThread(() => listView.ItemsSource = ViewModel.UIList);
                     }
                 }
             });
 
+            MessagingCenter.Subscribe<MenuView, int>(this, "catButtonClicked", (arg1, arg2) =>
+             {
+                 if (arg2 != ViewModel.SearchCategory)
+                 {
+                     if (listView.ItemsSource != null)
+                     {
+
+                         listView.ItemsSource = null;
+                         ViewModel.SearchCategory = arg2;
+                         switch (ViewModel.SearchSelected)
+                         {
+                             case 0:
+                                 ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National, Sorting.Distance);
+                                 break;
+                             case 1:
+                                 ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National, Sorting.Rating);
+                                 break;
+                             case 2:
+                                 ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National, Sorting.AZ);
+                                 break;
+                             case 3:
+                                 ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National, Sorting.MostPopular);
+                                 break;
+                         }
+                         Device.BeginInvokeOnMainThread(() => listView.ItemsSource = ViewModel.UIList);
+                     }
+                 }
+             });
+
             MessagingCenter.Subscribe<ListViewCell, string>(this, "LaunchWeb", async (arg1, arg2) =>
             {
                 if (!string.IsNullOrEmpty(arg2))
                     await Navigation.PushAsync(new MyWebview(arg2));
             });
+
+            ViewModel.GetUIList(UIType.National, Sorting.AZ);
+            Device.BeginInvokeOnMainThread(() => listView.ItemsSource = ViewModel.UIList);
         }
 
         void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             if (e.PropertyName == "IsBusy")
             {
-                Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage));
+                ViewModel.SpinnerTitle = FirstRun ? Langs.Data_DownloadTitle : Langs.MyResources_Sorting;
+                Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy,
+                                                                                                             ViewModel.SpinnerTitle,
+                                                                                                             ViewModel.SpinnerMessage));
+            }
+            if (e.PropertyName == "BackForwardChanged")
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    imgLeft.Source = !ViewModel.DisableBackPageButton ? "left" : "leftgrey";
+                    imgRight.Source = !ViewModel.DisableNextPageButton ? "right" : "rightgrey";
+                    lblNext.TextColor = ViewModel.DisableNextPageButton ? Color.Gray : Color.Blue;
+                    lblPrevious.TextColor = ViewModel.DisableNextPageButton ? Color.Gray : Color.Blue;
+                });
             }
         }
 
@@ -104,7 +158,7 @@ namespace MyMindV3.Views
                              listView.ItemsSource = null;
                          listView.ItemsSource = dataList;
                          ViewModel.IsBusy = false;
-                         menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                         menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
                      });
                 }
             }
@@ -114,6 +168,7 @@ namespace MyMindV3.Views
         {
             base.OnDisappearing();
             MessagingCenter.Unsubscribe<MenuView>(this, "buttonChecked");
+            MessagingCenter.Unsubscribe<MenuView>(this, "catButtonClicked");
             MessagingCenter.Unsubscribe<ListViewCell>(this, "LaunchWeb");
             App.Self.PropertyChanged -= Self_PropertyChanged;
             ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
@@ -123,9 +178,11 @@ namespace MyMindV3.Views
         {
             BackgroundColor = Color.FromHex("022330");
             Title = Langs.MyResources_Title;
-            ViewModel.CurrentPage = 1;
+            ViewModel.CurrentLocalPage = ViewModel.CurrentNationalPage = 1;
             ViewModel.SearchSelected = 2;
+            ViewModel.SearchCategory = 0;
             ViewModel.DisableBackPageButton = true;
+            ViewModel.ShowingLocal = false;
             CreateUI();
         }
 
@@ -142,22 +199,21 @@ namespace MyMindV3.Views
             };
 
             ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
-            ViewModel.SpinnerTitle = Langs.Data_DownloadTitle;
 
-            var imgLeft = new Image
+            imgLeft = new Image
             {
+                Source = !ViewModel.DisableBackPageButton ? "left" : "leftgrey",
                 HeightRequest = 32,
                 WidthRequest = 32
             };
-            imgLeft.SetBinding(Image.SourceProperty, new Binding("ViewModel.DisableBackPageButton", converter: new CorrectBackImage()));
 
-            var imgRight = new Image
+            imgRight = new Image
             {
-                Source = "right",
+                Source = !ViewModel.DisableNextPageButton ? "right" : "rightgrey",
                 HeightRequest = 32,
                 WidthRequest = 32,
+                HorizontalOptions = LayoutOptions.End
             };
-            imgRight.SetBinding(Image.SourceProperty, new Binding("ViewModel.DisableNextPageButton", converter: new CorrectForwardImage()));
 
             var leftTap = new TapGestureRecognizer
             {
@@ -166,18 +222,18 @@ namespace MyMindV3.Views
                 {
                     if (!ViewModel.DisableBackPageButton)
                     {
-                        ViewModel.CurrentPage--;
+                        ViewModel.BtnBackCommand.Execute(null);
                         ViewModel.IsBusy = true;
                         ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
                         ViewModel.GetUIList();
                         dataList = ViewModel.UIList;
-                        //postcodes = ViewModel.AvailablePostcodes;
+
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             if (listView.ItemsSource != null)
                                 listView.ItemsSource = null;
                             listView.ItemsSource = dataList;
-                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
                             ViewModel.IsBusy = false;
                         });
                     }
@@ -191,19 +247,18 @@ namespace MyMindV3.Views
                 {
                     if (!ViewModel.DisableNextPageButton)
                     {
-                        ViewModel.CurrentPage++;
+                        ViewModel.BtnForwardCommand.Execute(null);
                         ViewModel.IsBusy = true;
                         ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
                         ViewModel.GetUIList();
                         dataList = ViewModel.UIList;
-                        //postcodes = ViewModel.AvailablePostcodes;
 
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             if (listView.ItemsSource != null)
                                 listView.ItemsSource = null;
                             listView.ItemsSource = dataList;
-                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
                             ViewModel.IsBusy = false;
                         });
                     }
@@ -220,18 +275,21 @@ namespace MyMindV3.Views
                 WidthRequest = 28,
                 HorizontalOptions = LayoutOptions.Center
             };
-            var lblPrevious = new Label
+            lblPrevious = new Label
             {
                 Text = Langs.MyResources_Previous,
+                TextColor = ViewModel.DisableBackPageButton ? Color.Gray : Color.Blue,
+                VerticalTextAlignment = TextAlignment.Center,
                 FontSize = 14,
             };
-            var lblNext = new Label
+            lblNext = new Label
             {
                 Text = Langs.MyResources_Next,
+                TextColor = ViewModel.DisableNextPageButton ? Color.Gray : Color.Blue,
+                VerticalTextAlignment = TextAlignment.Center,
+                HorizontalTextAlignment = TextAlignment.End,
                 FontSize = 14,
             };
-            lblPrevious.SetBinding(Label.TextColorProperty, new Binding("ViewModel.DisableBackPageButton", converter: new CorrectColor()));
-            lblNext.SetBinding(Label.TextColorProperty, new Binding("ViewModel.DisableNextPageButton", converter: new CorrectColor()));
 
             postcodeSearch = new SearchBar
             {
@@ -249,12 +307,14 @@ namespace MyMindV3.Views
                     {
                         ViewModel.GetAllDetails();
                         dataList = ViewModel.UIList;
-                        if (listView.ItemsSource != null)
-                            listView.ItemsSource = null;
+
                         Device.BeginInvokeOnMainThread(() =>
                         {
+                            if (listView.ItemsSource != null)
+                                listView.ItemsSource = null;
                             ViewModel.IsBusy = false;
                             listView.ItemsSource = dataList;
+                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
                         });
                     });
                 })
@@ -278,7 +338,7 @@ namespace MyMindV3.Views
 
             if (menu == null)
             {
-                menu = new MenuView(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                menu = new MenuView(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
                 //menu.SizeChanged += (sender, e) => { menu.HeightRequest = App.ScreenSize.Height - searchStack.HeightRequest; };
             }
 
@@ -292,7 +352,7 @@ namespace MyMindV3.Views
                         listView.ItemsSource = null;
                         listView.ItemsSource = dataList;
                         listView.IsRefreshing = false;
-                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
                     });
                 });
 
@@ -313,6 +373,7 @@ namespace MyMindV3.Views
 
                             if (!string.IsNullOrEmpty(myPostcode))
                             {
+                                GeoEnabled = true;
                                 ViewModel.SearchPostcode = myPostcode;
                                 ViewModel.GetResources(ViewModel.GetIsClinician, ViewModel.ShowingLocal);
                                 ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National);
@@ -323,7 +384,7 @@ namespace MyMindV3.Views
                                          listView.ItemsSource = null;
                                      listView.ItemsSource = dataList;
                                      ViewModel.IsBusy = false;
-                                     menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected);
+                                     menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
                                  });
                             }
                             else
@@ -353,23 +414,29 @@ namespace MyMindV3.Views
             {
                 Orientation = StackOrientation.Horizontal,
                 BackgroundColor = Color.White,
+                HeightRequest = 56,
+                TranslationY = -116,
                 Children =
                 {
                     new StackLayout
                     {
-                        WidthRequest = App.ScreenSize.Width *.25,
+                        WidthRequest = App.ScreenSize.Width *.3,
+                        MinimumWidthRequest = App.ScreenSize.Width * .3,
                         Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.Center,
                         Children = {imgLeft, lblPrevious}
                     },
                     new StackLayout
                     {
                         Orientation = StackOrientation.Horizontal,
-                        WidthRequest = App.ScreenSize.Width *.5,
+                        WidthRequest = App.ScreenSize.Width *.4,
                     },
                     new StackLayout
                     {
-                        WidthRequest = App.ScreenSize.Width *.25,
+                        WidthRequest = App.ScreenSize.Width *.3,
                         Orientation = StackOrientation.Horizontal,
+                        VerticalOptions = LayoutOptions.Center,
+                        HorizontalOptions = LayoutOptions.End,
                         Children = {lblNext, imgRight}
                     },
                 }
@@ -430,102 +497,126 @@ namespace MyMindV3.Views
                 }
             };
 
-            var tabviewer = new BetterTabs
+            var masterGrid = new Grid
             {
+                WidthRequest = App.ScreenSize.Width,
+                HeightRequest = App.ScreenSize.Height,
+                ColumnDefinitions = new ColumnDefinitionCollection
+                {
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .3},
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .3},
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .4}
+                },
+                ColumnSpacing = 2,
+                RowDefinitions = new RowDefinitionCollection
+                {
+                    new RowDefinition {Height = 22},
+                    new RowDefinition {Height = GridLength.Star}
+                }
+            };
+
+            var lblNational = new Label
+            {
+                Text = Langs.MyResources_National,
+                TextColor = Color.White,
+                BackgroundColor = Color.Red,
+                HorizontalTextAlignment = TextAlignment.Center,
+            };
+            var lblLocal = new Label
+            {
+                Text = Langs.MyResources_Local,
+                TextColor = Color.Red,
+                BackgroundColor = Color.White,
+                HorizontalTextAlignment = TextAlignment.Center
+            };
+
+            SwapView(0);
+
+            var stack = new StackLayout
+            {
+                WidthRequest = App.ScreenSize.Width,
                 Orientation = StackOrientation.Vertical,
-                SelectedTabIndex = 1,
-                SelectedColor = Color.Yellow,
-                UnselectedColor = Color.Silver,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = App.ScreenSize.Height * .75
-            };
-
-            var choiceTabs = new BetterTabButtons
-            {
-                Orientation = StackOrientation.Horizontal,
-            };
-            var nationalTab = new BetterTabButton
-            {
-                Text = "National",
-                BorderRadius = 1,
-                BorderWidth = 2,
-                WidthRequest = App.ScreenSize.Width * .3,
-                HeightRequest = 36,
-                TextColor = Color.Black
-            };
-            var localTab = new BetterTabButton
-            {
-                Text = "Local",
-                BorderRadius = 1,
-                BorderWidth = 2,
-                HeightRequest = 36,
-                WidthRequest = App.ScreenSize.Width * .3,
-                TextColor = Color.Black
-            };
-            choiceTabs.Children.Add(nationalTab);
-            choiceTabs.Children.Add(localTab);
-
-            nationalTab.Clicked += (sender, e) =>
-            {
-                if (!ViewModel.ShowingLocal)
-                    return;
-                else
-                {
-                    listView.ItemsSource = null;
-                    ViewModel.IsBusy = true;
-                    Task.Run(() =>
-                    {
-                        ViewModel.GetUIList(UIType.National);
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            listView.ItemsSource = ViewModel.UIList;
-                            ViewModel.IsBusy = false;
-                        });
-                    });
-                    ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
-                }
-            };
-
-            localTab.Clicked += (sender, e) =>
-            {
-                if (ViewModel.ShowingLocal)
-                    return;
-                else
-                {
-                    listView.ItemsSource = null;
-                    ViewModel.IsBusy = true;
-                    Task.Run(() =>
-                    {
-                        ViewModel.GetUIList(UIType.Local);
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            listView.ItemsSource = ViewModel.UIList;
-                            ViewModel.IsBusy = false;
-                        });
-                    });
-                    ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
-                }
-            };
-
-            var nationalTabView = new BetterTab
-            {
-                IsVisible = true,
                 Children = { listView }
             };
-            var localTabView = new BetterTab
+
+            var lblNationalTap = new TapGestureRecognizer
             {
-                IsVisible = false,
-                Children = { listView }
+                NumberOfTapsRequired = 1,
+                Command = new Command(() =>
+                {
+                    if (!string.IsNullOrEmpty(postcodeSearch.Text) || GeoEnabled)
+                    {
+                        if (!ViewModel.ShowingLocal)
+                            return;
+                        else
+                        {
+                            lblNational.BackgroundColor = Color.Red;
+                            lblLocal.BackgroundColor = Color.White;
+                            lblNational.TextColor = Color.White;
+                            lblLocal.TextColor = Color.Red;
+                            ViewModel.IsBusy = true;
+                            Task.Run(() =>
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    stack.Children.RemoveAt(0);
+                                    SwapView(0);
+                                    stack.Children.Add(listView);
+                                    ViewModel.IsBusy = false;
+                                });
+                            });
+                            ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
+                        }
+                    }
+                })
             };
-            tabviewer.Children.Add(choiceTabs);
-            tabviewer.Children.Add(nationalTabView);
-            tabviewer.Children.Add(localTabView);
+
+            var lblLocalTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() =>
+                {
+                    if (!string.IsNullOrEmpty(postcodeSearch.Text) || GeoEnabled)
+                    {
+                        if (ViewModel.ShowingLocal)
+                            return;
+                        else
+                        {
+                            listView.ItemsSource = null;
+                            ViewModel.IsBusy = true;
+                            Task.Run(() =>
+                        {
+                            ViewModel.GetUIList(UIType.Local);
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                stack.Children.RemoveAt(0);
+                                SwapView(1);
+                                stack.Children.Add(listView);
+                                lblNational.BackgroundColor = Color.White;
+                                lblLocal.BackgroundColor = Color.Red;
+                                lblNational.TextColor = Color.Red;
+                                lblLocal.TextColor = Color.White;
+                                ViewModel.IsBusy = false;
+                            });
+                        });
+                            ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
+                        }
+                    }
+                })
+            };
+
+            lblNational.GestureRecognizers.Add(lblNationalTap);
+            lblLocal.GestureRecognizers.Add(lblLocalTap);
+
+            masterGrid.Children.Add(lblNational, 0, 0);
+            masterGrid.Children.Add(lblLocal, 1, 0);
+            masterGrid.Children.Add(stack, 0, 1);
+            Grid.SetColumnSpan(stack, 3);
 
             innerStack.Children.Add(new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                Children = { tabviewer, moveStack }
+                Children = { masterGrid, moveStack }
             });
 
             Content = new StackLayout
@@ -541,6 +632,13 @@ namespace MyMindV3.Views
                     innerStack
                 }
             };
+        }
+
+        void SwapView(int view)
+        {
+            ViewModel.GetUIList(view == 0 ? UIType.National : UIType.Local);
+            listView.ItemsSource = null;
+            Device.BeginInvokeOnMainThread(() => listView.ItemsSource = ViewModel.UIList);
         }
     }
 }
