@@ -37,9 +37,8 @@ namespace MyMindV3.Views
                 ViewModel.GetNationalResources(ViewModel.GetIsClinician);
                 ViewModel.GetUIList(UIType.National);
                 ViewModel.IsBusy = false;
-                dataList = ViewModel.UIList;
-                Device.BeginInvokeOnMainThread(() => listView.ItemsSource = dataList);
-                FirstRun = false;
+                //dataList = ViewModel.UIList;
+                //Device.BeginInvokeOnMainThread(() => listView.ItemsSource = dataList);
             });
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
@@ -651,6 +650,14 @@ namespace MyMindV3.Views
                     innerStack
                 }
             };
+
+            if (FirstRun)
+            {
+                ViewModel.GetUIList(UIType.National);
+                dataList = ViewModel.UIList;
+                Device.BeginInvokeOnMainThread(() => listView.ItemsSource = dataList);
+                FirstRun = false;
+            }
         }
 
         void SwapView(int view)
