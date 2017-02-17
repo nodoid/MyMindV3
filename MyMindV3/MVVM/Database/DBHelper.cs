@@ -81,6 +81,8 @@ namespace MvvmFramework
         void CreateTables()
         {
             connection.CreateTable<SystemUser>();
+            connection.CreateTable<Resources>();
+            connection.CreateTable<ResourceCategory>();
         }
 
         string GetName(string name)
