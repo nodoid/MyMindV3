@@ -565,6 +565,7 @@ namespace MyMindV3.Views
                                     ViewModel.IsBusy = false;
                                 });
                             });
+
                             ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
                         }
                     }
