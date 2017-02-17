@@ -54,7 +54,7 @@ namespace MvvmFramework.Helpers
         {
             var file = await FileSystem.Current.LocalStorage.GetFileAsync(filename);
             //load stream to buffer  
-            using (var stream = await file.OpenAsync(FileAccess.ReadAndWrite))
+            using (var stream = await file?.OpenAsync(FileAccess.ReadAndWrite))
             {
                 var length = stream.Length;
                 var streamBuffer = new byte[length];
