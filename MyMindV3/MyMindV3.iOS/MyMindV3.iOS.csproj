@@ -436,29 +436,75 @@
     <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImages.launchimage\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Contents.json" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default%402x.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default-568h%402x.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default-Portrait.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\29.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\40.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\87.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\120 - iPhone.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\180 - iPhone 6 Plus.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-76.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-76%402x.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-Small%402x.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\167.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\640x960.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\640x1136.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\750x1334.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\1242x2208.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\768x1024.png" />
-    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\1536x2048.png" />
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default-568h%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default-Portrait.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\Default-Portrait%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\29.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\40.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\87.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\120 - iPhone.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\180 - iPhone 6 Plus.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-76.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-76%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\Icon-Small%402x.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\AppIcon.appiconset\167.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\640x960.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\640x1136.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\750x1334.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\1242x2208.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\768x1024.png">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\AppIcons.xcassets\LaunchImage.launchimage\1536x2048.png">
+      <InProject>false</InProject>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <ITunesArtwork Include="iTunesArtwork" />
