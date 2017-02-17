@@ -272,7 +272,38 @@ namespace MvvmFramework
             return rv;
         }
 
-        public static async Task<IEnumerable<Resources>> GetLocalNationalResources(string apiToUse, params string[] data)
+        public static async Task<ResourcesModel> GetLocalNationalResources(string apiToUse, params string[] data)
+        {
+            ResourcesModel rm = null;
+
+            var url = string.Format("{0}/api/MyMind/{1}", Constants.BaseTestUrl, apiToUse);
+
+
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    using (var message = new HttpRequestMessage(HttpMethod.Post, url))
+                    {
+                        for (var i = 0; i < data.Length; i += 2)
+                        {
+                            message.Headers.Add(data[i].ToLowerInvariant(), data[i + 1]);
+                        }
+                        var response = client.SendAsync(message).Result;
+                        var str = await response.Content.ReadAsStringAsync();
+                        rm = JsonConvert.DeserializeObject<ResourcesModel>(str);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Exception getting data - {0}::{1}", ex.Message, ex.InnerException);
+            }
+
+            return rm;
+        }
+
+        /*public static async Task<IEnumerable<Resources>> GetLocalNationalResources(string apiToUse, params string[] data)
         {
             IEnumerable<Resources> rm = null;
 
@@ -302,7 +333,7 @@ namespace MvvmFramework
             }
 
             return rm;
-        }
+        }*/
     }
 }
 
