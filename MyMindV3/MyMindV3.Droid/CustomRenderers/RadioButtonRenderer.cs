@@ -48,7 +48,6 @@ namespace MyMindV3.Droid
             {
                 var radButton = new RadioButton(Context);
                 _defaultTextColor = radButton.TextColors;
-
                 radButton.CheckedChange += radButton_CheckedChange;
                 SetNativeControl(radButton);
             }
@@ -56,7 +55,8 @@ namespace MyMindV3.Droid
             Control.Text = e.NewElement.Text;
             //Control.TextSize = 14;
             Control.Checked = e.NewElement.Checked;
-            UpdateTextColor();
+            Control.SetTextColor(Android.Graphics.Color.White);
+            //UpdateTextColor();
 
             if (e.NewElement.FontSize > 0)
             {
