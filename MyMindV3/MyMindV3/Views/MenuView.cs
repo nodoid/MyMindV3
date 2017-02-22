@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using MyMindV3.Languages;
 using System;
 using System.Linq;
+using Xamarin.Forms.PlatformConfiguration;
 
 namespace MyMindV3.Views
 {
@@ -35,7 +36,7 @@ namespace MyMindV3.Views
             return char.ToUpper(s[0]) + s.Substring(1);
         }
 
-        StackLayout GenerateUI(List<string> filenames)
+        StackLayout GenerateUI()
         {
             var lblResource = new Label
             {
@@ -63,17 +64,20 @@ namespace MyMindV3.Views
 
             var catStack = new StackLayout
             {
-                Orientation = StackOrientation.Vertical
+                Orientation = StackOrientation.Vertical,
             };
             if (Categories.Count != 0)
             {
-                var catScroll = new ScrollView { };
+                var catScroll = new ScrollView
+                {
+                    HeightRequest = App.ScreenSize.Height * .5
+                };
                 var catlist = new BindableRadioGroup
                 {
                     ItemsSource = Categories,
-                    TranslationY = -8,
                     SelectedIndex = SetCategory
                 };
+                Device.OnPlatform(Android: (() => catlist.TranslationY = -8));
                 catlist.CheckedChanged += (sender, e) =>
                 {
                     var button = sender as CustomRadioButton;
@@ -103,7 +107,6 @@ namespace MyMindV3.Views
                         FontAttributes = FontAttributes.Bold,
                         HorizontalTextAlignment = TextAlignment.Center
                     },
-                    catStack
                 }
             };
 
@@ -119,28 +122,32 @@ namespace MyMindV3.Views
                 Spacing = 0,
                 Padding = new Thickness(0),
                 StyleId = "menu",
-                Children = { topStack }
+                Children =
+                {
+                    topStack,
+                    catStack
+                }
             };
 
             return masterStack;
         }
 
-        public MenuView(List<string> filenames, int selected, int cat, List<string> cats)
+        public MenuView(int selected, int cat, List<string> cats)
         {
             SetSelected = selected;
             SetCategory = cat;
             Categories = cats;
-            Content = GenerateUI(filenames);
+            Content = GenerateUI();
         }
 
-        public void UpdateMenu(List<string> filenames, int selected, int cat, List<string> cats)
+        public void UpdateMenu(int selected, int cat, List<string> cats)
         {
             SetSelected = selected;
             SetCategory = cat;
             Categories = cats;
             if (Content != null)
                 Content = null;
-            Content = GenerateUI(filenames);
+            Content = GenerateUI();
         }
 
         StackLayout MenuListView(int i)
