@@ -155,6 +155,23 @@ namespace MyMindV3.Views
                 }
             };
 
+            var brokenLink = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                Children =
+                {
+                    new Image {Source= "badlink", HeightRequest=16,WidthRequest=16},
+                    new Label {Text = Langs.MyResources_BrokenLink, TextColor=Color.White, FontSize=8}
+                }
+            };
+            brokenLink.SetBinding(StackLayout.ClassIdProperty, new Binding("Id"));
+            var brokenLinkTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() => MessagingCenter.Send(this, "brokenlink", brokenLink.ClassId))
+            };
+            brokenLink.GestureRecognizers.Add(brokenLinkTap);
+
             var theStack = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
@@ -205,7 +222,7 @@ namespace MyMindV3.Views
                     new StackLayout
                     {
                         WidthRequest = App.ScreenSize.Width * .63,
-                        MinimumWidthRequest = App.ScreenSize.Width * .60,
+                        MinimumWidthRequest = App.ScreenSize.Width * .63,
                         Orientation = StackOrientation.Vertical,
                         Children =
                         {
@@ -228,11 +245,12 @@ namespace MyMindV3.Views
                     },
                     new StackLayout
                     {
-                        Orientation = StackOrientation.Horizontal,
+                        Orientation = StackOrientation.Vertical,
                         WidthRequest = App.ScreenSize.Width * .25,
                         MinimumWidthRequest = App.ScreenSize.Width *.25,
                         Children =
                         {
+                            brokenLink,
                             new StackLayout
                             {
                                 Orientation = StackOrientation.Vertical,
@@ -242,7 +260,7 @@ namespace MyMindV3.Views
                                     new Label {Text = "Resource format", FontSize = 13, TextColor = Color.White},
                                     resourceStack
                                 }
-                            }
+                            },
                         }
                     }
                 }
