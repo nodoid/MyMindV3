@@ -129,8 +129,9 @@ namespace MyMindV3.iOS
         /// </summary>
         private void UpdateTextColor()
         {
-            Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(_defaultTextColor), UIControlState.Normal);
-            Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(_defaultTextColor), UIControlState.Selected);
+            Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(UIColor.White), UIControlState.Normal);
+            Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(UIColor.White), UIControlState.Selected);
+            Control.Font = UIFont.SystemFontOfSize(12);
         }
 
         /// <summary>
