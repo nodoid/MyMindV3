@@ -25,6 +25,11 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel.SystemUser;
+            CreateUI();
+        }
+
+        void CreateUI()
+        {
             ViewModel.IsConnected = App.Self.IsConnected;
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
