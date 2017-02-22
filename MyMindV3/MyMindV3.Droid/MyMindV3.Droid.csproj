@@ -26,7 +26,6 @@
     <JavaOptions />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <EnableProguard>True</EnableProguard>
     <AndroidTlsProvider>
     </AndroidTlsProvider>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
@@ -46,12 +45,7 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-    <AotAssemblies>False</AotAssemblies>
-    <EnableLLVM>False</EnableLLVM>
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-    <EnableProguard>False</EnableProguard>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -65,7 +59,6 @@
     <Debugger>Xamarin</Debugger>
     <DebugSymbols>False</DebugSymbols>
     <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
-    <EnableProguard>false</EnableProguard>
     <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
