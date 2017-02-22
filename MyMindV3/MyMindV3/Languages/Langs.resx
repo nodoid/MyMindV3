@@ -277,7 +277,7 @@
     <value>My Resources</value>
   </data>
 	<data name="MyMind_Help" xml:space="preserve">
-    <value>Help</value>
+    <value>Technical Help</value>
   </data>
 	<data name="MyMind_Clinician" xml:space="preserve">
     <value>My Clinician</value>
@@ -431,6 +431,9 @@
   </data>
 	<data name="MyResources_Sorting" xml:space="preserve">
     <value>Sorting data</value>
+  </data>
+	<data name="MyResources_BrokenLink" xml:space="preserve">
+    <value>Broken link?</value>
   </data>
 	<data name="SignUp_Title" xml:space="preserve">
     <value>Sign Up</value>

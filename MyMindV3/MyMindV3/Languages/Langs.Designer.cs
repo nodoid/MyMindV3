@@ -677,6 +677,12 @@ namespace MyMindV3.Languages {
             }
         }
         
+        public static string MyResources_BrokenLink {
+            get {
+                return ResourceManager.GetString("MyResources_BrokenLink", resourceCulture);
+            }
+        }
+        
         public static string SignUp_Title {
             get {
                 return ResourceManager.GetString("SignUp_Title", resourceCulture);
