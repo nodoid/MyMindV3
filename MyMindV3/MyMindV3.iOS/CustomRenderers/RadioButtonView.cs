@@ -77,8 +77,8 @@ namespace MyMindV3.iOS
             ApplyStyle();
 
             // set default color, because type is not UIButtonType.System 
-            SetTitleColor(UIColor.DarkTextColor, UIControlState.Normal);
-            SetTitleColor(UIColor.DarkTextColor, UIControlState.Selected);
+            SetTitleColor(UIColor.White, UIControlState.Normal);
+            SetTitleColor(UIColor.White, UIControlState.Selected);
             TouchUpInside += (sender, args) => Selected = !Selected;
         }
 
