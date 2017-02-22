@@ -229,10 +229,10 @@ namespace MvvmFramework.ViewModel
 
         public bool GetIsClinician
         {
-            get { return SystemUser.IsAuthenticated == 3; }
+            get { return SystemUser?.IsAuthenticated == 3; }
         }
 
-        public void SendTrackingInformation(ActionCodes actionCode, int resId = 0, string info = "", string clientId = "")
+        public void SendTrackingInformation(ActionCodes actionCode, int resId = 0, string info = "null", string clientId = "null")
         {
             var paramList = new List<string>
             {
@@ -251,7 +251,7 @@ namespace MvvmFramework.ViewModel
                 "ClientGUID",
                 clientId
             };
-            Task.Run(async()=>await Send.SendData("LogPageAccess", paramList.ToArray()));
+            Task.Run(async () => await Send.SendData("LogPageAccess", paramList.ToArray()));
         }
 
         public void SendBrokenLink(int resId, ActionCodes code)
