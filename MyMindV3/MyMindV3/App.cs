@@ -11,10 +11,10 @@ using Plugin.Geolocator.Abstractions;
 using Plugin.Geolocator;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
+using MvvmFramework.Enums;
 #if DEBUG
 using System.Diagnostics;
-using MvvmFramework.Enums;
+
 #endif
 
 namespace MyMindV3
@@ -136,8 +136,10 @@ namespace MyMindV3
 
         protected override void OnSleep()
         {
-            var paramList = new List<string>
+            if (Locator.Login.ClinicianUser != null && Locator.Login.SystemUser != null)
             {
+                var paramList = new List<string>
+                {
                 "UserGUID",
                 Locator.Login.GetIsClinician ? Locator.Login.ClinicianUser.ClinicianGUID : Locator.Login.SystemUser.Guid,
                 "AuthToken",
@@ -152,8 +154,9 @@ namespace MyMindV3
                 "",
                 "ClientGUID",
                 ""
-            };
-            Task.Run(async () => await Send.SendData("LogPageAccess", paramList.ToArray()));
+                };
+                Task.Run(async () => await Send.SendData("LogPageAccess", paramList.ToArray()));
+            }
         }
 
         protected override void OnResume()
