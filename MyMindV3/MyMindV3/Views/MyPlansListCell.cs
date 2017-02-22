@@ -38,8 +38,8 @@ namespace MyMindV3
                         imgFiletype.Source = "png";
                     if (lc.Contains("pdf"))
                         imgFiletype.Source = "pdf";
-                    if (lc.Contains("doc"))
-                        imgFiletype.Source = "doc";
+                    if (lc.Contains("doc") || lc.Contains("word"))
+                        imgFiletype.Source = "word";
 
                     var dt = ts.FileUploadDateTime.Split('T');
                     var t = dt[1].Split('.');
