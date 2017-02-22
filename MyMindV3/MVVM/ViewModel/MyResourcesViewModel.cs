@@ -8,6 +8,7 @@ using MvvmFramework.Enums;
 #if DEBUG
 using System.Diagnostics;
 #endif
+using System.Collections.ObjectModel;
 
 namespace MvvmFramework.ViewModel
 {
@@ -289,7 +290,7 @@ namespace MvvmFramework.ViewModel
             }
         }
 
-        public List<string> GetResourceFilenames(List<string> categories)
+        /*public List<string> GetResourceFilenames(List<string> categories)
         {
             if (categories == null)
                 return new List<string>();
@@ -337,7 +338,7 @@ namespace MvvmFramework.ViewModel
             }
 
             return names;
-        }
+        }*/
 
         public string GetResourceFilename(string category)
         {
@@ -376,8 +377,8 @@ namespace MvvmFramework.ViewModel
             return name;
         }
 
-        List<ListviewModel> uiList;
-        public List<ListviewModel> UIList
+        ObservableCollection<ListviewModel> uiList;
+        public ObservableCollection<ListviewModel> UIList
         {
             get { return uiList; }
             set { Set(() => UIList, ref uiList, value, true); }
@@ -389,21 +390,21 @@ namespace MvvmFramework.ViewModel
             var rep = list.IndexOf(list.FirstOrDefault(t => t.Id == lvm.Id));
             list[rep] = lvm;
             UIList = list;
+            RaisePropertyChanged("HasW");
         }
 
         public void GetUIList(UIType ui = UIType.Global, Sorting sort = Sorting.AZ)
         {
-            var dataList = new List<ListviewModel>();
+            //var dataList = new List<ListviewModel>();
+            var dataList = new ObservableCollection<ListviewModel>();
             if (UIList != null)
                 UIList.Clear();
             else
-                UIList = new List<ListviewModel>();
-            List<Resources> res = new List<Resources>();
+                UIList = new ObservableCollection<ListviewModel>();
+            //UIList = new List<ListviewModel>();
+            var res = new List<Resources>();
 
-            if (ShowingLocal)
-            {
-                res = ui == UIType.Global ? ListLocalResources?.ToList() : (ui == UIType.National ? ListNationalResources?.ToList() : ListLocalResources?.ToList());
-            }
+            res = ui == UIType.Global ? ListLocalResources?.ToList() : (ui == UIType.National ? ListNationalResources?.ToList() : ListLocalResources?.ToList());
 
             if (SearchCategory == 0)
             {
@@ -483,7 +484,7 @@ namespace MvvmFramework.ViewModel
         {
             var ratingStars = new List<string>() { "emptystar", "emptystar", "emptystar", "emptystar", "emptystar" };
             SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Rated_Resource : (SystemUser.IsAuthenticated == 1 ? ActionCodes.Member_Rated_Resource : ActionCodes.User_Rated_Resource), id, rating.ToString());
-            RaisePropertyChanged("StarRatings");
+
             if (rating == 0)
                 return ratingStars;
 
@@ -573,8 +574,7 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId).ResourceCategorysPiped.Split('|').ToList() :
-                                                        ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId).ResourceCategorysPiped.Split('|').ToList();
+                return GetCategoryList;
             }
         }
 
