@@ -13,15 +13,13 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
-            ViewModel.IsConnected = App.Self.IsConnected;
-            //NavigationPage.SetTitleIcon(this, "iconlogout");
-
-            /* add tapgesture recognition to named stacklayout */
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (sender, e) =>
             {
                 UpdateSessionTimeOut();
             };
+
+            NavigationPage.SetHasBackButton(this, false);
             StackLayoutCover.GestureRecognizers.Add(tapGestureRecognizer);
 
             ToolbarItems.Add(new ToolbarItem(Langs.MyMind_Logout, "iconlogout", () =>
