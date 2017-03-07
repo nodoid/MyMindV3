@@ -209,6 +209,18 @@ namespace MyMindV3.Languages {
             }
         }
         
+        public static string RegUser_Completed {
+            get {
+                return ResourceManager.GetString("RegUser_Completed", resourceCulture);
+            }
+        }
+        
+        public static string RegUser_Completed_Message {
+            get {
+                return ResourceManager.GetString("RegUser_Completed_Message", resourceCulture);
+            }
+        }
+        
         public static string RegUser_Auth {
             get {
                 return ResourceManager.GetString("RegUser_Auth", resourceCulture);

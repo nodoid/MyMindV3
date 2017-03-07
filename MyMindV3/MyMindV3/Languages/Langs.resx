@@ -198,6 +198,12 @@
 	<data name="RegUser_Phone" xml:space="preserve">
     <value>Phone:</value>
   </data>
+	<data name="RegUser_Completed" xml:space="preserve">
+    <value>Registration Completed</value>
+  </data>
+	<data name="RegUser_Completed_Message" xml:space="preserve">
+    <value>Your registration is nearly complete. Please check your email and reply to finish the registration process.</value>
+  </data>
 	<data name="RegUser_Auth" xml:space="preserve">
     <value>Is Authenticated:</value>
   </data>
