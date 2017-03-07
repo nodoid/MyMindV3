@@ -7,6 +7,10 @@ using RestSharp.Portable.HttpClient;
 using RestSharp.Portable;
 using MvvmFramework.Helpers;
 using MvvmFramework.Models;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Http;
+using RestSharp.Portable.Deserializers;
 
 #if DEBUG
 using System.Diagnostics;
@@ -18,6 +22,26 @@ namespace MvvmFramework
     {
         static ManualResetEvent allDone = new ManualResetEvent(false);
         static bool fromFiles = false;
+        static CookieContainer cookieContainer = new CookieContainer();
+
+        public static async Task<List<T>> GetPostListObject<T>(string apiToUse, params string[] data)
+        {
+            var list = new List<T>();
+
+            var url = string.Format("{0}{1}", Constants.BaseTestUrl, apiToUse);
+            var client = new RestClient(url);
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("cache-control", "no-cache");
+            for (var i = 0; i < data.Length; i += 2)
+            {
+                request.AddHeader(data[i].ToLowerInvariant(), data[i + 1]);
+            }
+            var response = await client.Execute(request);
+            if (!string.IsNullOrEmpty(response.Content))
+                list = JsonConvert.DeserializeObject<List<T>>(response.Content);
+
+            return list;
+        }
 
         public static async Task<string> SendData(string apiToUse, params string[] data)
         {
@@ -79,11 +103,11 @@ namespace MvvmFramework
             }
         }
 
-        public static async Task UploadPicture(string filename, string guid, bool fromfile = false)
+        public static async Task UploadPicture(string filename, string guid, string authtoken, bool fromfile = false)
         {
             fromFiles = fromfile;
             var stream = new FileIO().LoadFile(filename).Result;
-            var url = string.Format("{0}/api/MyMind/UploadProfilePicture/{1}", Constants.BaseTestUrl, guid);
+            var url = string.Format("{0}/api/MyMind/UploadProfilePicture/{1}/{2}", Constants.BaseTestUrl, guid, authtoken);
             var filesize = stream.Length;
             try
             {
