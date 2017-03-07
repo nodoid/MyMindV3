@@ -21,7 +21,7 @@ namespace MyMindV3.iOS
             filepath = fp;
         }
 
-        public override Foundation.NSUrl ItemUrl
+        public override NSUrl ItemUrl
         {
             get
             {

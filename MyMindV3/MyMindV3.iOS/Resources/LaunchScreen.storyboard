@@ -29,13 +29,14 @@
                             </imageView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="45" firstAttribute="leading" secondItem="yd7-JS-zBw" secondAttribute="leading" id="184-Ub-Nxk"/>
-                            <constraint firstAttribute="trailing" secondItem="45" secondAttribute="trailing" id="9fQ-dZ-XaP"/>
-                            <constraint firstItem="45" firstAttribute="bottom" secondItem="9ZL-r4-8FZ" secondAttribute="top" id="eLq-we-syB"/>
-                            <constraint firstItem="45" firstAttribute="top" secondItem="Y8P-hJ-Z43" secondAttribute="bottom" id="fiW-3J-har"/>
+                            <constraint firstAttribute="trailing" secondItem="45" secondAttribute="trailing" id="8Wh-Au-Dro"/>
+                            <constraint firstItem="45" firstAttribute="leading" secondItem="yd7-JS-zBw" secondAttribute="leading" id="nAE-qi-MGC"/>
+                            <constraint firstItem="45" firstAttribute="top" secondItem="Y8P-hJ-Z43" secondAttribute="bottom" id="p0p-x2-jcq"/>
+                            <constraint firstItem="45" firstAttribute="bottom" secondItem="9ZL-r4-8FZ" secondAttribute="top" id="tj8-c9-n0h"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAI-xm-WK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
