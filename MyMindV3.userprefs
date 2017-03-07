@@ -1,45 +1,56 @@
 ﻿<Properties StartupConfiguration="{15311C07-7E02-4E74-8581-813F3EF27CCD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3/Views/MyResourceView.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3/Views/LoginView.xaml.cs">
     <Files>
-      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="211" Column="47" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="555" Column="21" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyJourneyView.xaml.cs" Line="172" Column="10" />
-      <File FileName="MyMindV3/MyMindV3/Views/MenuView.cs" Line="79" Column="3" />
-      <File FileName="MyMindV3/MyMindV3/Views/ListViewCell.cs" Line="174" Column="13" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyPatientViewModel.cs" Line="17" Column="9" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyPatient.xaml.cs" Line="31" Column="104" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyProfileViewModel.cs" Line="40" Column="75" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" Line="9" Column="54" />
-      <File FileName="MyMindV3/MVVM/Enums/ActionCodes.cs" Line="46" Column="19" />
-      <File FileName="MyMindV3/MyMindV3/App.cs" Line="157" Column="19" />
-      <File FileName="MyMindV3/MVVM/ViewModel/BaseViewModel.cs" Line="232" Column="37" />
-      <File FileName="MyMindV3/MyMindV3.Droid/CustomRenderers/RadioButtonRenderer.cs" Line="58" Column="64" />
-      <File FileName="MyMindV3/MyMindV3.iOS/CustomRenderers/RadioButtonView.cs" Line="82" Column="69" />
-      <File FileName="MyMindV3/MyMindV3.iOS/CustomRenderers/RadioButtonRenderer.cs" Line="134" Column="56" />
-      <File FileName="MyMindV3/MyMindV3.iOS/Info.plist" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyPlansListCell.cs" Line="44" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyPlansView.xaml.cs" Line="90" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyPlansView.xaml" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyFileView.xaml" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyFileView.xaml.cs" Line="13" Column="1" />
-      <File FileName="MyMindV3/MVVM/Webservices/GetData.cs" Line="134" Column="53" />
-      <File FileName="MyMindV3/MVVM/Helpers/FileIO.cs" Line="42" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Languages/Langs.resx" Line="597" Column="8" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" Line="32" Column="10" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3.iOS/Main.cs" Line="20" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyPlansView.xaml.cs" Line="72" Column="16" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyFileView.xaml.cs" Line="23" Column="1" />
+      <File FileName="MyMindV3/MVVM/Webservices/GetData.cs" Line="15" Column="72" />
+      <File FileName="MyMindV3/MVVM/Helpers/FileIO.cs" Line="47" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/BaseViewModel.cs" Line="60" Column="13" />
+      <File FileName="MyMindV3/MyMindV3/Views/MenuView.cs" Line="74" Column="63" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyLimitedMindView.xaml.cs" Line="17" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyPatient.xaml.cs" Line="21" Column="40" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" Line="142" Column="64" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyWebview.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyLimitedMindViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/Models/SystemUserLogin.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/SignUpViewModel.cs" Line="76" Column="82" />
+      <File FileName="MyMindV3/MVVM/Models/SystemUser.cs" Line="402" Column="10" />
+      <File FileName="MyMindV3/MVVM/Webservices/UsersWebservice.cs" Line="103" Column="86" />
+      <File FileName="MyMindV3/MyMindV3/Languages/Langs.resx" Line="183" Column="52" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyPlansViewModel.cs" Line="36" Column="1" />
+      <File FileName="MyMindV3/MVVM/Webservices/SendData.cs" Line="105" Column="9" />
+      <File FileName="MyMindV3/MyMindV3/Views/SignUpView.xaml.cs" Line="11" Column="9" />
+      <File FileName="MyMindV3/MyMindV3/Views/LoginView.xaml.cs" Line="32" Column="61" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MyMindV3" expanded="True">
+            <Node name="MVVM" expanded="True">
+              <Node name="ViewModel" expanded="True" />
+              <Node name="Webservices" expanded="True" />
+            </Node>
+            <Node name="MyMindV3" expanded="True">
+              <Node name="Languages" expanded="True" />
+              <Node name="Services" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="LoginView.xaml.cs" selected="True" />
+              </Node>
+            </Node>
+            <Node name="MyMindV3.iOS" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.192.168.68.101:5555" />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.192.168.66.101:5555" />
   <MonoDevelop.Ide.ItemProperties.MyMindV3 HideGettingStarted="True" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyPlansView.xaml.cs" line="90" column="105" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3.iOS/Main.cs" line="20" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.MyMindV3.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E10AE74-B406-494E-9F90-47350B8C5B54" />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
   <MultiItemStartupConfigurations />
 </Properties>
