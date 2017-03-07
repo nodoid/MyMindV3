@@ -40,6 +40,7 @@ namespace MvvmFramework.ViewModel
         public string Password { get; set; }
         public string PasswordRepeated { get; set; }
         public string PinCode { get; set; }
+        public string PostCode { get; set; }
 
         RelayCommand createSubmitCommand;
         public RelayCommand CreateSubmitCommand
@@ -61,85 +62,18 @@ namespace MvvmFramework.ViewModel
                                     Phone = Phone,
                                     Password = Password,
                                     PinCode = PinCode,
+                                    PostCode = PostCode
                                 };
-                                
-                                var resu = new UsersWebservice().RegisterWeb(systemUser);
 
+                                var resu = new UsersWebservice().RegisterWeb(systemUser);
                                 if (resu != null)
                                 {
-                                    SystemUser = new SystemUser
-                                    {
-                                        ContactNumber = resu.ContactNumber,
-                                        DateOfBirth = resu.DateOfBirth,
-                                        Dislikes = resu.Dislikes,
-                                        Goals = resu.Goals,
-                                        Guid = resu.UserGUID,
-                                        IsAuthenticated = resu.IsAuthenticated,
-                                        IsLogged = true,
-                                        Likes = resu.Likes,
-                                        Name = resu.Name,
-                                        Phone = resu.ContactNumber,
-                                        PinCode = resu.Pincode,
-                                        PreferredName = resu.Name,
-                                        ReferralReason = resu.ReferralReason,
-                                        RIOID = resu.RIOID,
-                                        UserImage = string.Empty,
-                                        ICANN = resu.RIOID,
-                                        APIToken = resu.APIToken,
-                                        PictureFilePath = resu.PictureFilePath,
-                                        APITokenExpiry = resu.APITokenExpiry
-                                    };
-
-                                    if (resu.AssignedClinician != null)
-                                    {
-                                        ClinicianUser = new ClinicianUser
-                                        {
-                                            ClinicianGUID = resu.AssignedClinician.ClinicianGUID,
-                                            Email = resu.AssignedClinician.Email,
-                                            FunFact = resu.AssignedClinician.FunFact,
-                                            Guid = resu.AssignedClinician.ClinicianGUID,
-                                            Name = resu.AssignedClinician.Name,
-                                            Phone = resu.AssignedClinician.ContactNumber,
-                                            Role = resu.AssignedClinician.WhatIDo,
-                                            HCPID = resu.AssignedClinician.HCPID,
-                                            UserImage = string.Empty,
-                                            APIToken = resu.APIToken,
-                                            PictureFilePath = !string.IsNullOrEmpty(resu.PictureFilePath) ? resu.PictureFilePath : string.Empty
-                                        };
-                                        ClinicianUser.APIToken = resu.APIToken;
-                                    }
-                                    else
-                                    {
-                                        ClinicianUser = new ClinicianUser
-                                        {
-                                            HCPID = resu.HCPID,
-                                            Email = resu.Email,
-                                            FunFact = resu.FunFact,
-                                            ClinicianGUID = resu.ClinicianGUID,
-                                            Name = resu.Name,
-                                            Phone = resu.ContactNumber,
-                                            Role = resu.WhatIDo,
-                                            UserImage = string.Empty,
-                                            APIToken = resu.APIToken,
-                                            APITokenExpiry = resu.APITokenExpiry,
-                                        };
-                                    }
-                                }
-
-                                /* if the client is a member only - just show limited version */
-                                if (SystemUser.IsAuthenticated == 1)
-                                {
-                                    navService.NavigateTo(ViewModelLocator.MyLimitedMindKey);
-                                }
-                                /* else display full app */
-                                else if (SystemUser.IsAuthenticated > 1)
-                                {
-                                    navService.NavigateTo(ViewModelLocator.MyMindKey);
+                                    await dialogService.ShowMessage(GetMessage("RegUser_Completed_Message"), GetMessage("RegUser_Completed"));
                                 }
                             }
                             else
                             {
-                                await dialogService.ShowMessage(GetErrorTitle("Gen_Error"), GetErrorMessage("Registration_ErrorMessage"));
+                                await dialogService.ShowMessage(GetErrorMessage("Registration_ErrorMessage"), GetErrorTitle("Gen_Error"));
                                 navService.GoBack();
                             }
                         })
@@ -163,7 +97,6 @@ namespace MvvmFramework.ViewModel
                     }
                     else
                     {
-                        /* name and password length greater then 4 - check if passwords match */
                         if (Password != PasswordRepeated)
                         {
                             rv = false;
