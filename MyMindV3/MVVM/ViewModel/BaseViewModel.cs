@@ -57,7 +57,7 @@ namespace MvvmFramework.ViewModel
 
         public string GetErrorMessage(string key)
         {
-            if (Messages == null)
+            if (ErrorMessages == null)
                 return string.Empty;
 
             var retval = string.Empty;
@@ -72,7 +72,7 @@ namespace MvvmFramework.ViewModel
 
         public string GetMessage(string key)
         {
-            if (ErrorMessages == null)
+            if (Messages == null)
                 return string.Empty;
 
             var retval = string.Empty;
