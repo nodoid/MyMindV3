@@ -40,6 +40,8 @@
 							<RowDefinition Height="70" />
 							<RowDefinition Height="70" />
 							<RowDefinition Height="70" />
+							<RowDefinition Height="70" />
+							<RowDefinition Height="70" />
 							<RowDefinition Height="Auto" />
 							<RowDefinition Height="20" />
 							<RowDefinition Height="50" />
@@ -104,10 +106,17 @@
 							</Frame>
 						</StackLayout>
 						<local:CustomImage Grid.Row="7" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconphone.png" Aspect="AspectFit" WidthRequest="25" />
-						<StackLayout Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Padding="5, 0">
+						<StackLayout Grid.Row="8" Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
+							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Postcode}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
+							<Frame Padding="0,0">
+								<Entry x:Name="RegPostcode" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyResources_Postcode}" Keyboard="Default" PlaceholderColor="#939393" FontSize="15" Text="{Binding PostCode}" TextColor="#707070" />
+							</Frame>
+						</StackLayout>
+						<local:CustomImage Grid.Row="9" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" ImageSource="iconphone.png" Aspect="AspectFit" WidthRequest="25" />
+						<StackLayout Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Padding="5, 0">
 							<Label Text="{Binding Result}" FontSize="15" FontAttributes="None" TextColor="#ff0000" />
 						</StackLayout>
-						<StackLayout Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
+						<StackLayout Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
 							<Button Text="Create" FontSize="15" TextColor="White" BackgroundColor="#3bc5ee" HeightRequest="50" Command="{Binding CreateSubmitCommand}" IsEnabled="{Binding HasValidInput}" />
 						</StackLayout>
 					</Grid>
