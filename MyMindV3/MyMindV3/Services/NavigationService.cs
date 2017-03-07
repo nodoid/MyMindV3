@@ -119,6 +119,8 @@ namespace MyMindV3
         public void Initialize(NavigationPage navigation)
         {
             _navigation = navigation;
+            navigation.BarBackgroundColor = Color.FromHex("022330");
+            navigation.BarTextColor = Color.White;
         }
     }
 }
