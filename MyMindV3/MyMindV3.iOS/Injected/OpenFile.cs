@@ -24,11 +24,10 @@ namespace MyMindV3.iOS
                     imgData.Save(fileName, false, out err);
                 }
 
-                Xamarin.Forms.Device.BeginInvokeOnMainThread(() =>
+                Device.BeginInvokeOnMainThread(() =>
                 {
-
                     var firstController = UIApplication.SharedApplication.KeyWindow.RootViewController.ChildViewControllers.First().ChildViewControllers.Last().ChildViewControllers.First();
-                    var navcontroller = firstController as UINavigationController;
+					var navcontroller = firstController as UIViewController;
                     var uidic = UIDocumentInteractionController.FromUrl(new NSUrl(fileName, true));
                     uidic.Delegate = new DocInteractionC(navcontroller);
                     uidic.PresentPreview(true);
@@ -43,9 +42,9 @@ namespace MyMindV3.iOS
 
         public class DocInteractionC : UIDocumentInteractionControllerDelegate
         {
-            readonly UINavigationController navigationController;
+			readonly UIViewController navigationController;
 
-            public DocInteractionC(UINavigationController controller)
+			public DocInteractionC(UIViewController controller)
             {
                 navigationController = controller;
             }
