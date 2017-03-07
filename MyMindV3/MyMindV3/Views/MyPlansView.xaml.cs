@@ -6,6 +6,7 @@ using MvvmFramework.Models;
 using MvvmFramework.ViewModel;
 using MvvmFramework;
 using MyMindV3.Languages;
+using System.Threading.Tasks;
 
 namespace MyMindV3.Views
 {
@@ -33,11 +34,10 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
-            ViewModel.IsConnected = App.Self.IsConnected;
-            SetValues();
+            SetValues().ConfigureAwait(true);
         }
 
-        private void SetValues()
+        async Task SetValues()
         {
             var guidToUse = string.Empty;
             if (ViewModel.SystemUser.IsAuthenticated != 3)
@@ -46,24 +46,30 @@ namespace MyMindV3.Views
                 guidToUse = ViewModel.ClinicianUser.ClinicianGUID;
 
             ViewModel.GuidToUse = guidToUse;
-            resources = ViewModel.MyPlan;
-            PlanList.ItemsSource = resources;
-            PlanList.BackgroundColor = Color.FromHex("022330");
-            PlanList.ItemTemplate = new DataTemplate(typeof(MyPlansListCell));
-            PlanList.ItemSelected += Handle_Clicked;
-            PlanList.IsPullToRefreshEnabled = true;
-            PlanList.Refreshing += (object sender, EventArgs e) =>
+            await ViewModel.GetClientPlans().ContinueWith((t) =>
             {
-                PlanList.IsRefreshing = true;
-                ViewModel.GuidToUse = guidToUse;
-                resources = ViewModel.MyPlan;
-                Device.BeginInvokeOnMainThread(() =>
+                if (t.IsCompleted)
                 {
-                    PlanList.ItemsSource = null;
+                    resources = ViewModel.MyPlan;
                     PlanList.ItemsSource = resources;
-                    PlanList.IsRefreshing = false;
-                });
-            };
+                    PlanList.BackgroundColor = Color.FromHex("022330");
+                    PlanList.ItemTemplate = new DataTemplate(typeof(MyPlansListCell));
+                    PlanList.ItemSelected += Handle_Clicked;
+                    PlanList.IsPullToRefreshEnabled = true;
+                    PlanList.Refreshing += (object sender, EventArgs e) =>
+                    {
+                        PlanList.IsRefreshing = true;
+                        ViewModel.GuidToUse = guidToUse;
+                        resources = ViewModel.MyPlan;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            PlanList.ItemsSource = null;
+                            PlanList.ItemsSource = resources;
+                            PlanList.IsRefreshing = false;
+                        });
+                    };
+                }
+            });
         }
 
 
@@ -87,7 +93,8 @@ namespace MyMindV3.Views
                             ViewModel.Filename = id.FileName;
                             var filetype = file.Split('.').Last().ToLower();
                             if (filetype == "jpg" || filetype == "jpeg" || filetype == "png")
-                                Device.BeginInvokeOnMainThread(() => Navigation.PushModalAsync(new MyFileView(path)));
+                                //Device.BeginInvokeOnMainThread(() => Navigation.PushModalAsync(new MyFileView(path)));
+                                Device.BeginInvokeOnMainThread(() => Navigation.PushAsync(new MyFileView(file)));
                             else
                             {
                                 Device.OnPlatform(iOS: () => DependencyService.Get<IFile>().OpenFileExternally(path),
@@ -120,7 +127,8 @@ namespace MyMindV3.Views
                     ViewModel.Filename = id.FileName;
                     var filetype = file.Split('.').Last().ToLower();
                     if (filetype == "jpg" || filetype == "jpeg" || filetype == "png")
-                        Device.BeginInvokeOnMainThread(() => Navigation.PushModalAsync(new MyFileView(path)));
+                        //Device.BeginInvokeOnMainThread(() => Navigation.PushModalAsync(new MyFileView(path)));
+                        Device.BeginInvokeOnMainThread(() => Navigation.PushAsync(new MyFileView(file)));
                     else
                     {
                         Device.OnPlatform(iOS: () => DependencyService.Get<IFile>().OpenFileExternally(path),
