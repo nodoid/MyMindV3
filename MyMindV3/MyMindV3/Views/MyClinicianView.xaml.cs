@@ -25,7 +25,6 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel.ClinicianUser;
-            ViewModel.IsConnected = App.Self.IsConnected;
             GetImage();
             GetDetails().ConfigureAwait(true);
             if (ViewModel.SystemUser.IsAuthenticated == 3)
@@ -144,8 +143,7 @@ namespace MyMindV3.Views
                                         DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
                                         ViewModel.SystemUser.UserImage = file.Path;
                                         ViewModel.UpdateSystemUser();
-                                        //Send.HttpPost(file, _rootVM.SystemUser.Guid);
-                                        await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid);
+                                        await Send.UploadPicture(file.Path, ViewModel.ClinicianUser.Guid, ViewModel.SystemUser.APIToken);
                                         file.Dispose();
                                     }
                                 }));
