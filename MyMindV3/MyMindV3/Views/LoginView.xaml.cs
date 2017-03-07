@@ -28,8 +28,10 @@ namespace MyMindV3.Views
         public LoginView()
         {
             InitializeComponent();
+
+            NavigationPage.SetHasNavigationBar(this, false);
+
             BindingContext = ViewModel;
-            ViewModel.IsConnected = App.Self.IsConnected;
             InitBGTimer().ConfigureAwait(true);
 
             var errorMessage = new Dictionary<string, string>
