@@ -99,8 +99,18 @@ namespace MyMindV3.iOS
         /// </summary>
         void ApplyStyle()
         {
-            SetImage(UIImage.FromBundle("Images/checked.png"), UIControlState.Selected);
-            SetImage(UIImage.FromBundle("Images/unchecked.png"), UIControlState.Normal);
+            var testCheckedImage = UIImage.FromBundle("Images/checked.png");
+            var testSet = new UIImageView(testCheckedImage)
+            {
+                Frame = new CGRect(0, 40, testCheckedImage.Size.Width, testCheckedImage.Size.Height * testCheckedImage.CurrentScale)
+            };
+            var testUnheckedImage = UIImage.FromBundle("Images/unchecked.png");
+            var testUnset = new UIImageView(testUnheckedImage)
+            {
+                Frame = new CGRect(0, 40, testUnheckedImage.Size.Width, testUnheckedImage.Size.Height * testUnheckedImage.CurrentScale)
+            };
+            SetImage(testSet.Image, UIControlState.Selected);
+            SetImage(testUnset.Image, UIControlState.Normal);
         }
     }
 }

@@ -103,7 +103,7 @@ namespace MyMindV3.iOS
         {
             base.Draw(rect);
 
-            ResizeText();
+            //ResizeText();
         }
 
         /// <summary>
@@ -129,8 +129,10 @@ namespace MyMindV3.iOS
         /// </summary>
         private void UpdateTextColor()
         {
-            Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(UIColor.White), UIControlState.Normal);
-            Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(UIColor.White), UIControlState.Selected);
+            /*Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(UIColor.White), UIControlState.Normal);
+            Control.SetTitleColor(Element.TextColor.ToUIColorOrDefault(UIColor.White), UIControlState.Selected);*/
+            Control.SetTitleColor(UIColor.White, UIControlState.Normal);
+            Control.SetTitleColor(UIColor.White, UIControlState.Selected);
             Control.Font = UIFont.SystemFontOfSize(12);
         }
 
