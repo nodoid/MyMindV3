@@ -99,7 +99,8 @@ namespace MvvmFramework.Webservices
                         new KeyValuePair<string, string>("email", systerUser.Email),
                         new KeyValuePair<string, string>("phone", systerUser.Phone),
                         new KeyValuePair<string, string>("password", systerUser.Password),
-                        new KeyValuePair<string, string>("pincode",  systerUser.PinCode)
+                        new KeyValuePair<string, string>("pincode",  systerUser.PinCode),
+                    new KeyValuePair<string, string>("postcode",  systerUser.PostCode)
                     });
 
                 try
