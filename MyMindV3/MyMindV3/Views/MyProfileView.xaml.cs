@@ -139,7 +139,7 @@ namespace MyMindV3.Views
                                             ViewModel.SystemUser.UserImage = file.Path;
                                             ViewModel.UpdateSystemUser();
                                             //Send.HttpPost(file, _rootVM.SystemUser.Guid);
-                                            await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid);
+                                            await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken);
                                             file.Dispose();
                                         }
                                     }));
