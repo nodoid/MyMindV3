@@ -9,13 +9,16 @@ using System.Threading.Tasks;
 using MvvmFramework;
 using MvvmFramework.Enums;
 using System;
+using System.Collections.ObjectModel;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace MyMindV3.Views
 {
     public class MyResourcesView : ContentPage
     {
         SearchBar postcodeSearch;
-        static List<ListviewModel> dataList { get; set; }
+
+        ObservableCollection<ListviewModel> dataList { get; set; }
         ListView listView;
         MenuView menu;
         Image imgLeft, imgRight;
@@ -29,17 +32,6 @@ namespace MyMindV3.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
-            Task.Run(() =>
-            {
-                ViewModel.IsBusy = true;
-                ViewModel.GetLocalResources(ViewModel.GetIsClinician);
-                ViewModel.GetNationalResources(ViewModel.GetIsClinician);
-                ViewModel.GetUIList(UIType.National);
-                ViewModel.IsBusy = false;
-                //dataList = ViewModel.UIList;
-                //Device.BeginInvokeOnMainThread(() => listView.ItemsSource = dataList);
-            });
 
             ViewModel.PropertyChanged += ViewModel_PropertyChanged;
 
@@ -102,6 +94,12 @@ namespace MyMindV3.Views
                  }
              });
 
+            MessagingCenter.Subscribe<ListViewCell, string>(this, "brokenlink", (arg1, arg2) =>
+            {
+                var id = Convert.ToInt32(arg2);
+                ViewModel.ReportLink(id);
+            });
+
             MessagingCenter.Subscribe<ListViewCell, string>(this, "LaunchWeb", async (arg1, arg2) =>
             {
                 if (!string.IsNullOrEmpty(arg2))
@@ -141,37 +139,45 @@ namespace MyMindV3.Views
         {
             if (e.PropertyName == "NewIconRating")
             {
+                listView.BeginRefresh();
+                if (dataList.Count == 0)
+                    dataList = ViewModel.UIList;
                 var bc = dataList[App.Self.IdInUse];
                 bc.CurrentRating = App.Self.NewIconRating;
                 bc.StarRatings = ViewModel.ConvertRatingToStars(bc.CurrentRating, bc.CurrentRating);
+                listView.ItemsSource = null;
                 ViewModel.UpdateUIList(bc);
                 dataList = ViewModel.UIList;
-                listView.ItemsSource = null;
                 Device.BeginInvokeOnMainThread(() =>
                                 {
-
                                     listView.ItemsSource = dataList;
-                                    listView.Focus();
                                 });
+                listView.EndRefresh();
             }
 
             if (e.PropertyName == "Location")
             {
                 ViewModel.Speed = App.Self.Location.Speed;
-                ViewModel.IsBusy = true;
+                
                 if (ViewModel.PositionChanged(App.Self.Location.Longitude, App.Self.Location.Latitude))
                 {
-                    if (ViewModel.ShowingLocal) ViewModel.GetLocalResources(ViewModel.GetIsClinician); else ViewModel.GetNationalResources(ViewModel.GetIsClinician);
-                    ViewModel.GetUIList();
-                    dataList = ViewModel.UIList;
-                    Device.BeginInvokeOnMainThread(() =>
-                     {
-                         if (listView.ItemsSource != null)
-                             listView.ItemsSource = null;
-                         listView.ItemsSource = dataList;
-                         ViewModel.IsBusy = false;
-                         menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
-                     });
+					ViewModel.IsBusy = true;
+						ViewModel.GetLocalResources(ViewModel.GetIsClinician);
+					if (ViewModel.ShowingLocal)
+					{
+						ViewModel.GetUIList(UIType.Local);
+						dataList = ViewModel.UIList;
+						Device.BeginInvokeOnMainThread(() =>
+						 {
+							 if (listView.ItemsSource != null)
+								 listView.ItemsSource = null;
+							 listView.ItemsSource = dataList;
+							 ViewModel.IsBusy = false;
+							 menu.UpdateMenu(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
+						 });
+					}
+					else
+						ViewModel.IsBusy = false;
                 }
             }
         }
@@ -182,6 +188,7 @@ namespace MyMindV3.Views
             MessagingCenter.Unsubscribe<MenuView>(this, "buttonChecked");
             MessagingCenter.Unsubscribe<MenuView>(this, "catButtonClicked");
             MessagingCenter.Unsubscribe<ListViewCell>(this, "LaunchWeb");
+            MessagingCenter.Unsubscribe<ListViewCell>(this, "brokenlink");
             App.Self.PropertyChanged -= Self_PropertyChanged;
             ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
         }
@@ -202,6 +209,7 @@ namespace MyMindV3.Views
         {
             listView = new ListView(ListViewCachingStrategy.RecycleElement)
             {
+                BindingContext = ViewModel.UIList,
                 ItemTemplate = new DataTemplate(typeof(ListViewCell)),
                 HasUnevenRows = true,
                 BackgroundColor = Color.FromHex("022330"),
@@ -210,6 +218,20 @@ namespace MyMindV3.Views
             };
 
             ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
+            Task.Run(() =>
+            {
+                ViewModel.IsBusy = true;
+                ViewModel.GetLocalResources(ViewModel.GetIsClinician);
+                ViewModel.GetNationalResources(ViewModel.GetIsClinician);
+                ViewModel.GetUIList(UIType.National);
+                dataList = ViewModel.UIList;
+                Device.BeginInvokeOnMainThread(() => listView.ItemsSource = dataList);
+                if (menu == null)
+                {
+                    menu = new MenuView(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
+                }
+                ViewModel.IsBusy = false;
+            });
 
             imgLeft = new Image
             {
@@ -244,7 +266,7 @@ namespace MyMindV3.Views
                             if (listView.ItemsSource != null)
                                 listView.ItemsSource = null;
                             listView.ItemsSource = dataList;
-                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
+                            menu.UpdateMenu(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
                             ViewModel.IsBusy = false;
                         });
                     }
@@ -272,7 +294,7 @@ namespace MyMindV3.Views
                             if (listView.ItemsSource != null)
                                 listView.ItemsSource = null;
                             listView.ItemsSource = dataList;
-                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
+                            menu.UpdateMenu(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
                             ViewModel.IsBusy = false;
                         });
                     }
@@ -319,17 +341,23 @@ namespace MyMindV3.Views
                     ViewModel.SearchPostcode = postcodeSearch.Text.Replace(" ", "").ToLowerInvariant();
                     Task.Run(() =>
                     {
-                        ViewModel.GetAllDetails();
-                        dataList = ViewModel.UIList;
-
-                        Device.BeginInvokeOnMainThread(() =>
+                        ViewModel.GetLocalResources(ViewModel.GetIsClinician);
+                        if (ViewModel.ShowingLocal)
                         {
-                            if (listView.ItemsSource != null)
-                                listView.ItemsSource = null;
+                            ViewModel.GetUIList();
+                            dataList = ViewModel.UIList;
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                if (listView.ItemsSource != null)
+                                    listView.ItemsSource = null;
+                                listView.ItemsSource = dataList;
+                                menu.UpdateMenu(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
+                                ViewModel.IsBusy = false;
+                            });
+                        }
+                        else
                             ViewModel.IsBusy = false;
-                            listView.ItemsSource = dataList;
-                            menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
-                        });
                     });
                 })
             };
@@ -350,12 +378,6 @@ namespace MyMindV3.Views
                 }
             };
 
-            if (menu == null)
-            {
-                menu = new MenuView(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
-                //menu.SizeChanged += (sender, e) => { menu.HeightRequest = App.ScreenSize.Height - searchStack.HeightRequest; };
-            }
-
             listView.RefreshCommand = new Command(() =>
                 {
                     listView.IsRefreshing = true;
@@ -366,7 +388,7 @@ namespace MyMindV3.Views
                         listView.ItemsSource = null;
                         listView.ItemsSource = dataList;
                         listView.IsRefreshing = false;
-                        menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
+                        menu.UpdateMenu(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
                     });
                 });
 
@@ -401,7 +423,7 @@ namespace MyMindV3.Views
                                          listView.ItemsSource = null;
                                      listView.ItemsSource = dataList;
                                      ViewModel.IsBusy = false;
-                                     menu.UpdateMenu(ViewModel.GetResourceFilenames(dataList?.Select(t => t.Category).ToList()), ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategoryList);
+                                     menu.UpdateMenu(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
                                  });
                             }
                             else
@@ -571,6 +593,7 @@ namespace MyMindV3.Views
                             lblLocal.BackgroundColor = Color.White;
                             lblNational.TextColor = Color.White;
                             lblLocal.TextColor = Color.Red;
+                            ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
                             ViewModel.IsBusy = true;
                             Task.Run(() =>
                             {
@@ -582,8 +605,6 @@ namespace MyMindV3.Views
                                     ViewModel.IsBusy = false;
                                 });
                             });
-
-                            ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
                         }
                     }
                 })
@@ -602,6 +623,7 @@ namespace MyMindV3.Views
                         {
                             listView.ItemsSource = null;
                             ViewModel.IsBusy = true;
+                            ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
                             Task.Run(() =>
                         {
                             ViewModel.GetUIList(UIType.Local);
@@ -617,7 +639,6 @@ namespace MyMindV3.Views
                                 ViewModel.IsBusy = false;
                             });
                         });
-                            ViewModel.ShowingLocal = !ViewModel.ShowingLocal;
                         }
                     }
                 })
@@ -666,6 +687,7 @@ namespace MyMindV3.Views
             listView.ItemsSource = null;
             dataList = ViewModel.UIList;
             Device.BeginInvokeOnMainThread(() => listView.ItemsSource = dataList);
+            menu.UpdateMenu(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
         }
     }
 }
