@@ -6,6 +6,8 @@ namespace MyMindV3
     {
         public MyWebview(string uri)
         {
+			NavigationPage.SetHasNavigationBar(this, true);
+
             Content = new StackLayout
             {
                 HeightRequest = App.ScreenSize.Height,
