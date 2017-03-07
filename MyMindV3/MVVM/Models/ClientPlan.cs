@@ -7,5 +7,6 @@
         public string FileType { get; set; }
         public string FileUploadDateTime { get; set; }
         public string FileClientID { get; set; }
+        public string NiceName { get; set; }
     }
 }
