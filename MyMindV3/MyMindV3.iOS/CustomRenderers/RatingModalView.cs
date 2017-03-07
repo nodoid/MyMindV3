@@ -32,14 +32,16 @@ namespace MyMindV3.iOS
             var view = new UIView(new CGRect(8, 32, AppDelegate.Self.ScreenX, 175));
             view = UICreation.MakePrettyView(view);
 
-            var lblTitle = new UILabel(new CGRect(74, 20, 153, 21))
+			var shifter = AppDelegate.Self.ScreenX == 320 ? 0 : (AppDelegate.Self.ScreenX == 375 ? 27 : 48);
+			var starShifter = AppDelegate.Self.ScreenX == 320 ? 0 : (AppDelegate.Self.ScreenX == 375 ? 52 : 76);
+            var lblTitle = new UILabel(new CGRect(74 + shifter, 20, 153, 21))
             {
                 Text = "Rate this resource",
                 TextAlignment = UITextAlignment.Center
             };
             view.Add(lblTitle);
 
-            oneStarImage = new UIImageView(new CGRect(18, 61, 40, 40))
+            oneStarImage = new UIImageView(new CGRect(18 + starShifter, 61, 40, 40))
             {
                 Image = UIImage.FromBundle("emptystar.png"),
                 UserInteractionEnabled = true
@@ -47,7 +49,7 @@ namespace MyMindV3.iOS
             var oneTap = new UITapGestureRecognizer(() => { currentRating = 1; SetStarsUpto(currentRating); });
             oneStarImage.AddGestureRecognizer(oneTap);
 
-            twoStarImage = new UIImageView(new CGRect(63, 61, 40, 40))
+            twoStarImage = new UIImageView(new CGRect(63+ starShifter, 61, 40, 40))
             {
                 Image = UIImage.FromBundle("emptystar.png"),
                 UserInteractionEnabled = true
@@ -55,7 +57,7 @@ namespace MyMindV3.iOS
             var twoTap = new UITapGestureRecognizer(() => { currentRating = 2; SetStarsUpto(currentRating); });
             twoStarImage.AddGestureRecognizer(twoTap);
 
-            threeStarImage = new UIImageView(new CGRect(108, 61, 40, 40))
+            threeStarImage = new UIImageView(new CGRect(108+ starShifter, 61, 40, 40))
             {
                 Image = UIImage.FromBundle("emptystar.png"),
                 UserInteractionEnabled = true
@@ -63,7 +65,7 @@ namespace MyMindV3.iOS
             var threeTap = new UITapGestureRecognizer(() => { currentRating = 3; SetStarsUpto(currentRating); });
             threeStarImage.AddGestureRecognizer(threeTap);
 
-            fourStarImage = new UIImageView(new CGRect(153, 61, 40, 40))
+            fourStarImage = new UIImageView(new CGRect(153+ starShifter, 61, 40, 40))
             {
                 Image = UIImage.FromBundle("emptystar.png"),
                 UserInteractionEnabled = true
@@ -71,7 +73,7 @@ namespace MyMindV3.iOS
             var fourTap = new UITapGestureRecognizer(() => { currentRating = 4; SetStarsUpto(currentRating); });
             fourStarImage.AddGestureRecognizer(fourTap);
 
-            fiveStarImage = new UIImageView(new CGRect(198, 61, 40, 40))
+            fiveStarImage = new UIImageView(new CGRect(198+ starShifter, 61, 40, 40))
             {
                 Image = UIImage.FromBundle("emptystar.png"),
                 UserInteractionEnabled = true
@@ -79,9 +81,9 @@ namespace MyMindV3.iOS
             var fiveTap = new UITapGestureRecognizer(() => { currentRating = 5; SetStarsUpto(currentRating); });
             fiveStarImage.AddGestureRecognizer(fiveTap);
 
-            var btnClear = UICreation.CreateButton(new CGRect(39, 119, 46, 30), UIButtonType.RoundedRect, "Clear");
-            var btnCancel = UICreation.CreateButton(new CGRect(117, 119, 63, 30), UIButtonType.RoundedRect, "Cancel");
-            var btnDone = UICreation.CreateButton(new CGRect(215, 119, 46, 30), UIButtonType.RoundedRect, "Done");
+            var btnClear = UICreation.CreateButton(new CGRect(39+ shifter, 119, 46, 30), UIButtonType.RoundedRect, "Clear");
+            var btnCancel = UICreation.CreateButton(new CGRect(117+ shifter, 119, 63, 30), UIButtonType.RoundedRect, "Cancel");
+            var btnDone = UICreation.CreateButton(new CGRect(215+ shifter, 119, 46, 30), UIButtonType.RoundedRect, "Done");
 
             view.AddSubviews(new UIView[] { oneStarImage, twoStarImage, threeStarImage, fourStarImage, fiveStarImage, btnDone, btnClear, btnCancel });
 
@@ -113,9 +115,9 @@ namespace MyMindV3.iOS
             var images = new List<UIImageView> { oneStarImage, twoStarImage, threeStarImage, fourStarImage, fiveStarImage };
             for (var i = 0; i < rating; ++i)
                 images[i].Image = UIImage.FromBundle(imageNames[i]);
-            if (rating < 6)
+            if (rating < 5)
             {
-                for (var n = rating; n < 6; ++n)
+                for (var n = rating; n < 5; ++n)
                     images[n].Image = UIImage.FromBundle("emptystar.png");
             }
         }
