@@ -1,5 +1,4 @@
 ﻿using MvvmFramework.ViewModel;
-using System;
 using Xamarin.Forms;
 
 namespace MyMindV3.Views
@@ -12,18 +11,6 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
-            ViewModel.IsConnected = App.Self.IsConnected;
         }
-
-        private async void LoadMyProfileBtn(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MyProfileView(), true);
-        }
-
-        private async void LoadResourcesBtn(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new MyResourcesView(), true);
-        }
-
     }
 }

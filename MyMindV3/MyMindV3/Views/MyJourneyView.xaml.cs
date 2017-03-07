@@ -20,7 +20,6 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
-            ViewModel.IsConnected = App.Self.IsConnected;
             LoadData();
             id = ViewModel.SystemUser.IsAuthenticated == 3 ? ViewModel.ClinicianUser.HCPID : ViewModel.SystemUser.ICANN;
             AddUIToContent();
