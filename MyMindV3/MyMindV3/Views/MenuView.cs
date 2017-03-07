@@ -51,7 +51,8 @@ namespace MyMindV3.Views
             {
                 ItemsSource = new List<string> { Langs.MyResources_Distance, Langs.Menu_AveRating, Langs.Menu_AZ, Langs.Menu_Popular },
                 TextColor = Color.White,
-                TranslationY = -8,
+                FontSize = 14,
+                TranslationY = Device.OS == TargetPlatform.Android ? -8 : 0
             };
 
             radio.SelectedIndex = SetSelected;
@@ -70,7 +71,7 @@ namespace MyMindV3.Views
             {
                 var catScroll = new ScrollView
                 {
-                    HeightRequest = App.ScreenSize.Height * .5
+                    HeightRequest = App.ScreenSize.Height * .55
                 };
                 var catlist = new BindableRadioGroup
                 {
@@ -113,7 +114,7 @@ namespace MyMindV3.Views
             var masterStack = new StackLayout
             {
                 BackgroundColor = Color.FromHex("022330"),
-                Opacity = .6,
+                Opacity = .8,
                 Orientation = StackOrientation.Vertical,
                 MinimumWidthRequest = App.ScreenSize.Width * .35,
                 WidthRequest = App.ScreenSize.Width * .35,
