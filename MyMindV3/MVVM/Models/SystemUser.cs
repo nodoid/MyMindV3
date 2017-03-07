@@ -30,6 +30,8 @@ namespace MvvmFramework.Models
         DateTime apiTokenExpiry;
         string pictureFilePath;
 
+        string postCode;
+
         private string _result;
         private int _isAuthenticated;
         private bool _isAdmin;
@@ -140,7 +142,7 @@ namespace MvvmFramework.Models
             set
             {
                 if (value != _pincode)
-                { 
+                {
                     _pincode = value;
                     //OnPropertyChanged("PinCode");
                 }
@@ -397,6 +399,12 @@ namespace MvvmFramework.Models
                     //Set(() => EditProfileDetails, ref _editProfileDetails, value, true);
                 }
             }
+        }
+
+        public string PostCode
+        {
+            get { return postCode; }
+            set { postCode = value; }
         }
     }
 }
