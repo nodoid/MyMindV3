@@ -27,8 +27,8 @@ namespace MvvmFramework.ViewModel
 
         public async Task GetClientPlans()
         {
-            var url = string.Format("/api/MyMind/GetMyPlans/", new List<string> { "guid", GuidToUse, "authtoken", SystemUser.APIToken }.ToArray());
-            var resources = await Send.GetPostListObject<ClientPlan>(url);
+            var url = new List<string> { "UserGUID", GuidToUse, "AuthToken", SystemUser.APIToken }.ToArray();
+            var resources = await Send.GetPostListObject<ClientPlan>("/api/MyMind/GetMyPlans/", url);
             MyPlan = resources.AsEnumerable();
         }
     }
