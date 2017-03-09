@@ -4,6 +4,10 @@ using Xamarin.Forms;
 using MyMindV3.Languages;
 using MvvmFramework.ViewModel;
 
+#if DEBUG
+using System.Diagnostics;
+#endif
+
 namespace MyMindV3
 {
     public class MyHelpView : ContentPage
@@ -21,6 +25,7 @@ namespace MyMindV3
 
         void CreateUI()
         {
+
             var view1 = !isClinician ? CreateView("a_myprofile.png", Langs.MyProfile_Title, Langs.Slider_MyProfile, 1, .55) :
                 CreateView("a_mypatient.png", Langs.MyPatient_Title, Langs.Slider_MyPatient, 1, .55);
             var view2 = CreateView("b_myclinician.png", Langs.MyClinician_Title, Langs.Slider_MyClinician, 1, .55);
@@ -56,6 +61,22 @@ namespace MyMindV3
 
         ContentView CreateView(string imageName, string mainHeading, string text, double width = 1, double multiplier = .8, double height = .45)
         {
+            var img = new Image();
+            try
+            {
+                img.Source = imageName;
+                img.HeightRequest = App.ScreenSize.Height * height;
+                img.WidthRequest = App.ScreenSize.Width;
+                img.HorizontalOptions = LayoutOptions.CenterAndExpand;
+                img.Aspect = width == 1 ? Aspect.AspectFit : Aspect.Fill;
+            }
+            catch (OutOfMemoryException ex)
+            {
+#if DEBUG
+                Debug.WriteLine("Out of memory - {0}::{1}", ex.Message, ex.InnerException);
+#endif
+            }
+
             return new ContentView
             {
                 Content = new StackLayout
@@ -69,14 +90,7 @@ namespace MyMindV3
                             Padding = new Thickness(0),
                             Children =
                             {
-                                new Image
-                                {
-                                    Source = imageName,
-                                    HeightRequest = App.ScreenSize.Height * height,
-                                    WidthRequest = App.ScreenSize.Width,
-                                    HorizontalOptions = LayoutOptions.CenterAndExpand,
-                                    Aspect = width == 1 ? Aspect.AspectFit : Aspect.Fill
-                                }
+                                img
                             }
                         },
                         new StackLayout
