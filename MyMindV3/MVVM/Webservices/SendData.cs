@@ -9,8 +9,6 @@ using MvvmFramework.Helpers;
 using MvvmFramework.Models;
 using System.Collections.Generic;
 using System.Net;
-using System.Net.Http;
-using RestSharp.Portable.Deserializers;
 
 #if DEBUG
 using System.Diagnostics;
@@ -36,9 +34,19 @@ namespace MvvmFramework
             {
                 request.AddHeader(data[i].ToLowerInvariant(), data[i + 1]);
             }
-            var response = await client.Execute(request);
-            if (!string.IsNullOrEmpty(response.Content))
-                list = JsonConvert.DeserializeObject<List<T>>(response.Content);
+
+            try
+            {
+                var response = await client.Execute(request);
+                if (!string.IsNullOrEmpty(response.Content))
+                    list = JsonConvert.DeserializeObject<List<T>>(response.Content);
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                Debug.WriteLine("Exception getting a list<T> - {0}--{1}", ex.Message, ex.InnerException);
+#endif
+            }
 
             return list;
         }
