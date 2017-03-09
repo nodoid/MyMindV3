@@ -62,7 +62,6 @@
     <Compile Include="ViewModel\LoginPinCodeViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="Database\DBHelper.cs" />
-    <Compile Include="Helpers\Constants.cs" />
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="Interfaces\IInterface.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
@@ -91,6 +90,7 @@
     <Compile Include="Helpers\DTSanity.cs" />
     <Compile Include="Enums\UIType.cs" />
     <Compile Include="Enums\Sorting.cs" />
+    <Compile Include="Constants\Constants.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -145,6 +145,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Constants\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
