@@ -21,6 +21,31 @@ namespace MyMindV3.Views
         MyProfileViewModel ViewModel => App.Locator.MyProfile;
         MediaFile file;
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ViewModel.PropertyChanged += (object sender, System.ComponentModel.PropertyChangedEventArgs e) =>
+            {
+                if (e.PropertyName == "UserProfile")
+                {
+                    var ss = ViewModel.UserProfile;
+                    if (ss != null)
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            ProfilePreferredNameInput.Text = ss.Name;
+                            ProfileDoBInput.Text = ss.DateOfBirth;
+                            ProfilePhoneInput.Text = ss.ContactNumber;
+                            RegPhoneInput.Text = ss.ReferralReason;
+                            ProfileLikesInput.Text = ss.Likes;
+                            ProfileDislikesInput.Text = ss.Dislikes;
+                            ProfileGoalsInput.Text = ss.Goals;
+                        });
+                    }
+                }
+            };
+        }
+
         public MyProfileView()
         {
             InitializeComponent();
@@ -34,23 +59,17 @@ namespace MyMindV3.Views
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
             GetImage();
-            GetDetails().ConfigureAwait(true);
+            GetDetails();
             if (ViewModel.SystemUser.IsAuthenticated != 3)
                 CreateImageClick();
 
             vwRefresh.IsPullToRefreshEnabled = true;
             vwRefresh.RefreshColor = Color.Blue;
 
-            vwRefresh.RefreshCommand = new Command(async () =>
+            vwRefresh.RefreshCommand = new Command(() =>
             {
-                await GetDetails().ContinueWith(
-                (t) =>
-                {
-                    if (t.IsCompleted)
-                    {
-                        Device.BeginInvokeOnMainThread(() => { GetImage(); vwRefresh.IsRefreshing = false; });
-                    }
-                });
+                GetDetails();
+                Device.BeginInvokeOnMainThread(() => { GetImage(); vwRefresh.IsRefreshing = false; });
             });
         }
 
@@ -70,29 +89,9 @@ namespace MyMindV3.Views
             }
         }
 
-        async Task GetDetails()
+        void GetDetails()
         {
-            await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", ViewModel.ClinicianUser.APIToken,
-                                                   "ClientGUID", ViewModel.SystemUser.Guid).ContinueWith((t) =>
-                {
-                    if (t.IsCompleted)
-                    {
-                        var ss = t.Result[0];
-                        if (ss != null)
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                ProfilePreferredNameInput.Text = ss.Name;
-                                ProfileDoBInput.Text = ss.DateOfBirth;
-                                ProfilePhoneInput.Text = ss.ContactNumber;
-                                RegPhoneInput.Text = ss.ReferralReason;
-                                ProfileLikesInput.Text = ss.Likes;
-                                ProfileDislikesInput.Text = ss.Dislikes;
-                                ProfileGoalsInput.Text = ss.Goals;
-                            });
-                        }
-                    }
-                });
+            ViewModel.GetUserProfileDetails(new List<string> { ViewModel.ClinicianUser.ClinicianGUID, ViewModel.ClinicianUser.APIToken, ViewModel.SystemUser.Guid }.ToArray());
         }
 
         void CreateImageClick()
@@ -178,18 +177,12 @@ namespace MyMindV3.Views
 
         void Update_Profile()
         {
-            var res = Send.SendData("api/MyMind/UpdateUserProfile", "UserGUID", ViewModel.SystemUser.Guid, "AuthToken", ViewModel.SystemUser.APIToken,
-                                    "PreferredName", EditProfilePreferredNameInput.Text, "DateOfBirth", EditProfileDoB.Date.ToString("g"),
-                                    "PhoneNumber", EditProfilePhoneInput.Text, "WhyIThinkIWasReferred", EditRegPhoneInput.Text,
-                                    "SomethingILike", EditProfileLikesInput.Text, "SomethingIDislike", EditProfileDislikesInput.Text,
-                                    "WhatIWantTo", EditProfileGoalsInput.Text).ContinueWith((t) =>
-             {
-                 if (t.IsCompleted)
-                 {
-                     ViewModel.UpdateSystemUser();
-                     var m = t.Result;
-                 }
-             });
+            ViewModel.UpdateUserData(new List<string>
+            {
+                ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken,EditProfilePreferredNameInput.Text,
+                EditProfileDoB.Date.ToString("g"),EditProfilePhoneInput.Text,EditRegPhoneInput.Text,
+                EditProfileLikesInput.Text,EditProfileDislikesInput.Text,EditProfileGoalsInput.Text
+            }.ToArray());
         }
 
         void Handle_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -208,8 +201,6 @@ namespace MyMindV3.Views
         private void UpdateDetails(object sender, EventArgs e)
         {
             Update_Profile();
-            // save data back to internal - eventually send back to server for update
-            ViewModel.UpdateSystemUser();
 
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
