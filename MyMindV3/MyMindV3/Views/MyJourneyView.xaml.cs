@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using MyMindV3.Languages;
 using MvvmFramework.ViewModel;
 using MvvmFramework.Models;
-using MvvmFramework;
 
 namespace MyMindV3.Views
 {
@@ -183,37 +181,15 @@ namespace MyMindV3.Views
 
         void LoadData()
         {
-            ViewModel.ClientID = ViewModel.SystemUser.RIOID;
-            ViewModel.HCP = ViewModel.ClinicianUser.HCPID;
+            ViewModel.ClientID = App.Self.Encrypt.EncryptHcpString(ViewModel.SystemUser.RIOID);
+            ViewModel.HCP = App.Self.Encrypt.EncryptHcpString(ViewModel.ClinicianUser.HCPID);
             ViewModel.GetAppointments();
             appointments = ViewModel.Appointments;
 
             if (appointments != null)
             {
-                var sortedList = appointments.OrderByDescending(o => o.AppointmentDateTime.CleanDate()).ToList();
-
-                var dayOfYear = DateTime.Now.DayOfYear;
-                var lower = dayOfYear - (int)DayOfWeek.Monday;
-                var upper = dayOfYear + (int)DayOfWeek.Friday;
-                var thisWeek = 0;
-
-                var thisMonth = sortedList?.Count(t => t.AppointmentDateTime.CleanDate().Month == DateTime.Now.Month);
-
-                if (thisMonth != 0)
-                {
-                    // we have an appointment this month
-                    var thisMonthsApps = sortedList.Where(t => t.AppointmentDateTime.CleanDate().Month == DateTime.Now.Month).ToList();
-                    foreach (var app in thisMonthsApps)
-                    {
-                        var date = app.AppointmentDateTime.CleanDate();
-                        var dayOfMonth = date.DayOfYear;
-                        if (dayOfMonth >= lower && dayOfMonth <= upper)
-                            thisWeek++;
-                    }
-                }
-
-                txtApptsWeek.Text = thisWeek.ToString();
-                txtApptsMonth.Text = thisMonth.ToString();
+                txtApptsWeek.Text = ViewModel.ApptsThisWeek;
+                txtApptsMonth.Text = ViewModel.ApptsThisMonth;
             }
         }
 
@@ -221,7 +197,5 @@ namespace MyMindV3.Views
         {
             // do nothing
         }
-
-
     }
 }
