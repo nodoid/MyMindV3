@@ -24,16 +24,45 @@ namespace MvvmFramework.ViewModel
         public IEnumerable<Appointment> Appointments
         {
             get { return appointments; }
-            set
-            {
+            set {
                 Set(() => Appointments, ref appointments, value);
                 GenerateAppointments();
             }
         }
 
+        public string ApptsThisWeek { get; set; }
+        public string ApptsThisMonth { get; set; }
+
         public void GetAppointments()
         {
             Appointments = new UsersWebservice().GetPatientAppointments(ClientID, HCP).Result;
+            if (Appointments != null)
+            {
+                var sortedList = Appointments.OrderByDescending(o => o.AppointmentDateTime.CleanDate()).ToList();
+
+                var dayOfYear = DateTime.Now.DayOfYear;
+                var lower = dayOfYear - (int)DayOfWeek.Monday;
+                var upper = dayOfYear + (int)DayOfWeek.Friday;
+                var thisWeek = 0;
+
+                var thisMonth = sortedList?.Count(t => t.AppointmentDateTime.CleanDate().Month == DateTime.Now.Month);
+
+                if (thisMonth != 0)
+                {
+                    // we have an appointment this month
+                    var thisMonthsApps = sortedList.Where(t => t.AppointmentDateTime.CleanDate().Month == DateTime.Now.Month).ToList();
+                    foreach (var app in thisMonthsApps)
+                    {
+                        var date = app.AppointmentDateTime.CleanDate();
+                        var dayOfMonth = date.DayOfYear;
+                        if (dayOfMonth >= lower && dayOfMonth <= upper)
+                            thisWeek++;
+                    }
+                }
+
+                ApptsThisWeek = thisWeek.ToString();
+                ApptsThisMonth = thisMonth.ToString();
+            }
         }
 
         IEnumerable<Appointment> pastAppointments;
