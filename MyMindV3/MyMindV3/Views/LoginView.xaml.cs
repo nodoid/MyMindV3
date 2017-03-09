@@ -36,11 +36,13 @@ namespace MyMindV3.Views
 
             var errorMessage = new Dictionary<string, string>
             {
-                {"Login_InvalidError", Langs.Login_InvalidError}
+                {"Login_InvalidError", Langs.Login_InvalidError},
+                {"Login_NetworkError", Langs.Login_NetworkError}
             };
             var errorTitle = new Dictionary<string, string>
             {
-                {"Gen_Error", Langs.Gen_Error}
+                {"Gen_Error", Langs.Gen_Error},
+                {"Error_NetworkTitle", Langs.Error_NetworkTitle}
             };
             var message = new Dictionary<string, string>
             {
@@ -55,8 +57,11 @@ namespace MyMindV3.Views
 
         public async Task InitBGTimer()
         {
-            await Task.Delay(5000);
-            SwapImage();
+            if (!ViewModel.IsLoggedIn)
+            {
+                await Task.Delay(5000);
+                SwapImage();
+            }
         }
 
         void SwapImage()
