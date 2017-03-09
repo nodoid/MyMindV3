@@ -6,5 +6,7 @@ namespace MyMindV3
         string Iv_To_Pass_To_Encryption { get; }
 
         string EncryptString(string text, string key);
+
+        string EncryptHcpString(string plainText);
     }
 }
