@@ -15,5 +15,9 @@
         public static string DESKey { get; private set; } = "yxO7qG5CK03M1fJ7fP6cuXwxz3H5t9pI";
 
         public static string ImageIconUrl { get; private set; } = "https://apps.nelft.nhs.uk/MyMind/Images/uploaded_logos/";
+
+        public static string HcpPassPhrase { get; private set; } = "yxO7qG5CK03M1fJ7fP6cuXwxz3H5t9pI";
+
+        public static string HcpInitVector { get; private set; } = "pemgail9uzpgzl88";
     }
 }
