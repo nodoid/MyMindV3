@@ -26,6 +26,9 @@ namespace MyMindV3
         public string PicturesDirectory { get; private set; } = DependencyService.Get<IContent>().PicturesDirectory();
 
         public IUserSettings UserSettings { get; set; } = DependencyService.Get<IUserSettings>();
+
+        public IEncrypt Encrypt { get; set; } = DependencyService.Get<IEncrypt>();
+
         public static ViewModelLocator locator;
         public static ViewModelLocator Locator { get { return locator ?? (locator = new ViewModelLocator()); } }
 
@@ -37,8 +40,7 @@ namespace MyMindV3
         public Position Location
         {
             get { return location; }
-            set
-            {
+            set {
                 location = value;
                 OnPropertyChanged("Location");
             }
@@ -48,8 +50,7 @@ namespace MyMindV3
         public int NewIconRating
         {
             get { return newIconRating; }
-            set
-            {
+            set {
                 newIconRating = value;
                 OnPropertyChanged("NewIconRating");
             }
@@ -66,13 +67,6 @@ namespace MyMindV3
             var netLanguage = DependencyService.Get<ILocalize>().GetCurrent();
             Langs.Culture = new CultureInfo(netLanguage);
             DependencyService.Get<ILocalize>().SetLocale();
-
-            CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
-            {
-                IsConnected = args.IsConnected;
-            };
-
-            IsConnected = CrossConnectivity.Current.IsConnected;
 
             CrossGeolocator.Current.StartListeningAsync(3000, 10, true);
             if (CrossGeolocator.Current.IsListening)
@@ -123,6 +117,13 @@ namespace MyMindV3
             nav.Initialize(firstPage);
 
             dialogService.Initialize(firstPage);
+
+            CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
+            {
+                Locator.Login.IsConnected = IsConnected = args.IsConnected;
+            };
+
+            Locator.Login.IsConnected = IsConnected = CrossConnectivity.Current.IsConnected;
 
             // and launch
 
