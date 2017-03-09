@@ -32,8 +32,8 @@ namespace MyMindV3.iOS
             var view = new UIView(new CGRect(8, 32, AppDelegate.Self.ScreenX, 175));
             view = UICreation.MakePrettyView(view);
 
-			var shifter = AppDelegate.Self.ScreenX == 320 ? 0 : (AppDelegate.Self.ScreenX == 375 ? 27 : 48);
-			var starShifter = AppDelegate.Self.ScreenX == 320 ? 0 : (AppDelegate.Self.ScreenX == 375 ? 52 : 76);
+            var shifter = AppDelegate.Self.ScreenX == 320 ? 0 : (AppDelegate.Self.ScreenX == 375 ? 27 : 48);
+            var starShifter = AppDelegate.Self.ScreenX == 320 ? 0 : (AppDelegate.Self.ScreenX == 375 ? 52 : 76);
             var lblTitle = new UILabel(new CGRect(74 + shifter, 20, 153, 21))
             {
                 Text = "Rate this resource",
@@ -49,7 +49,7 @@ namespace MyMindV3.iOS
             var oneTap = new UITapGestureRecognizer(() => { currentRating = 1; SetStarsUpto(currentRating); });
             oneStarImage.AddGestureRecognizer(oneTap);
 
-            twoStarImage = new UIImageView(new CGRect(63+ starShifter, 61, 40, 40))
+            twoStarImage = new UIImageView(new CGRect(63 + starShifter, 61, 40, 40))
             {
                 Image = UIImage.FromBundle("emptystar.png"),
                 UserInteractionEnabled = true
@@ -57,7 +57,7 @@ namespace MyMindV3.iOS
             var twoTap = new UITapGestureRecognizer(() => { currentRating = 2; SetStarsUpto(currentRating); });
             twoStarImage.AddGestureRecognizer(twoTap);
 
-            threeStarImage = new UIImageView(new CGRect(108+ starShifter, 61, 40, 40))
+            threeStarImage = new UIImageView(new CGRect(108 + starShifter, 61, 40, 40))
             {
                 Image = UIImage.FromBundle("emptystar.png"),
                 UserInteractionEnabled = true
@@ -65,7 +65,7 @@ namespace MyMindV3.iOS
             var threeTap = new UITapGestureRecognizer(() => { currentRating = 3; SetStarsUpto(currentRating); });
             threeStarImage.AddGestureRecognizer(threeTap);
 
-            fourStarImage = new UIImageView(new CGRect(153+ starShifter, 61, 40, 40))
+            fourStarImage = new UIImageView(new CGRect(153 + starShifter, 61, 40, 40))
             {
                 Image = UIImage.FromBundle("emptystar.png"),
                 UserInteractionEnabled = true
@@ -73,7 +73,7 @@ namespace MyMindV3.iOS
             var fourTap = new UITapGestureRecognizer(() => { currentRating = 4; SetStarsUpto(currentRating); });
             fourStarImage.AddGestureRecognizer(fourTap);
 
-            fiveStarImage = new UIImageView(new CGRect(198+ starShifter, 61, 40, 40))
+            fiveStarImage = new UIImageView(new CGRect(198 + starShifter, 61, 40, 40))
             {
                 Image = UIImage.FromBundle("emptystar.png"),
                 UserInteractionEnabled = true
@@ -81,16 +81,16 @@ namespace MyMindV3.iOS
             var fiveTap = new UITapGestureRecognizer(() => { currentRating = 5; SetStarsUpto(currentRating); });
             fiveStarImage.AddGestureRecognizer(fiveTap);
 
-            var btnClear = UICreation.CreateButton(new CGRect(39+ shifter, 119, 46, 30), UIButtonType.RoundedRect, "Clear");
-            var btnCancel = UICreation.CreateButton(new CGRect(117+ shifter, 119, 63, 30), UIButtonType.RoundedRect, "Cancel");
-            var btnDone = UICreation.CreateButton(new CGRect(215+ shifter, 119, 46, 30), UIButtonType.RoundedRect, "Done");
+            var btnClear = UICreation.CreateButton(new CGRect(39 + shifter, 119, 46, 30), UIButtonType.RoundedRect, "Clear");
+            var btnCancel = UICreation.CreateButton(new CGRect(117 + shifter, 119, 63, 30), UIButtonType.RoundedRect, "Cancel");
+            var btnDone = UICreation.CreateButton(new CGRect(215 + shifter, 119, 46, 30), UIButtonType.RoundedRect, "Done");
 
             view.AddSubviews(new UIView[] { oneStarImage, twoStarImage, threeStarImage, fourStarImage, fiveStarImage, btnDone, btnClear, btnCancel });
 
             btnClear.TouchUpInside += delegate
             {
-                oneStarImage.Image = twoStarImage.Image = threeStarImage.Image = fourStarImage.Image = fiveStarImage.Image = UIImage.FromBundle("emptystar.png");
-                currentRating = 0;
+                twoStarImage.Image = threeStarImage.Image = fourStarImage.Image = fiveStarImage.Image = UIImage.FromBundle("emptystar.png");
+                currentRating = 1;
             };
 
             btnCancel.TouchUpInside += delegate
