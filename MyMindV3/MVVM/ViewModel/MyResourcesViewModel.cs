@@ -76,8 +76,7 @@ namespace MvvmFramework.ViewModel
         public int CurrentLocalPage
         {
             get { return currentLocalPage; }
-            set
-            {
+            set {
                 Set(() => CurrentLocalPage, ref currentLocalPage, value);
                 DisableNextPageButton = currentLocalPage + 1 > MaxLocalPages;
                 DisableBackPageButton = currentLocalPage == 0;
@@ -95,8 +94,7 @@ namespace MvvmFramework.ViewModel
         public int CurrentNationalPage
         {
             get { return currentNationalPage; }
-            set
-            {
+            set {
                 Set(() => CurrentLocalPage, ref currentNationalPage, value);
                 DisableNextPageButton = currentNationalPage + 1 > MaxNataionalPages;
                 DisableBackPageButton = currentNationalPage == 0;
@@ -171,8 +169,7 @@ namespace MvvmFramework.ViewModel
         public string SearchPostcode
         {
             get { return searchPostcode; }
-            set
-            {
+            set {
                 Set(() => SearchPostcode, ref searchPostcode, value, true);
                 SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Searched_By_Postcode :
                 (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Searched_By_Postcode :
@@ -187,8 +184,7 @@ namespace MvvmFramework.ViewModel
 
         public string GetMyPostcode
         {
-            get
-            {
+            get {
                 var postcode = GetData.GetPostcode(Longitude, Latitude).Result;
                 SearchPostcode = postcode;
                 return postcode;
@@ -263,8 +259,7 @@ namespace MvvmFramework.ViewModel
 
         public List<string> GetCategoryList
         {
-            get
-            {
+            get {
                 var cats = ShowingLocal ? ListLocalResources?.Select(t => t.ResourceCategorysPiped).ToList() : ListNationalResources?.Select(t => t.ResourceCategorysPiped).ToList();
                 var catlist = new List<string> { "None" };
                 if (cats != null)
@@ -458,7 +453,7 @@ namespace MvvmFramework.ViewModel
                             Category = cat,
                             CurrentRating = res[n].ResourceRating,
                             StarRatings = new List<string>(),
-                            Id = n,
+                            Id = res[n].ResourceID,
                             Postcode = res[n].ResourcePostcode,
                             Distance = Convert.ToDouble(res[n].ResourceDistance),
                             HasW = res[n].ResourceIsDead,
@@ -572,8 +567,7 @@ namespace MvvmFramework.ViewModel
 
         public List<string> GetCategtoriesFromResource
         {
-            get
-            {
+            get {
                 return GetCategoryList;
             }
         }
@@ -590,8 +584,7 @@ namespace MvvmFramework.ViewModel
         RelayCommand btnBackCommand;
         public RelayCommand BtnBackCommand
         {
-            get
-            {
+            get {
                 return btnBackCommand ??
                     (
                         btnBackCommand = new RelayCommand(() =>
@@ -628,8 +621,7 @@ namespace MvvmFramework.ViewModel
         RelayCommand btnForwardCommand;
         public RelayCommand BtnForwardCommand
         {
-            get
-            {
+            get {
                 return btnForwardCommand ??
                     (
                         btnForwardCommand = new RelayCommand(() =>
