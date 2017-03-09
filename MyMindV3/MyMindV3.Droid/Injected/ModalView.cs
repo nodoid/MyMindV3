@@ -49,7 +49,7 @@ namespace MyMindV3.Droid
             };
             ((Android.Widget.Button)dispModal.FindViewById(Resource.Id.btnClear)).Click += delegate
             {
-                currentRating = 0;
+                currentRating = 1;
                 UpdateStars(currentRating);
             };
             imgBtn1 = dispModal.FindViewById<ImageView>(Resource.Id.imageButton1);
@@ -106,13 +106,6 @@ Resource.Drawable.orangestar,
 
             switch (rating)
             {
-                case 0:
-                    imgBtn1.SetImageResource(resources[0]);
-                    imgBtn2.SetImageResource(resources[0]);
-                    imgBtn3.SetImageResource(resources[0]);
-                    imgBtn4.SetImageResource(resources[0]);
-                    imgBtn5.SetImageResource(resources[0]);
-                    break;
                 case 1:
                     imgBtn1.SetImageResource(resources[1]);
                     imgBtn2.SetImageResource(resources[0]);
@@ -166,13 +159,6 @@ Resource.Drawable.pinkstar
 
             switch (initialRating)
             {
-                case 0:
-                    imgBtn1.SetImageResource(resources[0]);
-                    imgBtn2.SetImageResource(resources[0]);
-                    imgBtn3.SetImageResource(resources[0]);
-                    imgBtn4.SetImageResource(resources[0]);
-                    imgBtn5.SetImageResource(resources[0]);
-                    break;
                 case 1:
                     imgBtn1.SetImageResource(resources[1]);
                     imgBtn2.SetImageResource(resources[0]);
