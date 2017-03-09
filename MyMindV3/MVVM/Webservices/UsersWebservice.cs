@@ -18,11 +18,11 @@ namespace MvvmFramework.Webservices
             using (var client = new HttpClient())
             {
 
-                client.BaseAddress = new Uri("https://apps.nelft.nhs.uk/CareMapApi/api/MyMind/GetResources");
+                client.BaseAddress = new Uri(string.Format("{0}/api/MyMind/GetResources", Constants.BaseTestUrl));
 
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                var response = client.GetAsync("https://apps.nelft.nhs.uk/CareMapApi/api/MyMind/GetResources").Result;
+                var response = client.GetAsync(string.Format("{0}/api/MyMind/GetResources", Constants.BaseTestUrl)).Result;
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -106,7 +106,7 @@ namespace MvvmFramework.Webservices
                 try
                 {
                     UserProfile userProfile = null;
-                    var result = client.PostAsync("https://apps.nelft.nhs.uk/ChatSig/Account/RegisterAppUser", postData).Result;
+                    var result = client.PostAsync("https://apps.nelft.nhs.uk/MyMind/Account/RegisterAppUser", postData).Result;
                     var resultContent = result.Content.ReadAsStringAsync().Result;
 
                     if (resultContent == "\"success\"")
@@ -135,7 +135,7 @@ namespace MvvmFramework.Webservices
 
                 try
                 {
-                    var result = client.PostAsync("https://apps.nelft.nhs.uk/ChatSig/Account/LoginAppUser", postData).Result;
+                    var result = client.PostAsync("https://apps.nelft.nhs.uk/MyMind/Account/LoginAppUser", postData).Result;
                     string resultContent = result.Content.ReadAsStringAsync().Result;
                     if (resultContent.ToLowerInvariant().Contains("failure") ||
                         resultContent.ToLowerInvariant().Contains("error") ||
