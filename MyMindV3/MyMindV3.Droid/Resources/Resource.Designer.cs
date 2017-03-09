@@ -2229,26 +2229,8 @@ namespace MyMindV3.Droid
 			// aapt resource value: 0x7f020059
 			public const int avd_hide_password = 2130837593;
 			
-			// aapt resource value: 0x7f02017f
-			public const int avd_hide_password_1 = 2130837887;
-			
-			// aapt resource value: 0x7f020180
-			public const int avd_hide_password_2 = 2130837888;
-			
-			// aapt resource value: 0x7f020181
-			public const int avd_hide_password_3 = 2130837889;
-			
 			// aapt resource value: 0x7f02005a
 			public const int avd_show_password = 2130837594;
-			
-			// aapt resource value: 0x7f020182
-			public const int avd_show_password_1 = 2130837890;
-			
-			// aapt resource value: 0x7f020183
-			public const int avd_show_password_2 = 2130837891;
-			
-			// aapt resource value: 0x7f020184
-			public const int avd_show_password_3 = 2130837892;
 			
 			// aapt resource value: 0x7f02005b
 			public const int b_myclinician = 2130837595;
