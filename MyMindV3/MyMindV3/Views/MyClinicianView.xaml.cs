@@ -5,11 +5,8 @@ using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using MvvmFramework.ViewModel;
 using MvvmFramework;
-using MvvmFramework.Models;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -21,12 +18,31 @@ namespace MyMindV3.Views
         MyClinicianViewModel ViewModel => App.Locator.MyClinician;
         MediaFile file;
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            ViewModel.PropertyChanged += (object sender, System.ComponentModel.PropertyChangedEventArgs e) =>
+            {
+                if (e.PropertyName == "Clinician")
+                {
+                    var res = ViewModel.Clinician;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        ViewModel.ClinicianUser.FunFact = res.FunFact;
+                        ViewModel.ClinicianUser.Name = res.Name;
+                        ViewModel.ClinicianUser.Role = res.WhatIDo;
+                        ViewModel.ClinicianUser.Phone = res.ContactNumber;
+                    });
+                }
+            };
+        }
+
         public MyClinicianView()
         {
             InitializeComponent();
             BindingContext = ViewModel.ClinicianUser;
             GetImage();
-            GetDetails().ConfigureAwait(true);
+            GetDetails();
             if (ViewModel.SystemUser.IsAuthenticated == 3)
             {
                 CreateImageClick();
@@ -37,17 +53,10 @@ namespace MyMindV3.Views
 
             vwRefresh.IsPullToRefreshEnabled = true;
             vwRefresh.RefreshColor = Color.Blue;
-            vwRefresh.RefreshCommand = new Command(async () =>
+            vwRefresh.RefreshCommand = new Command(() =>
             {
-                //vwRefresh.IsRefreshing = true;
-                await GetDetails().ContinueWith(
-                (t) =>
-                {
-                    if (t.IsCompleted)
-                    {
-                        Device.BeginInvokeOnMainThread(() => { GetImage(); vwRefresh.IsRefreshing = false; });
-                    }
-                });
+                GetDetails();
+                Device.BeginInvokeOnMainThread(() => { GetImage(); vwRefresh.IsRefreshing = false; });
             });
         }
 
@@ -67,37 +76,14 @@ namespace MyMindV3.Views
             }
         }
 
-        async Task GetDetails()
+        void GetDetails()
         {
-            await Send.SendData<List<ClinicianProfile>>("api/MyMind/GetClinicianProfile", "ClinicianGUID",
-                ViewModel.ClinicianUser.ClinicianGUID, "AuthToken", ViewModel.SystemUser.APIToken).ContinueWith((t) =>
-            {
-                if (t.IsCompleted)
-                {
-                    var res = t.Result[0];
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        ViewModel.ClinicianUser.FunFact = res.FunFact;
-                        ViewModel.ClinicianUser.Name = res.Name;
-                        ViewModel.ClinicianUser.Role = res.WhatIDo;
-                        ViewModel.ClinicianUser.Phone = res.ContactNumber;
-                    });
-                }
-            });
+            ViewModel.GetClinicianDetails();
         }
 
         void Update_Profile(object s, EventArgs e)
         {
-            var res = Send.SendData("api/MyMind/UpdateClinicianProfile", "ClinicianGUID", ViewModel.ClinicianUser.ClinicianGUID,
-                "AuthToken", ViewModel.ClinicianUser.APIToken,
-                                    "WhatIDo", ClinRoleInput.Text, "FunFact", ClinFunFactInput.Text, "ContactNumber", ClinPhoneInput.Text).ContinueWith((t) =>
-            {
-                if (t.IsCompleted)
-                {
-                    ViewModel.UpdateSystemUser();
-                    var m = t.Result;
-                }
-            });
+            ViewModel.UpdateProfile(ClinRoleInput.Text, ClinFunFactInput.Text, ClinPhoneInput.Text);
         }
 
         void CreateImageClick()
