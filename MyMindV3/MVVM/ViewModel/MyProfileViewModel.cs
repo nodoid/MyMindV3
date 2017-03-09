@@ -2,6 +2,9 @@
 using MvvmFramework.Enums;
 using MvvmFramework.Helpers;
 using System.IO;
+using System.Threading.Tasks;
+using MvvmFramework.Models;
+using System.Collections.Generic;
 
 namespace MvvmFramework.ViewModel
 {
@@ -27,11 +30,50 @@ namespace MvvmFramework.ViewModel
 
         public Stream GetProfileImage
         {
-            get
-            {
+            get {
                 GetData.GetImage(ImageFilename, IsUser).ConfigureAwait(true);
                 return new FileIO().LoadFile(ImageFilename).Result;
             }
+        }
+
+        UserProfile userProfile;
+        public UserProfile UserProfile
+        {
+            get { return userProfile; }
+            set { Set(() => UserProfile, ref userProfile, value, true); }
+        }
+
+        public void GetUserProfileDetails(params string[] data)
+        {
+            Task.Run(async () =>
+            {
+                await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", data[0], "AuthToken", data[1],
+                                                   "ClientGUID", data[2]).ContinueWith((t) =>
+                {
+                    if (t.IsCompleted)
+                    {
+                        UserProfile = t.Result[0];
+                    }
+                });
+            });
+        }
+
+        public void UpdateUserData(params string[] data)
+        {
+            Task.Run(async () =>
+            {
+                await Send.SendData("api/MyMind/UpdateUserProfile", "UserGUID", data[0], "AuthToken", data[1],
+                                    "PreferredName", data[2], "DateOfBirth", data[3],
+                                    "PhoneNumber", data[4], "WhyIThinkIWasReferred", data[5],
+                                    "SomethingILike", data[6], "SomethingIDislike", data[7],
+                                    "WhatIWantTo", data[8]).ContinueWith((t) =>
+             {
+                 if (t.IsCompleted)
+                 {
+                     UpdateSystemUser();
+                 }
+             });
+            });
         }
 
         public void UpdateSystemUser()
