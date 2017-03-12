@@ -81,8 +81,10 @@ namespace MyMindV3.Views
 
                 InitBGTimer().ConfigureAwait(true);
             }
-            catch (Exception)
-            { }
+            catch (Exception ex)
+            {
+                // 
+            }
         }
 
     }
