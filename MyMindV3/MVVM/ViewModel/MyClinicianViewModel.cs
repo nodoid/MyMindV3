@@ -23,12 +23,13 @@ namespace MvvmFramework.ViewModel
         public string ImageFilename
         {
             get { return filename; }
-            set { Set(() => ImageFilename, ref filename, value); }
+            set { Set(() => ImageFilename, ref filename, value, true); }
         }
 
         public Stream GetProfileImage
         {
-            get {
+            get
+            {
                 GetData.GetImage(ImageFilename, IsUser).ConfigureAwait(true);
                 return new FileIO().LoadFile(ImageFilename).Result;
             }
