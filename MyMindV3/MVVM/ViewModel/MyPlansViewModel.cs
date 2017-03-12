@@ -22,14 +22,17 @@ namespace MvvmFramework.ViewModel
         public IEnumerable<ClientPlan> MyPlan
         {
             get { return myPlan; }
-            set { Set(() => MyPlan, ref myPlan, value); }
+            set { Set(() => MyPlan, ref myPlan, value, true); }
         }
 
-        public async Task GetClientPlans()
+        public void GetClientPlans()
         {
-            var url = new List<string> { "UserGUID", GuidToUse, "AuthToken", SystemUser.APIToken }.ToArray();
-            var resources = await Send.GetPostListObject<ClientPlan>("/api/MyMind/GetMyPlans/", url);
-            MyPlan = resources.AsEnumerable();
+            Task.Run(async () =>
+            {
+                var url = new List<string> { "UserGUID", GuidToUse, "AuthToken", SystemUser.APIToken }.ToArray();
+                var resources = await Send.GetPostListObject<ClientPlan>("/api/MyMind/GetMyPlans", url);
+                MyPlan = resources.AsEnumerable();
+            });
         }
     }
 }
