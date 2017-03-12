@@ -14,6 +14,8 @@ namespace MyMindV3.Views
     {
         IEnumerable<ClientPlan> resources;
         MyPlansViewModel ViewModel => App.Locator.MyPlans;
+        string guidToUse;
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
@@ -26,6 +28,30 @@ namespace MyMindV3.Views
                     ViewModel.SpinnerTitle = Langs.Data_DownloadTitle;
                     Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage));
                 }
+                if (e.PropertyName == "MyPlan")
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        resources = ViewModel.MyPlan;
+                        PlanList.ItemsSource = resources;
+                        PlanList.BackgroundColor = Color.FromHex("022330");
+                        PlanList.ItemTemplate = new DataTemplate(typeof(MyPlansListCell));
+                        PlanList.ItemSelected += Handle_Clicked;
+                        PlanList.IsPullToRefreshEnabled = true;
+                        PlanList.Refreshing += (object s, EventArgs ea) =>
+                        {
+                            PlanList.IsRefreshing = true;
+                            ViewModel.GuidToUse = guidToUse;
+                            resources = ViewModel.MyPlan;
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                PlanList.ItemsSource = null;
+                                PlanList.ItemsSource = resources;
+                                PlanList.IsRefreshing = false;
+                            });
+                        };
+                    });
+                }
             };
         }
 
@@ -34,42 +60,19 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
-            SetValues().ConfigureAwait(true);
+            SetValues();
         }
 
-        async Task SetValues()
+        void SetValues()
         {
-            var guidToUse = string.Empty;
+            guidToUse = string.Empty;
             if (ViewModel.SystemUser.IsAuthenticated != 3)
                 guidToUse = ViewModel.SystemUser.Guid;
             else
                 guidToUse = ViewModel.ClinicianUser.ClinicianGUID;
 
             ViewModel.GuidToUse = guidToUse;
-            await ViewModel.GetClientPlans().ContinueWith((t) =>
-            {
-                if (t.IsCompleted)
-                {
-                    resources = ViewModel.MyPlan;
-                    PlanList.ItemsSource = resources;
-                    PlanList.BackgroundColor = Color.FromHex("022330");
-                    PlanList.ItemTemplate = new DataTemplate(typeof(MyPlansListCell));
-                    PlanList.ItemSelected += Handle_Clicked;
-                    PlanList.IsPullToRefreshEnabled = true;
-                    PlanList.Refreshing += (object sender, EventArgs e) =>
-                    {
-                        PlanList.IsRefreshing = true;
-                        ViewModel.GuidToUse = guidToUse;
-                        resources = ViewModel.MyPlan;
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            PlanList.ItemsSource = null;
-                            PlanList.ItemsSource = resources;
-                            PlanList.IsRefreshing = false;
-                        });
-                    };
-                }
-            });
+            ViewModel.GetClientPlans();
         }
 
 
