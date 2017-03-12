@@ -34,6 +34,10 @@ namespace MyMindV3.Views
                         ViewModel.ClinicianUser.Phone = res.ContactNumber;
                     });
                 }
+                if (e.PropertyName == "Filename")
+                {
+                    Device.BeginInvokeOnMainThread(() => imgClinician.Source = ImageSource.FromFile(string.Format("{0}/{1}", ViewModel.GetCurrentFolder, string.Format("{0}.jpg", ViewModel.Filename))));
+                }
             };
         }
 
@@ -68,7 +72,7 @@ namespace MyMindV3.Views
             else
             {
                 ViewModel.ImageFilename = ViewModel.Filename = string.Format("{0}.jpg", ViewModel.GetClinicianImage);
-                ViewModel.IsUser = ViewModel.SystemUser.IsAuthenticated == 2 ? true : false;
+                ViewModel.IsUser = ViewModel.SystemUser.IsAuthenticated != 2 ? true : false;
                 if (ViewModel.FileExists)
                     imgClinician.Source = ImageSource.FromFile(string.Format("{0}/{1}", ViewModel.GetCurrentFolder, string.Format("{0}.jpg", ViewModel.GetClinicianImage)));
                 else
