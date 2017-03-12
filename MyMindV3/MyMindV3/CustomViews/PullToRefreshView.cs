@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace MyMindV3
