@@ -1,4 +1,5 @@
 ﻿<Properties StartupConfiguration="{B7EC01B5-1C8D-49E7-BF43-C989BDCD90FF}|Default">
+<<<<<<< Updated upstream
   <MonoDevelop.Ide.Workbench>
     <Files>
       <File FileName="MyMindV3/MyMindV3/Views/LoginView.xaml.cs" Line="92" Column="1" />
@@ -17,6 +18,21 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.192.168.66.102:5555" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+=======
+  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MVVM/ViewModel/AllRegisteredUserViewModel.cs">
+    <Files>
+      <File FileName="MyMindV3/MVVM/Interfaces/IContent.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/Interfaces/IInterface.cs" Line="9" Column="1" />
+      <File FileName="MyMindV3/MVVM/Webservices/UsersWebservice.cs" Line="65" Column="12" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyJourneyViewModel.cs" Line="38" Column="50" />
+      <File FileName="MyMindV3/MVVM/Interfaces/IRepository.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/AllRegisteredUserViewModel.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3 HideGettingStarted="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+>>>>>>> Stashed changes
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/LoginViewModel.cs" line="62" column="1" />
