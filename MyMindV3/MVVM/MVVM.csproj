@@ -38,6 +38,7 @@
     <Compile Include="Enums\ActionCodes.cs" />
     <Compile Include="Helpers\FileIO.cs" />
     <Compile Include="Helpers\Validator.cs" />
+    <Compile Include="Interfaces\IConnectivity.cs" />
     <Compile Include="Models\Encryption.cs" />
     <Compile Include="ViewModel\AllRegisteredUserViewModel.cs" />
     <Compile Include="ViewModel\MyChatViewModel.cs" />
@@ -144,9 +145,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
