@@ -95,6 +95,7 @@
     <Compile Include="CustomViews\RadioButtons\CustomRadioButton.cs" />
     <Compile Include="CustomViews\RadioButtons\BindableRadioGroup.cs" />
     <Compile Include="Helpers\EventArgs.cs" />
+    <Compile Include="CustomViews\CustomChatView.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Languages\Langs.resx">
@@ -183,10 +184,6 @@
     <Reference Include="NELFTCryptography">
       <HintPath>..\Lib\NELFTCryptography.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Plugin.Connectivity, Version=2.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Connectivity.2.3.0\lib\portable-net45+wp80+win8+wpa81\Plugin.Connectivity.dll</HintPath>
       <Private>True</Private>
@@ -258,7 +255,10 @@
       <HintPath>..\..\packages\FubarCoder.RestSharp.Portable.HttpClient.4.0.8\lib\portable45-net45+win8+wp8+wpa81\FubarCoder.RestSharp.Portable.HttpClient.dll</HintPath>
     </Reference>
     <Reference Include="Validation">
-      <HintPath>..\..\packages\Validation.2.4.13\lib\portable-net45+win8+wp8+wpa81\Validation.dll</HintPath>
+      <HintPath>..\..\packages\Validation.2.4.15\lib\portable-net45+win8+wp8+wpa81\Validation.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

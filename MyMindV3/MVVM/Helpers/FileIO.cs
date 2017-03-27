@@ -54,13 +54,21 @@ namespace MvvmFramework.Helpers
         {
             var file = await FileSystem.Current.LocalStorage.GetFileAsync(filename);
             //load stream to buffer  
-            using (var stream = await file?.OpenAsync(FileAccess.ReadAndWrite))
+            try
             {
-                var length = stream.Length;
-                var streamBuffer = new byte[length];
-                stream.Read(streamBuffer, 0, (int)length);
-                return new MemoryStream(streamBuffer);
+                using (var stream = await file?.OpenAsync(FileAccess.ReadAndWrite))
+                {
+                    var length = stream.Length;
+                    var streamBuffer = new byte[length];
+                    stream.Read(streamBuffer, 0, (int)length);
+                    return new MemoryStream(streamBuffer);
+                }
             }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("{0}--{1}", ex.Message, ex.InnerException);
+            }
+            return default(Stream);
         }
 
         public bool FileExists(string filename)

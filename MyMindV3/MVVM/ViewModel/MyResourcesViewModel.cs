@@ -21,6 +21,7 @@ namespace MvvmFramework.ViewModel
             sqlRepo = repo;
             SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Page_View :
                 (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Page_View : ActionCodes.Member_Resources_Page_View));
+            SearchPostcode = "null";
         }
 
         Sorting currentSort;
@@ -76,7 +77,8 @@ namespace MvvmFramework.ViewModel
         public int CurrentLocalPage
         {
             get { return currentLocalPage; }
-            set {
+            set
+            {
                 Set(() => CurrentLocalPage, ref currentLocalPage, value);
                 DisableNextPageButton = currentLocalPage + 1 > MaxLocalPages;
                 DisableBackPageButton = currentLocalPage == 0;
@@ -94,7 +96,8 @@ namespace MvvmFramework.ViewModel
         public int CurrentNationalPage
         {
             get { return currentNationalPage; }
-            set {
+            set
+            {
                 Set(() => CurrentLocalPage, ref currentNationalPage, value);
                 DisableNextPageButton = currentNationalPage + 1 > MaxNataionalPages;
                 DisableBackPageButton = currentNationalPage == 0;
@@ -169,7 +172,8 @@ namespace MvvmFramework.ViewModel
         public string SearchPostcode
         {
             get { return searchPostcode; }
-            set {
+            set
+            {
                 Set(() => SearchPostcode, ref searchPostcode, value, true);
                 SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Searched_By_Postcode :
                 (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Searched_By_Postcode :
@@ -184,7 +188,8 @@ namespace MvvmFramework.ViewModel
 
         public string GetMyPostcode
         {
-            get {
+            get
+            {
                 var postcode = GetData.GetPostcode(Longitude, Latitude).Result;
                 SearchPostcode = postcode;
                 return postcode;
@@ -209,7 +214,7 @@ namespace MvvmFramework.ViewModel
         {
             var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
                     "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", CurrentLocalPage.ToString(),
-                    "Sorting", "AZ", "Postcode", SearchPostcode, "Title", null, "Categorys", "null"};
+                    "Sorting", "AZ", "Postcode", SearchPostcode, "Title", "null", "Categorys", "null"};
 
             var local = GetData.GetLocalNationalResources("GetLocalResources", param.ToArray()).Result;
 
@@ -224,7 +229,7 @@ namespace MvvmFramework.ViewModel
         {
             var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
                 "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", CurrentNationalPage.ToString(),
-                    "Sorting", "AZ", "Postcode", SearchPostcode, "Title", null, "Categorys", "null"};
+                    "Sorting", "AZ", "Postcode", SearchPostcode, "Title", "null", "Categorys", "null"};
 
             var national = GetData.GetLocalNationalResources("GetNationalResources", param.ToArray()).Result;
 
@@ -259,7 +264,8 @@ namespace MvvmFramework.ViewModel
 
         public List<string> GetCategoryList
         {
-            get {
+            get
+            {
                 var cats = ShowingLocal ? ListLocalResources?.Select(t => t.ResourceCategorysPiped).ToList() : ListNationalResources?.Select(t => t.ResourceCategorysPiped).ToList();
                 var catlist = new List<string> { "None" };
                 if (cats != null)
@@ -284,56 +290,6 @@ namespace MvvmFramework.ViewModel
                 return catlist.Distinct().ToList();
             }
         }
-
-        /*public List<string> GetResourceFilenames(List<string> categories)
-        {
-            if (categories == null)
-                return new List<string>();
-            if (categories.Count == 0)
-                return new List<string>();
-
-            var filenames = new List<string>{"anxiety","depression","apps","autism","bereavement","bullying","general","involvement", "learning_disabilities",
-                "local_services", "looked_after_children","mental_health","safeguarding","mood", "parent_resources", "peer_support", "self_harm", "self_help", "www", "stress", "substance_abuse",
-                "video", "well_being", "youth_support", "sleeping","adhd","young_carer", "domestic_abuse", "spousal_abuse", "solvent_abuse"};
-
-            var cats = categories.Distinct().ToList();
-            var cat = cats.Select(t => t.Replace('-', '_')).Select(t => t.Replace(' ', '_')).ToList();
-
-            var names = new List<string>();
-            var res = ShowingLocal ? ListLocalResources?.ToList() : ListNationalResources?.ToList();
-            var count = 0;
-            foreach (var c in cat)
-            {
-                try
-                {
-                    var resid = res[count].ResourceID;
-                    var spn = c.Split(',');
-                    var filename = string.Empty;
-
-                    foreach (var s in spn)
-                    {
-                        if (filenames.IndexOf(s.ToLowerInvariant()) != -1)
-                        {
-                            filename = filenames[filenames.IndexOf(s.ToLowerInvariant())];
-                            break;
-                        }
-                    }
-
-                    if (string.IsNullOrEmpty(filename))
-                        filename = "general";
-                    names.Add(string.Format("{0}|{1}", filename, resid));
-                    count++;
-                }
-                catch (Exception ex)
-                {
-#if DEBUG
-                    Debug.WriteLine("Exception - {0}::{1}", ex.Message, ex.InnerException);
-#endif
-                }
-            }
-
-            return names;
-        }*/
 
         public string GetResourceFilename(string category)
         {
@@ -567,7 +523,8 @@ namespace MvvmFramework.ViewModel
 
         public List<string> GetCategtoriesFromResource
         {
-            get {
+            get
+            {
                 return GetCategoryList;
             }
         }
@@ -584,7 +541,8 @@ namespace MvvmFramework.ViewModel
         RelayCommand btnBackCommand;
         public RelayCommand BtnBackCommand
         {
-            get {
+            get
+            {
                 return btnBackCommand ??
                     (
                         btnBackCommand = new RelayCommand(() =>
@@ -621,7 +579,8 @@ namespace MvvmFramework.ViewModel
         RelayCommand btnForwardCommand;
         public RelayCommand BtnForwardCommand
         {
-            get {
+            get
+            {
                 return btnForwardCommand ??
                     (
                         btnForwardCommand = new RelayCommand(() =>

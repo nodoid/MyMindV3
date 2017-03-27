@@ -18,7 +18,7 @@ namespace MyMindV3.Views
     {
         SearchBar postcodeSearch;
 
-        ObservableCollection<ListviewModel> dataList { get; set; }
+        static ObservableCollection<ListviewModel> dataList { get; set; }
         ListView listView;
         MenuView menu;
         Image imgLeft, imgRight;
@@ -141,8 +141,11 @@ namespace MyMindV3.Views
             {
                 listView.BeginRefresh();
                 if (dataList.Count == 0)
+                {
+                    ViewModel.GetUIList(ViewModel.ShowingLocal ? UIType.Local : UIType.National);
                     dataList = ViewModel.UIList;
-                var bc = dataList[App.Self.IdInUse];
+                }
+                var bc = dataList.FirstOrDefault(t => t.Id == App.Self.IdInUse);
                 bc.CurrentRating = App.Self.NewIconRating;
                 bc.StarRatings = ViewModel.ConvertRatingToStars(bc.CurrentRating, bc.CurrentRating);
                 listView.ItemsSource = null;
@@ -151,33 +154,33 @@ namespace MyMindV3.Views
                 Device.BeginInvokeOnMainThread(() =>
                                 {
                                     listView.ItemsSource = dataList;
-                                });
+                                }); https://github.com/marklbentley/api-shell/blob/master/.htaccess
                 listView.EndRefresh();
             }
 
             if (e.PropertyName == "Location")
             {
                 ViewModel.Speed = App.Self.Location.Speed;
-                
+
                 if (ViewModel.PositionChanged(App.Self.Location.Longitude, App.Self.Location.Latitude))
                 {
-					ViewModel.IsBusy = true;
-						ViewModel.GetLocalResources(ViewModel.GetIsClinician);
-					if (ViewModel.ShowingLocal)
-					{
-						ViewModel.GetUIList(UIType.Local);
-						dataList = ViewModel.UIList;
-						Device.BeginInvokeOnMainThread(() =>
-						 {
-							 if (listView.ItemsSource != null)
-								 listView.ItemsSource = null;
-							 listView.ItemsSource = dataList;
-							 ViewModel.IsBusy = false;
-							 menu.UpdateMenu(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
-						 });
-					}
-					else
-						ViewModel.IsBusy = false;
+                    ViewModel.IsBusy = true;
+                    ViewModel.GetLocalResources(ViewModel.GetIsClinician);
+                    if (ViewModel.ShowingLocal)
+                    {
+                        ViewModel.GetUIList(UIType.Local);
+                        dataList = ViewModel.UIList;
+                        Device.BeginInvokeOnMainThread(() =>
+                         {
+                             if (listView.ItemsSource != null)
+                                 listView.ItemsSource = null;
+                             listView.ItemsSource = dataList;
+                             ViewModel.IsBusy = false;
+                             menu.UpdateMenu(ViewModel.SearchSelected, ViewModel.SearchCategory, ViewModel.GetCategtoriesFromResource);
+                         });
+                    }
+                    else
+                        ViewModel.IsBusy = false;
                 }
             }
         }
@@ -341,6 +344,7 @@ namespace MyMindV3.Views
                     ViewModel.SearchPostcode = postcodeSearch.Text.Replace(" ", "").ToLowerInvariant();
                     Task.Run(() =>
                     {
+
                         ViewModel.GetLocalResources(ViewModel.GetIsClinician);
                         if (ViewModel.ShowingLocal)
                         {

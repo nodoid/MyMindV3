@@ -39,11 +39,11 @@ namespace MvvmFramework.Webservices
             if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(hcp))
                 return null;
 
-            var url = string.Format("{0}/api/Appointment/GetAppointmentsByClientAndHCP?clientId={1}&hcpCode={2}",
+            var url = string.Format("{0}/api/MyMind/GetAppointmentsByClientAndHCP?clientId={1}&hcpCode={2}",
                                     Constants.BaseTestUrl, clientId, hcp);
 
             var encMgr = Factory.Instance.GetEncryptionManager();
-            IEnumerable<Encryption> encryptions = null;
+            IEnumerable<Appointment> encryptions = null;
 
             try
             {
@@ -51,7 +51,7 @@ namespace MvvmFramework.Webservices
                 {
                     var response = client.GetAsync(url).Result;
                     var encryptionJson = await response.Content.ReadAsStringAsync();
-                    encryptions = JsonConvert.DeserializeObject<IEnumerable<Encryption>>(encryptionJson);
+                    encryptions = JsonConvert.DeserializeObject<IEnumerable<Appointment>>(encryptionJson);
                 }
             }
             catch (Exception ex)
@@ -61,7 +61,8 @@ namespace MvvmFramework.Webservices
 #endif
             }
 
-            return encMgr.DecryptAppointments(encryptions);
+            //return encMgr.DecryptAppointments(encryptions);
+            return encryptions;
         }
 
         public async Task UpdateSystemUser(SystemUser sysUser)

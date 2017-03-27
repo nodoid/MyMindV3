@@ -172,7 +172,7 @@ namespace MyMindV3.Views
             };
             brokenLink.GestureRecognizers.Add(brokenLinkTap);
 
-			 var theStack = new StackLayout
+            var theStack = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
                 Padding = new Thickness(4),
@@ -221,8 +221,8 @@ namespace MyMindV3.Views
                     },
                     new StackLayout
                     {
-						WidthRequest = App.ScreenSize.Width * (Device.OS == TargetPlatform.iOS ? 0.55 : 0.63),
-                        MinimumWidthRequest = App.ScreenSize.Width * (Device.OS == TargetPlatform.iOS ? 0.55 : 0.63),
+                        WidthRequest = App.ScreenSize.Width * 0.55,
+                        MinimumWidthRequest = App.ScreenSize.Width * 0.55,
                         Orientation = StackOrientation.Vertical,
                         Children =
                         {
@@ -280,7 +280,7 @@ namespace MyMindV3.Views
                     Device.BeginInvokeOnMainThread(() => theStack.Children.Add(cv));
                 })
             };
-            theStack.GestureRecognizers.Add(tapRecogniser);
+            starStack.GestureRecognizers.Add(tapRecogniser);
 
             try
             {

@@ -1,32 +1,50 @@
-﻿<Properties StartupConfiguration="{B7EC01B5-1C8D-49E7-BF43-C989BDCD90FF}|Default">
-  <MonoDevelop.Ide.Workbench>
+﻿<Properties StartupConfiguration="{15311C07-7E02-4E74-8581-813F3EF27CCD}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3/Views/MyResourceView.cs">
     <Files>
-      <File FileName="MyMindV3/MyMindV3/Views/LoginView.xaml.cs" Line="92" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/App.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MVVM/ViewModel/LoginViewModel.cs" Line="62" Column="1" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyProfileViewModel.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" Line="25" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" Line="70" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" Line="79" Column="1" />
+      <File FileName="MyMindV3/MVVM/Webservices/GetData.cs" Line="292" Column="1" />
+      <File FileName="MyMindV3/MVVM/Webservices/SendData.cs" Line="165" Column="64" />
+      <File FileName="MyMindV3/MVVM/Webservices/UsersWebservice.cs" Line="85" Column="139" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyJourneyViewModel.cs" Line="72" Column="74" />
+      <File FileName="MyMindV3/MVVM/ViewModel/SignUpViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="221" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyProfileViewModel.cs" Line="34" Column="1" />
       <File FileName="MyMindV3/MVVM/ViewModel/MyPlansViewModel.cs" Line="9" Column="2" />
-      <File FileName="MyMindV3/MVVM/Webservices/SendData.cs" Line="42" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyPlansView.xaml.cs" Line="31" Column="1" />
-      <File FileName="MyMindV3/MVVM/ViewModel/BaseViewModel.cs" Line="258" Column="10" />
-      <File FileName="MyMindV3/MyMindV3.iOS/Info.plist" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyPatientViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyMindViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyLimitedMindViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyHelpViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" Line="25" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyChatViewModel.cs" Line="29" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/LoginViewModel.cs" Line="143" Column="21" />
+      <File FileName="MyMindV3/MVVM/Constants/Constants.cs" Line="9" Column="67" />
+      <File FileName="MyMindV3/MVVM/ViewModel/AllRegisteredUserViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/LoginPinCodeViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyFileViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3.Droid/CustomRenderers/CustomChatViewRenderer.cs" Line="47" Column="178" />
+      <File FileName="MyMindV3/MyMindV3.Droid/Callback.cs" Line="32" Column="1" />
+      <File FileName="MyMindV3/MyMindV3.Droid/LoginCallback.cs" Line="6" Column="67" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyChatView.xaml" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyChatView.xaml.cs" Line="34" Column="135" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" Line="70" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyJourneyView.xaml.cs" Line="185" Column="1" />
+      <File FileName="MyMindV3/MVVM/Helpers/FileIO.cs" Line="62" Column="57" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="153" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.192.168.66.102:5555" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/LoginViewModel.cs" line="62" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyProfileViewModel.cs" line="34" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" line="33" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" line="25" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" line="70" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" line="79" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" relfile="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" line="70" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Helpers/EncryptionManager.cs" relfile="MyMindV3/MVVM/Helpers/EncryptionManager.cs" line="50" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3.Droid/LoginCallback.cs" relfile="MyMindV3/MyMindV3.Droid/LoginCallback.cs" line="28" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3.Droid/CustomRenderers/CustomChatViewRenderer.cs" relfile="MyMindV3/MyMindV3.Droid/CustomRenderers/CustomChatViewRenderer.cs" line="51" column="99" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3.Droid/Callback.cs" relfile="MyMindV3/MyMindV3.Droid/Callback.cs" line="32" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3.Droid/Callback.cs" relfile="MyMindV3/MyMindV3.Droid/Callback.cs" line="28" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3.Droid/LoginCallback.cs" relfile="MyMindV3/MyMindV3.Droid/LoginCallback.cs" line="32" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.10FF6238-0F80-464B-B66A-D7CE6C91FC54" />
   <MultiItemStartupConfigurations />
 </Properties>
