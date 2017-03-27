@@ -17,7 +17,7 @@
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi;armeabi-v7a</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
@@ -43,9 +43,10 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
-    <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
-    <JavaOptions>-Xms1024m -Xmx2048m</JavaOptions>
+    <JavaMaximumHeapSize></JavaMaximumHeapSize>
+    <JavaOptions></JavaOptions>
     <Debugger>.Net (Xamarin)</Debugger>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;arm64-v8a</AndroidSupportedAbis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -61,6 +62,9 @@
     <JavaMaximumHeapSize>4G</JavaMaximumHeapSize>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a</AndroidSupportedAbis>
+    <AndroidHttpClientHandlerType></AndroidHttpClientHandlerType>
+    <AndroidKeyStore></AndroidKeyStore>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">

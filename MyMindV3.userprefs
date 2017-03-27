@@ -19,8 +19,8 @@
       <File FileName="MyMindV3/MyMindV3/Views/LoginView.xaml.cs" Line="84" Column="30" />
       <File FileName="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" Line="149" Column="22" />
       <File FileName="MyMindV3/MyMindV3/Views/MyFileView.xaml.cs" Line="15" Column="6" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="157" Column="37" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" Line="158" Column="22" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="696" Column="39" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" Line="159" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -33,16 +33,15 @@
               <Node name="Webservices" expanded="True" />
             </Node>
             <Node name="MyMindV3" expanded="True">
-              <Node name="Views" expanded="True">
-                <Node name="MyProfileView.xaml.cs" selected="True" />
-              </Node>
+              <Node name="Views" expanded="True" />
             </Node>
+            <Node name="MyMindV3.Droid" selected="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.3300bbd22409536f" />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
