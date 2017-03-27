@@ -34,7 +34,7 @@ namespace MvvmFramework.Webservices
             }
         }
 
-        /*public async Task<IEnumerable<Appointment>> GetPatientAppointments(string clientId, string hcp)
+        public async Task<IEnumerable<Appointment>> GetPatientAppointments(string clientId, string hcp)
         {
             if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(hcp))
                 return null;
@@ -42,7 +42,7 @@ namespace MvvmFramework.Webservices
             var url = string.Format("{0}/api/MyMind/GetAppointmentsByClientAndHCP?clientId={1}&hcpCode={2}",
                                     Constants.BaseTestUrl, clientId, hcp);
 
-            var encMgr = Factory.Instance.GetEncryptionManager();
+            //var encMgr = Factory.Instance.GetEncryptionManager();
             IEnumerable<Appointment> encryptions = null;
 
             try
@@ -61,13 +61,10 @@ namespace MvvmFramework.Webservices
 #endif
             }
 
-<<<<<<< HEAD
             //return encMgr.DecryptAppointments(encryptions);
             return encryptions;
         }
-=======
-            return encMgr.DecryptAppointments(encryptions);
-        }*/
+
 
         public async Task UpdateSystemUser(SystemUser sysUser)
         {
