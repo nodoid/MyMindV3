@@ -24,6 +24,13 @@ namespace MvvmFramework.ViewModel
             set { Set(() => NetworkErrors, ref networkErrors, value); }
         }
 
+        Dictionary<string, string> errorTitles;
+        public Dictionary<string, string> ErrorTitles
+        {
+            get { return errorTitles; }
+            set { Set(() => ErrorTitles, ref errorTitles, value); }
+        }
+
         Dictionary<string, string> errorMessages;
         public Dictionary<string, string> ErrorMessages
         {
