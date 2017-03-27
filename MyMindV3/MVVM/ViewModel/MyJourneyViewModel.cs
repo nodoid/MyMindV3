@@ -5,15 +5,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 using MvvmFramework.Enums;
+using MvvmFramework.Interfaces;
 
 namespace MvvmFramework.ViewModel
 {
     public class MyJourneyViewModel : BaseViewModel
     {
         INavigationService navService;
-        public MyJourneyViewModel(INavigationService nav)
+        IConnectivity connectService;
+        IDialogService diaService;
+
+        public MyJourneyViewModel(INavigationService nav, IConnectivity con, IDialogService dia)
         {
             navService = nav;
+            connectService = con;
+            diaService = dia;
+
+            if (con.IsConnected)
             SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Journey_Page_View : ActionCodes.User_My_Journey_Page_View);
         }
 
@@ -35,33 +43,41 @@ namespace MvvmFramework.ViewModel
 
         public void GetAppointments()
         {
-            Appointments = new UsersWebservice().GetPatientAppointments(ClientID, HCP).Result;
-            if (Appointments != null)
+            if (connectService.IsConnected)
             {
-                var sortedList = Appointments.OrderByDescending(o => o.AppointmentDateTime.CleanDate()).ToList();
-
-                var dayOfYear = DateTime.Now.DayOfYear;
-                var lower = dayOfYear - (int)DayOfWeek.Monday;
-                var upper = dayOfYear + (int)DayOfWeek.Friday;
-                var thisWeek = 0;
-
-                var thisMonth = sortedList?.Count(t => t.AppointmentDateTime.CleanDate().Month == DateTime.Now.Month);
-
-                if (thisMonth != 0)
+                Appointments = new UsersWebservice().GetPatientAppointments(ClientID, HCP).Result;
+                if (Appointments != null)
                 {
-                    // we have an appointment this month
-                    var thisMonthsApps = sortedList.Where(t => t.AppointmentDateTime.CleanDate().Month == DateTime.Now.Month).ToList();
-                    foreach (var app in thisMonthsApps)
-                    {
-                        var date = app.AppointmentDateTime.CleanDate();
-                        var dayOfMonth = date.DayOfYear;
-                        if (dayOfMonth >= lower && dayOfMonth <= upper)
-                            thisWeek++;
-                    }
-                }
+                    var sortedList = Appointments.OrderByDescending(o => o.AppointmentDateTime.CleanDate()).ToList();
 
-                ApptsThisWeek = thisWeek.ToString();
-                ApptsThisMonth = thisMonth.ToString();
+                    var dayOfYear = DateTime.Now.DayOfYear;
+                    var lower = dayOfYear - (int)DayOfWeek.Monday;
+                    var upper = dayOfYear + (int)DayOfWeek.Friday;
+                    var thisWeek = 0;
+
+                    var thisMonth = sortedList?.Count(t => t.AppointmentDateTime.CleanDate().Month == DateTime.Now.Month);
+
+                    if (thisMonth != 0)
+                    {
+                        // we have an appointment this month
+                        var thisMonthsApps = sortedList.Where(t => t.AppointmentDateTime.CleanDate().Month == DateTime.Now.Month).ToList();
+                        foreach (var app in thisMonthsApps)
+                        {
+                            var date = app.AppointmentDateTime.CleanDate();
+                            var dayOfMonth = date.DayOfYear;
+                            if (dayOfMonth >= lower && dayOfMonth <= upper)
+                                thisWeek++;
+                        }
+                    }
+
+                    ApptsThisWeek = thisWeek.ToString();
+                    ApptsThisMonth = thisMonth.ToString();
+                }
+            }
+            else
+            {
+                diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
+                ApptsThisMonth = ApptsThisWeek = "0";
             }
         }
 

@@ -3,6 +3,7 @@ using MvvmFramework.Models;
 using GalaSoft.MvvmLight.Views;
 using GalaSoft.MvvmLight.Command;
 using MvvmFramework.Webservices;
+using MvvmFramework.Interfaces;
 
 namespace MvvmFramework.ViewModel
 {
@@ -11,13 +12,16 @@ namespace MvvmFramework.ViewModel
         IRepository _database;
         INavigationService navService;
         IDialogService dialogService;
+        IConnectivity connectService;
         string DateOfBirth;
 
-        public SignUpViewModel(INavigationService navigation, IRepository repo, IDialogService dialog)
+        public SignUpViewModel(INavigationService navigation, IRepository repo, IDialogService dialog, IConnectivity con)
         {
             navService = navigation;
             _database = repo;
             dialogService = dialog;
+            connectService = con;
+
             DateOfBirth = DateTime.Now.ToString("d");
         }
 
@@ -51,31 +55,36 @@ namespace MvvmFramework.ViewModel
                     (
                         createSubmitCommand = new RelayCommand(async () =>
                         {
-                            if (HasValidInput)
+                            if (connectService.IsConnected)
                             {
-                                var systemUser = new SystemUser
+                                if (HasValidInput)
                                 {
-                                    Name = Name,
-                                    PreferredName = PreferredName,
-                                    DateOfBirth = DateOfBirth,
-                                    Email = Email,
-                                    Phone = Phone,
-                                    Password = Password,
-                                    PinCode = PinCode,
-                                    PostCode = PostCode
-                                };
+                                    var systemUser = new SystemUser
+                                    {
+                                        Name = Name,
+                                        PreferredName = PreferredName,
+                                        DateOfBirth = DateOfBirth,
+                                        Email = Email,
+                                        Phone = Phone,
+                                        Password = Password,
+                                        PinCode = PinCode,
+                                        PostCode = PostCode
+                                    };
 
-                                var resu = new UsersWebservice().RegisterWeb(systemUser);
-                                if (resu != null)
+                                    var resu = new UsersWebservice().RegisterWeb(systemUser);
+                                    if (resu != null)
+                                    {
+                                        await dialogService.ShowMessage(GetMessage("RegUser_Completed_Message"), GetMessage("RegUser_Completed"));
+                                    }
+                                }
+                                else
                                 {
-                                    await dialogService.ShowMessage(GetMessage("RegUser_Completed_Message"), GetMessage("RegUser_Completed"));
+                                    await dialogService.ShowMessage(GetErrorMessage("Registration_ErrorMessage"), GetErrorTitle("Gen_Error"));
+                                    navService.GoBack();
                                 }
                             }
                             else
-                            {
-                                await dialogService.ShowMessage(GetErrorMessage("Registration_ErrorMessage"), GetErrorTitle("Gen_Error"));
-                                navService.GoBack();
-                            }
+                                await dialogService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
                         })
                         );
             }

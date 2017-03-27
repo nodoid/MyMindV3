@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using MvvmFramework.Models;
 using System.Collections.Generic;
+using MvvmFramework.Interfaces;
 
 namespace MvvmFramework.ViewModel
 {
@@ -12,11 +13,17 @@ namespace MvvmFramework.ViewModel
     {
         INavigationService navService;
         IRepository sqlConn;
+        IConnectivity connectService;
+        IDialogService diaService;
 
-        public MyProfileViewModel(INavigationService nav, IRepository repo)
+        public MyProfileViewModel(INavigationService nav, IRepository repo, IConnectivity con, IDialogService dia)
         {
             navService = nav;
             sqlConn = repo;
+            connectService = con;
+            diaService = dia;
+
+            if (con.IsConnected)
             SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Profile_Page_View :
                 (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Profile_Page_View : ActionCodes.Member_Profile_Page_View));
         }
@@ -47,14 +54,19 @@ namespace MvvmFramework.ViewModel
         {
             Task.Run(async () =>
             {
-                await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", data[0], "AuthToken", data[1],
-                                                   "ClientGUID", data[2]).ContinueWith((t) =>
+                if (connectService.IsConnected)
                 {
-                    if (t.IsCompleted)
+                    await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", data[0], "AuthToken", data[1],
+                                                       "ClientGUID", data[2]).ContinueWith((t) =>
                     {
-                        UserProfile = t.Result[0];
-                    }
-                });
+                        if (t.IsCompleted)
+                        {
+                            UserProfile = t.Result[0];
+                        }
+                    });
+                }
+                else
+                    await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
             });
         }
 
@@ -62,23 +74,28 @@ namespace MvvmFramework.ViewModel
         {
             Task.Run(async () =>
             {
-                await Send.SendData("api/MyMind/UpdateUserProfile", "UserGUID", data[0], "AuthToken", data[1],
-                                    "PreferredName", data[2], "DateOfBirth", data[3],
-                                    "PhoneNumber", data[4], "WhyIThinkIWasReferred", data[5],
-                                    "SomethingILike", data[6], "SomethingIDislike", data[7],
-                                    "WhatIWantTo", data[8]).ContinueWith((t) =>
-             {
-                 if (t.IsCompleted)
+                if (connectService.IsConnected)
+                {
+                    await Send.SendData("api/MyMind/UpdateUserProfile", "UserGUID", data[0], "AuthToken", data[1],
+                                        "PreferredName", data[2], "DateOfBirth", data[3],
+                                        "PhoneNumber", data[4], "WhyIThinkIWasReferred", data[5],
+                                        "SomethingILike", data[6], "SomethingIDislike", data[7],
+                                        "WhatIWantTo", data[8]).ContinueWith((t) =>
                  {
-                     UpdateSystemUser();
-                 }
-             });
+                     if (t.IsCompleted)
+                     {
+                         UpdateSystemUser();
+                     }
+                 });
+                }
+                else
+                    await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
             });
         }
 
         public void UpdateSystemUser()
         {
-            if (!GetIsClinician)
+            if (!GetIsClinician && connectService.IsConnected)
                 SendTrackingInformation(ActionCodes.User_Updated_Profile);
             sqlConn.SaveData(SystemUser);
         }

@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
+using MvvmFramework.Interfaces;
 using MvvmFramework.Models;
 using MvvmFramework.Webservices;
 
@@ -9,11 +10,13 @@ namespace MvvmFramework.ViewModel
     {
         INavigationService navService;
         IDialogService dialogService;
+        IConnectivity connectService;
 
-        public LoginViewModel(INavigationService navigation, IDialogService dialog)
+        public LoginViewModel(INavigationService navigation, IDialogService dialog, IConnectivity con)
         {
             navService = navigation;
             dialogService = dialog;
+            connectService = con;
             if (SystemUser == null && ClinicianUser == null)
             {
                 DisplayLogin = true;
@@ -59,7 +62,7 @@ namespace MvvmFramework.ViewModel
                     (
                         acceptCommand = new RelayCommand(async () =>
                         {
-                            if (IsConnected)
+                            if (connectService.IsConnected)
                             {
                                 SpinnerTitle = GetMessage("LoggingIn_Title");
                                 SpinnerMessage = GetMessage("Gen_PleaseWait");
@@ -140,7 +143,7 @@ namespace MvvmFramework.ViewModel
             }
         }
 
-        public bool ProcessLogin()
+        bool ProcessLogin()
         {
             var resu = new UsersWebservice().LoginUser(Name, Password);
 

@@ -3,14 +3,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Views;
 using MvvmFramework.Models;
+using MvvmFramework.Interfaces;
 
 namespace MvvmFramework.ViewModel
 {
     public class MyPatientViewModel : BaseViewModel
     {
-        public MyPatientViewModel(INavigationService nav)
-        {
+        IConnectivity connectService;
+        IDialogService diaService;
 
+        public MyPatientViewModel(IConnectivity con, IDialogService dia)
+        {
+            connectService = con;
+            diaService = dia;
         }
 
         List<Connections> connections;
@@ -73,15 +78,20 @@ namespace MvvmFramework.ViewModel
         {
             Task.Run(async () =>
             {
-                await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID",
-                                                       UnencryptedGuid, "AuthToken", UnencryptedAuth,
-                                                       "ClientGUID", ConnectionId).ContinueWith((t) =>
+                if (connectService.IsConnected)
                 {
-                    if (t.IsCompleted)
+                    await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID",
+                                                           UnencryptedGuid, "AuthToken", UnencryptedAuth,
+                                                           "ClientGUID", ConnectionId).ContinueWith((t) =>
                     {
-                        UserProfile = t.Result[0];
-                    }
-                });
+                        if (t.IsCompleted)
+                        {
+                            UserProfile = t.Result[0];
+                        }
+                    });
+                }
+                else
+                   await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
             });
         }
 
@@ -89,18 +99,23 @@ namespace MvvmFramework.ViewModel
         {
             Task.Run(async () =>
             {
-                await Send.SendData<List<Connections>>("api/MyMind/GetClinicianConnections", "ClinicianGUID",
-                                                       ClinicianGuid, "AuthToken", authToken).ContinueWith((t) =>
-            {
-                if (t.IsCompleted)
+                if (connectService.IsConnected)
                 {
-                    Connections = t.Result;
-                    if (t.Result.Count != 0)
+                    await Send.SendData<List<Connections>>("api/MyMind/GetClinicianConnections", "ClinicianGUID",
+                                                           ClinicianGuid, "AuthToken", authToken).ContinueWith((t) =>
+                {
+                    if (t.IsCompleted)
                     {
-                        ConnectionNames = t.Result.Select(w => w.Name).ToList();
+                        Connections = t.Result;
+                        if (t.Result.Count != 0)
+                        {
+                            ConnectionNames = t.Result.Select(w => w.Name).ToList();
+                        }
                     }
+                });
                 }
-            });
+                else
+                    await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
             });
         }
     }

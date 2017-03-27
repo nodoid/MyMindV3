@@ -5,6 +5,8 @@ using System;
 using System.Threading.Tasks;
 using GalaSoft.MvvmLight.Command;
 using MvvmFramework.Enums;
+using GalaSoft.MvvmLight.Views;
+using MvvmFramework.Interfaces;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -15,10 +17,16 @@ namespace MvvmFramework.ViewModel
     public class MyResourcesViewModel : BaseViewModel
     {
         IRepository sqlRepo;
+        IConnectivity connectService;
+        IDialogService diaService;
 
-        public MyResourcesViewModel(IRepository repo)
+        public MyResourcesViewModel(IRepository repo, IConnectivity con, IDialogService dia)
         {
             sqlRepo = repo;
+            diaService = dia;
+            connectService = con;
+
+            if (con.IsConnected)
             SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Page_View :
                 (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Page_View : ActionCodes.Member_Resources_Page_View));
             SearchPostcode = "null";
@@ -175,6 +183,7 @@ namespace MvvmFramework.ViewModel
             set
             {
                 Set(() => SearchPostcode, ref searchPostcode, value, true);
+                if (connectService.IsConnected)
                 SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Searched_By_Postcode :
                 (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Searched_By_Postcode :
                 ActionCodes.Member_Resources_Searched_By_Postcode));
@@ -183,16 +192,27 @@ namespace MvvmFramework.ViewModel
 
         public void GetAvailablePostcodes()
         {
-            AvailablePostcodes = GetData.GetSurroundingPostcodes(SearchPostcode).Result;
+            if (connectService.IsConnected)
+                AvailablePostcodes = GetData.GetSurroundingPostcodes(SearchPostcode).Result;
+            else
+                diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
         }
 
         public string GetMyPostcode
         {
             get
             {
-                var postcode = GetData.GetPostcode(Longitude, Latitude).Result;
-                SearchPostcode = postcode;
-                return postcode;
+                if (connectService.IsConnected)
+                {
+                    var postcode = GetData.GetPostcode(Longitude, Latitude).Result;
+                    SearchPostcode = postcode;
+                    return postcode;
+                }
+                else
+                {
+                    diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
+                    return string.Empty;
+                }
             }
         }
 
@@ -212,32 +232,42 @@ namespace MvvmFramework.ViewModel
 
         public void GetLocalResources(bool isClinicial = false)
         {
-            var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
+            if (connectService.IsConnected)
+            {
+                var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
                     "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", CurrentLocalPage.ToString(),
                     "Sorting", "AZ", "Postcode", SearchPostcode, "Title", "null", "Categorys", "null"};
 
-            var local = GetData.GetLocalNationalResources("GetLocalResources", param.ToArray()).Result;
+                var local = GetData.GetLocalNationalResources("GetLocalResources", param.ToArray()).Result;
 
-            if (local != null)
-            {
-                MaxLocalPages = local.TotalLocalPagesRequired;
-                ListLocalResources = local.Resources;
+                if (local != null)
+                {
+                    MaxLocalPages = local.TotalLocalPagesRequired;
+                    ListLocalResources = local.Resources;
+                }
             }
+            else
+                diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
         }
 
         public void GetNationalResources(bool isClinicial = false)
         {
-            var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
+            if (connectService.IsConnected)
+            {
+                var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
                 "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", CurrentNationalPage.ToString(),
                     "Sorting", "AZ", "Postcode", SearchPostcode, "Title", "null", "Categorys", "null"};
 
-            var national = GetData.GetLocalNationalResources("GetNationalResources", param.ToArray()).Result;
+                var national = GetData.GetLocalNationalResources("GetNationalResources", param.ToArray()).Result;
 
-            if (national != null)
-            {
-                MaxNataionalPages = national.TotalNationalPagesRequired;
-                ListNationalResources = national.Resources;
+                if (national != null)
+                {
+                    MaxNataionalPages = national.TotalNationalPagesRequired;
+                    ListNationalResources = national.Resources;
+                }
             }
+            else
+                diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
         }
 
         public string SearchBy { get; set; }
@@ -490,21 +520,27 @@ namespace MvvmFramework.ViewModel
 
         public async Task SetRating(bool isClinician)
         {
-            var currentRespond = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) : ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
-            var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
-                "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString(), "Rating", NewRating.ToString()};
-            await Send.Rated("RateResource", ResId, data.ToArray()).ContinueWith((t) =>
+            if (connectService.IsConnected)
             {
-                if (t.IsCompleted)
+                var currentRespond = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) : ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
+                var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
+                "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString(), "Rating", NewRating.ToString()};
+                await Send.Rated("RateResource", ResId, data.ToArray()).ContinueWith((t) =>
                 {
-                    currentRespond.ResourceRating = t.Result.Rating;
-                    currentRespond.ResourceNumberOfRating = t.Result.Respondents;
-                }
-            });
+                    if (t.IsCompleted)
+                    {
+                        currentRespond.ResourceRating = t.Result.Rating;
+                        currentRespond.ResourceNumberOfRating = t.Result.Respondents;
+                    }
+                });
+            }
+            else
+                await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
         }
 
         public void ReportLink(int ResId)
         {
+            if (connectService.IsConnected)
             SendBrokenLink(ResId, GetIsClinician ? ActionCodes.Clinician_Resource_Reported_Broken :
                 (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resource_Reported_Broken : ActionCodes.Member_Resource_Reported_Broken));
             var res = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) :

@@ -2,13 +2,20 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using MvvmFramework.Models;
+using MvvmFramework.Interfaces;
+using GalaSoft.MvvmLight.Views;
 
 namespace MvvmFramework.ViewModel
 {
     public class MyChatViewModel : BaseViewModel
     {
-        public MyChatViewModel()
+        IConnectivity connectService;
+        IDialogService diaService;
+        
+        public MyChatViewModel(IConnectivity con, IDialogService dia)
         {
+            connectService = con;
+            if (connectService.IsConnected)
             SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Chat_Page_View : ActionCodes.User_My_Chat_Page_View);
         }
 
@@ -23,11 +30,16 @@ namespace MvvmFramework.ViewModel
         {
             Task.Run(async () =>
             {
-                await Send.SendData("api/MyMind/GetCometChatUserId", new List<string> { "userguid", guid, "authtoken", SystemUser.APIToken, "accounttype", GetIsClinician ? "3" : "2" }.ToArray()).ContinueWith((t) =>
-                  {
-                      if (t.IsCompleted)
-                          UserId = t.Result;
-                  });
+                if (connectService.IsConnected)
+                {
+                    await Send.SendData("api/MyMind/GetCometChatUserId", new List<string> { "userguid", guid, "authtoken", SystemUser.APIToken, "accounttype", GetIsClinician ? "3" : "2" }.ToArray()).ContinueWith((t) =>
+                      {
+                          if (t.IsCompleted)
+                              UserId = t.Result;
+                      });
+                }
+                else
+                    await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
             });
         }
     }

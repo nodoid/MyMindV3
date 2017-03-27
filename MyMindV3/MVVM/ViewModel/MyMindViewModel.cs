@@ -1,15 +1,17 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Views;
 using MvvmFramework.Enums;
+using MvvmFramework.Interfaces;
 
 namespace MvvmFramework.ViewModel
 {
     public class MyMindViewModel : BaseViewModel
     {
         INavigationService navService;
-        public MyMindViewModel(INavigationService nav)
+        public MyMindViewModel(INavigationService nav, IConnectivity con)
         {
             navService = nav;
+            if (con.IsConnected)
            SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Login : ActionCodes.User_Login);
         }
 
