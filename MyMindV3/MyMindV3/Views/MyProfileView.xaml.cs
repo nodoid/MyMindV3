@@ -55,7 +55,6 @@ namespace MyMindV3.Views
 
         void CreateUI()
         {
-            ViewModel.IsConnected = App.Self.IsConnected;
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
             GetImage();
@@ -137,8 +136,10 @@ namespace MyMindV3.Views
                                             DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
                                             ViewModel.SystemUser.UserImage = file.Path;
                                             ViewModel.UpdateSystemUser();
-                                            //Send.HttpPost(file, _rootVM.SystemUser.Guid);
-                                            await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken);
+                                            if (App.Self.IsConnected)
+                                                await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken);
+                                            else
+                                                await DisplayAlert(Langs.Network_ErrorTitle, Langs.Network_ErrorMessage, Langs.Gen_OK);
                                             file.Dispose();
                                         }
                                     }));
