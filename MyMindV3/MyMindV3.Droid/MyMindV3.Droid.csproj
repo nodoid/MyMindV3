@@ -41,10 +41,16 @@
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <Debugger>Xamarin</Debugger>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <BundleAssemblies>False</BundleAssemblies>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <AotAssemblies>False</AotAssemblies>
+    <EnableLLVM>False</EnableLLVM>
+    <AndroidEnableMultiDex>True</AndroidEnableMultiDex>
+    <EnableProguard>False</EnableProguard>
+    <JavaMaximumHeapSize>2G</JavaMaximumHeapSize>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -226,7 +232,7 @@
     </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="MessageSDKBinding.Droid">
-      <HintPath>..\..\..\..\..\Downloads\SDK AV 6.3.4\Xamarin\MessageSDKBinding.Droid.dll</HintPath>
+      <HintPath>..\Lib\MessageSDKBinding.Droid.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
