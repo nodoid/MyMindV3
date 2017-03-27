@@ -12,6 +12,8 @@ using Plugin.Geolocator;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MvvmFramework.Enums;
+using MyMindV3.Interfaces;
+using System;
 #if DEBUG
 using System.Diagnostics;
 
@@ -19,6 +21,17 @@ using System.Diagnostics;
 
 namespace MyMindV3
 {
+    public class NetworkConnection : IConnectivity
+    {
+        public bool IsConnected
+        {
+            get
+            {
+                return App.Self.IsConnected;
+            }
+        }
+    }
+
     public class App : Application
     {
         public static Size ScreenSize { get; set; }
@@ -26,8 +39,6 @@ namespace MyMindV3
         public string PicturesDirectory { get; private set; } = DependencyService.Get<IContent>().PicturesDirectory();
 
         public IUserSettings UserSettings { get; set; } = DependencyService.Get<IUserSettings>();
-
-        public IEncrypt Encrypt { get; set; } = DependencyService.Get<IEncrypt>();
 
         public static ViewModelLocator locator;
         public static ViewModelLocator Locator { get { return locator ?? (locator = new ViewModelLocator()); } }
@@ -120,10 +131,13 @@ namespace MyMindV3
 
             CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
             {
-                Locator.Login.IsConnected = IsConnected = args.IsConnected;
+                IsConnected = args.IsConnected;
             };
 
-            Locator.Login.IsConnected = IsConnected = CrossConnectivity.Current.IsConnected;
+            IsConnected = CrossConnectivity.Current.IsConnected;
+            SimpleIoc.Default.Register<IConnectivity>(() => new NetworkConnection());
+
+            App.Locator.Login.NetworkErrors = new string[] { Langs.Network_ErrorTitle, Langs.Network_ErrorMessage };
 
             // and launch
 
