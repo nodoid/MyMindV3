@@ -12,7 +12,7 @@ namespace MyMindV3
         {
             InitializeComponent();
 			var filePath = ViewModel.GetCurrentFolder;
-			var path = Device.OS == TargetPlatform.iOS ? filePath : string.Format("file://{0}/", filePath);
+			//var path = Device.OS == TargetPlatform.iOS ? filePath : string.Format("file://{0}/", filePath);
 
 			var image = string.Format("{0}/{1}", filePath, url);
 			/*vvar source = new HtmlWebViewSource
