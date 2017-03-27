@@ -122,6 +122,15 @@ namespace MyMindV3
             DependencyService.Get<MvvmFramework.ISqLiteConnectionFactory>().GetConnection();
             var dialogService = new DialogService();
             SimpleIoc.Default.Register<IDialogService>(() => dialogService);
+
+			CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
+			{
+				IsConnected = args.IsConnected;
+			};
+
+			IsConnected = CrossConnectivity.Current.IsConnected;
+			SimpleIoc.Default.Register<IConnectivity>(() => new NetworkConnection());
+
             // we next set the navigation page
             var firstPage = new NavigationPage(new LoginView());
 
@@ -129,14 +138,6 @@ namespace MyMindV3
             nav.Initialize(firstPage);
 
             dialogService.Initialize(firstPage);
-
-            CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
-            {
-                IsConnected = args.IsConnected;
-            };
-
-            IsConnected = CrossConnectivity.Current.IsConnected;
-            SimpleIoc.Default.Register<IConnectivity>(() => new NetworkConnection());
 
             App.Locator.Login.NetworkErrors = new string[] { Langs.Network_ErrorTitle, Langs.Network_ErrorMessage };
 
