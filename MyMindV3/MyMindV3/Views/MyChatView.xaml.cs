@@ -27,8 +27,8 @@ namespace MyMindV3.Views
         {
             InitializeComponent();
             BindingContext = ViewModel;
-            var enc = App.Self.Encrypt.EncryptString(guid, Constants.DESKey);
-            var iv = App.Self.Encrypt.Iv_To_Pass_To_Encryption;
+            //var enc = App.Self.Encrypt.EncryptString(guid, Constants.DESKey);
+            //var iv = App.Self.Encrypt.Iv_To_Pass_To_Encryption;
 
             //webView.Source = string.Format("{0}/index.php?a={1}&b={2}", Constants.CometChatURL, enc, iv);
             webView.Source = "https://apps.nelft.nhs.uk/cometchat/cometchat_popout.php?type=plugin&name=avchat&subtype=webrtc&embed=";
