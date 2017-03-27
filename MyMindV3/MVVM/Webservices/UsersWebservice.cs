@@ -34,7 +34,7 @@ namespace MvvmFramework.Webservices
             }
         }
 
-        public async Task<IEnumerable<Appointment>> GetPatientAppointments(string clientId, string hcp)
+        /*public async Task<IEnumerable<Appointment>> GetPatientAppointments(string clientId, string hcp)
         {
             if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(hcp))
                 return null;
@@ -62,7 +62,7 @@ namespace MvvmFramework.Webservices
             }
 
             return encMgr.DecryptAppointments(encryptions);
-        }
+        }*/
 
         public async Task UpdateSystemUser(SystemUser sysUser)
         {
