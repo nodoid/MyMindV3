@@ -335,7 +335,7 @@ namespace MyMindV3.Views
                 WidthRequest = App.ScreenSize.Width * .75,
                 Placeholder = Langs.MyResources_Postcode,
                 BackgroundColor = Color.FromHex("022330"),
-                TextColor = Color.White,
+                TextColor = Device.OS == TargetPlatform.Android ? Color.White : Color.Blue,
                 PlaceholderColor = Color.Gray,
                 SearchCommand = new Command(() =>
                 {
