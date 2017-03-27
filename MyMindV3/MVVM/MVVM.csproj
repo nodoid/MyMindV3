@@ -36,12 +36,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Enums\ActionCodes.cs" />
-    <Compile Include="Helpers\EncryptionManager.cs" />
-    <Compile Include="Helpers\Factory.cs" />
     <Compile Include="Helpers\FileIO.cs" />
     <Compile Include="Helpers\Validator.cs" />
-    <Compile Include="Interfaces\IEncryptionManager.cs" />
-    <Compile Include="Interfaces\IFactory.cs" />
     <Compile Include="Models\Encryption.cs" />
     <Compile Include="ViewModel\AllRegisteredUserViewModel.cs" />
     <Compile Include="ViewModel\MyChatViewModel.cs" />
@@ -55,7 +51,6 @@
     <Compile Include="ViewModel\MyResourcesViewModel.cs" />
     <Compile Include="Webservices\UsersWebservice.cs" />
     <None Include="Database\SystemUserDB.cs" />
-    <Compile Include="Interfaces\IContent.cs" />
     <Compile Include="Interfaces\INetworkSpinner.cs" />
     <Compile Include="Interfaces\ISqLiteConnectionFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,7 +58,6 @@
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="Database\DBHelper.cs" />
     <Compile Include="ViewModelLocator.cs" />
-    <Compile Include="Interfaces\IInterface.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="ViewModel\MyMindViewModel.cs" />
     <Compile Include="ViewModel\SignUpViewModel.cs" />
@@ -91,6 +85,12 @@
     <Compile Include="Enums\UIType.cs" />
     <Compile Include="Enums\Sorting.cs" />
     <Compile Include="Constants\Constants.cs" />
+    <None Include="Interfaces\IContent.cs" />
+    <None Include="Helpers\Factory.cs" />
+    <None Include="Helpers\EncryptionManager.cs" />
+    <None Include="Interfaces\IEncryptionManager.cs" />
+    <None Include="Interfaces\IFactory.cs" />
+    <None Include="Interfaces\IInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
