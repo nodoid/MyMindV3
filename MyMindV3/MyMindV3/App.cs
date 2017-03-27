@@ -12,8 +12,7 @@ using Plugin.Geolocator;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MvvmFramework.Enums;
-using MyMindV3.Interfaces;
-using System;
+using MvvmFramework.Interfaces;
 #if DEBUG
 using System.Diagnostics;
 
@@ -70,6 +69,8 @@ namespace MyMindV3
         public bool PanelShowing { get; set; }
 
         public int IdInUse { get; set; }
+
+        public IEncrypt Encrypt { get; set; } = DependencyService.Get<IEncrypt>();
 
         public App()
         {
