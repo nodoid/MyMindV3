@@ -158,11 +158,11 @@ namespace MyMindV3.Views
                     }
                     else
                     {
-                        var res = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera).ContinueWith(async (arg) =>
+                        await CrossPermissions.Current.RequestPermissionsAsync(Permission.Camera).ContinueWith(async (arg) =>
                         {
                             if (arg.IsCompleted)
                             {
-                                PermissionStatus state = PermissionStatus.Unknown;
+                                var state = PermissionStatus.Unknown;
                                 if (arg.Result.TryGetValue(Permission.Camera, out state))
                                 {
                                     if (state != PermissionStatus.Granted)
