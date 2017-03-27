@@ -17,13 +17,11 @@ namespace MvvmFramework.ViewModel
             UpdateSessionExpirationTime();
         }
 
-        public bool IsConnected { get; set; }
-
-        Dictionary<string, string> errorTitles;
-        public Dictionary<string, string> ErrorTitles
+        static string[] networkErrors;
+        public string[] NetworkErrors
         {
-            get { return errorTitles; }
-            set { Set(() => ErrorTitles, ref errorTitles, value); }
+            get { return networkErrors; }
+            set { Set(() => NetworkErrors, ref networkErrors, value); }
         }
 
         Dictionary<string, string> errorMessages;
