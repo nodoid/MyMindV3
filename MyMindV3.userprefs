@@ -1,57 +1,44 @@
 ﻿<Properties StartupConfiguration="{B7EC01B5-1C8D-49E7-BF43-C989BDCD90FF}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3/Views/MyResourceView.cs">
     <Files>
-      <File FileName="MyMindV3/MVVM/Interfaces/IContent.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MVVM/Interfaces/IInterface.cs" Line="9" Column="1" />
-      <File FileName="MyMindV3/MVVM/Webservices/UsersWebservice.cs" Line="54" Column="64" />
-      <File FileName="MyMindV3/MVVM/ViewModel/MyJourneyViewModel.cs" Line="32" Column="53" />
-      <File FileName="MyMindV3/MVVM/Interfaces/IRepository.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MVVM/ViewModel/AllRegisteredUserViewModel.cs" Line="15" Column="30" />
-      <File FileName="MyMindV3/MVVM/Webservices/SendData.cs" Line="40" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyJourneyView.xaml.cs" Line="158" Column="17" />
-      <File FileName="MyMindV3/MVVM/Webservices/GetData.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MVVM/ViewModel/BaseViewModel.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/App.cs" Line="83" Column="73" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyChatView.xaml.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3.Droid/CustomRenderers/CustomChatViewRenderer.cs" Line="7" Column="7" />
-      <File FileName="MyMindV3/MVVM/ViewModelLocator.cs" Line="94" Column="16" />
-      <File FileName="MyMindV3/MVVM/Interfaces/IConnectivity.cs" Line="1" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/LoginView.xaml.cs" Line="84" Column="30" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" Line="149" Column="22" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyFileView.xaml.cs" Line="15" Column="6" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="696" Column="39" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" Line="159" Column="25" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" Line="27" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" Line="74" Column="118" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyProfileViewModel.cs" Line="97" Column="41" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyPlansListCell.cs" Line="22" Column="77" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyPlansView.xaml.cs" Line="160" Column="14" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyPlansViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/Models/ClientPlan.cs" Line="10" Column="31" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyMindViewModel.cs" Line="69" Column="191" />
+      <File FileName="MyMindV3/MyMindV3/Views/ApptList.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyJourneyView.xaml.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="807" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="390" Column="1" />
+      <File FileName="MyMindV3/MVVM/Webservices/SendData.cs" Line="161" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/BaseViewModel.cs" Line="264" Column="21" />
+      <File FileName="MyMindV3/MyMindV3/Languages/Langs.resx" Line="448" Column="18" />
+      <File FileName="MyMindV3/MyMindV3/Views/ListViewCell.cs" Line="192" Column="57" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="MyMindV3" expanded="True">
-            <Node name="MVVM" expanded="True">
-              <Node name="Helpers" expanded="True" />
-              <Node name="Interfaces" expanded="True" />
-              <Node name="ViewModel" expanded="True" />
-              <Node name="Webservices" expanded="True" />
-            </Node>
-            <Node name="MyMindV3" expanded="True">
-              <Node name="Views" expanded="True" />
-            </Node>
-            <Node name="MyMindV3.Droid" selected="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.Android_Accelerated_x86" />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.192.168.66.101:5555" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/PFJ/Developer/MyMindV3/MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" relfile="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" line="73" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMindV3/MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" relfile="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" line="75" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMindV3/MyMindV3/MyMindV3/Views/MyPlansView.xaml.cs" relfile="MyMindV3/MyMindV3/Views/MyPlansView.xaml.cs" line="51" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMindV3/MyMindV3/MVVM/ViewModel/MyPlansViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyPlansViewModel.cs" line="31" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMindV3/MyMindV3/MVVM/Webservices/SendData.cs" relfile="MyMindV3/MVVM/Webservices/SendData.cs" line="27" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMindV3/MyMindV3/MVVM/Webservices/SendData.cs" relfile="MyMindV3/MVVM/Webservices/SendData.cs" line="40" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMindV3/MyMindV3/MVVM/Webservices/SendData.cs" relfile="MyMindV3/MVVM/Webservices/SendData.cs" line="44" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" relfile="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" line="202" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" relfile="MyMindV3/MyMindV3/Views/MyProfileView.xaml.cs" line="27" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" relfile="MyMindV3/MyMindV3/Views/MyClinicianView.xaml.cs" line="76" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="448" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="429" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="637" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/SendData.cs" relfile="MyMindV3/MVVM/Webservices/SendData.cs" line="166" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/SendData.cs" relfile="MyMindV3/MVVM/Webservices/SendData.cs" line="189" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/SendData.cs" relfile="MyMindV3/MVVM/Webservices/SendData.cs" line="161" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" relfile="MyMindV3/MyMindV3/Views/MyResourceView.cs" line="206" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" relfile="MyMindV3/MyMindV3/Views/MyResourceView.cs" line="227" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="399" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="390" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" relfile="MyMindV3/MyMindV3/Views/MyResourceView.cs" line="98" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" relfile="MyMindV3/MyMindV3/Views/MyResourceView.cs" line="807" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

@@ -27,8 +27,8 @@ namespace MvvmFramework.ViewModel
             connectService = con;
 
             if (con.IsConnected)
-            SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Page_View :
-                (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Page_View : ActionCodes.Member_Resources_Page_View));
+                SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Page_View :
+                    (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Page_View : ActionCodes.Member_Resources_Page_View));
             SearchPostcode = "null";
         }
 
@@ -78,7 +78,12 @@ namespace MvvmFramework.ViewModel
         public int MaxLocalPages
         {
             get { return maxLocalPages; }
-            set { Set(() => MaxLocalPages, ref maxLocalPages, value); }
+            set
+            {
+                Set(() => MaxLocalPages, ref maxLocalPages, value, true);
+                if (value > 1)
+                    DisableLocalNextPageButton = false;
+            }
         }
 
         int currentLocalPage;
@@ -88,8 +93,8 @@ namespace MvvmFramework.ViewModel
             set
             {
                 Set(() => CurrentLocalPage, ref currentLocalPage, value);
-                DisableNextPageButton = currentLocalPage + 1 > MaxLocalPages;
-                DisableBackPageButton = currentLocalPage == 0;
+                DisableLocalNextPageButton = currentLocalPage + 1 > MaxLocalPages;
+                DisableLocalBackPageButton = currentLocalPage == 1;
             }
         }
 
@@ -97,7 +102,12 @@ namespace MvvmFramework.ViewModel
         public int MaxNataionalPages
         {
             get { return maxNationalPages; }
-            set { Set(() => MaxNataionalPages, ref maxNationalPages, value); }
+            set
+            {
+                Set(() => MaxNataionalPages, ref maxNationalPages, value, true);
+                if (value > 1)
+                    DisableNationalNextPageButton = false;
+            }
         }
 
         int currentNationalPage;
@@ -107,24 +117,39 @@ namespace MvvmFramework.ViewModel
             set
             {
                 Set(() => CurrentLocalPage, ref currentNationalPage, value);
-                DisableNextPageButton = currentNationalPage + 1 > MaxNataionalPages;
-                DisableBackPageButton = currentNationalPage == 0;
+                DisableNationalNextPageButton = currentNationalPage + 1 > MaxNataionalPages;
+                DisableNationalBackPageButton = currentNationalPage == 1;
             }
         }
 
-        bool disableBackPageButton;
-        public bool DisableBackPageButton
+        bool disableNationalBackPageButton;
+        public bool DisableNationalBackPageButton
         {
-            get { return disableBackPageButton; }
-            set { Set(() => DisableBackPageButton, ref disableBackPageButton, value, true); }
+            get { return disableNationalBackPageButton; }
+            set { Set(() => DisableNationalBackPageButton, ref disableNationalBackPageButton, value, true); }
         }
 
 
-        bool disableNextPageButton;
-        public bool DisableNextPageButton
+        bool disableNationalNextPageButton;
+        public bool DisableNationalNextPageButton
         {
-            get { return disableNextPageButton; }
-            set { Set(() => DisableNextPageButton, ref disableNextPageButton, value, true); }
+            get { return disableNationalNextPageButton; }
+            set { Set(() => DisableNationalNextPageButton, ref disableNationalNextPageButton, value, true); }
+        }
+
+        bool disableLocalBackPageButton;
+        public bool DisableLocalBackPageButton
+        {
+            get { return disableLocalBackPageButton; }
+            set { Set(() => DisableLocalBackPageButton, ref disableLocalBackPageButton, value, true); }
+        }
+
+
+        bool disableLocalNextPageButton;
+        public bool DisableLocalNextPageButton
+        {
+            get { return disableLocalNextPageButton; }
+            set { Set(() => DisableLocalNextPageButton, ref disableLocalNextPageButton, value, true); }
         }
 
         double longitude;
@@ -184,9 +209,9 @@ namespace MvvmFramework.ViewModel
             {
                 Set(() => SearchPostcode, ref searchPostcode, value, true);
                 if (connectService.IsConnected)
-                SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Searched_By_Postcode :
-                (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Searched_By_Postcode :
-                ActionCodes.Member_Resources_Searched_By_Postcode));
+                    SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Searched_By_Postcode :
+                    (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Searched_By_Postcode :
+                    ActionCodes.Member_Resources_Searched_By_Postcode));
             }
         }
 
@@ -220,14 +245,14 @@ namespace MvvmFramework.ViewModel
         public IEnumerable<Resources> ListLocalResources
         {
             get { return localResources; }
-            set { Set(() => ListLocalResources, ref localResources, value, true); }
+            set { Set(() => ListLocalResources, ref localResources, value, true); GetUIList(ShowingLocal ? UIType.Local : UIType.National); }
         }
 
         IEnumerable<Resources> nationalResources;
         public IEnumerable<Resources> ListNationalResources
         {
             get { return nationalResources; }
-            set { Set(() => ListNationalResources, ref nationalResources, value, true); }
+            set { Set(() => ListNationalResources, ref nationalResources, value, true); GetUIList(ShowingLocal ? UIType.Local : UIType.National); }
         }
 
         public void GetLocalResources(bool isClinicial = false)
@@ -284,7 +309,7 @@ namespace MvvmFramework.ViewModel
 
         List<Resources> SortByDistance(List<Resources> res)
         {
-            return res?.OrderBy(t => t.ResourceDistance).ToList();
+            return res?.OrderBy(t => Convert.ToDouble(t.ResourceDistance)).ToList();
         }
 
         List<Resources> SortByMostPopular(List<Resources> res)
@@ -369,8 +394,11 @@ namespace MvvmFramework.ViewModel
         {
             var list = UIList;
             var rep = list.IndexOf(list.FirstOrDefault(t => t.Id == lvm.Id));
-            list[rep] = lvm;
+            list.Insert(rep, lvm);
+            list.RemoveAt(rep + 1);
             UIList = list;
+            NewRating = lvm.CurrentRating;
+            ResId = lvm.Id;
             RaisePropertyChanged("HasW");
         }
 
@@ -378,10 +406,10 @@ namespace MvvmFramework.ViewModel
         {
             //var dataList = new List<ListviewModel>();
             var dataList = new ObservableCollection<ListviewModel>();
-            if (UIList != null)
+            /*if (UIList != null)
                 UIList.Clear();
             else
-                UIList = new ObservableCollection<ListviewModel>();
+                UIList = new ObservableCollection<ListviewModel>();*/
             //UIList = new List<ListviewModel>();
             var res = new List<Resources>();
 
@@ -458,7 +486,8 @@ namespace MvvmFramework.ViewModel
                 }
             }
 
-            UIList = dataList;
+            if (dataList.Count != 0)
+                UIList = dataList;
         }
 
         public List<string> ConvertRatingToStars(int rating, int id)
@@ -518,31 +547,36 @@ namespace MvvmFramework.ViewModel
             set { Set(() => ResId, ref resId, value); }
         }
 
-        public async Task SetRating(bool isClinician)
+        public void SetRating(bool isClinician)
         {
-            if (connectService.IsConnected)
+
+            Task.Run(async () =>
             {
-                var currentRespond = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) : ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
-                var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
-                "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString(), "Rating", NewRating.ToString()};
-                await Send.Rated("RateResource", ResId, data.ToArray()).ContinueWith((t) =>
+                if (connectService.IsConnected)
                 {
-                    if (t.IsCompleted)
+                    var currentRespond = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) : ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
+                    var data = new List<string>{"UserGUID", isClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
+                "AccountType", SystemUser.IsAuthenticated.ToString(), "ResourceID", ResId.ToString(), "Rating", NewRating.ToString()};
+                    await Send.Rated("api/MyMind/RateResource", ResId, data.ToArray()).ContinueWith((t) =>
                     {
-                        currentRespond.ResourceRating = t.Result.Rating;
-                        currentRespond.ResourceNumberOfRating = t.Result.Respondents;
-                    }
-                });
-            }
-            else
-                await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
+                        if (t.IsCompleted)
+                        {
+                            currentRespond.ResourceRating = t.Result.Rating;
+                            currentRespond.ResourceNumberOfRating = t.Result.Respondents;
+                        }
+                    });
+                }
+                else
+                    await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
+
+            });
         }
 
         public void ReportLink(int ResId)
         {
             if (connectService.IsConnected)
-            SendBrokenLink(ResId, GetIsClinician ? ActionCodes.Clinician_Resource_Reported_Broken :
-                (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resource_Reported_Broken : ActionCodes.Member_Resource_Reported_Broken));
+                SendBrokenLink(ResId, GetIsClinician ? ActionCodes.Clinician_Resource_Reported_Broken :
+                    (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resource_Reported_Broken : ActionCodes.Member_Resource_Reported_Broken));
             var res = ShowingLocal ? ListLocalResources.FirstOrDefault(t => t.ResourceID == ResId) :
                 ListNationalResources.FirstOrDefault(t => t.ResourceID == ResId);
             res.ResourceIsDead = true;
@@ -585,27 +619,32 @@ namespace MvvmFramework.ViewModel
                 {
                     if (ShowingLocal)
                     {
-                        if (CurrentLocalPage - 1 >= 0)
+                        if (CurrentLocalPage - 1 >= 1)
                         {
                             CurrentLocalPage--;
                             LastUpdated = DateTime.Now;
                             GetLocalResources(GetIsClinician);
                             BackForwardChanged = true;
+                            DisableLocalBackPageButton = CurrentLocalPage == 1;
                         }
                         else
-                            DisableBackPageButton = true;
+                        {
+                            DisableLocalBackPageButton = true;
+                        }
                     }
                     else
                     {
-                        if (CurrentNationalPage - 1 >= 0)
+                        if (CurrentNationalPage - 1 >= 1)
                         {
                             CurrentNationalPage--;
                             LastUpdated = DateTime.Now;
                             GetNationalResources(GetIsClinician);
                             BackForwardChanged = true;
+                            DisableNationalBackPageButton = CurrentNationalPage == 1;
                         }
                         else
-                            DisableBackPageButton = true;
+                            DisableNationalBackPageButton = true;
+
                     }
                 })
                     );
@@ -623,27 +662,29 @@ namespace MvvmFramework.ViewModel
                 {
                     if (ShowingLocal)
                     {
-                        if (CurrentLocalPage + 1 < MaxLocalPages)
+                        if (CurrentLocalPage + 1 <= MaxLocalPages)
                         {
                             CurrentLocalPage++;
                             LastUpdated = DateTime.Now;
                             GetLocalResources(GetIsClinician);
                             BackForwardChanged = true;
+                            DisableLocalNextPageButton = CurrentLocalPage == MaxLocalPages;
                         }
                         else
-                            DisableNextPageButton = true;
+                            DisableLocalNextPageButton = true;
                     }
                     else
                     {
-                        if (CurrentNationalPage + 1 < MaxNataionalPages)
+                        if (CurrentNationalPage + 1 <= MaxNataionalPages)
                         {
                             CurrentNationalPage++;
                             LastUpdated = DateTime.Now;
                             GetNationalResources(GetIsClinician);
                             BackForwardChanged = true;
+                            DisableNationalNextPageButton = CurrentNationalPage == MaxNataionalPages;
                         }
                         else
-                            DisableNextPageButton = true;
+                            DisableNationalNextPageButton = true;
                     }
                 })
                     );

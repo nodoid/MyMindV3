@@ -12,7 +12,7 @@ namespace MvvmFramework.ViewModel
         {
             navService = nav;
             if (con.IsConnected)
-           SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Login : ActionCodes.User_Login);
+                SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Login : ActionCodes.User_Login);
         }
 
         RelayCommand logoutCommand;
@@ -66,7 +66,7 @@ namespace MvvmFramework.ViewModel
             get
             {
                 var clinic = SystemUser.IsAuthenticated == 3 ? "clinic" : "";
-                return showMyUserHelpCommand ?? (showMyUserHelpCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.MyHelpKey, clinic)));
+                return showMyUserHelpCommand ?? (showMyUserHelpCommand = new RelayCommand(() => { navService.NavigateTo(ViewModelLocator.MyHelpKey, clinic); showMyUserHelpCommand = null; }));
             }
         }
 

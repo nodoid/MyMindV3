@@ -8,7 +8,7 @@
 
         public static string BaseTestUrl { get; private set; } = "https://apps.nelft.nhs.uk/CareMapAPI-Test";
 
-        public static string CometChatURL { get; private set; } = "https://apps.nelft.nhs.uk/cometchat";
+        public static string CometChatURL { get; private set; } = "https://apps.nelft.nhs.uk/cometchat/index.html";
 
         public static string TestFairyKey { get; private set; } = "1761398db506414b977ca868067ae3179077d42a";
 

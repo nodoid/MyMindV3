@@ -122,7 +122,7 @@
 						<StackLayout Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
 							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_DOB}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
 							<Frame Padding="0,0">
-								<DatePicker x:Name="EditProfileDoB" Date="{Binding DateOfBirth}" IsEnabled="True" />
+								<DatePicker x:Name="EditProfileDoB" Date="{Binding DateOfBirth}" IsEnabled="False" />
 							</Frame>
 						</StackLayout>
 						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">

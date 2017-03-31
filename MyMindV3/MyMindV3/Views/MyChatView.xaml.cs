@@ -31,8 +31,8 @@ namespace MyMindV3.Views
             //var iv = App.Self.Encrypt.Iv_To_Pass_To_Encryption;
 
             //webView.Source = string.Format("{0}/index.php?a={1}&b={2}", Constants.CometChatURL, enc, iv);
-            webView.Source = "https://apps.nelft.nhs.uk/cometchat/cometchat_popout.php?type=plugin&name=avchat&subtype=webrtc&embed=";
-            /*ViewModel.GetUserId(guid);
+            //webView.Source = "https://apps.nelft.nhs.uk/cometchat/cometchat_popout.php?type=plugin&name=avchat&subtype=webrtc&embed=";
+            ViewModel.GetUserId(guid);
 
             chatView = new CustomChatView
             {
@@ -43,7 +43,7 @@ namespace MyMindV3.Views
             Content = new StackLayout
             {
                 Children = { chatView }
-            };*/
+            };
         }
     }
 }

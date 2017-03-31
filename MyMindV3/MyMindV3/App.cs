@@ -13,6 +13,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using MvvmFramework.Enums;
 using MvvmFramework.Interfaces;
+using System;
 #if DEBUG
 using System.Diagnostics;
 
@@ -50,7 +51,8 @@ namespace MyMindV3
         public Position Location
         {
             get { return location; }
-            set {
+            set
+            {
                 location = value;
                 OnPropertyChanged("Location");
             }
@@ -60,7 +62,8 @@ namespace MyMindV3
         public int NewIconRating
         {
             get { return newIconRating; }
-            set {
+            set
+            {
                 newIconRating = value;
                 OnPropertyChanged("NewIconRating");
             }
@@ -116,20 +119,37 @@ namespace MyMindV3
             nav.Configure(ViewModelLocator.MyResourcesKey, typeof(MyResourcesView));
             nav.Configure(ViewModelLocator.SignupKey, typeof(SignUpView));
             nav.Configure(ViewModelLocator.MyHelpKey, typeof(MyHelpView));
-            SimpleIoc.Default.Register<INavigationService>(() => nav);
+
+            try
+            {
+                SimpleIoc.Default.Register<INavigationService>(() => nav);
+            }
+            catch (Exception)
+            { }
 
             // Register the SQL
             DependencyService.Get<MvvmFramework.ISqLiteConnectionFactory>().GetConnection();
             var dialogService = new DialogService();
-            SimpleIoc.Default.Register<IDialogService>(() => dialogService);
 
-			CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
-			{
-				IsConnected = args.IsConnected;
-			};
+            try
+            {
+                SimpleIoc.Default.Register<IDialogService>(() => dialogService);
+            }
+            catch (Exception)
+            { }
 
-			IsConnected = CrossConnectivity.Current.IsConnected;
-			SimpleIoc.Default.Register<IConnectivity>(() => new NetworkConnection());
+            CrossConnectivity.Current.ConnectivityChanged += (sender, args) =>
+            {
+                IsConnected = args.IsConnected;
+            };
+
+            IsConnected = CrossConnectivity.Current.IsConnected;
+            try
+            {
+                SimpleIoc.Default.Register<IConnectivity>(() => new NetworkConnection());
+            }
+            catch (Exception)
+            { }
 
             // we next set the navigation page
             var firstPage = new NavigationPage(new LoginView());

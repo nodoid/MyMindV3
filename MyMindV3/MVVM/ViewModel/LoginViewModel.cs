@@ -35,7 +35,8 @@ namespace MvvmFramework.ViewModel
         RelayCommand loginCommand;
         public RelayCommand LoginCommand
         {
-            get {
+            get
+            {
                 return loginCommand ??
                     (
                     loginCommand = new RelayCommand(async () =>
@@ -57,7 +58,8 @@ namespace MvvmFramework.ViewModel
         RelayCommand acceptCommand;
         public RelayCommand AcceptCommand
         {
-            get {
+            get
+            {
                 return acceptCommand ??
                     (
                         acceptCommand = new RelayCommand(async () =>
@@ -109,7 +111,8 @@ namespace MvvmFramework.ViewModel
         RelayCommand signupCommand;
         public RelayCommand SignupCommand
         {
-            get {
+            get
+            {
                 return signupCommand ??
                     (
                     signupCommand = new RelayCommand(() =>
@@ -125,7 +128,8 @@ namespace MvvmFramework.ViewModel
         public string Name
         {
             get { return name; }
-            set {
+            set
+            {
                 name = value;
                 var t = HasValidInput;
                 RaisePropertyChanged("Name");
@@ -136,7 +140,8 @@ namespace MvvmFramework.ViewModel
         public string Password
         {
             get { return password; }
-            set {
+            set
+            {
                 password = value;
                 var t = HasValidInput;
                 RaisePropertyChanged("Password");
@@ -225,7 +230,8 @@ namespace MvvmFramework.ViewModel
         private bool _hasValidInput;
         public bool HasValidInput
         {
-            get {
+            get
+            {
                 if ((!string.IsNullOrEmpty(Name)) && (!string.IsNullOrEmpty(Password)))
                 {
                     HasValidInput = (Name.Length < 4) || (Password.Length < 6) ? false : true;
@@ -234,7 +240,8 @@ namespace MvvmFramework.ViewModel
 
                 return false;
             }
-            set {
+            set
+            {
                 if (value != _hasValidInput)
                 {
                     Set(() => HasValidInput, ref _hasValidInput, value, true);
@@ -247,7 +254,8 @@ namespace MvvmFramework.ViewModel
         public bool CheckBoxImg
         {
             get { return _checkBoxImg; }
-            set {
+            set
+            {
                 if (value != _checkBoxImg)
                 {
                     Set(() => CheckBoxImg, ref _checkBoxImg, value, true);
@@ -259,32 +267,9 @@ namespace MvvmFramework.ViewModel
         public string CheckImg
         {
             get { return _checkImg; }
-            set {
+            set
+            {
                 _checkImg = CheckBoxImg ? "check.png" : "empty_check.png";
-            }
-        }
-
-        bool _displayLogin;
-        public bool DisplayLogin
-        {
-            get { return _displayLogin; }
-            set {
-                if (value != _displayLogin)
-                {
-                    Set(() => DisplayLogin, ref _displayLogin, value, true);
-                }
-            }
-        }
-
-        bool _displayAcceptance;
-        public bool DisplayAcceptance
-        {
-            get { return _displayAcceptance; }
-            set {
-                if (value != _displayAcceptance)
-                {
-                    Set(() => DisplayAcceptance, ref _displayAcceptance, value, true);
-                }
             }
         }
     }

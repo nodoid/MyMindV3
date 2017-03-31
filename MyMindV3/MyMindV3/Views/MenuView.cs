@@ -1,9 +1,7 @@
 using Xamarin.Forms;
 using System.Collections.Generic;
 using MyMindV3.Languages;
-using System;
 using System.Linq;
-using Xamarin.Forms.PlatformConfiguration;
 
 namespace MyMindV3.Views
 {
@@ -40,7 +38,7 @@ namespace MyMindV3.Views
         {
             var lblResource = new Label
             {
-                Text = Langs.Menu_Resources,
+                Text = Langs.MyResources_Filter,
                 FontSize = 14,
                 TextColor = Color.White,
                 FontAttributes = FontAttributes.Bold,
@@ -137,7 +135,7 @@ namespace MyMindV3.Views
         {
             SetSelected = selected;
             SetCategory = cat;
-            Categories = cats;
+            Categories = cats.OrderBy(x => x).ToList();
             Content = GenerateUI();
         }
 
@@ -145,7 +143,7 @@ namespace MyMindV3.Views
         {
             SetSelected = selected;
             SetCategory = cat;
-            Categories = cats;
+            Categories = cats.OrderBy(x => x).ToList();
             if (Content != null)
                 Content = null;
             Content = GenerateUI();

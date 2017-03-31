@@ -25,7 +25,8 @@ namespace MyMindV3.Views
             ToolbarItems.Add(new ToolbarItem(Langs.MyMind_Logout, "iconlogout", () =>
 {
     ViewModel.LogoutCommand.Execute(null);
-    Navigation.RemovePage(this);
+    //Navigation.RemovePage(this);
+    Navigation.PopToRootAsync();
     ViewModel.Logout();
 }));
 

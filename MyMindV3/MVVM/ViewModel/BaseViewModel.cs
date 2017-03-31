@@ -161,6 +161,8 @@ namespace MvvmFramework.ViewModel
             ClinicianUser = null;
             SessionExpirationTime = System.DateTime.Now;
             SessionExpirationTime.AddHours(-5);
+            DisplayLogin = true;
+            DisplayAcceptance = false;
         }
 
         string spinnerTitle;
@@ -248,7 +250,7 @@ namespace MvvmFramework.ViewModel
                 "AccountType",
                 SystemUser.IsAuthenticated.ToString(),
                 "ActionCode",
-                actionCode.ToString(),
+                ((int)actionCode).ToString(),
                 "ResourceID",
                 resId.ToString(),
                 "SearchData",
@@ -256,7 +258,7 @@ namespace MvvmFramework.ViewModel
                 "ClientGUID",
                 clientId
             };
-            Task.Run(async () => await Send.SendData("LogPageAccess", paramList.ToArray()));
+            Task.Run(async () => await Send.SendData("api/MyMind/LogPageAccess", paramList.ToArray()));
         }
 
         public void SendBrokenLink(int resId, ActionCodes code)
@@ -268,8 +270,34 @@ namespace MvvmFramework.ViewModel
                 "AccountType", SystemUser.IsAuthenticated.ToString(),
                 "ResourceID", resId.ToString()
             };
-            Task.Run(async () => await Send.SendData("ReportBrokenLink", paramList.ToArray()));
+            Task.Run(async () => await Send.SendData("api/MyMind/ReportBrokenLink", paramList.ToArray()));
             SendTrackingInformation(code, resId);
+        }
+
+        bool _displayLogin;
+        public bool DisplayLogin
+        {
+            get { return _displayLogin; }
+            set
+            {
+                if (value != _displayLogin)
+                {
+                    Set(() => DisplayLogin, ref _displayLogin, value, true);
+                }
+            }
+        }
+
+        bool _displayAcceptance;
+        public bool DisplayAcceptance
+        {
+            get { return _displayAcceptance; }
+            set
+            {
+                if (value != _displayAcceptance)
+                {
+                    Set(() => DisplayAcceptance, ref _displayAcceptance, value, true);
+                }
+            }
         }
     }
 }

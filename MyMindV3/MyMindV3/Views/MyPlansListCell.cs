@@ -19,7 +19,7 @@ namespace MyMindV3
                 FontSize = 15,
                 TextColor = Color.White
             };
-            lblFilename.SetBinding(Label.TextProperty, new Binding("FileName"));
+            lblFilename.SetBinding(Label.TextProperty, new Binding("NiceName"));
 
             var lblUploaded = new Label
             {

@@ -24,8 +24,8 @@ namespace MvvmFramework.ViewModel
             diaService = dia;
 
             if (con.IsConnected)
-            SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Profile_Page_View :
-                (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Profile_Page_View : ActionCodes.Member_Profile_Page_View));
+                SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Profile_Page_View :
+                    (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Profile_Page_View : ActionCodes.Member_Profile_Page_View));
         }
 
         string filename;
@@ -37,7 +37,8 @@ namespace MvvmFramework.ViewModel
 
         public Stream GetProfileImage
         {
-            get {
+            get
+            {
                 GetData.GetImage(ImageFilename, IsUser).ConfigureAwait(true);
                 return new FileIO().LoadFile(ImageFilename).Result;
             }
@@ -77,10 +78,10 @@ namespace MvvmFramework.ViewModel
                 if (connectService.IsConnected)
                 {
                     await Send.SendData("api/MyMind/UpdateUserProfile", "UserGUID", data[0], "AuthToken", data[1],
-                                        "PreferredName", data[2], "DateOfBirth", data[3],
-                                        "PhoneNumber", data[4], "WhyIThinkIWasReferred", data[5],
-                                        "SomethingILike", data[6], "SomethingIDislike", data[7],
-                                        "WhatIWantTo", data[8]).ContinueWith((t) =>
+                                        "PreferredName", data[2],
+                                        "PhoneNumber", data[3], "WhyIThinkIWasReferred", data[4],
+                                        "SomethingILike", data[5], "SomethingIDislike", data[6],
+                                        "WhatIWantTo", data[7]).ContinueWith((t) =>
                  {
                      if (t.IsCompleted)
                      {
@@ -91,6 +92,16 @@ namespace MvvmFramework.ViewModel
                 else
                     await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
             });
+            var usr = UserProfile;
+            if (usr == null)
+                usr = new UserProfile();
+            usr.Name = data[2];
+            usr.ContactNumber = data[3];
+            usr.ReferralReason = data[4];
+            usr.Likes = data[5];
+            usr.Dislikes = data[6];
+            usr.WhatIDo = data[7];
+            UserProfile = usr;
         }
 
         public void UpdateSystemUser()

@@ -6,10 +6,8 @@ using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using MvvmFramework.ViewModel;
 using MvvmFramework;
-using MvvmFramework.Models;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -181,7 +179,7 @@ namespace MyMindV3.Views
             ViewModel.UpdateUserData(new List<string>
             {
                 ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken,EditProfilePreferredNameInput.Text,
-                EditProfileDoB.Date.ToString("g"),EditProfilePhoneInput.Text,EditRegPhoneInput.Text,
+                EditProfilePhoneInput.Text,EditRegPhoneInput.Text,
                 EditProfileLikesInput.Text,EditProfileDislikesInput.Text,EditProfileGoalsInput.Text
             }.ToArray());
         }

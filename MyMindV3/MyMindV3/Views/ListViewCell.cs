@@ -104,6 +104,28 @@ namespace MyMindV3.Views
             imgWord.SetBinding(Image.IsVisibleProperty, new Binding("HasW"));
             imgPDF.SetBinding(Image.IsVisibleProperty, new Binding("HasR"));
             imgHtml.SetBinding(Image.IsVisibleProperty, new Binding("HasH"));
+            imgWord.SetBinding(Image.ClassIdProperty, new Binding("Id"));
+            imgPDF.SetBinding(Image.ClassIdProperty, new Binding("Id"));
+            imgHtml.SetBinding(Image.ClassIdProperty, new Binding("Url"));
+
+            var imgPDFTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() => MessagingCenter.Send(this, "pdf", imgPDF.ClassId))
+            };
+            var imgWordTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() => MessagingCenter.Send(this, "word", imgWord.ClassId))
+            };
+            var imgHtmlTap = new TapGestureRecognizer
+            {
+                NumberOfTapsRequired = 1,
+                Command = new Command(() => MessagingCenter.Send(this, "html", imgHtml.ClassId))
+            };
+            imgWord.GestureRecognizers.Add(imgWordTap);
+            imgPDF.GestureRecognizers.Add(imgPDFTap);
+            imgHtml.GestureRecognizers.Add(imgHtmlTap);
 
             var lblDistance = new Label
             {
@@ -155,20 +177,27 @@ namespace MyMindV3.Views
                 }
             };
 
+            var imgBroken = new Image { Source = "badlink", HeightRequest = 16, WidthRequest = 16 };
+            var lblBroken = new Label { Text = Langs.MyResources_BrokenLink, TextColor = Color.White, FontSize = 8 };
             var brokenLink = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
                 Children =
                 {
-                    new Image {Source= "badlink", HeightRequest=16,WidthRequest=16},
-                    new Label {Text = Langs.MyResources_BrokenLink, TextColor=Color.White, FontSize=8}
+                    imgBroken,
+                    lblBroken
                 }
             };
             brokenLink.SetBinding(StackLayout.ClassIdProperty, new Binding("Id"));
             var brokenLinkTap = new TapGestureRecognizer
             {
                 NumberOfTapsRequired = 1,
-                Command = new Command(() => MessagingCenter.Send(this, "brokenlink", brokenLink.ClassId))
+                Command = new Command(() =>
+                {
+                    imgBroken.Source = "badlink";
+                    lblBroken.Text = Langs.MyResources_BrokenLinkReported;
+                    MessagingCenter.Send(this, "brokenlink", brokenLink.ClassId);
+                })
             };
             brokenLink.GestureRecognizers.Add(brokenLinkTap);
 

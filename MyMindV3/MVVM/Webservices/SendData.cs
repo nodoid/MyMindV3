@@ -64,8 +64,17 @@ namespace MvvmFramework
             {
                 request.AddHeader(data[i].ToLowerInvariant(), data[i + 1]);
             }
-            var response = await client.Execute(request);
-            rv = response.Content;
+            try
+            {
+                var response = await client.Execute(request);
+                rv = response.Content;
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                Debug.WriteLine("Send data exception : {0}--{1}", ex.Message, ex.InnerException);
+#endif
+            }
             return rv;
         }
 
