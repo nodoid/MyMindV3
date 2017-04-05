@@ -6,6 +6,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using MvvmFramework.Interfaces;
+using System;
 
 namespace MvvmFramework.ViewModel
 {
@@ -15,16 +16,18 @@ namespace MvvmFramework.ViewModel
         IRepository sqlConn;
         IDialogService diaService;
         IConnectivity connectService;
+        IUserSettings settingsService;
 
-        public MyClinicianViewModel(INavigationService nav, IRepository repo, IDialogService dia, IConnectivity con)
+        public MyClinicianViewModel(INavigationService nav, IRepository repo, IDialogService dia, IConnectivity con, IUserSettings settings)
         {
             navService = nav;
             sqlConn = repo;
             diaService = dia;
             connectService = con;
+            settingsService = settings;
 
             if (connectService.IsConnected)
-            SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Profile_Page_View : ActionCodes.User_My_Clinician_Page_View);
+                SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Profile_Page_View : ActionCodes.User_My_Clinician_Page_View);
         }
 
         string filename;
@@ -38,8 +41,40 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                GetData.GetImage(ImageFilename, IsUser).ConfigureAwait(true);
-                return new FileIO().LoadFile(ImageFilename).Result;
+                Stream data = null;
+                Task.Run(async () =>
+                {
+                    await GetData.GetImage(ImageFilename, IsUser).ContinueWith(async (t) =>
+                    {
+                        if (t.IsCompleted && (!t.IsFaulted || !t.IsCanceled))
+                        {
+                            settingsService.SaveSetting<string>("ClinicianImageUpdate", ClinicianUser.ProfilePictureUploadTimestamp.ToString(), SettingType.String);
+                            await new FileIO().LoadFile(ImageFilename).ContinueWith((w) =>
+                            {
+                                data = w.Result;
+                            });
+                        }
+                    });
+                });
+                while (data == null)
+                { }
+                return data;
+            }
+        }
+
+        public bool LoadNewProfileImage
+        {
+            get
+            {
+                var rv = false;
+                var dt = settingsService.LoadSetting<string>("ClinicianImageUpdate", SettingType.String);
+                if (string.IsNullOrEmpty(dt))
+                    rv = true;
+                else
+                    if (Convert.ToDateTime(dt) != ClinicianUser.ProfilePictureUploadTimestamp)
+                    rv = true;
+
+                return rv;
             }
         }
 
@@ -50,18 +85,31 @@ namespace MvvmFramework.ViewModel
             set { Set(() => Clinician, ref clinician, value, true); }
         }
 
+        public void SaveFile(string filename, Stream stream)
+        {
+            Task.Run(async () =>
+            {
+                await new FileIO().SaveFile(filename, stream);
+                //settingsService.SaveSetting<string>("ClinicianImageUpdate", ClinicianUser.ProfilePictureUploadTimestamp.ToString(), SettingType.String);
+            });
+        }
+
         public void UpdateProfile(string whatIDo, string funFact, string contact)
         {
             Task.Run(async () =>
             {
                 if (connectService.IsConnected)
                 {
-                    await Send.SendData("api/MyMind/UpdateClinicianProfile", "ClinicianGUID", Clinician.ClinicianGUID,
-                    "AuthToken", Clinician.APIToken,
+                    await Send.SendData("api/MyMind/UpdateClinicianProfile", "ClinicianGUID", ClinicianUser.ClinicianGUID,
+                                        "AuthToken", ClinicianUser.APIToken,
                                         "WhatIDo", whatIDo, "FunFact", funFact, "ContactNumber", contact).ContinueWith((t) =>
                 {
                     if (t.IsCompleted)
                     {
+                        Clinician.FunFact = funFact;
+                        Clinician.ContactNumber = contact;
+                        Clinician.WhatIDo = whatIDo;
+                        Clinician = Clinician;
                         UpdateSystemUser();
                     }
                 });
@@ -97,7 +145,13 @@ namespace MvvmFramework.ViewModel
             {
                 SendTrackingInformation(ActionCodes.Clinician_Updated_Profile);
             }
-                sqlConn.SaveData<SystemUser>(SystemUser);
+            //sqlConn.SaveData<ClinicianUser>(ClinicianUser);
+        }
+
+        public void SetProfileDateTime(string dts)
+        {
+            var dt = dts.ConvertToDateTime();
+            settingsService.SaveSetting<string>("ClinicianImageUpdate", dt.ToString(), SettingType.String);
         }
     }
 }
