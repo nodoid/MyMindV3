@@ -55,7 +55,6 @@
     <Compile Include="Interfaces\ILocalise.cs" />
     <Compile Include="Interfaces\ILoginManager.cs" />
     <Compile Include="Interfaces\INetworkSpinner.cs" />
-    <Compile Include="Interfaces\IUserSettings.cs" />
     <Compile Include="Languages\Langs.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -258,7 +257,7 @@
       <HintPath>..\..\packages\Validation.2.4.15\lib\portable-net45+win8+wp8+wpa81\Validation.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\packages\Newtonsoft.Json.10.0.1\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -268,6 +267,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Views\MyResourcesView.xaml-old.cs" />
+    <None Include="Interfaces\IUserSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MVVM\MVVM.csproj">

@@ -290,6 +290,10 @@
     <AndroidResource Include="Resources\drawable\e_myplans.png" />
     <AndroidResource Include="Resources\drawable\f_myresources.png" />
     <AndroidResource Include="Resources\drawable\g_myresources.png" />
+    <AndroidResource Include="Resources\drawable\broken_link.png" />
+    <AndroidResource Include="Resources\drawable\external_link.png" />
+    <AndroidResource Include="Resources\drawable\alt_pdf.png" />
+    <AndroidResource Include="Resources\drawable\alt_word.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

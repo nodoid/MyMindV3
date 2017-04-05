@@ -178,6 +178,10 @@
     <Compile Include="UIUtils\StringExtensions.cs" />
     <BundleResource Include="Resources\mappin.png" />
     <Compile Include="CustomRenderers\CustomChatViewRenderer.cs" />
+    <BundleResource Include="Resources\alt_pdf.png" />
+    <BundleResource Include="Resources\alt_word.png" />
+    <BundleResource Include="Resources\broken_link.png" />
+    <BundleResource Include="Resources\external_link.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
