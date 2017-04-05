@@ -36,5 +36,12 @@ namespace MvvmFramework
             }
             return dateTime;
         }
+
+        public static DateTime ConvertToDateTime(this string unixTime)
+        {
+            var dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dtDateTime = dtDateTime.AddSeconds(System.Convert.ToInt32(unixTime)).ToLocalTime();
+            return dtDateTime;
+        }
     }
 }
