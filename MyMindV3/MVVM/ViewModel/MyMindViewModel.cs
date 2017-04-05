@@ -20,7 +20,12 @@ namespace MvvmFramework.ViewModel
         {
             get
             {
-                return logoutCommand ?? (logoutCommand = new RelayCommand(() => navService.NavigateTo(ViewModelLocator.LoginKey)));
+                return logoutCommand ?? (logoutCommand = new RelayCommand(() =>
+                {
+                    DisplayLogin = true;
+                    DisplayAcceptance = false;
+                    navService.NavigateTo(ViewModelLocator.LoginKey);
+                }));
             }
         }
 
