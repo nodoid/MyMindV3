@@ -83,11 +83,15 @@ namespace MvvmFramework.ViewModel
                                     if (SystemUser.IsAuthenticated == 1)
                                     {
                                         navService.NavigateTo(ViewModelLocator.MyLimitedMindKey);
+                                        DisplayAcceptance = false;
+                                        DisplayLogin = true;
                                     }
                                     /* else display full app */
                                     else if (SystemUser.IsAuthenticated > 1)
                                     {
                                         navService.NavigateTo(ViewModelLocator.MyMindKey);
+                                        DisplayAcceptance = false;
+                                        DisplayLogin = true;
                                     }
                                 }
                                 else
@@ -154,65 +158,68 @@ namespace MvvmFramework.ViewModel
 
             if (resu != null)
             {
-                SystemUser = new SystemUser
+                if (!string.IsNullOrEmpty(resu.APIToken))
                 {
-                    ContactNumber = resu.ContactNumber,
-                    DateOfBirth = resu.DateOfBirth,
-                    Dislikes = resu.Dislikes,
-                    Goals = resu.Goals,
-                    Guid = resu.UserGUID,
-                    IsAuthenticated = resu.IsAuthenticated,
-                    IsLogged = true,
-                    Likes = resu.Likes,
-                    Name = resu.Name,
-                    Phone = resu.ContactNumber,
-                    PinCode = resu.Pincode,
-                    PreferredName = resu.Name,
-                    ReferralReason = resu.ReferralReason,
-                    RIOID = resu.RIOID,
-                    UserImage = resu.UserImage,
-                    ICANN = resu.RIOID,
-                    APIToken = resu.APIToken,
-                    PictureFilePath = resu.PictureFilePath,
-                    APITokenExpiry = resu.APITokenExpiry
-                };
-
-                if (resu.AssignedClinician != null)
-                {
-                    ClinicianUser = new ClinicianUser
+                    SystemUser = new SystemUser
                     {
-                        ClinicianGUID = resu.AssignedClinician.ClinicianGUID,
-                        Email = resu.AssignedClinician.Email,
-                        FunFact = resu.AssignedClinician.FunFact,
-                        Guid = resu.AssignedClinician.ClinicianGUID,
-                        Name = resu.AssignedClinician.Name,
-                        Phone = resu.AssignedClinician.ContactNumber,
-                        Role = resu.AssignedClinician.WhatIDo,
-                        HCPID = resu.AssignedClinician.HCPID,
-                        UserImage = resu.UserImage,
-                        APIToken = resu.APIToken,
-                        PictureFilePath = !string.IsNullOrEmpty(resu.PictureFilePath) ? resu.PictureFilePath : string.Empty
-                    };
-                    ClinicianUser.APIToken = resu.APIToken;
-                }
-                else
-                {
-                    ClinicianUser = new ClinicianUser
-                    {
-                        HCPID = resu.HCPID,
-                        Email = resu.Email,
-                        FunFact = resu.FunFact,
-                        ClinicianGUID = resu.ClinicianGUID,
-                        UserImage = resu.UserImage,
+                        ContactNumber = resu.ContactNumber,
+                        DateOfBirth = resu.DateOfBirth,
+                        Dislikes = resu.Dislikes,
+                        Goals = resu.Goals,
+                        Guid = resu.UserGUID,
+                        IsAuthenticated = resu.IsAuthenticated,
+                        IsLogged = true,
+                        Likes = resu.Likes,
                         Name = resu.Name,
                         Phone = resu.ContactNumber,
-                        Role = resu.WhatIDo,
+                        PinCode = resu.Pincode,
+                        PreferredName = resu.Name,
+                        ReferralReason = resu.ReferralReason,
+                        RIOID = resu.RIOID,
+                        UserImage = resu.UserImage,
+                        ICANN = resu.RIOID,
                         APIToken = resu.APIToken,
-                        APITokenExpiry = resu.APITokenExpiry,
+                        PictureFilePath = resu.PictureFilePath,
+                        APITokenExpiry = resu.APITokenExpiry
                     };
-                }
 
-                return true;
+                    if (resu.AssignedClinician != null)
+                    {
+                        ClinicianUser = new ClinicianUser
+                        {
+                            ClinicianGUID = resu.AssignedClinician.ClinicianGUID,
+                            Email = resu.AssignedClinician.Email,
+                            FunFact = resu.AssignedClinician.FunFact,
+                            Guid = resu.AssignedClinician.ClinicianGUID,
+                            Name = resu.AssignedClinician.Name,
+                            Phone = resu.AssignedClinician.ContactNumber,
+                            Role = resu.AssignedClinician.WhatIDo,
+                            HCPID = resu.AssignedClinician.HCPID,
+                            UserImage = resu.UserImage,
+                            APIToken = resu.APIToken,
+                            PictureFilePath = !string.IsNullOrEmpty(resu.PictureFilePath) ? resu.PictureFilePath : string.Empty
+                        };
+                        ClinicianUser.APIToken = resu.APIToken;
+                    }
+                    else
+                    {
+                        ClinicianUser = new ClinicianUser
+                        {
+                            HCPID = resu.HCPID,
+                            Email = resu.Email,
+                            FunFact = resu.FunFact,
+                            ClinicianGUID = resu.ClinicianGUID,
+                            UserImage = resu.UserImage,
+                            Name = resu.Name,
+                            Phone = resu.ContactNumber,
+                            Role = resu.WhatIDo,
+                            APIToken = resu.APIToken,
+                            APITokenExpiry = resu.APITokenExpiry,
+                        };
+                    }
+
+                    return true;
+                }
             }
 
             ResetInputs();
