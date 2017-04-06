@@ -47,9 +47,9 @@ namespace MyMindV3.Views
                 HeightRequest = App.ScreenSize.Height,
                 ColumnDefinitions = new ColumnDefinitionCollection
                 {
-                    new ColumnDefinition {Width = App.ScreenSize.Width * .3},
-                    new ColumnDefinition {Width = App.ScreenSize.Width * .3},
-                    new ColumnDefinition {Width = App.ScreenSize.Width * .3}
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .33},
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .33},
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .33}
                 },
                 ColumnSpacing = 2,
                 RowDefinitions = new RowDefinitionCollection
@@ -134,7 +134,7 @@ namespace MyMindV3.Views
                 SeparatorVisibility = SeparatorVisibility.None,
                 ItemsSource = view == 0 ? ViewModel.PastAppointments : ViewModel.NextAppointments,
                 ItemTemplate = new DataTemplate(typeof(ApptList)),
-                IsPullToRefreshEnabled = true,
+                //IsPullToRefreshEnabled = true,
                 BackgroundColor = Color.FromHex("022330")
             };
 
