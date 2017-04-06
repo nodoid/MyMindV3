@@ -8,6 +8,9 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using RestSharp.Portable.HttpClient;
+using RestSharp.Portable;
+using System.Net;
 
 namespace MvvmFramework.Webservices
 {
@@ -88,12 +91,10 @@ namespace MvvmFramework.Webservices
         }
 
         // register system user
-        public UserProfile RegisterWeb(SystemUser systerUser)
+        /*public UserProfile RegisterWeb(SystemUser systerUser)
         {
-            //Send.SendData("RegisterAppUser", new string[] { }).ConfigureAwait(true);
             using (var client = new HttpClient())
             {
-                //App.Self.NetSpinner.NetworkSpinner(true, "Registering new user", "Please wait");
                 var postData = new FormUrlEncodedContent(new[] {
                         new KeyValuePair<string, string>("name", systerUser.Name),
                     new KeyValuePair<string,string>("preferredName", systerUser.PreferredName),
@@ -115,13 +116,37 @@ namespace MvvmFramework.Webservices
                     {
                         userProfile = LoginUser(systerUser.Email, systerUser.Password);
                     }
-                    //App.Self.NetSpinner.NetworkSpinner(false, "", "");
                     return userProfile;
                 }
                 catch (AggregateException)
                 {
-                    //App.Self.NetSpinner.NetworkSpinner(false, "", "");
                     return null;
+                }
+            }
+        }*/
+        public async Task<bool> RegisterWeb(SystemUser sys)
+        {
+            using (var client = new RestClient("https://apps.nelft.nhs.uk/MyMind/Account/RegisterAppUser"))
+            {
+                var request = new RestRequest(Method.POST);
+                var param = string.Format("name={0}&preferredName={1}&dob={2}&email={3}&phone={4}&password={5}&pincode={6}&postcode={7}",
+                                          sys.Name, sys.PreferredName, sys.DateOfBirth, sys.Email, sys.Phone, sys.Password, sys.PinCode, sys.PostCode);
+                request.AddParameter("application/x-www-form-urlencoded", param, ParameterType.RequestBody);
+
+                try
+                {
+                    var resp = await client.Execute(request);
+                    if (resp.StatusCode == HttpStatusCode.OK)
+                        return resp.Content != "error" ? true : false;
+                    else
+                        return false;
+                }
+                catch (Exception ex)
+                {
+#if DEBUG
+                    Debug.WriteLine("Register exception : {0}--{1}", ex.Message, ex.InnerException);
+#endif
+                    return false;
                 }
             }
         }
