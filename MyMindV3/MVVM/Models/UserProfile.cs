@@ -20,6 +20,7 @@ namespace MvvmFramework.Models
         public string RIOID { get; set; }
         // added PFJ 25-8-16
         public string UserImage { get; set; } = string.Empty;
+        public string PreferredName { get; set; }
         // missing - added
         public string APIToken { get; set; }
         public string PictureFilePath { get; set; }
