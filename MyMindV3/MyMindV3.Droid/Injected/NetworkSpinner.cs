@@ -15,7 +15,8 @@ namespace MyMindV3.Droid
             {
                 MainActivity.Activity.RunOnUiThread(delegate
                 {
-                    progress = ProgressDialog.Show(Forms.Context, title, message);
+                    if (progress == null)
+                        progress = ProgressDialog.Show(Forms.Context, title, message);
                 });
             }
             else
