@@ -90,7 +90,7 @@ namespace MyMindV3.Views
                     ViewModel.IsBusy = true;
                     GetData.GetFile(id.FileID.ToString(), ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken, file).ContinueWith((t) =>
                     {
-                        if (t.IsCompleted)
+                        if (t.IsCompleted && (!t.IsFaulted || t.IsCanceled))
                         {
                             ViewModel.IsBusy = false;
                             ViewModel.Filename = id.FileName;
@@ -123,11 +123,14 @@ namespace MyMindV3.Views
                                                   });
                             }
                         }
+                        else
+                            ViewModel.IsBusy = false;
                     });
                 }
                 else
                 {
                     ViewModel.Filename = id.FileName;
+                    ViewModel.IsBusy = false;
                     var filetype = file.Split('.').Last().ToLower();
                     if (filetype == "jpg" || filetype == "jpeg" || filetype == "png")
                         //Device.BeginInvokeOnMainThread(() => Navigation.PushModalAsync(new MyFileView(path)));
