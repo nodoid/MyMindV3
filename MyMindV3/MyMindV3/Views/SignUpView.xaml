@@ -117,15 +117,15 @@
 							<Label Text="{Binding Result}" FontSize="15" FontAttributes="None" TextColor="#ff0000" />
 						</StackLayout>
 						<StackLayout Grid.Row="11" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
-							<Button Text="Create" FontSize="15" TextColor="White" BackgroundColor="#3bc5ee" HeightRequest="50" Command="{Binding CreateSubmitCommand}" IsEnabled="{Binding HasValidInput}" />
+							<Button Text="Create" FontSize="15" TextColor="White" BackgroundColor="#3bc5ee" HeightRequest="50" Command="{Binding CreateSubmitCommand}" />
 						</StackLayout>
 					</Grid>
 				</StackLayout>
-				<!--/Register Screen-->
+				<!--/Register Screen
 				<StackLayout Grid.Row="4" Grid.Column="1" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Padding="0, 0">
 					<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_HaveAcc}" VerticalOptions="Center" BackgroundColor="Transparent" FontSize="15" TextColor="White" HorizontalOptions="Start" />
 					<Button Text="{Binding Converter={StaticResource Language}, ConverterParameter=SignUp_SignIn}" FontSize="15" TextColor="#3bc5ee" BackgroundColor="Transparent" HorizontalOptions="End" Command="{Binding SignUpCommand}" />
-				</StackLayout>
+				</StackLayout>-->
 			</Grid>
 		</ScrollView>
 	</AbsoluteLayout>
