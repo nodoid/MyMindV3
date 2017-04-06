@@ -9,6 +9,11 @@ namespace MyMindV3.Views
     {
         MyMindViewModel ViewModel => App.Locator.MyMind;
 
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
+        }
+
         public MyMindView()
         {
             InitializeComponent();
@@ -24,10 +29,9 @@ namespace MyMindV3.Views
 
             ToolbarItems.Add(new ToolbarItem(Langs.MyMind_Logout, "iconlogout", () =>
 {
-    ViewModel.LogoutCommand.Execute(null);
-    //Navigation.RemovePage(this);
-    Navigation.PopToRootAsync();
     ViewModel.Logout();
+    ViewModel.LogoutCommand.Execute(null);
+    Navigation.PopToRootAsync();
 }));
 
             if (ViewModel.SystemUser.IsAuthenticated == 3)
