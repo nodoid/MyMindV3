@@ -55,13 +55,13 @@
 							<StackLayout Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
 								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_DOB}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
 								<Frame Padding="0,0">
-									<Entry x:Name="ProfileDoBInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterDOB}" PlaceholderColor="#939393" FontSize="15" Text="{Binding DateOfBirthToString}" IsEnabled="False" TextColor="#707070" />
+									<Entry x:Name="ProfileDoBInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterDOB}" PlaceholderColor="#939393" FontSize="15" Text="{Binding DateOfBirth}" IsEnabled="False" TextColor="#707070" />
 								</Frame>
 							</StackLayout>
 							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
 								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Phone}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
 								<Frame Padding="0,0">
-									<Entry x:Name="ProfilePhoneInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPhone}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Phone}" IsEnabled="False" TextColor="#707070" />
+									<Entry x:Name="ProfilePhoneInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPhone}" PlaceholderColor="#939393" FontSize="15" Text="{Binding ContactNumber}" IsEnabled="False" TextColor="#707070" />
 								</Frame>
 							</StackLayout>
 							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
@@ -85,7 +85,7 @@
 							<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
 								<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_WhatIWant}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
 								<Frame Padding="0,0">
-									<Entry x:Name="ProfileGoalsInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterGoals}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Goals}" IsEnabled="False" TextColor="#707070" />
+									<Entry x:Name="ProfileGoalsInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterGoals}" PlaceholderColor="#939393" FontSize="15" Text="{Binding WhatIDo}" IsEnabled="False" TextColor="#707070" />
 								</Frame>
 							</StackLayout>
 							<StackLayout Orientation="Vertical" VerticalOptions="Fill" BackgroundColor="#3bc5ee" Padding="0, 0">
@@ -122,13 +122,13 @@
 						<StackLayout Grid.Column="0" Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
 							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_DOB}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
 							<Frame Padding="0,0">
-								<DatePicker x:Name="EditProfileDoB" Date="{Binding DateOfBirth}" IsEnabled="False" />
+								<Entry x:Name="EditProfileDoB" Text="{Binding DateOfBirth}" IsEnabled="False" />
 							</Frame>
 						</StackLayout>
 						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
 							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_Phone}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
 							<Frame Padding="0,0">
-								<Entry x:Name="EditProfilePhoneInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPhone}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Phone}" IsEnabled="True" TextColor="#707070" />
+								<Entry x:Name="EditProfilePhoneInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterPhone}" PlaceholderColor="#939393" FontSize="15" Text="{Binding ContactNumber}" IsEnabled="True" TextColor="#707070" />
 							</Frame>
 						</StackLayout>
 						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
@@ -152,7 +152,7 @@
 						<StackLayout Orientation="Vertical" VerticalOptions="Center" Padding="10, 10">
 							<Label Text="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_WhatIWant}" FontSize="15" FontAttributes="None" TextColor="#0b0b0b" />
 							<Frame Padding="0,0">
-								<Entry x:Name="EditProfileGoalsInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterGoals}" PlaceholderColor="#939393" FontSize="15" Text="{Binding Goals}" IsEnabled="True" TextColor="#707070" />
+								<Entry x:Name="EditProfileGoalsInput" Placeholder="{Binding Converter={StaticResource Language}, ConverterParameter=MyProfile_EnterGoals}" PlaceholderColor="#939393" FontSize="15" Text="{Binding WhatIDo}" IsEnabled="True" TextColor="#707070" />
 							</Frame>
 						</StackLayout>
 						<StackLayout Orientation="Horizontal" Padding="0, 0">
