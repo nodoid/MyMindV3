@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.OS;
 using ImageCircle.Forms.Plugin.Droid;
 using Xamarin.Forms;
+using System;
 
 namespace MyMindV3.Droid
 {
@@ -27,6 +28,12 @@ namespace MyMindV3.Droid
             ImageCircleRenderer.Init();
             PullToRefreshViewRenderer.Init();
             LoadApplication(new App());
+        }
+
+        public override void OnLowMemory()
+        {
+            base.OnLowMemory();
+            GC.Collect(0, GCCollectionMode.Optimized);
         }
     }
 }
