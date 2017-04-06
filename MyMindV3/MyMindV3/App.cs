@@ -38,7 +38,7 @@ namespace MyMindV3
         public string ContentDirectory { get; private set; }
         public string PicturesDirectory { get; private set; } = DependencyService.Get<IContent>().PicturesDirectory();
 
-        public IUserSettings UserSettings { get; set; } = DependencyService.Get<IUserSettings>();
+        //public IUserSettings UserSettings { get; set; } = DependencyService.Get<IUserSettings>();
 
         public static ViewModelLocator locator;
         public static ViewModelLocator Locator { get { return locator ?? (locator = new ViewModelLocator()); } }
@@ -98,7 +98,7 @@ namespace MyMindV3
 #endif
             };
 
-            CrossGeolocator.Current.PositionChanged += (object sender, Plugin.Geolocator.Abstractions.PositionEventArgs e) =>
+            CrossGeolocator.Current.PositionChanged += (object sender, PositionEventArgs e) =>
             {
                 Location = e.Position;
             };
@@ -125,10 +125,22 @@ namespace MyMindV3
                 SimpleIoc.Default.Register<INavigationService>(() => nav);
             }
             catch (Exception)
-            { }
+            {
+            }
+
+            try
+            {
+                SimpleIoc.Default.Register<IUserSettings>(() => DependencyService.Get<IUserSettings>());
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                Debug.WriteLine("usersettings restarted exception : {0}--{1}", ex.Message, ex.InnerException);
+#endif
+            }
 
             // Register the SQL
-            DependencyService.Get<MvvmFramework.ISqLiteConnectionFactory>().GetConnection();
+            DependencyService.Get<ISqLiteConnectionFactory>().GetConnection();
             var dialogService = new DialogService();
 
             try
