@@ -173,7 +173,7 @@ namespace MvvmFramework.ViewModel
                         Name = resu.Name,
                         Phone = resu.ContactNumber,
                         PinCode = resu.Pincode,
-                        PreferredName = resu.Name,
+                        PreferredName = resu.UserName,
                         ReferralReason = resu.ReferralReason,
                         RIOID = resu.RIOID,
                         UserImage = resu.UserImage,
