@@ -7,6 +7,7 @@ using Plugin.Permissions.Abstractions;
 using System;
 using MvvmFramework.ViewModel;
 using MvvmFramework;
+using System.Linq;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -44,6 +45,8 @@ namespace MyMindV3.Views
         public MyClinicianView()
         {
             InitializeComponent();
+            DisplayProfileDetails.IsVisible = true;
+            EditProfileDetails.IsVisible = false;
             BindingContext = ViewModel.ClinicianUser;
             GetImage();
             GetDetails();
@@ -67,17 +70,13 @@ namespace MyMindV3.Views
         void GetImage()
         {
             var f = ViewModel.GetClinicianImage;
-            if (ViewModel.SystemUser.IsAuthenticated == 3)
-                imgClinician.Source = "male_female.png";
+
+            ViewModel.ImageFilename = ViewModel.Filename = string.Format("{0}/{1}.jpg", ViewModel.GetCurrentFolder, ViewModel.GetClinicianImage);
+            ViewModel.IsUser = ViewModel.SystemUser.IsAuthenticated != 2 ? true : false;
+            if (ViewModel.FileExists && !ViewModel.LoadNewProfileImage)
+                Device.BeginInvokeOnMainThread(() => imgClinician.Source = ImageSource.FromFile(ViewModel.ImageFilename));
             else
-            {
-                ViewModel.ImageFilename = ViewModel.Filename = string.Format("{0}.jpg", ViewModel.GetClinicianImage);
-                ViewModel.IsUser = ViewModel.SystemUser.IsAuthenticated != 2 ? true : false;
-                if (ViewModel.FileExists)
-                    imgClinician.Source = ImageSource.FromFile(string.Format("{0}/{1}", ViewModel.GetCurrentFolder, string.Format("{0}.jpg", ViewModel.GetClinicianImage)));
-                else
-                    imgClinician.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(() => ViewModel.GetProfileImage) : "male_female.png";
-            }
+                Device.BeginInvokeOnMainThread(() => imgClinician.Source = !string.IsNullOrEmpty(ViewModel.ImageFilename) ? ImageSource.FromStream(() => ViewModel.GetProfileImage) : "male_female.png");
         }
 
         void GetDetails()
@@ -85,9 +84,9 @@ namespace MyMindV3.Views
             ViewModel.GetClinicianDetails();
         }
 
-        void Update_Profile(object s, EventArgs e)
+        void Update_Profile()
         {
-            ViewModel.UpdateProfile(ClinRoleInput.Text, ClinFunFactInput.Text, ClinPhoneInput.Text);
+            ViewModel.UpdateProfile(EditClinRoleInput.Text, EditClinFunFactInput.Text, EditClinPhoneInput.Text);
         }
 
         void CreateImageClick()
@@ -109,8 +108,7 @@ namespace MyMindV3.Views
 
                         file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                         {
-                            Directory = "Directory",
-                            Name = string.Format("{0}.jpg", ViewModel.SystemUser.Guid),
+                            Name = string.Format("{0}.jpg", ViewModel.ClinicianUser.ClinicianGUID),
                             CompressionQuality = 92,
                             PhotoSize = PhotoSize.Small
                         });
@@ -118,8 +116,14 @@ namespace MyMindV3.Views
                         if (file == null)
                             return;
 
-                        App.Self.UserSettings.SaveSetting("ImageDirectory", file.Path.Substring(0, file.Path.LastIndexOf('/')), SettingType.String);
+                        //App.Self.UserSettings.SaveSetting("ImageDirectory", file.Path.Substring(0, file.Path.LastIndexOf('/')), SettingType.String);
 
+                        var filename = string.Format("{0}/{1}", ViewModel.GetCurrentFolder, file.Path.Split('/').ToList().Last());
+                        if (filename.Contains("_"))
+                        {
+                            var fn = filename.Split('_');
+                            filename = fn[0] + ".jpg";
+                        }
 
                         Device.BeginInvokeOnMainThread(async () =>
                             await DisplayAlert(Langs.Message_UploadingTitle, Langs.Message_UploadingMessage, Langs.Gen_OK).ContinueWith(async (w) =>
@@ -130,22 +134,33 @@ namespace MyMindV3.Views
 #if DEBUG
                                         Debug.WriteLine(file.Path);
 #endif
-                                        DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
-                                        ViewModel.SystemUser.UserImage = file.Path;
+                                        //DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
+                                        ViewModel.SystemUser.UserImage = filename;
                                         ViewModel.UpdateSystemUser();
                                         if (App.Self.IsConnected)
-                                            await Send.UploadPicture(file.Path, ViewModel.ClinicianUser.Guid, ViewModel.SystemUser.APIToken);
+                                            await Send.UploadPicture(file.GetStream(), file.Path, ViewModel.ClinicianUser.ClinicianGUID, ViewModel.SystemUser.APIToken, ViewModel.SystemUser.IsAuthenticated.ToString()).ContinueWith((z) =>
+                                        {
+                                            if (z.IsCompleted && (!z.IsFaulted || !z.IsCanceled))
+                                            {
+                                                if (z.Result != "-1")
+                                                {
+                                                    ViewModel.SetProfileDateTime(z.Result);
+                                                }
+                                            }
+                                        });
                                         else
                                             await DisplayAlert(Langs.Network_ErrorTitle, Langs.Network_ErrorMessage, Langs.Gen_OK);
                                         file.Dispose();
                                     }
                                 }));
 
+                        //imgClinician.Source = ImageSource.FromFile(ViewModel.SystemUser.UserImage);
                         imgClinician.Source = ImageSource.FromStream(() =>
                         {
                             var stream = file.GetStream();
                             return stream;
                         });
+                        ViewModel.SaveFile(filename, file.GetStream());
                     }
                     else
                     {
@@ -166,6 +181,33 @@ namespace MyMindV3.Views
             };
             if (ViewModel.SystemUser.IsAuthenticated == 3)
                 imgClinician.GestureRecognizers.Add(imgTap);
+        }
+
+        void EditDetails(object sender, EventArgs e)
+        {
+            DisplayProfileDetails.IsVisible = false;
+            EditProfileDetails.IsVisible = true;
+        }
+
+        void UpdateDetails(object sender, EventArgs e)
+        {
+            Update_Profile();
+
+            DisplayProfileDetails.IsVisible = true;
+            EditProfileDetails.IsVisible = false;
+
+            /* scroll to top */
+            ProfileScrollView.ScrollToAsync(ClinNameInput.Y, 0, true);
+        }
+
+        /* cancel update details */
+        void CancelUpdate(object sender, EventArgs e)
+        {
+            DisplayProfileDetails.IsVisible = true;
+            EditProfileDetails.IsVisible = false;
+
+            /* scroll to top */
+            ProfileScrollView.ScrollToAsync(ClinNameInput.Y, 0, true);
         }
     }
 }
