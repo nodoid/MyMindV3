@@ -29,7 +29,6 @@ namespace MvvmFramework.ViewModel
             if (con.IsConnected)
                 SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Resources_Page_View :
                     (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Resources_Page_View : ActionCodes.Member_Resources_Page_View));
-            SearchPostcode = "null";
         }
 
         Sorting currentSort;
@@ -255,17 +254,121 @@ namespace MvvmFramework.ViewModel
             set { Set(() => ListNationalResources, ref nationalResources, value, true); GetUIList(ShowingLocal ? UIType.Local : UIType.National); }
         }
 
-        public void GetLocalResources(bool isClinicial = false)
+        string GetSearchType(Sorting type)
+        {
+            var rv = string.Empty;
+
+            switch (type)
+            {
+                case Sorting.AZ:
+                    rv = "AZ";
+                    break;
+                case Sorting.Distance:
+                    rv = "Distance";
+                    break;
+                case Sorting.Rating:
+                    rv = "Rating";
+                    break;
+                case Sorting.MostPopular:
+                    rv = "Popular";
+                    break;
+            }
+
+            return rv;
+        }
+
+        string ConvertCategoryToInt(string cat)
+        {
+            var rv = string.Empty;
+            var carList = new List<string>
+            {
+                "Abuse","Addiction/Drugs","ADHD","Adoption","Advice-General","Apps","Autism",
+                "Bereavement", "Bullying", "CSS","Counselling&Advice", "Disabilities","Divorce&Separation",
+                "EatingDisorders&FeedingDifficulties","EducationSupport","Grandparents","Internet","LGBT",
+                "Money","Relationships","Podcasts","SelfHarm","SexualHealth","SuicidalIdeation/Thoughts/Intent",
+                "Support","Depression","emergencysupport/Outofhours","AdviceandSupport","Parent/CarerSupport",
+                "LocalSupport","Anxiety","learningdisabilities","Self-esteem","Anger","LowMood", "Friendship",
+                "groupwork","ParentalMentalhealth","ParentalOffending","DomesticAbuse","BehaviouralConcerns",
+                "SupportforTeachers","ChildSexualExploitation","YoungRefugeesandMigrants","ChildProtection",
+                "YoungCarers","Involvement","Mindfullness","Excerises","Self-Help","Family","YouthOffending",
+                "Onlinesafety","SexualAssualt","Stress","Volunteering","PeerSupport","Vlog","Videos",
+                "Celebrity","Sleep","Exams","School","BodyImage","EatingDisorder","OCD"
+            };
+            var catNums = new List<int>
+            {
+                1,2,3,4,5,6,7,8,9,11,12,14,15,16,17,18,21,23,24,26,27,29,30,32,33,34,35,36,37,38,
+                72,73,74,75,76,77,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,
+                100,101,102,103,104,105,106,107,108
+            };
+
+            var cats = cat.Replace(" ", "").ToLowerInvariant().Split(',');
+            var res = (from c in cats
+                       from cl in carList
+                       where c == cl.ToLowerInvariant()
+                       select catNums.IndexOf(cl.ToLowerInvariant().IndexOf(c, StringComparison.CurrentCulture))).ToList();
+
+            if (res.Count == 0)
+                rv = "null";
+            else
+            {
+                if (res.Count == 1)
+                    rv = res[0].ToString();
+                else
+                {
+                    foreach (var r in res)
+                        rv += string.Format("{0},", r);
+                    rv = rv.Substring(0, rv.LastIndexOf(','));
+                }
+            }
+            return rv;
+        }
+
+        public async Task ReloadResources(Sorting type, string cats = "null")
+        {
+            if (connectService.IsConnected)
+            {
+                var catlist = cats == "null" ? "null" : ConvertCategoryToInt(cats);
+                var param = new List<string>{"UserGUID", GetIsClinician ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", GetIsClinician ? ClinicianUser.APIToken : SystemUser.APIToken,
+                    "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", "1",
+                    "Sorting", GetSearchType(type), "Postcode", SearchPostcode, "Title", "null", "Categorys", catlist};
+                await GetData.GetLocalNationalResources("GetLocalResources", param.ToArray()).ContinueWith(async (obj) =>
+                {
+                    if (obj.IsCompleted && (!obj.IsFaulted || !obj.IsCanceled))
+                    {
+                        if (obj.Result.Resources?.Count != 0)
+                        {
+                            ListLocalResources = obj.Result.Resources;
+                            CurrentLocalPage = 1;
+                        }
+                        await GetData.GetLocalNationalResources("GetNationalResources", param.ToArray()).ContinueWith((t) =>
+                        {
+                            if (t.IsCompleted && (!t.IsFaulted || !t.IsCanceled))
+                            {
+                                if (t.Result.Resources?.Count != 0)
+                                {
+                                    ListNationalResources = t.Result.Resources;
+                                    CurrentNationalPage = 1;
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+            else
+                await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
+        }
+
+        public void GetLocalResources(bool isClinicial = false, Sorting type = Sorting.AZ)
         {
             if (connectService.IsConnected)
             {
                 var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
                     "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", CurrentLocalPage.ToString(),
-                    "Sorting", "AZ", "Postcode", SearchPostcode, "Title", "null", "Categorys", "null"};
+                    "Sorting", GetSearchType(type), "Postcode", SearchPostcode, "Title", "null", "Categorys", "null"};
 
                 var local = GetData.GetLocalNationalResources("GetLocalResources", param.ToArray()).Result;
 
-                if (local != null)
+                if (local.Resources?.Count != 0)
                 {
                     MaxLocalPages = local.TotalLocalPagesRequired;
                     ListLocalResources = local.Resources;
@@ -275,13 +378,13 @@ namespace MvvmFramework.ViewModel
                 diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
         }
 
-        public void GetNationalResources(bool isClinicial = false)
+        public void GetNationalResources(bool isClinicial = false, Sorting type = Sorting.AZ)
         {
             if (connectService.IsConnected)
             {
                 var param = new List<string>{"UserGUID", isClinicial ? ClinicianUser.ClinicianGUID : SystemUser.Guid, "AuthToken", isClinicial ? ClinicianUser.APIToken : SystemUser.APIToken,
                 "AccountType", SystemUser.IsAuthenticated.ToString(), "Page", CurrentNationalPage.ToString(),
-                    "Sorting", "AZ", "Postcode", SearchPostcode, "Title", "null", "Categorys", "null"};
+                    "Sorting", GetSearchType(type), "Postcode", SearchPostcode, "Title", "null", "Categorys", "null"};
 
                 var national = GetData.GetLocalNationalResources("GetNationalResources", param.ToArray()).Result;
 
@@ -470,9 +573,9 @@ namespace MvvmFramework.ViewModel
                             Id = res[n].ResourceID,
                             Postcode = res[n].ResourcePostcode,
                             Distance = Convert.ToDouble(res[n].ResourceDistance),
-                            HasW = res[n].ResourceIsDead,
-                            HasH = false,
-                            HasR = false,
+                            HasW = res[n].ResourceType == 1,
+                            HasH = res[n].ResourceType == 2,
+                            HasR = res[n].ResourceType == 3,
                             Url = (string.IsNullOrEmpty(res[n].ResourceURL)) ? string.Empty : res[n].ResourceURL
                         });
                         dataList[n].StarRatings = ConvertRatingToStars(dataList[n].CurrentRating, n);
