@@ -8,6 +8,7 @@ using Plugin.Permissions.Abstractions;
 using System.Collections.Generic;
 using MvvmFramework.ViewModel;
 using MvvmFramework;
+using System.Linq;
 #if DEBUG
 using System.Diagnostics;
 #endif
@@ -31,7 +32,7 @@ namespace MyMindV3.Views
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            ProfilePreferredNameInput.Text = ss.Name;
+                            ProfilePreferredNameInput.Text = ss.PreferredName;
                             ProfileDoBInput.Text = ss.DateOfBirth;
                             ProfilePhoneInput.Text = ss.ContactNumber;
                             RegPhoneInput.Text = ss.ReferralReason;
@@ -47,7 +48,7 @@ namespace MyMindV3.Views
         public MyProfileView()
         {
             InitializeComponent();
-            BindingContext = ViewModel.SystemUser;
+            BindingContext = ViewModel.UserProfile;
             CreateUI();
         }
 
@@ -56,7 +57,7 @@ namespace MyMindV3.Views
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
             GetImage();
-            GetDetails();
+
             if (ViewModel.SystemUser.IsAuthenticated != 3)
                 CreateImageClick();
 
@@ -65,7 +66,6 @@ namespace MyMindV3.Views
 
             vwRefresh.RefreshCommand = new Command(() =>
             {
-                GetDetails();
                 Device.BeginInvokeOnMainThread(() => { GetImage(); vwRefresh.IsRefreshing = false; });
             });
         }
@@ -73,22 +73,13 @@ namespace MyMindV3.Views
         void GetImage()
         {
             var f = ViewModel.GetUserImage;
-            if (ViewModel.SystemUser.IsAuthenticated == 3)
-                imgUser.Source = "male_female.png";
-            else
-            {
-                ViewModel.ImageFilename = ViewModel.Filename = ViewModel.GetUserImage;
-                ViewModel.IsUser = ViewModel.SystemUser.IsAuthenticated == 2 ? true : false;
-                if (ViewModel.FileExists)
-                    imgUser.Source = ImageSource.FromFile(string.Format("{0}/{1}", ViewModel.GetCurrentFolder, ViewModel.GetUserImage));
-                else
-                    imgUser.Source = !string.IsNullOrEmpty(f) ? ImageSource.FromStream(() => ViewModel.GetProfileImage) : "male_female.png";
-            }
-        }
 
-        void GetDetails()
-        {
-            ViewModel.GetUserProfileDetails(new List<string> { ViewModel.ClinicianUser.ClinicianGUID, ViewModel.ClinicianUser.APIToken, ViewModel.SystemUser.Guid }.ToArray());
+            ViewModel.ImageFilename = ViewModel.Filename = string.Format("{0}/{1}.jpg", ViewModel.GetCurrentFolder, ViewModel.GetUserImage);
+            ViewModel.IsUser = ViewModel.SystemUser.IsAuthenticated == 2 ? true : false;
+            if (ViewModel.FileExists && !ViewModel.LoadNewProfileImage)
+                Device.BeginInvokeOnMainThread(() => imgUser.Source = ImageSource.FromFile(ViewModel.ImageFilename));
+            else
+                Device.BeginInvokeOnMainThread(() => imgUser.Source = !string.IsNullOrEmpty(ViewModel.ImageFilename) ? ImageSource.FromStream(() => ViewModel.GetProfileImage) : "male_female.png");
         }
 
         void CreateImageClick()
@@ -109,7 +100,7 @@ namespace MyMindV3.Views
 
                         file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                         {
-                            Directory = "Directory",
+                            //Directory = "Directory",
                             Name = string.Format("{0}.jpg", ViewModel.SystemUser.Guid),
                             CompressionQuality = 92,
                             PhotoSize = PhotoSize.Small
@@ -118,7 +109,14 @@ namespace MyMindV3.Views
                         if (file == null)
                             return;
 
-                        App.Self.UserSettings.SaveSetting(ViewModel.GetCurrentFolder, file.Path.Substring(0, file.Path.LastIndexOf('/')), SettingType.String);
+                        //App.Self.UserSettings.SaveSetting(ViewModel.GetCurrentFolder, file.Path.Substring(0, file.Path.LastIndexOf('/')), SettingType.String);
+
+                        var filename = string.Format("{0}/{1}", ViewModel.GetCurrentFolder, file.Path.Split('/').ToList().Last());
+                        if (filename.Contains("_"))
+                        {
+                            var fn = filename.Split('_');
+                            filename = fn[0] + ".jpg";
+                        }
 
                         try
                         {
@@ -131,11 +129,18 @@ namespace MyMindV3.Views
 #if DEBUG
                                             Debug.WriteLine(file.Path);
 #endif
-                                            DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
+                                            //DependencyService.Get<IContent>().StoreFile(ViewModel.SystemUser.Guid, file.GetStream());
                                             ViewModel.SystemUser.UserImage = file.Path;
                                             ViewModel.UpdateSystemUser();
                                             if (App.Self.IsConnected)
-                                                await Send.UploadPicture(file.Path, ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken);
+                                                await Send.UploadPicture(file.GetStream(), file.Path, ViewModel.SystemUser.Guid, ViewModel.SystemUser.APIToken, ViewModel.SystemUser.IsAuthenticated.ToString()).ContinueWith((z) =>
+                                            {
+                                                if (z.IsCompleted && (!z.IsFaulted || !z.IsCanceled))
+                                                {
+                                                    if (z.Result != "-1")
+                                                        ViewModel.SetProfileDateTime(z.Result);
+                                                }
+                                            });
                                             else
                                                 await DisplayAlert(Langs.Network_ErrorTitle, Langs.Network_ErrorMessage, Langs.Gen_OK);
                                             file.Dispose();
@@ -153,6 +158,7 @@ namespace MyMindV3.Views
                             var stream = file.GetStream();
                             return stream;
                         });
+                        ViewModel.SaveFile(filename, file.GetStream());
                     }
                     else
                     {
@@ -200,6 +206,21 @@ namespace MyMindV3.Views
         private void UpdateDetails(object sender, EventArgs e)
         {
             Update_Profile();
+
+            var ss = ViewModel.UserProfile;
+            if (ss != null)
+            {
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    ProfilePreferredNameInput.Text = ss.PreferredName;
+                    ProfileDoBInput.Text = ss.DateOfBirth;
+                    ProfilePhoneInput.Text = ss.ContactNumber;
+                    RegPhoneInput.Text = ss.ReferralReason;
+                    ProfileLikesInput.Text = ss.Likes;
+                    ProfileDislikesInput.Text = ss.Dislikes;
+                    ProfileGoalsInput.Text = ss.WhatIDo;
+                });
+            }
 
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
