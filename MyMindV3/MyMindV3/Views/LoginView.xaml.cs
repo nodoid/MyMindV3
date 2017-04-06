@@ -11,11 +11,12 @@ namespace MyMindV3.Views
     {
         LoginViewModel ViewModel => App.Locator.Login;
         private int _imgCount = 1;
+        bool stop;
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+            stop = false;
             ViewModel.PropertyChanged += (sender, e) =>
             {
                 if (e.PropertyName == "IsBusy")
@@ -23,6 +24,13 @@ namespace MyMindV3.Views
                     Task.Run(() => Device.BeginInvokeOnMainThread(() => DependencyService.Get<INetworkSpinner>().NetworkSpinner(ViewModel.IsBusy, ViewModel.SpinnerTitle, ViewModel.SpinnerMessage)));
                 }
             };
+            UserNameInput.Text = PasswordInput.Text = string.Empty;
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            stop = true;
         }
 
         public LoginView()
@@ -32,6 +40,10 @@ namespace MyMindV3.Views
             NavigationPage.SetHasNavigationBar(this, false);
 
             BindingContext = ViewModel;
+            ViewModel.IsLoggedIn = ViewModel.DisplayAcceptance = false;
+            ViewModel.DisplayLogin = true;
+            UserNameInput.Text = PasswordInput.Text = string.Empty;
+
             InitBGTimer().ConfigureAwait(true);
 
             var errorMessage = new Dictionary<string, string>
@@ -57,7 +69,7 @@ namespace MyMindV3.Views
 
         public async Task InitBGTimer()
         {
-            if (!ViewModel.IsLoggedIn)
+            if (!ViewModel.IsLoggedIn && !stop)
             {
                 await Task.Delay(5000);
                 SwapImage();
