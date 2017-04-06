@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using MvvmFramework.Models;
 using System.Collections.Generic;
 using MvvmFramework.Interfaces;
+using System;
 
 namespace MvvmFramework.ViewModel
 {
@@ -15,17 +16,21 @@ namespace MvvmFramework.ViewModel
         IRepository sqlConn;
         IConnectivity connectService;
         IDialogService diaService;
+        IUserSettings settingsService;
 
-        public MyProfileViewModel(INavigationService nav, IRepository repo, IConnectivity con, IDialogService dia)
+        public MyProfileViewModel(INavigationService nav, IRepository repo, IConnectivity con, IDialogService dia, IUserSettings settings)
         {
             navService = nav;
             sqlConn = repo;
             connectService = con;
             diaService = dia;
+            settingsService = settings;
 
             if (con.IsConnected)
                 SendTrackingInformation(GetIsClinician ? ActionCodes.Clinician_Client_Profile_Page_View :
                     (SystemUser.IsAuthenticated == 2 ? ActionCodes.User_Profile_Page_View : ActionCodes.Member_Profile_Page_View));
+
+            GetUserProfile();
         }
 
         string filename;
@@ -40,7 +45,24 @@ namespace MvvmFramework.ViewModel
             get
             {
                 GetData.GetImage(ImageFilename, IsUser).ConfigureAwait(true);
+                settingsService.SaveSetting<string>("UserImageUpdate", SystemUser.ProfilePictureUploadTimestamp.ToString(), SettingType.String);
                 return new FileIO().LoadFile(ImageFilename).Result;
+            }
+        }
+
+        public bool LoadNewProfileImage
+        {
+            get
+            {
+                var rv = false;
+                var dt = settingsService.LoadSetting<string>("UserImageUpdate", SettingType.String);
+                if (string.IsNullOrEmpty(dt))
+                    rv = true;
+                else
+                    if (Convert.ToDateTime(dt) != SystemUser.ProfilePictureUploadTimestamp)
+                    rv = true;
+
+                return rv;
             }
         }
 
@@ -51,24 +73,22 @@ namespace MvvmFramework.ViewModel
             set { Set(() => UserProfile, ref userProfile, value, true); }
         }
 
-        public void GetUserProfileDetails(params string[] data)
+        void GetUserProfile()
         {
-            Task.Run(async () =>
+            var usr = new UserProfile
             {
-                if (connectService.IsConnected)
-                {
-                    await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID", data[0], "AuthToken", data[1],
-                                                       "ClientGUID", data[2]).ContinueWith((t) =>
-                    {
-                        if (t.IsCompleted)
-                        {
-                            UserProfile = t.Result[0];
-                        }
-                    });
-                }
-                else
-                    await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
-            });
+                APIToken = SystemUser.APIToken,
+                APITokenExpiry = SystemUser.APITokenExpiry,
+                Name = SystemUser.Name,
+                DateOfBirth = SystemUser.DateOfBirth,
+                ContactNumber = SystemUser.Phone,
+                WhatIDo = SystemUser.Goals,
+                ReferralReason = SystemUser.ReferralReason,
+                Likes = SystemUser.Likes,
+                Dislikes = SystemUser.Dislikes,
+                PreferredName = SystemUser.PreferredName
+            };
+            UserProfile = usr;
         }
 
         public void UpdateUserData(params string[] data)
@@ -77,8 +97,8 @@ namespace MvvmFramework.ViewModel
             {
                 if (connectService.IsConnected)
                 {
-                    await Send.SendData("api/MyMind/UpdateUserProfile", "UserGUID", data[0], "AuthToken", data[1],
-                                        "PreferredName", data[2],
+                    await Send.SendData("api/MyMind/UpdateUserProfile", "UserGUID", SystemUser.Guid, "AuthToken", SystemUser.APIToken,
+                                        "PreferredName", data[2], "DateOfBirth", DateTime.Now.ToString(),
                                         "PhoneNumber", data[3], "WhyIThinkIWasReferred", data[4],
                                         "SomethingILike", data[5], "SomethingIDislike", data[6],
                                         "WhatIWantTo", data[7]).ContinueWith((t) =>
@@ -93,9 +113,7 @@ namespace MvvmFramework.ViewModel
                     await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
             });
             var usr = UserProfile;
-            if (usr == null)
-                usr = new UserProfile();
-            usr.Name = data[2];
+            usr.PreferredName = data[2];
             usr.ContactNumber = data[3];
             usr.ReferralReason = data[4];
             usr.Likes = data[5];
@@ -108,7 +126,29 @@ namespace MvvmFramework.ViewModel
         {
             if (!GetIsClinician && connectService.IsConnected)
                 SendTrackingInformation(ActionCodes.User_Updated_Profile);
+
+            SystemUser.PreferredName = UserProfile.Name;
+            SystemUser.ContactNumber = UserProfile.ContactNumber;
+            SystemUser.Goals = UserProfile.WhatIDo;
+            SystemUser.ReferralReason = UserProfile.WhatIDo;
+            SystemUser.Likes = UserProfile.Likes;
+            SystemUser.Dislikes = UserProfile.Dislikes;
+            SystemUser = SystemUser;
             sqlConn.SaveData(SystemUser);
+        }
+
+        public void SaveFile(string filename, Stream stream)
+        {
+            Task.Run(async () =>
+            {
+                await new FileIO().SaveFile(filename, stream);
+            });
+        }
+
+        public void SetProfileDateTime(string dts)
+        {
+            var dt = dts.ConvertToDateTime();
+            settingsService.SaveSetting<string>("UserImageUpdate", dt.ToString(), SettingType.String);
         }
     }
 }
