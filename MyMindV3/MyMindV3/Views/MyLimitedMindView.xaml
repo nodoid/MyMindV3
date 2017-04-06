@@ -8,7 +8,7 @@
 	<AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
 		<local:CustomImage x:Name="BackgrdImg" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" ImageSource="bg1.png" Aspect="AspectFill" />
 		<ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1, 1">
-			<StackLayout Orientation="Vertical" VerticalOptions="Fill">
+			<StackLayout  x:Name="StackLayoutCover" Orientation="Vertical" VerticalOptions="Fill">
 				<!--Header-->
 				<Grid Padding="0, 0" ColumnSpacing="0" RowSpacing="0" VerticalOptions="Fill">
 					<Grid.RowDefinitions>
