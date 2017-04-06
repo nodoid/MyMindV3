@@ -59,7 +59,7 @@ namespace MyMindV3.iOS
                 File.Delete(filename);
             else
             {
-                if (isUser)
+                /*if (isUser)
                 {
                     App.Self.UserSettings.SaveSetting<string>("UserImage", filename, SettingType.String);
                     App.Self.UserSettings.SaveSetting<string>("UserImageDatestamp", DateTime.Now.ToString("g"), SettingType.String);
@@ -68,7 +68,7 @@ namespace MyMindV3.iOS
                 {
                     App.Self.UserSettings.SaveSetting<string>("ClinicianImage", filename, SettingType.String);
                     App.Self.UserSettings.SaveSetting<string>("ClinicianImageDatestamp", DateTime.Now.ToString("g"), SettingType.String);
-                }
+                }*/
             }
         }
 

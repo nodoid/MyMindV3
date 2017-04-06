@@ -51,7 +51,7 @@ namespace MyMindV3.Droid
 
         public void StoreImageFile(string id, Stream sr, bool isUser = true)
         {
-            var filename = string.Format("{0}/{1}.jpg", App.Self.PicturesDirectory, id);
+            /*var filename = string.Format("{0}/{1}.jpg", App.Self.PicturesDirectory, id);
             if (File.Exists(filename))
                 File.Delete(filename);
             if (sr.Length > 0)
@@ -75,7 +75,7 @@ namespace MyMindV3.Droid
                         App.Self.UserSettings.SaveSetting<string>("ClinicianImageDatestamp", DateTime.Now.ToString("g"), SettingType.String);
                     }
                 }
-            }
+            }*/
         }
 
         public void LaunchFile(string filename)
