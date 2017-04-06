@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MvvmFramework.Helpers;
 using MvvmFramework.Models;
+using System.Linq;
 
 namespace MvvmFramework
 {
@@ -90,7 +91,7 @@ namespace MvvmFramework
 
         public static async Task GetImage(string id, bool isUser = true)
         {
-            var url = string.Format("{0}/api/MyMind/GetProfilePicture/{1}", Constants.BaseTestUrl, id);
+            var url = string.Format("{0}/api/MyMind/GetProfilePicture/{1}", Constants.BaseTestUrl, id.Split('/').Last().Split('.')[0]);
             try
             {
                 using (var client = new HttpClient())
