@@ -120,26 +120,29 @@ namespace MvvmFramework
             }
         }
 
-        public static async Task UploadPicture(string filename, string guid, string authtoken, bool fromfile = false)
+        public static async Task<string> UploadPicture(Stream data, string filename, string guid, string authtoken, string type, bool fromfile = false)
         {
             fromFiles = fromfile;
-            var stream = new FileIO().LoadFile(filename).Result;
-            var url = string.Format("{0}/api/MyMind/UploadProfilePicture/{1}/{2}", Constants.BaseTestUrl, guid, authtoken);
-            var filesize = stream.Length;
+            var url = string.Format("{0}/api/MyMind/UploadProfilePicture", Constants.BaseTestUrl);
+            var filesize = data.Length;
             try
             {
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddFile("files", ReadFully(stream), filename, "image/jpeg");
+                request.AddHeader("userguid", guid);
+                request.AddHeader("authtoken", authtoken);
+                request.AddHeader("accounttype", type);
+                request.AddFile("files", ReadFully(data), filename, "image/jpeg");
                 var resp = await client.Execute(request);
-                var s = resp.Content;
+                return resp.Content;
             }
             catch (Exception e)
             {
 #if DEBUG
                 Debug.WriteLine("Exception uploading {0}--{1}", e.Message, e.InnerException);
 #endif
+                return "-1";
             }
         }
 
