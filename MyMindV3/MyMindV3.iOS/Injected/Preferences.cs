@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Foundation;
+using MvvmFramework;
 using MyMindV3.iOS;
 using Xamarin.Forms;
 
