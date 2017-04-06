@@ -71,22 +71,23 @@ namespace MvvmFramework.ViewModel
                                         PostCode = PostCode
                                     };
 
-                                    var resu = new UsersWebservice().RegisterWeb(systemUser);
-                                    if (resu != null)
+                                    await new UsersWebservice().RegisterWeb(systemUser).ContinueWith(async (t) =>
                                     {
-                                        await dialogService.ShowMessage(GetMessage("RegUser_Completed_Message"), GetMessage("RegUser_Completed"));
-                                    }
+                                        if (t.IsCompleted && (!t.IsCanceled || !t.IsFaulted))
+                                        {
+                                            if (t.Result)
+                                                await dialogService.ShowMessage(GetMessage("RegUser_Completed_Message"), GetMessage("RegUser_Completed"), "OK", () => navService.GoBack());
+                                            else
+                                                await dialogService.ShowMessage(GetErrorMessage("Registration_ErrorMessage"), GetErrorTitle("Gen_Error"), "OK", () => navService.GoBack());
+                                        }
+                                    });
                                 }
                                 else
-                                {
-                                    await dialogService.ShowMessage(GetErrorMessage("Registration_ErrorMessage"), GetErrorTitle("Gen_Error"));
-                                    navService.GoBack();
-                                }
+                                    await dialogService.ShowMessage(NetworkErrors[1], NetworkErrors[0], "OK", () => navService.GoBack());
+                                createSubmitCommand = null;
                             }
-                            else
-                                await dialogService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
                         })
-                        );
+                );
             }
         }
 
