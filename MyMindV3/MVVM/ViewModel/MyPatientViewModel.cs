@@ -81,7 +81,7 @@ namespace MvvmFramework.ViewModel
                 if (connectService.IsConnected)
                 {
                     await Send.SendData<List<UserProfile>>("api/MyMind/GetConnectionsProfile", "ClinicianGUID",
-                                                           UnencryptedGuid, "AuthToken", UnencryptedAuth,
+                                                           ClinicianUser.ClinicianGUID, "AuthToken", SystemUser.APIToken,
                                                            "ClientGUID", ConnectionId).ContinueWith((t) =>
                     {
                         if (t.IsCompleted)
@@ -91,7 +91,7 @@ namespace MvvmFramework.ViewModel
                     });
                 }
                 else
-                   await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
+                    await diaService.ShowMessage(NetworkErrors[1], NetworkErrors[0]);
             });
         }
 
@@ -102,7 +102,7 @@ namespace MvvmFramework.ViewModel
                 if (connectService.IsConnected)
                 {
                     await Send.SendData<List<Connections>>("api/MyMind/GetClinicianConnections", "ClinicianGUID",
-                                                           ClinicianGuid, "AuthToken", authToken).ContinueWith((t) =>
+                                                           ClinicianUser.ClinicianGUID, "AuthToken", SystemUser.APIToken).ContinueWith((t) =>
                 {
                     if (t.IsCompleted)
                     {
