@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MvvmFramework;
 using MyMindV3.Droid;
 using Xamarin.Forms;
 
