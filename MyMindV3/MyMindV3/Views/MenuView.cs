@@ -36,6 +36,24 @@ namespace MyMindV3.Views
 
         StackLayout GenerateUI()
         {
+            var entryCats = new Entry
+            {
+                Placeholder = Langs.MyResources_FilterOn,
+                TextColor = Color.Gray,
+                WidthRequest = App.ScreenSize.Width * .25
+            };
+            var btnOK = new Button
+            {
+                Text = Langs.Gen_OK
+            };
+            btnOK.Clicked += delegate
+            {
+                if (!string.IsNullOrEmpty(entryCats.Text))
+                {
+                    MessagingCenter.Send(this, "searchCat", entryCats.Text);
+                }
+            };
+
             var lblResource = new Label
             {
                 Text = Langs.MyResources_Filter,
@@ -91,6 +109,15 @@ namespace MyMindV3.Views
                 Orientation = StackOrientation.Vertical,
                 Children =
                 {
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Horizontal,
+                        Padding = new Thickness(4),
+                        Children =
+                        {
+                            entryCats, btnOK
+                        }
+                    },
                     lblResource,
                     radio,
                     new BoxView
