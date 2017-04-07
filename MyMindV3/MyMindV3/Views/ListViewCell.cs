@@ -27,24 +27,6 @@ namespace MyMindV3.Views
             };
             lblCategory.SetBinding(Label.TextProperty, new Binding("Category"));
 
-            var entryCats = new Entry
-            {
-                Placeholder = Langs.MyResources_FilterOn,
-                TextColor = Color.Gray,
-                WidthRequest = App.ScreenSize.Width * .25
-            };
-            var btnOK = new Button
-            {
-                Text = Langs.Gen_OK
-            };
-            btnOK.Clicked += delegate
-            {
-                if (!string.IsNullOrEmpty(entryCats.Text))
-                {
-                    MessagingCenter.Send(this, "searchCat", entryCats.Text);
-                }
-            };
-
             var imgIcon = new Image
             {
                 HeightRequest = 56,
