@@ -134,6 +134,10 @@ namespace MyMindV3.Views
                 VerticalTextAlignment = TextAlignment.Center
             };
             lblDistance.SetBinding(Label.TextProperty, new Binding("Distance", converter: new IntToStringConverter()));
+            lblDistance.SetBinding(Label.IsVisibleProperty, new Binding("Distance", converter: new DoubleToVisible()));
+
+            var lblMiles = new Label { Text = Langs.MyResources_Miles, FontSize = 8, TextColor = Color.Green };
+            lblMiles.SetBinding(Label.IsVisibleProperty, new Binding("Distance", converter: new DoubleToVisible()));
 
             var resourceStack = new StackLayout
             {
@@ -241,7 +245,7 @@ namespace MyMindV3.Views
                                         Children =
                                         {
                                             lblDistance,
-                                            new Label {Text=Langs.MyResources_Miles, FontSize = 8, TextColor = Color.Green},
+                                            lblMiles
                                         }
                                     }
                                 }

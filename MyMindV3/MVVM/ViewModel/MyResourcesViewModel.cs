@@ -11,6 +11,8 @@ using MvvmFramework.Interfaces;
 using System.Diagnostics;
 #endif
 using System.Collections.ObjectModel;
+using Newtonsoft.Json.Serialization;
+using System.Xml;
 
 namespace MvvmFramework.ViewModel
 {
@@ -302,21 +304,27 @@ namespace MvvmFramework.ViewModel
             };
 
             var cats = cat.Replace(" ", "").ToLowerInvariant().Split(',');
-            var res = (from c in cats
+            /*var res = (from c in cats
                        from cl in carList
                        where c == cl.ToLowerInvariant()
-                       select catNums.IndexOf(cl.ToLowerInvariant().IndexOf(c, StringComparison.CurrentCulture))).ToList();
+                       select catNums.IndexOf(cl.ToLowerInvariant().IndexOf(c, StringComparison.CurrentCulture))).ToList();*/
 
+            var res = new List<int>();
+            foreach (var cl in carList)
+                foreach (var c in cats)
+                    if (c == cl.ToLowerInvariant())
+                        res.Add(catNums.IndexOf(carList.IndexOf(cl)));
             if (res.Count == 0)
                 rv = "null";
             else
             {
                 if (res.Count == 1)
-                    rv = res[0].ToString();
+                    rv = res[0] != -1 ? res[0].ToString() : "null";
                 else
                 {
                     foreach (var r in res)
-                        rv += string.Format("{0},", r);
+                        if (r != -1)
+                            rv += string.Format("{0},", r);
                     rv = rv.Substring(0, rv.LastIndexOf(','));
                 }
             }

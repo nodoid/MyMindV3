@@ -9,7 +9,7 @@ using System;
 
 namespace MyMindV3.Droid
 {
-    [Activity(ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden, WindowSoftInputMode = Android.Views.SoftInput.AdjustResize)]
+    [Activity(ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.KeyboardHidden, WindowSoftInputMode = Android.Views.SoftInput.AdjustResize, MainLauncher = true, NoHistory = true, Icon = "@drawable/icon")]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
     {
         public static MainActivity Activity { get; private set; }

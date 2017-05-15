@@ -368,7 +368,8 @@ namespace MyMindV3.Views
                 WidthRequest = 40,
                 HorizontalOptions = LayoutOptions.Center,
                 IsRunning = true,
-                IsEnabled = true
+                IsEnabled = true,
+                BackgroundColor = Color.White
             };
             activityIndicator.SetBinding(ActivityIndicator.IsVisibleProperty, new Binding("IsBusy"));
 
@@ -728,19 +729,19 @@ namespace MyMindV3.Views
             var masterGrid = new Grid
             {
                 WidthRequest = App.ScreenSize.Width,
-                HeightRequest = App.ScreenSize.Height,
+                HeightRequest = App.ScreenSize.Height - 32,
                 ColumnDefinitions = new ColumnDefinitionCollection
                 {
-                    new ColumnDefinition {Width = App.ScreenSize.Width * .3},
-                    new ColumnDefinition {Width = App.ScreenSize.Width * .3},
-                    new ColumnDefinition {Width = App.ScreenSize.Width * .4}
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .33},
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .34},
+                    new ColumnDefinition {Width = App.ScreenSize.Width * .33}
                 },
                 ColumnSpacing = 2,
                 RowDefinitions = new RowDefinitionCollection
                 {
                     new RowDefinition {Height = 22},
-                    new RowDefinition {Height = GridLength.Star},
-                    new RowDefinition {Height =GridLength.Auto}
+                    new RowDefinition {Height = (App.ScreenSize.Height * .7)-32},
+                    new RowDefinition {Height =GridLength.Star}
                 }
             };
 
@@ -749,7 +750,8 @@ namespace MyMindV3.Views
             var stack = new StackLayout
             {
                 WidthRequest = App.ScreenSize.Width,
-                HeightRequest = App.ScreenSize.Height * .8,
+                VerticalOptions = LayoutOptions.FillAndExpand,
+                //HeightRequest = App.ScreenSize.Height * .8,
                 Orientation = StackOrientation.Vertical,
                 Children = { listView }
             };
