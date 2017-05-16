@@ -343,7 +343,7 @@ namespace MyMindV3.Views
                 BackgroundColor = Color.FromHex("022330"),
                 SeparatorVisibility = SeparatorVisibility.None,
                 //IsPullToRefreshEnabled = true,
-                HeightRequest = App.ScreenSize.Height * .5
+                HeightRequest = App.ScreenSize.Height * .7
             };
 
             ViewModel.SpinnerMessage = Langs.Gen_PleaseWait;
@@ -644,7 +644,7 @@ namespace MyMindV3.Views
                 Orientation = StackOrientation.Horizontal,
                 BackgroundColor = Color.White,
                 HeightRequest = 56,
-                TranslationY = -116,
+                //TranslationY = -116,
                 Children =
                 {
                     new StackLayout
@@ -739,9 +739,9 @@ namespace MyMindV3.Views
                 ColumnSpacing = 2,
                 RowDefinitions = new RowDefinitionCollection
                 {
-                    new RowDefinition {Height = 22},
+                    new RowDefinition {Height = GridLength.Auto},
                     new RowDefinition {Height = (App.ScreenSize.Height * .7)-32},
-                    new RowDefinition {Height =GridLength.Star}
+                    new RowDefinition {Height =GridLength.Auto}
                 }
             };
 
@@ -835,7 +835,7 @@ namespace MyMindV3.Views
             innerStack.Children.Add(new StackLayout
             {
                 Orientation = StackOrientation.Vertical,
-                Children = { activityIndicator, masterGrid/*, moveStack*/ }
+                Children = { activityIndicator, masterGrid }
             });
 
             Content = new StackLayout

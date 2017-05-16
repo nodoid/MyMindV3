@@ -1,8 +1,8 @@
-﻿<Properties StartupConfiguration="{15311C07-7E02-4E74-8581-813F3EF27CCD}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MyMindV3/MyMindV3/Views/MyResourceView.cs">
+﻿<Properties StartupConfiguration="{B7EC01B5-1C8D-49E7-BF43-C989BDCD90FF}|Default">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="MyMindV3/MyMindV3/Views/MenuView.cs" Line="51" Column="1" />
-      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="744" Column="63" />
+      <File FileName="MyMindV3/MyMindV3/Views/MenuView.cs" Line="57" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyResourceView.cs" Line="647" Column="19" />
       <File FileName="MyMindV3/MyMindV3/Views/LoginView.xaml.cs" Line="72" Column="1" />
       <File FileName="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" Line="351" Column="1" />
       <File FileName="MyMindV3/MVVM/Webservices/GetData.cs" Line="284" Column="1" />
@@ -11,15 +11,24 @@
       <File FileName="MyMindV3/MyMindV3/Converters/DoubleToColor.cs" Line="15" Column="10" />
       <File FileName="MyMindV3/MyMindV3/Converters/CorrectColor.cs" Line="18" Column="10" />
       <File FileName="MyMindV3/MVVM/Webservices/SendData.cs" Line="103" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyMindView.xaml.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyMindView.xaml" Line="100" Column="15" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyMindViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModelLocator.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/ViewModel/MyChatViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/App.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MyMindV3/Views/MyChatView.xaml.cs" Line="25" Column="9" />
+      <File FileName="MyMindV3/MVVM/ViewModel/LoginViewModel.cs" Line="1" Column="1" />
+      <File FileName="MyMindV3/MVVM/Webservices/UsersWebservice.cs" Line="147" Column="1" />
+      <File FileName="MyMindV3/MyMindV3.iOS/Info.plist" />
     </Files>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Android.192.168.66.101:5555" />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.Droid PreferredExecutionTarget="Xamarin.Player.XamarinStudio.DefaultPlayerExecutionTarget" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyPatientViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyPatientViewModel.cs" line="107" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyClinicianViewModel.cs" line="103" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" relfile="MyMindV3/MyMindV3/Views/MyResourceView.cs" line="115" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/SendData.cs" relfile="MyMindV3/MVVM/Webservices/SendData.cs" line="138" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/SendData.cs" relfile="MyMindV3/MVVM/Webservices/SendData.cs" line="127" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/SendData.cs" relfile="MyMindV3/MVVM/Webservices/SendData.cs" line="137" column="1" />
@@ -35,18 +44,15 @@
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/UsersWebservice.cs" relfile="MyMindV3/MVVM/Webservices/UsersWebservice.cs" line="129" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/UsersWebservice.cs" relfile="MyMindV3/MVVM/Webservices/UsersWebservice.cs" line="138" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/UsersWebservice.cs" relfile="MyMindV3/MVVM/Webservices/UsersWebservice.cs" line="147" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" relfile="MyMindV3/MyMindV3/Views/MyResourceView.cs" line="44" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" relfile="MyMindV3/MyMindV3/Views/MyResourceView.cs" line="40" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MenuView.cs" relfile="MyMindV3/MyMindV3/Views/MenuView.cs" line="51" column="1" />
-      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MyMindV3/Views/MyResourceView.cs" relfile="MyMindV3/MyMindV3/Views/MyResourceView.cs" line="79" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="342" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="344" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="351" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" relfile="MyMindV3/MVVM/ViewModel/MyResourcesViewModel.cs" line="331" column="1" />
       <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/GetData.cs" relfile="MyMindV3/MVVM/Webservices/GetData.cs" line="301" column="1" />
+      <Breakpoint file="/Users/PFJ/Developer/MyMind3/MyMindV3/MyMindV3/MVVM/Webservices/UsersWebservice.cs" relfile="MyMindV3/MVVM/Webservices/UsersWebservice.cs" line="167" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.MyMindV3.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.0FE36F3F-05C6-4033-8FD1-946FC2363B83" />
+  <MonoDevelop.Ide.ItemProperties.MyMindV3.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget" />
   <MultiItemStartupConfigurations />
 </Properties>
