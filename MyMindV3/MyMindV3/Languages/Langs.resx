@@ -519,6 +519,21 @@
 	<data name="Login_NetworkError" xml:space="preserve">
     <value>You do not currently have a network connection</value>
   </data>
+	<data name="Login_NetworkLocked" xml:space="preserve">
+    <value>Your account is currently locked. Please contact your clinician for advice</value>
+  </data>
+	<data name="Login_NetworkErrorReturned" xml:space="preserve">
+    <value>The server returned an error while logging in. Please try again later</value>
+  </data>
+	<data name="Login_NetworkVerification" xml:space="preserve">
+    <value>You will need to check your email to verify your details before you are permitted to log in</value>
+  </data>
+	<data name="Login_NetworkGeneralFail" xml:space="preserve">
+    <value>The server returned a general failure. Please contact your clinician for advice</value>
+  </data>
+	<data name="Login_LoginFailTitle" xml:space="preserve">
+    <value>Log in error</value>
+  </data>
 	<data name="SignUp_AllFieldsError" xml:space="preserve">
     <value>Please complete all fields</value>
   </data>

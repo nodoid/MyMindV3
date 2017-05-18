@@ -61,19 +61,19 @@ namespace MvvmFramework.ViewModel
                                 {
                                     var systemUser = new SystemUser
                                     {
-                                        Name = Name,
-                                        PreferredName = PreferredName,
-                                        DateOfBirth = DateOfBirth,
-                                        Email = Email,
-                                        Phone = Phone,
-                                        Password = Password,
-                                        PinCode = PinCode,
-                                        PostCode = PostCode
+                                        Name = Uri.EscapeUriString(Name),
+                                        PreferredName = Uri.EscapeUriString(PreferredName),
+                                        DateOfBirth = Uri.EscapeUriString(DateOfBirth),
+                                        Email = Email.Replace("@", "%40"),
+                                        Phone = Uri.EscapeUriString(Phone),
+                                        Password = Uri.EscapeUriString(Password),
+                                        PinCode = Uri.EscapeUriString(PinCode),
+                                        PostCode = Uri.EscapeUriString(PostCode.ToUpperInvariant())
                                     };
 
                                     await new UsersWebservice().RegisterWeb(systemUser).ContinueWith(async (t) =>
                                     {
-                                        if (t.IsCompleted && (!t.IsCanceled || !t.IsFaulted))
+                                        if (t.IsCompleted && (!t.IsCanceled && !t.IsFaulted))
                                         {
                                             if (t.Result)
                                                 await dialogService.ShowMessage(GetMessage("RegUser_Completed_Message"), GetMessage("RegUser_Completed"), "OK", () => navService.GoBack());

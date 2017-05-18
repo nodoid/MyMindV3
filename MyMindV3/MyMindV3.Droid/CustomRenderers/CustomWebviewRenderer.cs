@@ -16,6 +16,7 @@ namespace MyMindV3.Droid
 
             if (e.NewElement == null) return;
 
+            Control.Settings.JavaScriptEnabled = true;
             Control.FocusChange += Control_FocusChange;
         }
 

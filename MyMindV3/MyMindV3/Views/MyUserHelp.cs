@@ -109,7 +109,7 @@ namespace MyMindV3
                                             TextColor = Color.White,
                                             FontSize = 22,
                                             LineBreakMode = LineBreakMode.WordWrap,
-                                            WidthRequest = App.ScreenSize.Width * (mainHeading == Langs.MyMind_Help ? (Device.OS == TargetPlatform.iOS ? .8 : .9) : width / 1.75),
+                                            WidthRequest = App.ScreenSize.Width * (mainHeading == Langs.MyMind_Help ? (Device.RuntimePlatform == Device.iOS ? .8 : .9) : width / 1.75),
                                             HorizontalTextAlignment = TextAlignment.Center,
                                             HorizontalOptions = LayoutOptions.Center
                                         },

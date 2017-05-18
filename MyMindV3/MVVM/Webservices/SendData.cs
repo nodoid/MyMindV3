@@ -89,10 +89,15 @@ namespace MvvmFramework
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/x-www-form-urlencoded");
+                var para = string.Empty;
                 for (var i = 0; i < data.Length; i += 2)
                 {
-                    request.AddHeader(data[i].ToLowerInvariant(), data[i + 1]);
+                    //request.AddHeader(data[i].ToLowerInvariant(), data[i + 1]);
+                    para += string.Format("{0}={1}&", data[i].ToLowerInvariant(), data[i + 1]);
                 }
+                para.TrimEnd('&');
+                request.AddParameter("application/x-www-form-urlencoded", para, ParameterType.RequestBody);
                 var response = await client.Execute(request);
                 t = JsonConvert.DeserializeObject<T>(response.Content);
                 return t;
@@ -109,7 +114,7 @@ namespace MvvmFramework
         public static byte[] ReadFully(Stream input)
         {
             byte[] buffer = new byte[16 * 1024];
-            using (MemoryStream ms = new MemoryStream())
+            using (var ms = new MemoryStream())
             {
                 int read;
                 while ((read = input.Read(buffer, 0, buffer.Length)) > 0)

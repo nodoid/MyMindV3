@@ -7,6 +7,8 @@ using MvvmFramework.Models;
 using System.Collections.Generic;
 using MvvmFramework.Interfaces;
 using System;
+using Newtonsoft.Json.Schema;
+using System.Linq;
 
 namespace MvvmFramework.ViewModel
 {
@@ -73,6 +75,62 @@ namespace MvvmFramework.ViewModel
             set { Set(() => UserProfile, ref userProfile, value, true); }
         }
 
+        string profName;
+        public string ProfName
+        {
+            get { return profName; }
+            set { Set(() => ProfName, ref profName, value, true); }
+        }
+
+        string profDOB;
+        public string ProfDOB
+        {
+            get { return profDOB; }
+            set { Set(() => ProfDOB, ref profDOB, value, true); }
+        }
+
+        string profPhone;
+        public string ProfPhone
+        {
+            get { return profPhone; }
+            set { Set(() => ProfPhone, ref profPhone, value, true); }
+        }
+
+        string profRefReason;
+        public string ProfRefReason
+        {
+            get { return profRefReason; }
+            set { Set(() => ProfRefReason, ref profRefReason, value, true); }
+        }
+
+        string profLikes;
+        public string ProfLikes
+        {
+            get { return profLikes; }
+            set { Set(() => ProfLikes, ref profLikes, value, true); }
+        }
+
+        string profDislikes;
+        public string ProfDislikes
+        {
+            get { return profDislikes; }
+            set { Set(() => ProfDislikes, ref profDislikes, value, true); }
+        }
+
+        string profGoals;
+        public string ProfGoals
+        {
+            get { return profGoals; }
+            set { Set(() => ProfGoals, ref profGoals, value, true); }
+        }
+
+        string profPrefName;
+        public string ProfPrefName
+        {
+            get { return profPrefName; }
+            set { Set(() => ProfPrefName, ref profPrefName, value, true); }
+        }
+
         void GetUserProfile()
         {
             var usr = new UserProfile
@@ -89,6 +147,15 @@ namespace MvvmFramework.ViewModel
                 PreferredName = SystemUser.PreferredName
             };
             UserProfile = usr;
+
+            ProfName = usr.Name;
+            ProfDOB = usr.DateOfBirth;
+            ProfPhone = usr.ContactNumber;
+            ProfRefReason = usr.ReferralReason;
+            ProfLikes = usr.Likes;
+            ProfDislikes = usr.Dislikes;
+            ProfGoals = usr.WhatIDo;
+            ProfPrefName = usr.PreferredName;
         }
 
         public void UpdateUserData(params string[] data)

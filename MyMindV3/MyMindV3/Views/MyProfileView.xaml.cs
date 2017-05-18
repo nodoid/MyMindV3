@@ -48,7 +48,8 @@ namespace MyMindV3.Views
         public MyProfileView()
         {
             InitializeComponent();
-            BindingContext = ViewModel.UserProfile;
+            //BindingContext = ViewModel.UserProfile;
+            BindingContext = ViewModel;
             CreateUI();
         }
 

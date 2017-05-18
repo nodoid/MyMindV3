@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using System.Threading.Tasks;
+using Xamarin.Forms;
 namespace MyMindV3
 {
     public class CustomWebview : WebView
@@ -17,5 +19,14 @@ namespace MyMindV3
             AbsoluteLayout.SetLayoutBounds(bindableObject, new Rectangle(x, y, width, height));
             AbsoluteLayout.SetLayoutFlags(bindableObject, AbsoluteLayoutFlags.None);
         }*/
+
+        public static BindableProperty EvaluateJavascriptProperty =
+            BindableProperty.Create(nameof(EvaluateJavascript), typeof(Func<string, Task<string>>), typeof(CustomWebview), null, BindingMode.OneWayToSource);
+
+        public Func<string, Task<string>> EvaluateJavascript
+        {
+            get { return (Func<string, Task<string>>)GetValue(EvaluateJavascriptProperty); }
+            set { SetValue(EvaluateJavascriptProperty, value); }
+        }
     }
 }

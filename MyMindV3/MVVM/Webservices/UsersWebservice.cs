@@ -129,6 +129,7 @@ namespace MvvmFramework.Webservices
             using (var client = new RestClient("https://apps.nelft.nhs.uk/MyMind/Account/RegisterAppUser"))
             {
                 var request = new RestRequest(Method.POST);
+                request.AddHeader("content-type", "application/x-www-form-urlencoded");
                 var param = string.Format("name={0}&preferredName={1}&dob={2}&email={3}&phone={4}&password={5}&pincode={6}&postcode={7}",
                                           sys.Name, sys.PreferredName, sys.DateOfBirth, sys.Email, sys.Phone, sys.Password, sys.PinCode, sys.PostCode);
                 request.AddParameter("application/x-www-form-urlencoded", param, ParameterType.RequestBody);
@@ -137,7 +138,7 @@ namespace MvvmFramework.Webservices
                 {
                     var resp = await client.Execute(request);
                     if (resp.StatusCode == HttpStatusCode.OK)
-                        return resp.Content != "error" ? true : false;
+                        return resp.Content.Contains("error") ? false : true;
                     else
                         return false;
                 }
@@ -160,21 +161,24 @@ namespace MvvmFramework.Webservices
                     new KeyValuePair<string, string>("userpasswd", password)
                 });
 
+                var userProfile = new UserProfile();
+
                 try
                 {
                     var result = client.PostAsync("https://apps.nelft.nhs.uk/MyMind/Account/LoginAppUser", postData).Result;
                     string resultContent = result.Content.ReadAsStringAsync().Result;
                     if (resultContent.ToLowerInvariant().Contains("failure") ||
                         resultContent.ToLowerInvariant().Contains("error") ||
-                        resultContent.ToLowerInvariant().Contains("lockout"))
+                        resultContent.ToLowerInvariant().Contains("lockout") ||
+                        resultContent.ToLowerInvariant().Contains("verification"))
                     {
-                        UserProfile userProfile = null;
+                        userProfile.LogFail = resultContent;
                         return userProfile;
                     }
                     else
                     {
                         /* convert to user profile object */
-                        var userProfile = JsonConvert.DeserializeObject<UserProfile>(resultContent);
+                        userProfile = JsonConvert.DeserializeObject<UserProfile>(resultContent);
                         return userProfile;
                     }
                 }

@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.Views;
 using MvvmFramework.Interfaces;
 using MvvmFramework.Models;
 using MvvmFramework.Webservices;
+using System.Threading.Tasks;
 
 namespace MvvmFramework.ViewModel
 {
@@ -39,17 +40,17 @@ namespace MvvmFramework.ViewModel
             {
                 return loginCommand ??
                     (
-                    loginCommand = new RelayCommand(async () =>
+                    loginCommand = new RelayCommand(() =>
                     {
                         if (HasValidInput)
                         {
                             DisplayLogin = false;
                             DisplayAcceptance = true;
                         }
-                        else
-                        {
-                            await dialogService.ShowMessage(GetErrorMessage("Login_InvalidError"), GetErrorTitle("Gen_Error"));
-                        }
+                        //else
+                        //{
+                        //    await dialogService.ShowMessage(GetErrorMessage("Login_InvalidError"), GetErrorTitle("Gen_Error"));
+                        //}
                     })
                 );
             }
@@ -156,7 +157,7 @@ namespace MvvmFramework.ViewModel
         {
             var resu = new UsersWebservice().LoginUser(Name, Password);
 
-            if (resu != null)
+            if (string.IsNullOrEmpty(resu.LogFail))
             {
                 if (!string.IsNullOrEmpty(resu.APIToken))
                 {
@@ -220,6 +221,25 @@ namespace MvvmFramework.ViewModel
 
                     return true;
                 }
+            }
+            else
+            {
+                Task.Run(async () =>
+                {
+                    var message = string.Empty;
+                    if (resu.LogFail.ToLowerInvariant().Contains("failure"))
+                        message = GetErrorMessage("Login_Fail");
+                    else
+                        if (resu.LogFail.ToLowerInvariant().Contains("error"))
+                        message = GetErrorMessage("Login_Error");
+                    else
+                                if (resu.LogFail.ToLowerInvariant().Contains("lockout"))
+                        message = GetErrorMessage("Login_Locked");
+                    else
+                        message = GetErrorMessage("Login_Verify");
+                    await dialogService.ShowMessage(message, GetErrorTitle("Login_ErrorTitle"));
+                });
+
             }
 
             ResetInputs();

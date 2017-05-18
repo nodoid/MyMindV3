@@ -49,12 +49,17 @@ namespace MyMindV3.Views
             var errorMessage = new Dictionary<string, string>
             {
                 {"Login_InvalidError", Langs.Login_InvalidError},
-                {"Login_NetworkError", Langs.Login_NetworkError}
+                {"Login_NetworkError", Langs.Login_NetworkError},
+                {"Login_Locked", Langs.Login_NetworkLocked},
+                {"Login_Error", Langs.Login_NetworkErrorReturned},
+                {"Login_Verify", Langs.Login_NetworkVerification},
+                {"Login_Fail", Langs.Login_NetworkGeneralFail}
             };
             var errorTitle = new Dictionary<string, string>
             {
                 {"Gen_Error", Langs.Gen_Error},
-                {"Error_NetworkTitle", Langs.Error_NetworkTitle}
+                {"Error_NetworkTitle", Langs.Error_NetworkTitle},
+                {"Login_ErrorTitle", Langs.Login_LoginFailTitle}
             };
             var message = new Dictionary<string, string>
             {

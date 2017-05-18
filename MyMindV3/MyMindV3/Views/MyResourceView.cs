@@ -509,7 +509,7 @@ namespace MyMindV3.Views
                 WidthRequest = App.ScreenSize.Width * .75,
                 Placeholder = Langs.MyResources_Postcode,
                 BackgroundColor = Color.FromHex("022330"),
-                TextColor = Device.OS == TargetPlatform.Android ? Color.White : Color.Blue,
+                TextColor = Device.RuntimePlatform == Device.Android ? Color.White : Color.Blue,
                 PlaceholderColor = Color.Gray,
                 SearchCommand = new Command(() =>
                 {
@@ -894,27 +894,31 @@ namespace MyMindV3.Views
                                 Device.BeginInvokeOnMainThread(() => Navigation.PushAsync(new MyFileView(file)));
                             else
                             {
-                                Device.OnPlatform(iOS: () => DependencyService.Get<IFile>().OpenFileExternally(path),
-                                                  Android: () =>
-                                                  {
-                                                      var mimetype = string.Empty;
-                                                      switch (filetype)
-                                                      {
-                                                          case "doc":
-                                                              mimetype = "application/msword";
-                                                              break;
-                                                          case "docx":
-                                                              mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                                                              break;
-                                                          case "rtf":
-                                                              mimetype = "application/rtf";
-                                                              break;
-                                                          case "pdf":
-                                                              mimetype = "application/pdf";
-                                                              break;
-                                                      }
-                                                      DependencyService.Get<IFileAndroid>().launchfile(path, mimetype);
-                                                  });
+                                switch (Device.RuntimePlatform)
+                                {
+                                    case Device.iOS:
+                                        DependencyService.Get<IFile>().OpenFileExternally(path);
+                                        break;
+                                    case Device.Android:
+                                        var mimetype = string.Empty;
+                                        switch (filetype)
+                                        {
+                                            case "doc":
+                                                mimetype = "application/msword";
+                                                break;
+                                            case "docx":
+                                                mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                                                break;
+                                            case "rtf":
+                                                mimetype = "application/rtf";
+                                                break;
+                                            case "pdf":
+                                                mimetype = "application/pdf";
+                                                break;
+                                        }
+                                        DependencyService.Get<IFileAndroid>().launchfile(path, mimetype);
+                                        break;
+                                }
                             }
                         }
                     });
@@ -928,27 +932,31 @@ namespace MyMindV3.Views
                         Device.BeginInvokeOnMainThread(() => Navigation.PushAsync(new MyFileView(file)));
                     else
                     {
-                        Device.OnPlatform(iOS: () => DependencyService.Get<IFile>().OpenFileExternally(path),
-                                          Android: () =>
-                                          {
-                                              var mimetype = string.Empty;
-                                              switch (filetype)
-                                              {
-                                                  case "doc":
-                                                      mimetype = "application/msword";
-                                                      break;
-                                                  case "docx":
-                                                      mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
-                                                      break;
-                                                  case "rtf":
-                                                      mimetype = "application/rtf";
-                                                      break;
-                                                  case "pdf":
-                                                      mimetype = "application/pdf";
-                                                      break;
-                                              }
-                                              DependencyService.Get<IFileAndroid>().launchfile(path, mimetype);
-                                          });
+                        switch (Device.RuntimePlatform)
+                        {
+                            case Device.iOS:
+                                DependencyService.Get<IFile>().OpenFileExternally(path);
+                                break;
+                            case Device.Android:
+                                var mimetype = string.Empty;
+                                switch (filetype)
+                                {
+                                    case "doc":
+                                        mimetype = "application/msword";
+                                        break;
+                                    case "docx":
+                                        mimetype = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+                                        break;
+                                    case "rtf":
+                                        mimetype = "application/rtf";
+                                        break;
+                                    case "pdf":
+                                        mimetype = "application/pdf";
+                                        break;
+                                }
+                                DependencyService.Get<IFileAndroid>().launchfile(path, mimetype);
+                                break;
+                        }
                     }
                 }
             }

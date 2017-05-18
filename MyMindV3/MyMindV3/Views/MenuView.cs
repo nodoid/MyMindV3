@@ -68,7 +68,7 @@ namespace MyMindV3.Views
                 ItemsSource = new List<string> { Langs.MyResources_Distance, Langs.Menu_AveRating, Langs.Menu_AZ, Langs.Menu_Popular },
                 TextColor = Color.White,
                 FontSize = 14,
-                TranslationY = Device.OS == TargetPlatform.Android ? -8 : 0
+                TranslationY = Device.RuntimePlatform == Device.Android ? -8 : 0
             };
 
             radio.SelectedIndex = SetSelected;
@@ -94,7 +94,8 @@ namespace MyMindV3.Views
                     ItemsSource = Categories,
                     SelectedIndex = SetCategory
                 };
-                Device.OnPlatform(Android: (() => catlist.TranslationY = -8));
+                if (Device.RuntimePlatform == Device.Android)
+                    catlist.TranslationY = -8;
                 catlist.CheckedChanged += (sender, e) =>
                 {
                     var button = sender as CustomRadioButton;

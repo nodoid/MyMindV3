@@ -7,7 +7,7 @@ namespace MyMindV3
         public static readonly BindableProperty ImageSourceProperty =
             BindableProperty.Create("ImageSource", typeof(string), typeof(CustomImage), default(string), propertyChanged: (bindable, oldValue, newValue) =>
                 {
-                    if (Device.OS != TargetPlatform.Android)
+                    if (Device.RuntimePlatform != Device.Android)
                     {
                         var image = (CustomImage)bindable;
 

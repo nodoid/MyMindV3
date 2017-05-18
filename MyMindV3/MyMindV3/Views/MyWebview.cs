@@ -6,7 +6,7 @@ namespace MyMindV3
     {
         public MyWebview(string uri)
         {
-			NavigationPage.SetHasNavigationBar(this, true);
+            NavigationPage.SetHasNavigationBar(this, true);
 
             Content = new StackLayout
             {
@@ -16,7 +16,7 @@ namespace MyMindV3
                 HorizontalOptions = LayoutOptions.Start,
                 Children =
                 {
-                    new WebView {Source = uri}
+                    new CustomWebview {Source = uri}
                 }
             };
         }

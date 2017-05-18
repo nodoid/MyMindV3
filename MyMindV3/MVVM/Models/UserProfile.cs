@@ -35,5 +35,6 @@ namespace MvvmFramework.Models
         public string WhatIDo { get; set; }
         public string ClinicianGUID { get; set; }
         public string AssignedClinicianGUID { get; set; }
+        public string LogFail { get; set; } = string.Empty;
     }
 }
