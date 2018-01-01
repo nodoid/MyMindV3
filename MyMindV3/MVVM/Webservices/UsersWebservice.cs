@@ -42,8 +42,6 @@ namespace MvvmFramework.Webservices
             if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(hcp))
                 return null;
 
-            var url = string.Format("{0}/api/MyMind/GetAppointmentsByClientAndHCP?clientId={1}&hcpCode={2}",
-                                    Constants.BaseTestUrl, clientId, hcp);
 
             //var encMgr = Factory.Instance.GetEncryptionManager();
             IEnumerable<Appointment> encryptions = null;
@@ -82,7 +80,6 @@ namespace MvvmFramework.Webservices
         // add system user
         public async Task AddSystemUser(SystemUser systerUser)
         {
-            // ADD TO MYMIND DB - MSSQL
             await Send.SendData("AddAppUserProfile", new string[]
             {
                "name", systerUser.Name,"password", systerUser.PreferredName,"password", systerUser.Email,
@@ -91,47 +88,12 @@ namespace MvvmFramework.Webservices
         }
 
         // register system user
-        /*public UserProfile RegisterWeb(SystemUser systerUser)
-        {
-            using (var client = new HttpClient())
-            {
-                var postData = new FormUrlEncodedContent(new[] {
-                        new KeyValuePair<string, string>("name", systerUser.Name),
-                    new KeyValuePair<string,string>("preferredName", systerUser.PreferredName),
-                    new KeyValuePair<string, string>("dob", systerUser.DateOfBirth),
-                        new KeyValuePair<string, string>("email", systerUser.Email),
-                        new KeyValuePair<string, string>("phone", systerUser.Phone),
-                        new KeyValuePair<string, string>("password", systerUser.Password),
-                        new KeyValuePair<string, string>("pincode",  systerUser.PinCode),
-                    new KeyValuePair<string, string>("postcode",  systerUser.PostCode)
-                    });
-
-                try
-                {
-                    UserProfile userProfile = null;
-                    var result = client.PostAsync("https://apps.nelft.nhs.uk/MyMind/Account/RegisterAppUser", postData).Result;
-                    var resultContent = result.Content.ReadAsStringAsync().Result;
-
-                    if (resultContent == "\"success\"")
-                    {
-                        userProfile = LoginUser(systerUser.Email, systerUser.Password);
-                    }
-                    return userProfile;
-                }
-                catch (AggregateException)
-                {
-                    return null;
-                }
-            }
-        }*/
         public async Task<bool> RegisterWeb(SystemUser sys)
         {
-            using (var client = new RestClient("https://apps.nelft.nhs.uk/MyMind/Account/RegisterAppUser"))
+            using (var client = new RestClient("https://apps"))
             {
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("content-type", "application/x-www-form-urlencoded");
-                var param = string.Format("name={0}&preferredName={1}&dob={2}&email={3}&phone={4}&password={5}&pincode={6}&postcode={7}",
-                                          sys.Name, sys.PreferredName, sys.DateOfBirth, sys.Email, sys.Phone, sys.Password, sys.PinCode, sys.PostCode);
                 request.AddParameter("application/x-www-form-urlencoded", param, ParameterType.RequestBody);
 
                 try
@@ -157,15 +119,15 @@ namespace MvvmFramework.Webservices
             using (var client = new HttpClient())
             {
                 var postData = new FormUrlEncodedContent(new[] {
-                    new KeyValuePair<string, string>("useremail", name),
-                    new KeyValuePair<string, string>("userpasswd", password)
+                    new KeyValuePair<string, string>("", name),
+                    new KeyValuePair<string, string>("", password)
                 });
 
                 var userProfile = new UserProfile();
 
                 try
                 {
-                    var result = client.PostAsync("https://apps.nelft.nhs.uk/MyMind/Account/LoginAppUser", postData).Result;
+                    var result = client.PostAsync("https://apps", postData).Result;
                     string resultContent = result.Content.ReadAsStringAsync().Result;
                     if (resultContent.ToLowerInvariant().Contains("failure") ||
                         resultContent.ToLowerInvariant().Contains("error") ||

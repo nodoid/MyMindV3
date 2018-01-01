@@ -584,7 +584,8 @@ namespace MvvmFramework.ViewModel
                             HasW = res[n].ResourceType == 1,
                             HasH = res[n].ResourceType == 2,
                             HasR = res[n].ResourceType == 3,
-                            Url = (string.IsNullOrEmpty(res[n].ResourceURL)) ? string.Empty : res[n].ResourceURL
+                            Url = (string.IsNullOrEmpty(res[n].ResourceURL)) ? string.Empty : res[n].ResourceURL,
+                            IsLocal = res[n].ResourceIsNational
                         });
                         dataList[n].StarRatings = ConvertRatingToStars(dataList[n].CurrentRating, n);
                     }

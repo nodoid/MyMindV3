@@ -91,7 +91,7 @@ namespace MvvmFramework
 
         public static async Task GetImage(string id, bool isUser = true)
         {
-            var url = string.Format("{0}/api/MyMind/GetProfilePicture/{1}", Constants.BaseTestUrl, id.Split('/').Last().Split('.')[0]);
+            var url = string.Format("{0}/{1}", Constants.BaseTestUrl, id.Split('/').Last().Split('.')[0]);
             try
             {
                 using (var client = new HttpClient())
@@ -116,7 +116,7 @@ namespace MvvmFramework
 
         public static async Task GetFile(string id, string guid, string auth, string filename)
         {
-            var url = string.Format("{0}/api/MyMind/GetFileData", Constants.BaseTestUrl);
+            var url = string.Format("{0}", Constants.BaseTestUrl);
 
             try
             {
@@ -124,8 +124,6 @@ namespace MvvmFramework
                 {
                     using (var message = new HttpRequestMessage(HttpMethod.Post, url))
                     {
-                        message.Headers.Add("UserGUID", guid);
-                        message.Headers.Add("AuthToken", auth);
                         message.Headers.Add("FileId", id);
                         var response = client.SendAsync(message).Result;
                         var str = await response.Content.ReadAsStreamAsync();
@@ -277,7 +275,7 @@ namespace MvvmFramework
         {
             ResourcesModel rm = null;
 
-            var url = string.Format("{0}/api/MyMind/{1}", Constants.BaseTestUrl, apiToUse);
+            var url = string.Format("{0}/{1}", Constants.BaseTestUrl, apiToUse);
 
 
             try
@@ -303,38 +301,6 @@ namespace MvvmFramework
 
             return rm;
         }
-
-        /*public static async Task<IEnumerable<Resources>> GetLocalNationalResources(string apiToUse, params string[] data)
-        {
-            IEnumerable<Resources> rm = null;
-
-            var url = string.Format("{0}/api/MyMind/{1}", Constants.BaseTestUrl, apiToUse);
-
-
-            try
-            {
-                using (var client = new HttpClient())
-                {
-                    using (var message = new HttpRequestMessage(HttpMethod.Post, url))
-                    {
-                        for (var i = 0; i < data.Length; i += 2)
-                        {
-                            message.Headers.Add(data[i].ToLowerInvariant(), data[i + 1]);
-                        }
-                        var response = client.SendAsync(message).Result;
-                        var str = await response.Content.ReadAsStringAsync();
-                        var t = JsonConvert.DeserializeObject<ResourcesModel>(str);
-                        rm = t?.Resources as IEnumerable<Resources>;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine("Exception getting data - {0}::{1}", ex.Message, ex.InnerException);
-            }
-
-            return rm;
-        }*/
     }
 }
 

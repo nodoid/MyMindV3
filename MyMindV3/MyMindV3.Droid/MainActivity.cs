@@ -6,6 +6,7 @@ using Android.OS;
 using ImageCircle.Forms.Plugin.Droid;
 using Xamarin.Forms;
 using System;
+using Com.Testfairy;
 
 namespace MyMindV3.Droid
 {
@@ -19,6 +20,7 @@ namespace MyMindV3.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            TestFairy.Begin(this, "1761398db506414b977ca868067ae3179077d42a");
 
             MainActivity.Activity = this;
             Prefs = GetSharedPreferences("MyMindV3", FileCreationMode.Private);

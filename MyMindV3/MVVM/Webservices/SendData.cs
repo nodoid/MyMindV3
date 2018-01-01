@@ -135,9 +135,6 @@ namespace MvvmFramework
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("userguid", guid);
-                request.AddHeader("authtoken", authtoken);
-                request.AddHeader("accounttype", type);
                 request.AddFile("files", ReadFully(data), filename, "image/jpeg");
                 var resp = await client.Execute(request);
                 return resp.Content;

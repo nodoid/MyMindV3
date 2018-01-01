@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using MvvmFramework.Interfaces;
 using System;
+using System.Linq;
 
 namespace MvvmFramework.ViewModel
 {
@@ -131,6 +132,10 @@ namespace MvvmFramework.ViewModel
                         if (t.IsCompleted)
                         {
                             Clinician = t.Result[0];
+                            Name = Clinician.Name;
+                            Role = Clinician.WhatIDo;
+                            FunFact = Clinician.FunFact;
+                            Phone = Clinician.ContactNumber;
                         }
                     });
                 }
@@ -152,6 +157,34 @@ namespace MvvmFramework.ViewModel
         {
             var dt = dts.ConvertToDateTime();
             settingsService.SaveSetting<string>("ClinicianImageUpdate", dt.ToString(), SettingType.String);
+        }
+
+        string name;
+        public string Name
+        {
+            get { return name; }
+            set { Set(() => Name, ref name, value, true); }
+        }
+
+        string role;
+        public string Role
+        {
+            get { return role; }
+            set { Set(() => Role, ref role, value, true); }
+        }
+
+        string funfact;
+        public string FunFact
+        {
+            get { return funfact; }
+            set { Set(() => FunFact, ref funfact, value, true); }
+        }
+
+        string phone;
+        public string Phone
+        {
+            get { return phone; }
+            set { Set(() => Phone, ref phone, value, true); }
         }
     }
 }

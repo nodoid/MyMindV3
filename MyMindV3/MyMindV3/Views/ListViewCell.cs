@@ -134,10 +134,10 @@ namespace MyMindV3.Views
                 VerticalTextAlignment = TextAlignment.Center
             };
             lblDistance.SetBinding(Label.TextProperty, new Binding("Distance", converter: new IntToStringConverter()));
-            lblDistance.SetBinding(Label.IsVisibleProperty, new Binding("Distance", converter: new DoubleToVisible()));
+            lblDistance.SetBinding(Label.IsVisibleProperty, new Binding("IsLocal", converter: new BoolToVisible()));
 
             var lblMiles = new Label { Text = Langs.MyResources_Miles, FontSize = 8, TextColor = Color.Green };
-            lblMiles.SetBinding(Label.IsVisibleProperty, new Binding("Distance", converter: new DoubleToVisible()));
+            lblMiles.SetBinding(Label.IsVisibleProperty, new Binding("IsLocal", converter: new BoolToVisible()));
 
             var resourceStack = new StackLayout
             {
@@ -152,6 +152,7 @@ namespace MyMindV3.Views
 #if DEBUG
                     Debug.WriteLine("H={0}, R={1}, W={2}", ts.HasH ? 1 : 0, ts.HasR ? 1 : 0, ts.HasW ? 1 : 0);
 #endif
+
                     if (!string.IsNullOrEmpty(ts.ImageIcon))
                     {
                         imgIcon.Source = new UriImageSource { Uri = new Uri(string.Format("{0}/{1}", Constants.ImageIconUrl, ts.ImageIcon)) };

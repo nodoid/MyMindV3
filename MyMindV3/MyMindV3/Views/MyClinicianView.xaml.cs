@@ -47,7 +47,7 @@ namespace MyMindV3.Views
             InitializeComponent();
             DisplayProfileDetails.IsVisible = true;
             EditProfileDetails.IsVisible = false;
-            BindingContext = ViewModel.ClinicianUser;
+            BindingContext = ViewModel;
             GetImage();
             GetDetails();
             if (ViewModel.SystemUser.IsAuthenticated == 3)

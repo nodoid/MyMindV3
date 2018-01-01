@@ -16,5 +16,6 @@ namespace MvvmFramework.Models
         public bool HasW { get; set; }
         public bool HasH { get; set; }
         public string Url { get; set; }
+        public bool IsLocal { get; set; }
     }
 }

@@ -6,6 +6,8 @@ using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
 using Xamarin.Forms;
+using TestFairyLib;
+
 
 namespace MyMindV3.iOS
 {
@@ -28,6 +30,9 @@ namespace MyMindV3.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             AppDelegate.Self = this;
+
+            TestFairy.Begin("1761398db506414b977ca868067ae3179077d42a");
+
             global::Xamarin.Forms.Forms.Init();
             ImageCircleRenderer.Init();
             PullToRefreshViewRenderer.Init();
